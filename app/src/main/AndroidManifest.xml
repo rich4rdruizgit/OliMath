@@ -17,7 +17,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.test.TestActivity" />
-        <activity android:name=".activities.test.shop.ShopActivity"></activity>
+        <activity android:name=".activities.test.shop.ShopActivity" />
+        <activity android:name=".activities.test.ranking.RankingActivity" />
+        <activity android:name=".activities.test.statistics.StatisticActivity"></activity>
     </application>
 
 </manifest>
