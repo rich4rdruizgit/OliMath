@@ -1,7 +1,9 @@
 package olimpiadas.sena.com.olimpiadasmath.activities.test.statistics;
 
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
@@ -22,6 +24,7 @@ public class StatisticActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((TextView)findViewById(R.id.txt_title_statistics)).setTypeface(Typeface.createFromAsset(this.getAssets(),"grobold.ttf"));
         setContentView(R.layout.activity_statistic);
         grafica = (PieChart) findViewById(R.id.grafica);
         cargarGrafica();
