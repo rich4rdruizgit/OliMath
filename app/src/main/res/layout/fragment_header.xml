@@ -1,7 +1,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context="olimpiadas.sena.com.olimpiadasmath.fragments.header.HeaderFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -48,14 +48,53 @@
                     android:src="@drawable/clip_source" />
 
             </FrameLayout>
-
-
-
-
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            >
 
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ticket"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center"/>
 
+            <TextView
+                android:id="@+id/tv_ticket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" x 20"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            >
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/coin"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/tv_coins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" x 20"
+                android:layout_gravity="center"/>
+        </LinearLayout>
 
     </LinearLayout>
 

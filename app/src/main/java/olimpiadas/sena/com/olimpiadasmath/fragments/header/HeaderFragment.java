@@ -66,6 +66,8 @@ public class HeaderFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_header, container, false);
 
         ((TextView)view.findViewById(R.id.tv_exp)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
+        ((TextView)view.findViewById(R.id.tv_coins)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
+        ((TextView)view.findViewById(R.id.tv_ticket)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
         return view;
 
 
