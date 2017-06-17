@@ -1,4 +1,4 @@
-package olimpiadas.sena.com.olimpiadasmath.shop;
+package olimpiadas.sena.com.olimpiadasmath.activities.test.shop;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

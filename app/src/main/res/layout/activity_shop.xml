@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="olimpiadas.sena.com.olimpiadasmath.shop.ShopActivity">
+    tools:context="olimpiadas.sena.com.olimpiadasmath.activities.test.shop.ShopActivity">
 
 </android.support.constraint.ConstraintLayout>
