@@ -36,7 +36,6 @@ public class StatisticActivity extends AppCompatActivity {
         PieDataSet dataSet = new PieDataSet(listaDatos, "Rendimiento en temas");
         dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         PieData pieData = new PieData(dataSet);
-
         grafica.setData(pieData);
         grafica.invalidate();
     }
