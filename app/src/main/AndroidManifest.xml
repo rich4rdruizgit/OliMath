@@ -16,6 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.test.TestActivity" />
+        <activity android:name=".activities.test.shop.ShopActivity"></activity>
     </application>
 
 </manifest>
