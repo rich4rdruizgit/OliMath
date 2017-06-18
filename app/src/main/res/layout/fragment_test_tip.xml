@@ -10,20 +10,43 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:gravity="center_horizontal">
+        android:weightSum="1">
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2/10"
-            android:layout_margin="20dp"/>
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="0.5">
 
-        <ImageView
+            <ImageView
+                android:id="@+id/img_test_tip_numberofquestion"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/questiontest" />
+
+            <TextView
+                android:id="@+id/txt_test_tip_numberofquestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"
+                android:textSize="20sp"
+                android:text="2/10" />
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher"
-            android:layout_marginLeft="20dp"/>
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="0.5">
 
+            <ImageView
+                android:id="@+id/img_test_tip_einstein"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/einsteinanimado" />
+
+        </LinearLayout>
     </LinearLayout>
 
 </FrameLayout>
