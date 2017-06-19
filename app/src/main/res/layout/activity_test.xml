@@ -21,7 +21,7 @@
         android:layout_height="70dp">
         <fragment
             android:id="@+id/fragment_tip_test"
-            android:name="olimpiadas.sena.com.olimpiadasmath.fragments.header.HeaderFragment"
+            android:name="olimpiadas.sena.com.olimpiadasmath.fragments.test.TestTipFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
