@@ -32,7 +32,7 @@
             android:layout_height="match_parent"
             android:src="@drawable/alberte"
             />
-        <olimpiadas.sena.com.olimpiadasmath.libraries.CircleMenu
+        <olimpiadas.sena.com.olimpiadasmath.librerias.CircleMenu
             android:id="@+id/circle_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

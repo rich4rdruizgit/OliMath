@@ -12,7 +12,7 @@ import com.hitomi.cmlibrary.OnMenuSelectedListener;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.shop.ShopActivity;
-import olimpiadas.sena.com.olimpiadasmath.libraries.CircleMenu;
+import olimpiadas.sena.com.olimpiadasmath.librerias.CircleMenu;
 import pl.droidsonroids.gif.GifImageView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
