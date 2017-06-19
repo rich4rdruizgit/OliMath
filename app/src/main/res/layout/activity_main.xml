@@ -30,7 +30,7 @@
             android:id="@+id/img_gif_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/alberte"
+            android:src="@drawable/albert"
             />
         <olimpiadas.sena.com.olimpiadasmath.librerias.CircleMenu
             android:id="@+id/circle_menu"
