@@ -1,6 +1,7 @@
 package olimpiadas.sena.com.olimpiadasmath.adapter;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -60,10 +61,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         public ProductViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
+
             imgViewShop = (ImageView) itemView.findViewById(R.id.img_view_shop);
             txtName = (TextView) itemView.findViewById(R.id.txt_name_shop);
             txtPrice = (TextView) itemView.findViewById(R.id.txt_price_shop);
             txtConstraint = (TextView) itemView.findViewById(R.id.txt_const_level);
+
         }
 
         @Override
