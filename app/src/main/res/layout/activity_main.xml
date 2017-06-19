@@ -5,51 +5,72 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="olimpiadas.sena.com.olimpiadasmath.MainActivity">
 
-    <fragment
-        android:id="@+id/fragment"
-        android:name="olimpiadas.sena.com.olimpiadasmath.fragments.header.HeaderFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    tools:context="olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity">
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+        <fragment
+            android:id="@+id/fragment"
+            android:name="olimpiadas.sena.com.olimpiadasmath.fragments.header.HeaderFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.75"
         android:layout_gravity="center"
-        android:layout_width="300dp"
-        android:layout_height="360dp">
-        <com.hitomi.cmlibrary.CircleMenu
+        android:orientation="vertical"
+        >
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_gravity="center"
+            android:id="@+id/img_gif_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/alberte"
+            />
+        <olimpiadas.sena.com.olimpiadasmath.librerias.CircleMenu
             android:id="@+id/circle_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:visibility="gone"
             />
     </LinearLayout>
+
     <LinearLayout
-        android:padding="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.25"
         android:orientation="horizontal"
-        >
+        android:padding="10dp">
+
         <Button
+            android:layout_width="0dp"
+            android:layout_height="100dp"
             android:layout_margin="5dp"
-            android:elevation="10dp"
+            android:layout_weight="1"
             android:background="@drawable/ranking"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="90dp" />
+            android:elevation="10dp" />
+
         <Button
+            android:id="@+id/btn_menu_shop"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
             android:layout_margin="5dp"
-            android:padding="5dp"
+            android:layout_weight="1"
             android:background="@drawable/shop"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="90dp" />
+            android:padding="5dp" />
+
         <Button
-            android:background="@drawable/configuration"
-            android:layout_margin="5dp"
-            android:padding="5dp"
             android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
             android:layout_weight="1"
-            android:layout_height="90dp" />
+            android:background="@drawable/configuration"
+            android:padding="5dp" />
     </LinearLayout>
 
 </LinearLayout>
