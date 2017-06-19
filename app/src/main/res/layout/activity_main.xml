@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity">
 
     <LinearLayout
@@ -21,13 +22,22 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.75"
-        android:layout_gravity="center">
-
-        <com.hitomi.cmlibrary.CircleMenu
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        >
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_gravity="center"
+            android:id="@+id/img_gif_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/alberte"
+            />
+        <olimpiadas.sena.com.olimpiadasmath.librerias.CircleMenu
             android:id="@+id/circle_menu"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </com.hitomi.cmlibrary.CircleMenu>
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            />
     </LinearLayout>
 
     <LinearLayout
