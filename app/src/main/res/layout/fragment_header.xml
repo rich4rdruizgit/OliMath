@@ -7,14 +7,14 @@
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="80dp"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@drawable/user"
-            android:layout_margin="20dp"/>
+            android:layout_margin="10dp"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -36,13 +36,13 @@
                 android:layout_gravity="center">
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/img_header_progress_bar1"
                     android:layout_width="70dp"
                     android:layout_height="10dp"
                     android:src="@drawable/backg" />
 
                 <ImageView
-                    android:id="@+id/imageView1"
+                    android:id="@+id/img_header_progress_bar2"
                     android:layout_width="70dp"
                     android:layout_height="10dp"
                     android:src="@drawable/clip_source" />
