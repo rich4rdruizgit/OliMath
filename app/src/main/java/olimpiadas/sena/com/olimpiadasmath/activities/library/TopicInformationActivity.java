@@ -12,4 +12,7 @@ public class TopicInformationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topic_information);
     }
+
+
+
 }
