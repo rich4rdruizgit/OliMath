@@ -41,7 +41,7 @@ public class AsymmetricIdenticon extends Identicon {
 
 	@Override
 	protected int getIconColor() {
-		return Color.rgb(getByte(0)+128, getByte(1)+128, getByte(2)+128);
+		return Color.rgb(getByte(0)+100, getByte(1)+100, getByte(2)+128);
 	}
 
 	@Override
