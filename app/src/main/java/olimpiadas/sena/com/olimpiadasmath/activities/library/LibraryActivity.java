@@ -23,8 +23,6 @@ public class LibraryActivity extends AppCompatActivity {
             "Element 5"
     };
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,8 +41,6 @@ public class LibraryActivity extends AppCompatActivity {
             }
             });
     }
-
-
 }
 
 
