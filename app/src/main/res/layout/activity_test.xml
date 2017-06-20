@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/fondo"
     android:orientation="vertical"
+    android:background="@drawable/fondo"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.test.TestActivity">
 
     <!--<LinearLayout-->
