@@ -5,85 +5,94 @@
     android:id="@+id/activity_profile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.profile.ProfileActivity">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/jhonny"
-        android:id="@+id/imageView"
+    <olimpiadas.sena.com.olimpiadasmath.librerias.identicons.SymmetricIdenticon
+        android:id="@+id/identicon"
+        android:layout_width="150dp"
+        android:layout_height="180dp"
         android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/level"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="12dp" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-        <TextView
-            android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/imageView"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="32dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="56dp"
-            android:id="@+id/textView_level"
-            android:textSize="20dp"
-            tools:text="Level : " />
-        <TextView
-            android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/imageView"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="32dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="56dp"
-            android:textSize="20dp"
-            android:id="@+id/textView_level_number"
-            tools:text="4 " />
+        android:layout_alignParentEnd="true" />
 
-    </LinearLayout>
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/level"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:background="@color/complementaryGreenSena"
         android:orientation="horizontal">
         <TextView
-            android:text="TextView"
+            android:id="@+id/txt_level"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/imageView"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="32dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="56dp"
-            android:id="@+id/img_tickets"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
             android:textSize="20dp"
             tools:text="Level : " />
         <TextView
-            android:text="TextView"
+            android:id="@+id/txt_level_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/imageView"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="32dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="10dp"
             android:textSize="20dp"
+            tools:text="        X 4 " />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ticket"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_below="@id/level"
+        android:background="@color/orangeSena"
+        android:weightSum="2">
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ticket"
+            android:layout_weight="1"
+            android:layout_below="@+id/identicon" />
+        <TextView
+            android:text="Txt__tickets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_alignTop="@+id/imageView"
+            android:textSize="20dp"
+            android:layout_weight="1"
             android:id="@+id/textView_ticket_number"
-            tools:text="4 " />
-
+            tools:text="X 4 " />
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/coinsLayout"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_below="@id/ticket"
+        android:background="@color/greenSena"
+        android:weightSum="2">
+        <ImageView
+            android:id="@+id/img_coins"
+            android:layout_width="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_height="40dp"
+            android:src="@drawable/coin"
+            android:layout_weight="1"
+            android:layout_below="@+id/identicon" />
+        <TextView
+            android:id="@+id/txt_ticket_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_alignTop="@+id/imageView"
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:text="     X 4 " />
+    </LinearLayout>
+
 
 
 </RelativeLayout>
