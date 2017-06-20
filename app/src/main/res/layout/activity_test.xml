@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/fondo"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.test.TestActivity">
 
     <LinearLayout
@@ -29,7 +30,8 @@
     <LinearLayout
         android:id="@+id/linear_practice"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="vertical">
         <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
@@ -59,15 +61,19 @@
                     android:text="Scale" />
             </LinearLayout>
 
-            <android.support.v4.view.ViewPager
-                android:id="@+id/viewPager"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:clipToPadding="false"
-                android:overScrollMode="never"
-                android:paddingBottom="30dp"
-                />
+                android:layout_height="wrap_content">
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:clipToPadding="true"
+                    android:overScrollMode="never"
+                    android:paddingBottom="30dp"
+                    />
+            </LinearLayout>
         </android.support.design.widget.CoordinatorLayout>
     </LinearLayout>
 </LinearLayout>
