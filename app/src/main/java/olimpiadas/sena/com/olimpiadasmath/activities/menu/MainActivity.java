@@ -10,6 +10,9 @@ import android.widget.Toast;
 
 import com.hitomi.cmlibrary.OnMenuSelectedListener;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.shop.ShopActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.test.TestActivity;
@@ -18,7 +21,10 @@ import pl.droidsonroids.gif.GifImageView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    String arrayName[] = {"Practice","Study","Challenge"};
+    String prac ="Practice";
+    String study ="Study";
+    String chall ="Challenge";
+    String arrayName[] = {prac, study, chall};
     CircleMenu circleMenu;
     Button btnShop;
     GifImageView gifMenu;
@@ -41,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         circleMenu.setOnClickListener(this);
         circleMenu.setVisibility(View.GONE);
         circleMenu.setCloseAction(gifMenu,circleMenu);
-        circleMenu.setMainMenu(Color.parseColor("#CDCDCD"),R.drawable.alberte,R.drawable.alberte).addSubMenu(Color.parseColor("#258CFF"),R.drawable.practicar).
+        circleMenu.setMainMenu(Color.parseColor("#CDCDCD"),R.drawable.albertee,R.drawable.albertee).addSubMenu(Color.parseColor("#258CFF"),R.drawable.practicar).
                 addSubMenu(Color.parseColor("#6d4c41"),R.drawable.study).addSubMenu(Color.parseColor("#FF0000"),R.drawable.challenge)
                 .setOnMenuSelectedListener(new OnMenuSelectedListener() {
                     @Override
@@ -49,12 +55,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Toast.makeText(MainActivity.this, "Seleccionaste "+ arrayName[i], Toast.LENGTH_SHORT).show();
                         switch (i){
                             case 0:
-                                Intent intPractice = new Intent(MainActivity.this, TestActivity.class);
-                                startActivity(intPractice);
+                                TimerTask tareap =  new TimerTask() {
+                                    @Override
+                                    public void run() {
+                                        Intent intPractice = new Intent(MainActivity.this, TestActivity.class);
+                                        startActivity(intPractice);
+                                    }
+                                };
+                                Timer timerp = new Timer();
+                                timerp.schedule(tareap,1000);
                                 break;
                             case 2:
-                                Intent intChallenge = new Intent(MainActivity.this, TestActivity.class);
-                                startActivity(intChallenge);
+
+                                TimerTask tareac =  new TimerTask() {
+                                    @Override
+                                    public void run() {
+                                        Intent intChallenge = new Intent(MainActivity.this, TestActivity.class);
+                                        startActivity(intChallenge);
+                                    }
+                                };
+                                Timer timerc = new Timer();
+                                timerc.schedule(tareac,1000);
                                 break;
 
                         }
@@ -91,4 +112,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     }
+
+
 }

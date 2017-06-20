@@ -13,7 +13,7 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/user"
+            android:src="@drawable/pj"
             android:layout_margin="10dp"/>
 
         <LinearLayout
