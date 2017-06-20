@@ -1,4 +1,4 @@
-package olimpiadas.sena.com.olimpiadasmath.fragments;
+package olimpiadas.sena.com.olimpiadasmath.fragments.ranking;
 
 import android.app.Fragment;
 import android.graphics.Typeface;

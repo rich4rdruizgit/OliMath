@@ -1,79 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/fondo"
+    android:orientation="vertical"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.test.TestActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp">
-        <fragment
-            android:id="@+id/fragment_header_test"
-            android:name="olimpiadas.sena.com.olimpiadasmath.fragments.header.HeaderFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:orientation="vertical">
+
         <fragment
             android:id="@+id/fragment_tip_test"
             android:name="olimpiadas.sena.com.olimpiadasmath.fragments.test.TestTipFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/linear_practice"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
+
         android:orientation="vertical">
+
         <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true">
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="false">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="top"
-                android:layout_marginTop="16dp"
-                android:gravity="center"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/cardTypeBtn"
-                    style="@style/ButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Fragments" />
-
-                <CheckBox
-                    android:id="@+id/checkBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Scale" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <android.support.v4.view.ViewPager
-                    android:id="@+id/viewPager"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:clipToPadding="true"
-                    android:overScrollMode="never"
-                    android:paddingBottom="30dp"
-                    />
-            </LinearLayout>
+                    android:gravity="center|top"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/cardTypeBtn"
+                        style="@style/ButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fragments" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Scale" />
+                    </LinearLayout>
+
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/viewPager"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:clipToPadding="false"
+                        android:overScrollMode="always"
+                        android:paddingBottom="0dp" />
+                </LinearLayout>
         </android.support.design.widget.CoordinatorLayout>
     </LinearLayout>
 </LinearLayout>

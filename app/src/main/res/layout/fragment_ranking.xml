@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="olimpiadas.sena.com.olimpiadasmath.fragments.RankingFragment">
+    tools:context="olimpiadas.sena.com.olimpiadasmath.fragments.ranking.RankingFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -10,7 +10,7 @@
         android:orientation="horizontal"
         android:layout_margin="10dp"
         android:background="@drawable/scall"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="@color/greenSena"
         >
         <!-- TODO: Update blank fragment layout -->
         <TextView
