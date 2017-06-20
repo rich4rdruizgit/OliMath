@@ -1,0 +1,31 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="olimpiadas.sena.com.olimpiadasmath.fragments.RankingFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <!-- TODO: Update blank fragment layout -->
+        <TextView
+            android:id="@+id/txt_my_position"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="my position"
+            android:textSize="@dimen/tamanio_text"/>
+
+        <TextView
+            android:id="@+id/txt_my_nickname"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="my position" />
+
+        <TextView
+            android:id="@+id/txt_my_points"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="my position" />
+    </LinearLayout>
+</FrameLayout>
