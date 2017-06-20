@@ -6,18 +6,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/fondo"
     android:orientation="vertical"
-    android:background="@drawable/fondo"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.test.TestActivity">
 
-    <!--<LinearLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="70dp">-->
-    <!--<fragment-->
-    <!--android:id="@+id/fragment_header_test"-->
-    <!--android:name="olimpiadas.sena.com.olimpiadasmath.fragments.header.HeaderFragment"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content" />-->
-    <!--</LinearLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"
