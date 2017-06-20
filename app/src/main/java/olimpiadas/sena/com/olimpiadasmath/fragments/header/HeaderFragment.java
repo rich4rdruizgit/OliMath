@@ -1,15 +1,18 @@
 package olimpiadas.sena.com.olimpiadasmath.fragments.header;
 
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
+import olimpiadas.sena.com.olimpiadasmath.activities.profile.ProfileActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +29,7 @@ public class HeaderFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    ImageView imgHeaderProfile;
 
     public HeaderFragment() {
         // Required empty public constructor
@@ -52,10 +56,12 @@ public class HeaderFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -65,7 +71,14 @@ public class HeaderFragment extends Fragment {
 
 
         View view = inflater.inflate(R.layout.fragment_header, container, false);
-
+        imgHeaderProfile = (ImageView) view.findViewById(R.id.img_header_profile);
+        imgHeaderProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
         ((TextView)view.findViewById(R.id.tv_exp)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
         ((TextView)view.findViewById(R.id.tv_coins)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
         ((TextView)view.findViewById(R.id.tv_ticket)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));

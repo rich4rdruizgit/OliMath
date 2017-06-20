@@ -43,7 +43,7 @@
     </LinearLayout>
     <fragment
         android:id="@+id/fragment2"
-        android:name="olimpiadas.sena.com.olimpiadasmath.fragments.RankingFragment"
+        android:name="olimpiadas.sena.com.olimpiadasmath.fragments.ranking.RankingFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

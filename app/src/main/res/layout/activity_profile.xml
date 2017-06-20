@@ -5,16 +5,18 @@
     android:id="@+id/activity_profile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.profile.ProfileActivity">
+
     <TextView
         android:id="@+id/txt_nick"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
         android:gravity="center"
-        android:padding="20dp"
+        android:padding="10dp"
+        android:text="NICKNAME"
         android:textColor="@color/colorPrimary"
-        android:text="NICKNAME"/>
+        android:textSize="30dp" />
 
     <LinearLayout
         android:id="@+id/level"
@@ -71,27 +73,30 @@
         android:id="@+id/coinsLayout"
         android:layout_width="220dp"
         android:layout_height="50dp"
-        android:orientation="horizontal"
         android:layout_below="@id/ticket"
+        android:layout_marginBottom="0dp"
+        android:orientation="horizontal"
         android:weightSum="2">
+
         <ImageView
             android:id="@+id/img_coins"
             android:layout_width="30dp"
-            android:layout_marginLeft="30dp"
             android:layout_height="40dp"
-            android:src="@drawable/coin"
+            android:layout_below="@+id/identicon"
+            android:layout_marginLeft="30dp"
             android:layout_weight="1"
-            android:layout_below="@+id/identicon" />
+            android:src="@drawable/coin" />
+
         <TextView
             android:id="@+id/txt_coin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_alignTop="@+id/imageView"
-            android:textColor="@color/greenSena"
-            android:textSize="20dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:text="     X 4 " />
+            android:text="     X 4 "
+            android:textColor="@color/greenSena"
+            android:textSize="20dp" />
     </LinearLayout>
 
     <olimpiadas.sena.com.olimpiadasmath.librerias.identicons.SymmetricIdenticon
@@ -104,22 +109,25 @@
         android:layout_marginRight="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginTop="12dp" />
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="30dp"
-        android:layout_below="@+id/identicon"
+        android:layout_below="@+id/coinsLayout"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="0dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="0dp"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/txt_exp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
             android:layout_margin="20dp"
-            android:text="Exp"/>
+            android:text="Exp"
+            android:textSize="20sp" />
 
 
         <FrameLayout
@@ -142,6 +150,16 @@
 
         </FrameLayout>
     </LinearLayout>
+
+    <fragment
+        android:id="@+id/fragment4"
+        android:layout_margin="3dp"
+        android:name="olimpiadas.sena.com.olimpiadasmath.fragments.profile.StatisticFragment"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>
