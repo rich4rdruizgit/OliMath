@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="text_size">18dp</dimen>
@@ -6,3 +7,4 @@
 
     <dimen name="card_padding">60dp</dimen>
 </resources>
+>

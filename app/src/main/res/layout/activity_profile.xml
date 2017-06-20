@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_profile"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="olimpiadas.sena.com.olimpiadasmath.activities.profile.ProfileActivity">
+    <TextView
+        android:id="@+id/txt_nick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:padding="20dp"
+        android:textColor="@color/colorPrimary"
+        android:text="NICKNAME"/>
+
+    <LinearLayout
+        android:id="@+id/level"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/txt_nick"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/txt_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20dp"
+            android:textColor="@color/orangeSena"
+            android:text="Level : "/>
+        <TextView
+            android:id="@+id/txt_level_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/greenSena"
+            android:textSize="20dp"
+            android:text="       X 4 " />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ticket"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_below="@id/level"
+        android:weightSum="2">
+        <ImageView
+            android:id="@+id/imgTickets"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ticket"
+            android:layout_weight="1"
+            android:layout_below="@+id/identicon" />
+        <TextView
+            android:id="@+id/txt_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_alignTop="@+id/imageView"
+            android:textColor="@color/greenSena"
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:text="X 4 " />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/coinsLayout"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_below="@id/ticket"
+        android:weightSum="2">
+        <ImageView
+            android:id="@+id/img_coins"
+            android:layout_width="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_height="40dp"
+            android:src="@drawable/coin"
+            android:layout_weight="1"
+            android:layout_below="@+id/identicon" />
+        <TextView
+            android:id="@+id/txt_coin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_alignTop="@+id/imageView"
+            android:textColor="@color/greenSena"
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:text="     X 4 " />
+    </LinearLayout>
+
+    <olimpiadas.sena.com.olimpiadasmath.librerias.identicons.SymmetricIdenticon
+        android:id="@+id/identicon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/txt_nick"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="12dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="30dp"
+        android:layout_below="@+id/identicon"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/txt_exp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_margin="20dp"
+            android:text="Exp"/>
+
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/img_header_progress_bar1"
+                android:layout_width="200dp"
+                android:layout_height="15dp"
+                android:src="@drawable/backg" />
+
+            <ImageView
+                android:id="@+id/img_header_progress_bar2"
+                android:layout_width="70dp"
+                android:layout_height="15dp"
+                android:background="@color/colorPrimary"
+                android:src="@drawable/clip_source" />
+
+        </FrameLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

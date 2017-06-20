@@ -1,4 +1,4 @@
-*.iml
+﻿*.iml
 .gradle
 /local.properties
 /.idea/workspace.xml
@@ -9,3 +9,21 @@
 .externalNativeBuild
 /.idea/vcs.xml
 
+# Archivos de la aplicacion creados.
+*.apk
+*.ap_
+# Archivos DEX de la VM
+*.dex
+# Clases generadas Java
+*.class
+# Archivos generados
+bin/
+out/
+gen/
+# Archivos generados automaticamente por el IDE.
+build.xml
+ant.properties
+project.properties
+# Archivos de IDEA.
+*.ipr
+*.iws
