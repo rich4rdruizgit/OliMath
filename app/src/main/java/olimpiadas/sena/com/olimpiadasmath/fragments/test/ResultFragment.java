@@ -1,24 +1,27 @@
 package olimpiadas.sena.com.olimpiadasmath.fragments.test;
 
-import android.content.Context;
-import android.net.Uri;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ResultFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link ResultFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class ResultFragment extends Fragment {
+
+    Button btnContinue;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -27,8 +30,6 @@ public class ResultFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
 
     public ResultFragment() {
         // Required empty public constructor
@@ -55,6 +56,7 @@ public class ResultFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -64,46 +66,24 @@ public class ResultFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_result, container, false);
+
+        btnContinue = (Button) view.findViewById(R.id.btn_result_continue);
+        ((TextView)view.findViewById(R.id.txt_result_advice)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
+        ((TextView)view.findViewById(R.id.txt_result_rigth_answer)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
+        ((TextView)view.findViewById(R.id.txt_result_rigth_answer_number)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
+        ((TextView)view.findViewById(R.id.txt_result_wrong_answer)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
+        ((TextView)view.findViewById(R.id.txt_result_wrong_answer_number)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
+        ((TextView)view.findViewById(R.id.txt_result_win_coins)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
+        ((TextView)view.findViewById(R.id.txt_result_win_coins_number)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
+        ((TextView)view.findViewById(R.id.txt_result_win_ticket)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
+        ((TextView)view.findViewById(R.id.txt_result_win_ticket_number)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
+        btnContinue.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_result, container, false);
+        return view;
+
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
 }

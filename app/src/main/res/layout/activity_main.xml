@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
+    android:background="@drawable/fondo"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity">
 
     <LinearLayout
@@ -30,7 +30,7 @@
             android:id="@+id/img_gif_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/albertee"
+            android:src="@drawable/alberte2"
             />
         <olimpiadas.sena.com.olimpiadasmath.librerias.CircleMenu
             android:id="@+id/circle_menu"
@@ -48,6 +48,7 @@
         android:padding="10dp">
 
         <Button
+            android:id="@+id/btn_menu_ranking"
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_margin="5dp"

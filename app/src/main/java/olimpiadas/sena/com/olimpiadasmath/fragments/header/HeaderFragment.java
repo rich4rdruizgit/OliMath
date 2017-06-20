@@ -63,6 +63,7 @@ public class HeaderFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
+
         View view = inflater.inflate(R.layout.fragment_header, container, false);
 
         ((TextView)view.findViewById(R.id.tv_exp)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
