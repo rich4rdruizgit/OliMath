@@ -1,6 +1,7 @@
 package olimpiadas.sena.com.olimpiadasmath.adapter.shop;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;

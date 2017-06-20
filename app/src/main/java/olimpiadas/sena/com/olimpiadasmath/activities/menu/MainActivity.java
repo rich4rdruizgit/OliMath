@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         circleMenu.setOnClickListener(this);
         circleMenu.setVisibility(View.GONE);
         circleMenu.setCloseAction(gifMenu,circleMenu);
-        circleMenu.setMainMenu(Color.parseColor("#CDCDCD"),R.drawable.alberte2,R.drawable.alberte2).addSubMenu(Color.parseColor("#258CFF"),R.drawable.practicar).
+        circleMenu.setMainMenu(Color.parseColor("#CDCDCD"),R.drawable.albertee,R.drawable.albertee).addSubMenu(Color.parseColor("#258CFF"),R.drawable.practicar).
                 addSubMenu(Color.parseColor("#6d4c41"),R.drawable.study).addSubMenu(Color.parseColor("#FF0000"),R.drawable.challenge)
                 .setOnMenuSelectedListener(new OnMenuSelectedListener() {
                     @Override
