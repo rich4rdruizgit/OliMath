@@ -18,6 +18,29 @@
         android:text="RANKING ACTUAL"
         />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:orientation="horizontal"
+        >
+        <TextView
+            android:gravity="center"
+            android:id="@+id/txt_title_position"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="POSITION"/>
+        <TextView
+            android:gravity="center"
+            android:id="@+id/txt_title_nickname"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="NICKNAME"/>
+        <TextView
+            android:gravity="center"
+            android:id="@+id/txt_title_points"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="POINTS"/>
+    </LinearLayout>
     <fragment
         android:id="@+id/fragment2"
         android:name="olimpiadas.sena.com.olimpiadasmath.fragments.RankingFragment"

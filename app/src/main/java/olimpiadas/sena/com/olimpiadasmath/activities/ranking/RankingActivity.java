@@ -30,14 +30,17 @@ public class RankingActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         recyclerViewRanking = (RecyclerView) findViewById(R.id.recycler_ranking);
 
-        ((TextView)findViewById(R.id.txt_title_ranking)).setTypeface(Typeface.createFromAsset(this.getAssets(),"grobold.ttf"));
+        ((TextView) findViewById(R.id.txt_title_ranking)).setTypeface(Typeface.createFromAsset(this.getAssets(), "grobold.ttf"));
+        ((TextView) findViewById(R.id.txt_title_points)).setTypeface(Typeface.createFromAsset(this.getAssets(), "grobold.ttf"));
+        ((TextView) findViewById(R.id.txt_title_position)).setTypeface(Typeface.createFromAsset(this.getAssets(), "grobold.ttf"));
+        ((TextView) findViewById(R.id.txt_title_nickname)).setTypeface(Typeface.createFromAsset(this.getAssets(), "grobold.ttf"));
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerViewRanking.setLayoutManager(llm);
 
-        User user = new User("yo", 10, 10);
-        if (user.getPosition() < 100) {
+        User user = new User("yo", 10, 100);
+        if (user.getPosition() < 1) {
             fragment = findViewById(R.id.fragment2);
             fragment.setVisibility(View.INVISIBLE);
         }
@@ -49,10 +52,8 @@ public class RankingActivity extends AppCompatActivity {
 
     private void llenarUsers() {
         users = new ArrayList<>();
-        users.add(new User("nick1", 100, 1));
-        users.add(new User("nick2", 100, 2));
-        users.add(new User("nick3", 100, 3));
-        users.add(new User("nick4", 100, 4));
-        users.add(new User("nick5", 100, 4));
+        for (int i = 1; i <= 20; i++) {
+            users.add(new User("nick" + i, 100, i));
+        }
     }
 }

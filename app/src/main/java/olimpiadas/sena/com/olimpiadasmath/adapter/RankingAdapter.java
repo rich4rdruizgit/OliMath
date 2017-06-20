@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -40,6 +41,14 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
         holder.txtPosition.setText(user.getPosition()+"");
         holder.txtNickName.setText(user.getNickname()+"");
         holder.txtPoints.setText(user.getPoints()+"");
+
+        if(position == 5){
+            holder.layout.setBackgroundResource(R.drawable.scall);
+            holder.layout.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
+            holder.txtPosition.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
+            holder.txtNickName.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
+            holder.txtPoints.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
+        }
     }
     @Override
     public int getItemCount() {
@@ -51,15 +60,18 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
         protected TextView txtPosition;
         protected TextView txtNickName;
         protected TextView txtPoints;
+        protected LinearLayout layout;
 
         public RankingViewHolder(View itemView) {
             super(itemView);
             txtPosition = (TextView) itemView.findViewById(R.id.txt_position);
+
             txtPosition.setTypeface(Typeface.createFromAsset(context.getAssets(),"grobold.ttf"));
             txtNickName = (TextView) itemView.findViewById(R.id.txt_nickname);
             txtNickName.setTypeface(Typeface.createFromAsset(context.getAssets(),"grobold.ttf"));
             txtPoints = (TextView) itemView.findViewById(R.id.txt_points);
             txtPoints.setTypeface(Typeface.createFromAsset(context.getAssets(),"grobold.ttf"));
+            layout = (LinearLayout) itemView.findViewById(R.id.layout_ranking);
         }
     }
 }

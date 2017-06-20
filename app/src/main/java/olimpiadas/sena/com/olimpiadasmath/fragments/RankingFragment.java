@@ -22,7 +22,7 @@ public class RankingFragment extends Fragment {
         TextView position = (TextView) view.findViewById(R.id.txt_my_position);
         TextView nickname = (TextView) view.findViewById(R.id.txt_my_nickname);
         TextView points = (TextView) view.findViewById(R.id.txt_my_points);
-        User user = new User("yo",20,10);
+        User user = new User("yo",200,100);
         points.setText(user.getPoints()+"");
         points.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
         position.setText(user.getPosition()+"");
