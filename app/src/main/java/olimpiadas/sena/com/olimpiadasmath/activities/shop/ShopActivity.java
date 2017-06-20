@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
-import olimpiadas.sena.com.olimpiadasmath.adapter.ProductAdapter;
+import olimpiadas.sena.com.olimpiadasmath.adapter.shop.ProductAdapter;
 import olimpiadas.sena.com.olimpiadasmath.model.Product;
 
 public class ShopActivity extends AppCompatActivity {

@@ -19,6 +19,7 @@
         <activity android:name=".activities.test.TestActivity" />
         <activity android:name=".activities.shop.ShopActivity" />
         <activity android:name=".activities.test.statistics.StatisticActivity"></activity>
+        <activity android:name=".activities.profile.ProfileActivity"/>
     </application>
 
 </manifest>

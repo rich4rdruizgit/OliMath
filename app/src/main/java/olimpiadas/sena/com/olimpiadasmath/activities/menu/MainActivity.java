@@ -10,7 +10,11 @@ import android.widget.Toast;
 
 import com.hitomi.cmlibrary.OnMenuSelectedListener;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import olimpiadas.sena.com.olimpiadasmath.R;
+import olimpiadas.sena.com.olimpiadasmath.activities.ranking.RankingActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.shop.ShopActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.test.TestActivity;
 import olimpiadas.sena.com.olimpiadasmath.librerias.CircleMenu;
@@ -20,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     String arrayName[] = {"Practice","Study","Challenge"};
     CircleMenu circleMenu;
-    Button btnShop;
+    Button btnShop, btnRanking;
     GifImageView gifMenu;
 
 
@@ -37,11 +41,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnShop = (Button) findViewById(R.id.btn_menu_shop);
         btnShop.setOnClickListener(this);
 
+        btnRanking = (Button) findViewById(R.id.btn_menu_ranking);
+        btnRanking.setOnClickListener(this);
+
         circleMenu = (CircleMenu) findViewById(R.id.circle_menu);
         circleMenu.setOnClickListener(this);
         circleMenu.setVisibility(View.GONE);
         circleMenu.setCloseAction(gifMenu,circleMenu);
-        circleMenu.setMainMenu(Color.parseColor("#CDCDCD"),R.drawable.alberte,R.drawable.alberte).addSubMenu(Color.parseColor("#258CFF"),R.drawable.practicar).
+        circleMenu.setMainMenu(Color.parseColor("#CDCDCD"),R.drawable.albertee,R.drawable.albertee).addSubMenu(Color.parseColor("#258CFF"),R.drawable.practicar).
                 addSubMenu(Color.parseColor("#6d4c41"),R.drawable.study).addSubMenu(Color.parseColor("#FF0000"),R.drawable.challenge)
                 .setOnMenuSelectedListener(new OnMenuSelectedListener() {
                     @Override
@@ -49,12 +56,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Toast.makeText(MainActivity.this, "Seleccionaste "+ arrayName[i], Toast.LENGTH_SHORT).show();
                         switch (i){
                             case 0:
-                                Intent intPractice = new Intent(MainActivity.this, TestActivity.class);
-                                startActivity(intPractice);
+                                TimerTask tareap =  new TimerTask() {
+                                    @Override
+                                    public void run() {
+                                        Intent intPractice = new Intent(MainActivity.this, TestActivity.class);
+                                        startActivity(intPractice);
+                                    }
+                                };
+                                Timer timer = new Timer();
+                                timer.schedule(tareap,1000);
                                 break;
                             case 2:
-                                Intent intChallenge = new Intent(MainActivity.this, TestActivity.class);
-                                startActivity(intChallenge);
+                                TimerTask tareac =  new TimerTask() {
+                                    @Override
+                                    public void run() {
+                                        Intent intChallenge = new Intent(MainActivity.this, TestActivity.class);
+                                        startActivity(intChallenge);
+                                    }
+                                };
+                                Timer timerc = new Timer();
+                                timerc.schedule(tareac,1000);
+
+
                                 break;
 
                         }
@@ -75,6 +98,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_menu_shop:
                 Intent intent = new Intent(MainActivity.this, ShopActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.btn_menu_ranking:
+                Intent intent1 = new Intent(MainActivity.this, RankingActivity.class);
+                startActivity(intent1);
                 break;
             default:
                 break;

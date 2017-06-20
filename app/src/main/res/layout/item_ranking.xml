@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginBottom="5dp"
+    android:background="@drawable/scall"
+    android:id="@+id/layout_ranking"
+    android:backgroundTint="@color/colorAccent">
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/txt_position"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="position"
+        android:textSize="@dimen/text_size"
+        android:textColor="@color/cardview_light_background"/>
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/txt_nickname"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="nickname"
+        android:textSize="@dimen/text_size"
+        android:textColor="@color/cardview_light_background"/>
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/txt_points"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="points"
+        android:textSize="@dimen/text_size"
+        android:textColor="@color/cardview_light_background"/>
+</LinearLayout>
