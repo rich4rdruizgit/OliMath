@@ -1,20 +1,20 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context="olimpiadas.sena.com.olimpiadasmath.fragments.header.HeaderFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="80dp"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@drawable/user"
-            android:layout_margin="20dp"/>
+            android:layout_margin="10dp"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -36,26 +36,65 @@
                 android:layout_gravity="center">
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/img_header_progress_bar1"
                     android:layout_width="70dp"
                     android:layout_height="10dp"
                     android:src="@drawable/backg" />
 
                 <ImageView
-                    android:id="@+id/imageView1"
+                    android:id="@+id/img_header_progress_bar2"
                     android:layout_width="70dp"
                     android:layout_height="10dp"
                     android:src="@drawable/clip_source" />
 
             </FrameLayout>
-
-
-
-
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            >
 
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ticket"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center"/>
 
+            <TextView
+                android:id="@+id/tv_ticket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" x 20"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            >
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/coin"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/tv_coins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" x 20"
+                android:layout_gravity="center"/>
+        </LinearLayout>
 
     </LinearLayout>
 

@@ -13,6 +13,7 @@ import com.hitomi.cmlibrary.OnMenuSelectedListener;
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.ranking.RankingActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.shop.ShopActivity;
+import olimpiadas.sena.com.olimpiadasmath.activities.test.TestActivity;
 import olimpiadas.sena.com.olimpiadasmath.librerias.CircleMenu;
 import pl.droidsonroids.gif.GifImageView;
 
@@ -50,6 +51,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onMenuSelected(int i) {
                         Toast.makeText(MainActivity.this, "Seleccionaste "+ arrayName[i], Toast.LENGTH_SHORT).show();
+                        switch (i){
+                            case 0:
+                                Intent intPractice = new Intent(MainActivity.this, TestActivity.class);
+                                startActivity(intPractice);
+                                break;
+                            case 2:
+                                Intent intChallenge = new Intent(MainActivity.this, TestActivity.class);
+                                startActivity(intChallenge);
+                                break;
+
+                        }
                     }
                 });
     }
