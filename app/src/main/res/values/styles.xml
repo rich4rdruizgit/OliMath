@@ -16,6 +16,10 @@
     <style name="ButtonStyle" parent="Base.Widget.AppCompat.Button.Colored">
         <item name="colorButtonNormal">@color/colorAccent</item>
         <item name="android:textColor">@color/primary_light</item>
+        <item name="android:background">@drawable/borde_redondo</item>
+        <item name="android:layout_marginBottom">@dimen/text_size</item>
+
+
     </style>
 
     <style name="Widget.AppCompat.EditText" parent="Base.Widget.AppCompat.EditText">

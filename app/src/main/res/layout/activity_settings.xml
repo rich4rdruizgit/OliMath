@@ -80,7 +80,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/spn_enguage"
             android:textSize="@dimen/text_size"
-            android:shadowColor="@color/colorAccent"/>
+            android:shadowColor="@color/colorAccent"
+            android:entries="@array/lenguages"/>
     </LinearLayout>
 
         <Button
