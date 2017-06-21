@@ -28,7 +28,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
         Identicon identicon = (Identicon) findViewById(R.id.identicon);
-        identicon.show("john.doe@example.org");
+        identicon.show("mcabrerapatino@gmail.com");
         // identicon.show(myObject);
         // identicon.show(42);
         // identicon.show(System.currentTimeMillis());
