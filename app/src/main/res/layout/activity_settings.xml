@@ -58,6 +58,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/swtEfects"
             android:shadowColor="@color/colorAccent"/>
+
     </LinearLayout>
 
     <LinearLayout
