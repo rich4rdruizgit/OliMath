@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/fondo"
+    tools:context="olimpiadas.sena.com.olimpiadasmath.activities.settings.SettingsActivity">
+
+    <TextView
+        android:id="@+id/txt_tittle_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:text="AJUSTES"
+        android:layout_marginBottom="20dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:id="@+id/txt_music"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size"
+            android:text="Música"/>
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/swtMusic"
+            android:shadowColor="@color/colorAccent"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:id="@+id/txt_efects"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size"
+            android:text="Efectos"/>
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/swtEfects"
+            android:shadowColor="@color/colorAccent"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:id="@+id/txt_lenguage"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size"
+            android:text="Idioma"/>
+
+        <Spinner
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/spn_enguage"
+            android:textSize="@dimen/text_size"
+            android:shadowColor="@color/colorAccent"/>
+    </LinearLayout>
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_help"
+            android:text="Ayuda sobre el juego"
+            android:shadowColor="@color/colorAccent"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:id="@+id/btn_credits"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Creditos"
+            android:layout_gravity="center"/>
+
+</LinearLayout>

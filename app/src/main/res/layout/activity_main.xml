@@ -66,6 +66,7 @@
             android:padding="5dp" />
 
         <Button
+            android:id="@+id/btn_settings"
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_margin="5dp"

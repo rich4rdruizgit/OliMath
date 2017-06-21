@@ -15,6 +15,7 @@ import java.util.TimerTask;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.ranking.RankingActivity;
+import olimpiadas.sena.com.olimpiadasmath.activities.settings.SettingsActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.shop.ShopActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.test.TestActivity;
 import olimpiadas.sena.com.olimpiadasmath.librerias.CircleMenu;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     String arrayName[] = {"Practice","Study","Challenge"};
     CircleMenu circleMenu;
-    Button btnShop, btnRanking;
+    Button btnShop, btnRanking,btnSettings;
     GifImageView gifMenu;
 
 
@@ -43,6 +44,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btnRanking = (Button) findViewById(R.id.btn_menu_ranking);
         btnRanking.setOnClickListener(this);
+
+        btnSettings = (Button) findViewById(R.id.btn_settings);
+        btnSettings.setOnClickListener(this);
 
         circleMenu = (CircleMenu) findViewById(R.id.circle_menu);
         circleMenu.setOnClickListener(this);
@@ -102,6 +106,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_menu_ranking:
                 Intent intent1 = new Intent(MainActivity.this, RankingActivity.class);
                 startActivity(intent1);
+                break;
+            case R.id.btn_settings:
+                Intent intents = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(intents);
                 break;
             default:
                 break;
