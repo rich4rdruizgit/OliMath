@@ -40,7 +40,7 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
         User user = users.get(position);
         holder.txtPosition.setText(user.getPosition()+"");
         holder.txtNickName.setText(user.getNickname()+"");
-        holder.txtPoints.setText(user.getPoints()+"");
+        holder.txtPoints.setText(user.getScore()+"");
 
         if(position == 5){
             holder.layout.setBackgroundResource(R.drawable.scall);

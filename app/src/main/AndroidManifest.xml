@@ -3,13 +3,14 @@
     package="olimpiadas.sena.com.olimpiadasmath">
 
     <application
+        android:name=".control.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/icono"
         android:label="@string/app_name"
         android:roundIcon="@drawable/icono"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.menu.MainActivity"/>
+        <activity android:name=".activities.menu.MainActivity" />
         <activity android:name=".activities.test.TestActivity" />
         <activity android:name=".activities.shop.ShopActivity" />
         <activity android:name=".activities.ranking.RankingActivity" />
@@ -22,6 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.settings.SettingsActivity"></activity>
     </application>
 
 </manifest>

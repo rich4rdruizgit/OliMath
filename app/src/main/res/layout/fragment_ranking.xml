@@ -40,4 +40,5 @@
             android:textSize="@dimen/text_size"
             android:textColor="@color/cardview_light_background"/>
     </LinearLayout>
+
 </FrameLayout>
