@@ -37,22 +37,13 @@ public class AppControl {
     public int betCoins;
     public int initBetCoins;
 
-
-
     private boolean init = false;
-
-
-
 
     public static AppControl getInstance() {
         return ourInstance;
     }
 
     private AppControl() {
-
-
-
-
 
     }
 
@@ -61,8 +52,6 @@ public class AppControl {
         init = true;
 
         Realm realm = Realm.getDefaultInstance();
-
-
 
         realm.executeTransactionAsync(new Realm.Transaction() {
             @Override
@@ -117,8 +106,6 @@ public class AppControl {
                 listener.initComplete(false);
             }
         });
-
-
 
         return true;
 

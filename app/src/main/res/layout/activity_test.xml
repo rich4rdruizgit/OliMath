@@ -11,16 +11,34 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
+        <fragment
+            android:id="@+id/fragment_test_header"
+            android:name="olimpiadas.sena.com.olimpiadasmath.fragments.header.HeaderFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
+        <fragment
+            android:id="@+id/fragment_timer"
+            android:name="olimpiadas.sena.com.olimpiadasmath.fragments.test.TestClockFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
         <fragment
             android:id="@+id/fragment_tip_test"
             android:name="olimpiadas.sena.com.olimpiadasmath.fragments.test.TestTipFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <fragment
+            android:id="@+id/fragment_test_apuesta"
+            android:name="olimpiadas.sena.com.olimpiadasmath.fragments.test.BetFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
     <LinearLayout
         android:id="@+id/linear_practice"
         android:layout_width="match_parent"

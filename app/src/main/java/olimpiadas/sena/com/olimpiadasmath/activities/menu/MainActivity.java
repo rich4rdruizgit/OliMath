@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     @Override
                                     public void run() {
                                         Intent intPractice = new Intent(MainActivity.this, TestActivity.class);
+                                        intPractice.putExtra("type",1);
                                         startActivity(intPractice);
                                     }
                                 };
@@ -75,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     @Override
                                     public void run() {
                                         Intent intChallenge = new Intent(MainActivity.this, TestActivity.class);
+                                        intChallenge.putExtra("type",2);
                                         startActivity(intChallenge);
                                     }
                                 };
