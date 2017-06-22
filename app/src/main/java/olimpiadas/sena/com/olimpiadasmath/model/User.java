@@ -5,13 +5,17 @@ package olimpiadas.sena.com.olimpiadasmath.model;
  */
 
 public class User {
-    protected String nickname;
-    protected int points;
-    protected int position;
+    private String nickname;
+    private int score;
+    private int position;
+    private int coins;
+    private int tickets;
+    private double experience;
+    
 
-    public User(String nickname, int points, int position) {
+    public User(String nickname, int score, int position) {
         this.nickname = nickname;
-        this.points = points;
+        this.score = score;
         this.position = position;
     }
 
@@ -23,12 +27,12 @@ public class User {
         this.nickname = nickname;
     }
 
-    public int getPoints() {
-        return points;
+    public int getScore() {
+        return score;
     }
 
-    public void setPoints(int points) {
-        this.points = points;
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public int getPosition() {
