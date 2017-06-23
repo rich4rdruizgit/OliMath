@@ -33,7 +33,6 @@ public class StatisticFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_statistic, container, false);
-        ((TextView)view.findViewById(R.id.txt_title_statistic)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
         grafica = (PieChart) view.findViewById(R.id.grafica);
         cargarGrafica();
         return view;

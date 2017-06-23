@@ -16,7 +16,10 @@ import io.realm.Realm;
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.adapter.test.CardFragmentPagerAdapter;
 import olimpiadas.sena.com.olimpiadasmath.adapter.test.CardPagerAdapter;
+
 import olimpiadas.sena.com.olimpiadasmath.model.Question;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 
 public class TestActivity extends AppCompatActivity implements View.OnClickListener,
         CompoundButton.OnCheckedChangeListener, Communication , CardPagerAdapter.CommunicationTest, CardPagerAdapter.MoveTestListener {
@@ -30,7 +33,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     private ShadowTransformer mFragmentCardShadowTransformer;
 
     private boolean mShowingFragments = false;
-    int flag=0;
+    int flag = 0;
     int flagBet = 0;
 
     boolean scaled = false;
@@ -51,12 +54,12 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         fragHeader = findViewById(R.id.fragment_test_header);
         fragBet = findViewById(R.id.fragment_test_apuesta);
         fragPractice = findViewById(R.id.fragment_tip_test);
-        fragChallenge  = findViewById(R.id.fragment_timer);
+        fragChallenge = findViewById(R.id.fragment_timer);
 
         linearPractice = (LinearLayout) findViewById(R.id.linear_practice);
         // Se controla que fragment aparece si es practica  = 1 o challenge = 2
 
-        if(flagBet == 0){
+        if (flagBet == 0) {
             fragBet.setVisibility(View.VISIBLE);
             fragPractice.setVisibility(View.GONE);
             fragChallenge.setVisibility(View.GONE);
@@ -117,13 +120,13 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public int sendBet(int bet) {
         flagBet = bet;
-        if(flagBet != 0){
-            if(flag == 1){
+        if (flagBet != 0) {
+            if (flag == 1) {
                 fragPractice.setVisibility(View.VISIBLE);
                 linearPractice.setVisibility(View.VISIBLE);
                 fragBet.setVisibility(View.GONE);
                 fragChallenge.setVisibility(View.GONE);
-            }else if(flag == 2){
+            } else if (flag == 2) {
                 fragBet.setVisibility(View.GONE);
                 fragPractice.setVisibility(View.GONE);
                 fragChallenge.setVisibility(View.VISIBLE);
@@ -134,13 +137,15 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+
+
     public void changeScale() {
         scaled = !scaled;
 
-        if(scaled){
+        if (scaled) {
             fragPractice.setVisibility(View.VISIBLE);
             fragHeader.setVisibility(View.GONE);
-        }else{
+        } else {
             fragPractice.setVisibility(View.VISIBLE);
             fragHeader.setVisibility(View.VISIBLE);
         }
@@ -153,5 +158,8 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     public void moveClick(int dir) {
         mViewPager.setCurrentItem(dir);
     }
-}
+    protected void attachBaseContext (Context newBase){
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
 
+    }
+}
