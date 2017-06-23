@@ -1,5 +1,6 @@
 package olimpiadas.sena.com.olimpiadasmath.activities.settings;
 
+import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -28,13 +30,13 @@ public class SettingsActivity extends AppCompatActivity {
         //txt_lenguage = (TextView) findViewById(R.id.txt_lenguage);
         //txt_music = (TextView) findViewById(R.id.txt_music);
 
-        (btn_help).setTypeface(Typeface.createFromAsset(this.getAssets(), "grobold.ttf"));
+        /*(btn_help).setTypeface(Typeface.createFromAsset(this.getAssets(), "grobold.ttf"));
         (btn_credits).setTypeface(Typeface.createFromAsset(this.getAssets(), "grobold.ttf"));
         ((TextView) findViewById(R.id.txt_efects)).setTypeface(Typeface.createFromAsset(this.getAssets(), "grobold.ttf"));
         ((TextView) findViewById(R.id.txt_lenguage)).setTypeface(Typeface.createFromAsset(this.getAssets(), "grobold.ttf"));
         ((TextView) findViewById(R.id.txt_music)).setTypeface(Typeface.createFromAsset(this.getAssets(), "grobold.ttf"));
         ((TextView) findViewById(R.id.txt_tittle_settings)).setTypeface(Typeface.createFromAsset(this.getAssets(), "grobold.ttf"));
-        //((Spinner) findViewById(R.id.spn_lenguage)).setTypeface(Typeface.createFromAsset(this.getAssets(), "grobold.ttf"));
+        //((Spinner) findViewById(R.id.spn_lenguage)).setTypeface(Typeface.createFromAsset(this.getAssets(), "grobold.ttf"));*/
         
         btn_credits.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,5 +52,10 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }
