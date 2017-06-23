@@ -9,6 +9,7 @@ import java.util.List;
 import io.realm.Realm;
 import io.realm.RealmObject;
 import olimpiadas.sena.com.olimpiadasmath.model.BonusTable;
+import olimpiadas.sena.com.olimpiadasmath.model.Question;
 import olimpiadas.sena.com.olimpiadasmath.model.User;
 
 /**
@@ -76,6 +77,9 @@ public class AppControl {
                     BonusTable bonus9 = new BonusTable(0.40f, 0.59f, 0, 0, 0, 0f, 2);
                     BonusTable bonus10 = new BonusTable(0, 0.39f, -1, -1, 0, 1.5f, 2);
 
+
+
+
                     Log.d(TAG,"created BonusTables");
                     realm.copyToRealm(bonus1);
                     realm.copyToRealm(bonus2);
@@ -90,6 +94,69 @@ public class AppControl {
 
                     Log.d(TAG,"saved BonusTables");
                 }
+
+                if (realm.where(Question.class).findAll().isEmpty()) {
+
+
+                    Log.d(TAG,"Creating Question Table");
+
+                    String jsonText1 = ("{'text':' x= 10 + 3 * 4 ',\n" +
+                            "\t\t'answers':[\n" +
+                            "\t\t{'text':'Respuesta 22' ,'isCorrect':'1'},\n" +
+                            "\t\t{'text':'Respuesta 52' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'Respuesta 17' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'Respuesta 20' ,'isCorrect':'0'}]\n" +
+                            "\t\t\t\n" +
+                            "\t\t}}");
+                    String jsonText2 = ("{'text':'Cuanto es 2 +2 ....',\n" +
+                            "\t\t'answers':[\n" +
+                            "\t\t{'text':'Respuesta 4' ,'isCorrect':'1'},\n" +
+                            "\t\t{'text':'Respuesta 2' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'Respuesta 1' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'Respuesta 8' ,'isCorrect':'0'}]\n" +
+                            "\t\t\t\n" +
+                            "\t\t}}");
+                    String jsonText3 = ("{'text':'Quien se comió el queso de...Maria del charco.',\n" +
+                            "\t\t'answers':[\n" +
+                            "\t\t{'text':'Respuesta Jhon Yanguas' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'Respuesta Harold Muñoz' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'Respuesta Andres Muñoz' ,'isCorrect':'1'},\n" +
+                            "\t\t{'text':'Respuesta Andres Chapid' ,'isCorrect':'0'}]\n" +
+                            "\t\t\t\n" +
+                            "\t\t}}");
+                    String jsonText4 = ("{'text':'Me comi una manzana....',\n" +
+                            "\t\t'answers':[\n" +
+                            "\t\t{'text':'Respuesta 1' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'Respuesta 2' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'Respuesta 3' ,'isCorrect':'1'},\n" +
+                            "\t\t{'text':'Respuesta 4' ,'isCorrect':'0'}]\n" +
+                            "\t\t\t\n" +
+                            "\t\t}}");
+                    String jsonText5 = ("{'text':'Me comi una manzana....',\n" +
+                            "\t\t'answers':[\n" +
+                            "\t\t{'text':'Respuesta 1' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'Respuesta 2' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'Respuesta 3' ,'isCorrect':'1'},\n" +
+                            "\t\t{'text':'Respuesta 4' ,'isCorrect':'0'}]\n" +
+                            "\t\t\t\n" +
+                            "\t\t}}");
+                    Question question1 = new Question(jsonText1);
+                    Question question2 = new Question(jsonText2);
+                    Question question3 = new Question(jsonText3);
+                    Question question4 = new Question(jsonText4);
+                    Question question5 = new Question(jsonText5);
+
+                    Log.d(TAG,"created BonusTables");
+                    realm.copyToRealm(question1);
+                    realm.copyToRealm(question2);
+                    realm.copyToRealm(question3);
+                    realm.copyToRealm(question4);
+                    realm.copyToRealm(question5);
+
+                    Log.d(TAG,"saved Question Table");
+                }
+
+
 
             }
         }, new Realm.Transaction.OnSuccess() {

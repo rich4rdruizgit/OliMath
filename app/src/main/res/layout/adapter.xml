@@ -37,30 +37,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioGroup
-                android:id="@+id/rbtn_group"
+                android:id="@+id/rg_group_answer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <RadioButton
-                    android:id="@+id/rbtn_pocuno"
-                    android:text="Opcion 1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-                <RadioButton
-                    android:id="@+id/rbt_opcdos"
-                    android:text="Opcion 2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-                <RadioButton
-                    android:id="@+id/rbtn_opctres"
-                    android:text="Opcion 3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-                <RadioButton
-                    android:id="@+id/rbtn_opccuatro"
-                    android:text="Opcion 4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+
             </RadioGroup>
         </LinearLayout>
         <LinearLayout
@@ -68,6 +49,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <Button
+                android:id="@+id/btn_test_back"
                 style="@style/ButtonStyle"
                 android:layout_width="0dp"
                 android:layout_weight="0.5"
@@ -75,6 +57,7 @@
                 android:layout_marginTop="24dp"
                 android:text="Back" />
             <Button
+                android:id="@+id/btn_test_next"
                 style="@style/ButtonStyle"
                 android:layout_width="0dp"
                 android:layout_weight="0.5"
@@ -85,6 +68,7 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/img_test_scale"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|end"

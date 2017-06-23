@@ -7,4 +7,5 @@ package olimpiadas.sena.com.olimpiadasmath.activities.test;
 public interface Communication {
 
     public int sendBet(int bet);
+
 }
