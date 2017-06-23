@@ -14,8 +14,13 @@ import com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
+import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity implements AppControl.InitComplete {
+
+
+    private AppControl appControl;
+    private boolean loading = true;
 
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
@@ -30,6 +35,8 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         getSupportActionBar().hide();
+        appControl = AppControl.getInstance();
+        appControl.init(SplashActivity.this);
         startAnimations();
     }
 
@@ -51,10 +58,11 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 try {
                     int waited = 0;
-                    while (waited < 5000) {
-                        sleep(100);
-                        waited += 100;
+                    while (loading) {
+                        sleep(2000);
                     }
+
+
                     Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(intent);
@@ -67,6 +75,18 @@ public class SplashActivity extends AppCompatActivity {
             }
         };
         splashTread.start();
+
+    }
+
+    @Override
+    public void initComplete(boolean result) {
+
+        loading = false;
+
+
+        //todo manejar error de cargado
+
+
 
     }
 }

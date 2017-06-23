@@ -3,10 +3,11 @@
     package="olimpiadas.sena.com.olimpiadasmath">
 
     <application
+        android:name=".control.MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icono"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/icono"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.menu.MainActivity" />
@@ -22,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.settings.SettingsActivity"></activity>
+        <activity android:name=".activities.settings.SettingsActivity"/>
     </application>
 
 </manifest>

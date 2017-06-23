@@ -1,0 +1,49 @@
+<LinearLayout
+    android:padding="20dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="olimpiadas.sena.com.olimpiadasmath.fragments.test.BetFragment">
+
+    <TextView
+
+        android:textSize="20dp"
+        android:gravity="center"
+        android:text="Apuesta y gana más monedas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:gravity="center"
+        android:textSize="40dp"
+        android:text="0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.crystal.crystalrangeseekbar.widgets.BubbleThumbSeekbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:corner_radius="10"
+            app:min_value="50"
+            app:max_value="150"
+            app:bar_color="#C69E89"
+            app:bar_highlight_color="#A54B17"
+            app:left_thumb_color="#775E4F"
+            app:left_thumb_color_pressed="#4C2D1A"
+            app:data_type="_integer"
+            />
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_bet_acept"
+        android:layout_marginTop="10dp"
+        android:text="Apostar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>
