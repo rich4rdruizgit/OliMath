@@ -1,5 +1,6 @@
 package olimpiadas.sena.com.olimpiadasmath.activities.statistics;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class StatisticActivity extends AppCompatActivity {
 
@@ -38,5 +40,10 @@ public class StatisticActivity extends AppCompatActivity {
         PieData pieData = new PieData(dataSet);
         grafica.setData(pieData);
         grafica.invalidate();
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

@@ -66,11 +66,11 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
             super(itemView);
             txtPosition = (TextView) itemView.findViewById(R.id.txt_position);
 
-            txtPosition.setTypeface(Typeface.createFromAsset(context.getAssets(),"grobold.ttf"));
+
             txtNickName = (TextView) itemView.findViewById(R.id.txt_nickname);
-            txtNickName.setTypeface(Typeface.createFromAsset(context.getAssets(),"grobold.ttf"));
+
             txtPoints = (TextView) itemView.findViewById(R.id.txt_points);
-            txtPoints.setTypeface(Typeface.createFromAsset(context.getAssets(),"grobold.ttf"));
+
             layout = (LinearLayout) itemView.findViewById(R.id.layout_ranking);
         }
     }

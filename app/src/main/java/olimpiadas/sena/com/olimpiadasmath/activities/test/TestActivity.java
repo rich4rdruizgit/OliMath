@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.adapter.test.CardFragmentPagerAdapter;
 import olimpiadas.sena.com.olimpiadasmath.adapter.test.CardPagerAdapter;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class TestActivity extends AppCompatActivity implements View.OnClickListener,
         CompoundButton.OnCheckedChangeListener, Communication {
@@ -127,6 +128,11 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         return flagBet;
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }
 

@@ -63,11 +63,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             itemView.setOnClickListener(this);
             imgViewShop = (ImageView) itemView.findViewById(R.id.img_view_shop);
             txtName = (TextView) itemView.findViewById(R.id.txt_name_shop);
-            txtName.setTypeface(Typeface.createFromAsset(itemView.getContext().getAssets(),"grobold.ttf"));
             txtPrice = (TextView) itemView.findViewById(R.id.txt_price_shop);
-            txtPrice.setTypeface(Typeface.createFromAsset(itemView.getContext().getAssets(),"grobold.ttf"));
             txtConstraint = (TextView) itemView.findViewById(R.id.txt_const_level);
-            txtConstraint.setTypeface(Typeface.createFromAsset(itemView.getContext().getAssets(),"grobold.ttf"));
+
         }
 
         @Override

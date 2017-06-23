@@ -1,5 +1,6 @@
 package olimpiadas.sena.com.olimpiadasmath.activities.shop;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -11,6 +12,7 @@ import java.util.List;
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.adapter.shop.ProductAdapter;
 import olimpiadas.sena.com.olimpiadasmath.model.Product;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class ShopActivity extends AppCompatActivity {
 
@@ -46,5 +48,10 @@ public class ShopActivity extends AppCompatActivity {
         lista.add(new Product(R.mipmap.ic_launcher,"View Animator","2500","10"));
         lista.add(new Product(R.mipmap.ic_launcher,"View Animator","2500","10"));
         return lista;
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

@@ -1,5 +1,6 @@
 package olimpiadas.sena.com.olimpiadasmath.activities.menu;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,7 @@ import olimpiadas.sena.com.olimpiadasmath.activities.shop.ShopActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.test.TestActivity;
 import olimpiadas.sena.com.olimpiadasmath.librerias.CircleMenu;
 import pl.droidsonroids.gif.GifImageView;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -127,5 +129,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             circleMenu.setVisibility(View.VISIBLE);
         }
 
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

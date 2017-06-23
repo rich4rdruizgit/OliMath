@@ -1,5 +1,6 @@
 package olimpiadas.sena.com.olimpiadasmath.activities.library;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class LibraryActivity extends AppCompatActivity {
 
@@ -40,6 +42,10 @@ public class LibraryActivity extends AppCompatActivity {
                 startActivity(intent);
             }
             });
+    }
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }
 

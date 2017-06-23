@@ -24,11 +24,13 @@ public class RankingFragment extends Fragment {
         TextView points = (TextView) view.findViewById(R.id.txt_my_points);
         User user = new User("yo",200,100);
         points.setText(user.getScore()+"");
-        points.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
+
         position.setText(user.getPosition()+"");
-        position.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
+
         nickname.setText(user.getNickname());
-        nickname.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
+
         return view;
     }
+
+
 }

@@ -30,14 +30,6 @@ public class SettingsActivity extends AppCompatActivity {
         //txt_lenguage = (TextView) findViewById(R.id.txt_lenguage);
         //txt_music = (TextView) findViewById(R.id.txt_music);
 
-        /*(btn_help).setTypeface(Typeface.createFromAsset(this.getAssets(), "grobold.ttf"));
-        (btn_credits).setTypeface(Typeface.createFromAsset(this.getAssets(), "grobold.ttf"));
-        ((TextView) findViewById(R.id.txt_efects)).setTypeface(Typeface.createFromAsset(this.getAssets(), "grobold.ttf"));
-        ((TextView) findViewById(R.id.txt_lenguage)).setTypeface(Typeface.createFromAsset(this.getAssets(), "grobold.ttf"));
-        ((TextView) findViewById(R.id.txt_music)).setTypeface(Typeface.createFromAsset(this.getAssets(), "grobold.ttf"));
-        ((TextView) findViewById(R.id.txt_tittle_settings)).setTypeface(Typeface.createFromAsset(this.getAssets(), "grobold.ttf"));
-        //((Spinner) findViewById(R.id.spn_lenguage)).setTypeface(Typeface.createFromAsset(this.getAssets(), "grobold.ttf"));*/
-        
         btn_credits.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

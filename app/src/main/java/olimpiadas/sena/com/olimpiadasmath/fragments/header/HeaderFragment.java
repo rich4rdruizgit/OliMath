@@ -79,9 +79,6 @@ public class HeaderFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        ((TextView)view.findViewById(R.id.tv_exp)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
-        ((TextView)view.findViewById(R.id.tv_coins)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
-        ((TextView)view.findViewById(R.id.tv_ticket)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
         return view;
 
 
