@@ -1,5 +1,6 @@
 package olimpiadas.sena.com.olimpiadasmath.activities.ranking;
 
+import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import java.util.List;
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.adapter.RankingAdapter;
 import olimpiadas.sena.com.olimpiadasmath.model.User;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class RankingActivity extends AppCompatActivity {
 
@@ -30,10 +32,6 @@ public class RankingActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         recyclerViewRanking = (RecyclerView) findViewById(R.id.recycler_ranking);
 
-        ((TextView) findViewById(R.id.txt_title_ranking)).setTypeface(Typeface.createFromAsset(this.getAssets(), "grobold.ttf"));
-        ((TextView) findViewById(R.id.txt_title_points)).setTypeface(Typeface.createFromAsset(this.getAssets(), "grobold.ttf"));
-        ((TextView) findViewById(R.id.txt_title_position)).setTypeface(Typeface.createFromAsset(this.getAssets(), "grobold.ttf"));
-        ((TextView) findViewById(R.id.txt_title_nickname)).setTypeface(Typeface.createFromAsset(this.getAssets(), "grobold.ttf"));
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
@@ -55,5 +53,10 @@ public class RankingActivity extends AppCompatActivity {
         for (int i = 1; i <= 20; i++) {
             users.add(new User("nick" + i, 100, i));
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

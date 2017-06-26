@@ -12,12 +12,17 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 
+import io.realm.Realm;
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.adapter.test.CardFragmentPagerAdapter;
 import olimpiadas.sena.com.olimpiadasmath.adapter.test.CardPagerAdapter;
 
+import olimpiadas.sena.com.olimpiadasmath.model.Question;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
+
 public class TestActivity extends AppCompatActivity implements View.OnClickListener,
-        CompoundButton.OnCheckedChangeListener, Communication {
+        CompoundButton.OnCheckedChangeListener, Communication , CardPagerAdapter.CommunicationTest, CardPagerAdapter.MoveTestListener {
 
     private Button mButton;
     private ViewPager mViewPager;
@@ -28,8 +33,11 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     private ShadowTransformer mFragmentCardShadowTransformer;
 
     private boolean mShowingFragments = false;
-    int flag=0;
+    int flag = 0;
     int flagBet = 0;
+
+    boolean scaled = false;
+    View fragHeader;
     View fragBet;
     View fragPractice;
     View fragChallenge;
@@ -43,14 +51,15 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         flag = getIntent().getExtras().getInt("type"); // con esto miramos si es una practica o un challenge
 
         // Cargando los fragments
+        fragHeader = findViewById(R.id.fragment_test_header);
         fragBet = findViewById(R.id.fragment_test_apuesta);
         fragPractice = findViewById(R.id.fragment_tip_test);
-        fragChallenge  = findViewById(R.id.fragment_timer);
+        fragChallenge = findViewById(R.id.fragment_timer);
 
         linearPractice = (LinearLayout) findViewById(R.id.linear_practice);
         // Se controla que fragment aparece si es practica  = 1 o challenge = 2
 
-        if(flagBet == 0){
+        if (flagBet == 0) {
             fragBet.setVisibility(View.VISIBLE);
             fragPractice.setVisibility(View.GONE);
             fragChallenge.setVisibility(View.GONE);
@@ -58,18 +67,13 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
-        mButton = (Button) findViewById(R.id.cardTypeBtn);
-        CheckBox ch = (CheckBox) findViewById(R.id.checkBox);
-        ch.setOnCheckedChangeListener(this);
-        //((CheckBox) findViewById(R.id.checkBox))
+        Realm realm = Realm.getDefaultInstance();
 
-          //      .setOnCheckedChangeListener(this);
-        mButton.setOnClickListener(this);
-
-        mCardAdapter = new CardPagerAdapter();
+        mCardAdapter = new CardPagerAdapter(realm.where(Question.class).findAll());
         mCardAdapter.addCardItem(new CardItem(R.string.title_1, R.string.text_1));
         mCardAdapter.addCardItem(new CardItem(R.string.title_2, R.string.text_1));
         mCardAdapter.addCardItem(new CardItem(R.string.title_3, R.string.text_1));
+        mCardAdapter.addCardItem(new CardItem(R.string.title_4, R.string.text_1));
         mCardAdapter.addCardItem(new CardItem(R.string.title_4, R.string.text_1));
         mFragmentCardAdapter = new CardFragmentPagerAdapter(getSupportFragmentManager(),
                 dpToPixels(2, this));
@@ -77,9 +81,12 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         mCardShadowTransformer = new ShadowTransformer(mViewPager, mCardAdapter);
         mFragmentCardShadowTransformer = new ShadowTransformer(mViewPager, mFragmentCardAdapter);
 
+        mCardAdapter.setCommunicationTest(this);
+        mCardAdapter.setMoveTestListener(this);
+
         mViewPager.setAdapter(mCardAdapter);
         mViewPager.setPageTransformer(false, mCardShadowTransformer);
-        mViewPager.setOffscreenPageLimit(3);
+        mViewPager.setOffscreenPageLimit(10);
     }
 
 
@@ -113,13 +120,13 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public int sendBet(int bet) {
         flagBet = bet;
-        if(flagBet != 0){
-            if(flag == 1){
+        if (flagBet != 0) {
+            if (flag == 1) {
                 fragPractice.setVisibility(View.VISIBLE);
                 linearPractice.setVisibility(View.VISIBLE);
                 fragBet.setVisibility(View.GONE);
                 fragChallenge.setVisibility(View.GONE);
-            }else if(flag == 2){
+            } else if (flag == 2) {
                 fragBet.setVisibility(View.GONE);
                 fragPractice.setVisibility(View.GONE);
                 fragChallenge.setVisibility(View.VISIBLE);
@@ -128,5 +135,31 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         }
         return flagBet;
     }
-}
 
+    @Override
+
+
+    public void changeScale() {
+        scaled = !scaled;
+
+        if (scaled) {
+            fragPractice.setVisibility(View.VISIBLE);
+            fragHeader.setVisibility(View.GONE);
+        } else {
+            fragPractice.setVisibility(View.VISIBLE);
+            fragHeader.setVisibility(View.VISIBLE);
+        }
+        mCardShadowTransformer.enableScaling(scaled);
+        mFragmentCardShadowTransformer.enableScaling(scaled);
+
+    }
+
+    @Override
+    public void moveClick(int dir) {
+        mViewPager.setCurrentItem(dir);
+    }
+    protected void attachBaseContext (Context newBase){
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+
+    }
+}

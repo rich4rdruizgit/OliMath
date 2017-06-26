@@ -1,5 +1,6 @@
 package olimpiadas.sena.com.olimpiadasmath.activities.splash;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager;
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class SplashActivity extends AppCompatActivity implements AppControl.InitComplete {
 
@@ -88,5 +90,10 @@ public class SplashActivity extends AppCompatActivity implements AppControl.Init
 
 
 
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

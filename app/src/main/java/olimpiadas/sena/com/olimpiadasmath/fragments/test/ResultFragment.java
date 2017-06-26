@@ -78,22 +78,6 @@ public class ResultFragment extends Fragment {
         txtWinCoinsNumber = (TextView) view.findViewById(R.id.txt_result_win_coins_number);
         txtWinTicketNumber = (TextView) view.findViewById(R.id.txt_result_win_ticket_number);
 
-        btnContinue.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
-
-        ((TextView)view.findViewById(R.id.txt_result_advice)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
-
-        ((TextView)view.findViewById(R.id.txt_result_rigth_answer)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
-        txtRigthAnswerNumber.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
-
-        ((TextView)view.findViewById(R.id.txt_result_wrong_answer)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
-        txtWrongAnswerNumber.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
-
-        ((TextView)view.findViewById(R.id.txt_result_win_coins)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
-        txtWinCoinsNumber.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
-
-        ((TextView)view.findViewById(R.id.txt_result_win_ticket)).setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
-        txtWinTicketNumber.setTypeface(Typeface.createFromAsset(getActivity().getAssets(),"grobold.ttf"));
-
         // Inflate the layout for this fragment
         return view;
 

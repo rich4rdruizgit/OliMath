@@ -59,4 +59,5 @@ public class BetFragment extends Fragment implements View.OnClickListener {
         communication = (Communication) context;
     }
 
+
 }
