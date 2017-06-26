@@ -1,19 +1,17 @@
 package olimpiadas.sena.com.olimpiadasmath.activities.ranking;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
-import olimpiadas.sena.com.olimpiadasmath.adapter.RankingAdapter;
+import olimpiadas.sena.com.olimpiadasmath.adapter.ranking.RankingAdapter;
 import olimpiadas.sena.com.olimpiadasmath.model.User;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 

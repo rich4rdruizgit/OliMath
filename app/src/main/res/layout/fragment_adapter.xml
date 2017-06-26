@@ -37,14 +37,16 @@ tools:context="olimpiadas.sena.com.olimpiadasmath.fragments.test.AdapterFragment
 
     </LinearLayout>
 
-    <ImageView
+    <ImageButton
+        android:id="@+id/imgbtn_ampliar"
+        android:background="@drawable/ic_bookmark_24dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|start"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="-5dp"
-        android:src="@drawable/ic_bookmark_24dp" />
+        />
 
 </FrameLayout>
 

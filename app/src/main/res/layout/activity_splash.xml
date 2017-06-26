@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/fondo"
+    android:background="@drawable/fondo_b"
     android:layout_gravity="center"
     android:id="@+id/lin_lay"
     android:gravity="center"
