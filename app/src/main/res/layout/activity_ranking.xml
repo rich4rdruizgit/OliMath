@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    android:background="@drawable/fondo"
+    android:background="@drawable/fondo_b"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.ranking.RankingActivity">
 
     <TextView
@@ -20,24 +20,28 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:weightSum="3"
         android:layout_height="wrap_content" android:orientation="horizontal"
         >
         <TextView
             android:gravity="center"
             android:id="@+id/txt_title_position"
-            android:layout_width="100dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="POSITION"/>
         <TextView
             android:gravity="center"
             android:id="@+id/txt_title_nickname"
-            android:layout_width="100dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="NICKNAME"/>
         <TextView
             android:gravity="center"
             android:id="@+id/txt_title_points"
-            android:layout_width="100dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="POINTS"/>
     </LinearLayout>

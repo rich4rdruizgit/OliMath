@@ -14,6 +14,9 @@
     <string name="back">Atras</string>
     <string name="finish">Terminar</string>
 
+    <string name="alert_shop">¿Esta seguro de realizar esta compra?</string>
+
+
     <string-array name="lenguages">
         <item>Español</item>
         <item>Ingles</item>

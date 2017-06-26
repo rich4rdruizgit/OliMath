@@ -34,7 +34,7 @@ public class ShopActivity extends AppCompatActivity {
         llm.setOrientation(GridLayoutManager.VERTICAL);
         recyclerViewShop.setLayoutManager(llm);
         list = llenarLista();
-        adapter = new ProductAdapter(list);
+        adapter = new ProductAdapter(list,this);
         recyclerViewShop.setAdapter(adapter);
     }
 
