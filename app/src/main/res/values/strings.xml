@@ -10,6 +10,9 @@
     <string name="title_3">Pregunta 3</string>
     <string name="title_4">Pregunta 4</string>
     <string name="text_1">Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam eget ligula eu lectus lobortis condimentum.</string>
+    <string name="next">Siguiente</string>
+    <string name="back">Atras</string>
+    <string name="finish">Terminar</string>
 
     <string-array name="lenguages">
         <item>Español</item>

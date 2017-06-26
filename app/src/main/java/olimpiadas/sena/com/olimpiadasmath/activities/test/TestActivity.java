@@ -1,6 +1,7 @@
 package olimpiadas.sena.com.olimpiadasmath.activities.test;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.widget.LinearLayout;
 
 import io.realm.Realm;
 import olimpiadas.sena.com.olimpiadasmath.R;
+import olimpiadas.sena.com.olimpiadasmath.activities.result.ResultActivity;
 import olimpiadas.sena.com.olimpiadasmath.adapter.test.CardFragmentPagerAdapter;
 import olimpiadas.sena.com.olimpiadasmath.adapter.test.CardPagerAdapter;
 
@@ -158,6 +160,13 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     public void moveClick(int dir) {
         mViewPager.setCurrentItem(dir);
     }
+
+    @Override
+    public void finished() {
+
+        startActivity(new Intent(this, ResultActivity.class));
+    }
+
     protected void attachBaseContext (Context newBase){
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
 

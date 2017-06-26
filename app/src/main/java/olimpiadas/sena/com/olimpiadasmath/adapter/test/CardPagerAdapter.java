@@ -86,11 +86,18 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
         container.addView(view);
 
         Button btnBack = (Button) view.findViewById(R.id.btn_test_back);
-        Button btnNext = (Button) view.findViewById(R.id.btn_test_next);
+        final Button btnNext = (Button) view.findViewById(R.id.btn_test_next);
         ImageView imgScale = (ImageView) view.findViewById(R.id.img_test_scale);
 
 
-        final int pos = position;
+        if(position == getCount() - 1){
+            btnNext.setText(R.string.finish);
+
+        }else{
+            btnNext.setText(R.string.next);
+        }
+
+
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,6 +113,8 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
             public void onClick(View v) {
                 if( position +1 < getCount()){
                     moveTestListener.moveClick(position +1);
+                }else{
+                    moveTestListener.finished();
                 }
             }
         });
@@ -152,20 +161,14 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
             case R.id.img_test_scale:
                 if(communicationTest!=null){communicationTest.changeScale();}
                 break;
-            case R.id.btn_test_back:
 
-                if(moveTestListener!=null){moveTestListener.moveClick(MoveTestListener.BACK);}
-                break;
-
-            case R.id.btn_test_next:
-                if(moveTestListener!=null){moveTestListener.moveClick(MoveTestListener.NEXT);}
-                break;
         }
     }
     public interface MoveTestListener{
         public final int NEXT = 1;
         public final int BACK = 2;
-        public void moveClick(int dir);
+        public void moveClick(int pos);
+        public void finished();
     }
     public interface CommunicationTest{
         public void changeScale();
