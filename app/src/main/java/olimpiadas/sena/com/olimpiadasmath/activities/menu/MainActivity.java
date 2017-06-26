@@ -4,11 +4,15 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.hitomi.cmlibrary.OnMenuSelectedListener;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -89,6 +93,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         }
                     }
                 });
+
+
+
+        //test
+
+        try {
+            Log.d("Test","se va a crear jobject");
+            JSONObject test = new JSONObject("{'question':'Me comi una manzana....',\n" +
+                    "\t\t'answers':[\n" +
+                    "\t\t{'answ1':'Respuesta 1' ,'isCorrect':'0'},\n" +
+                    "\t\t{'answ2':'Respuesta 2' ,'isCorrect':'0'},\n" +
+                    "\t\t{'answ3':'Respuesta 3' ,'isCorrect':'1'},\n" +
+                    "\t\t{'answ4':'Respuesta 4' ,'isCorrect':'0'}]\n" +
+                    "\t\t\t\n" +
+                    "\t\t}}");
+            Log.d("Test","se creo jobject");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
