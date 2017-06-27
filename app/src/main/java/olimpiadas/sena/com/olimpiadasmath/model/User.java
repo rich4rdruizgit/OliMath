@@ -6,13 +6,18 @@ import io.realm.RealmObject;
  * Created by andres on 19/06/2017.
  */
 
-public class User  {
+public class User extends RealmObject {
     private String nickname;
     private int score;
     private int position;
     private int coins;
     private int tickets;
     private double experience;
+
+
+    public User(){
+
+    }
 
 
     public User(String nickname, int score, int position) {

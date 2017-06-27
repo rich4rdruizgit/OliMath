@@ -156,6 +156,14 @@ public class AppControl {
                     Log.d(TAG,"saved Question Table");
                 }
 
+                if(realm.where(User.class).findAll().isEmpty()){
+                    User user = new User("Juanito",305,30);
+                    realm.copyToRealm(user);
+                    currentUser = user;
+                }else{
+                    currentUser = realm.where(User.class).findFirst();
+                }
+
 
 
             }

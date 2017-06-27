@@ -7,13 +7,12 @@ package olimpiadas.sena.com.olimpiadasmath.model;
 
 //// TODO: 22/06/2017 Crear funcionalidad para almacenar la informacion del usuario actual
 
-public class Player extends User {
+public class Player  {
     private int coins;
     private int tickets;
     private double experience;
 
     public Player(String nickname, int score, int position, int coins, int tickets, double experience) {
-        super(nickname, score, position);
         this.coins = coins;
         this.tickets = tickets;
         this.experience = experience;
