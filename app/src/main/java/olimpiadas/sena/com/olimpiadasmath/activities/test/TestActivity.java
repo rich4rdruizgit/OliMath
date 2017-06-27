@@ -43,6 +43,8 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     int flagBet = 0;
     int betcoin=0;
 
+
+
     SeekBar seekBar;
     TextView tvBet;
 
