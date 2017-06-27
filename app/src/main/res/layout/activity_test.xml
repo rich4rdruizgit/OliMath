@@ -18,17 +18,90 @@
             android:name="olimpiadas.sena.com.olimpiadasmath.fragments.header.HeaderFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:id="@+id/ln_challenge"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
-        <fragment
-            android:id="@+id/fragment_timer"
-            android:name="olimpiadas.sena.com.olimpiadasmath.fragments.test.TestClockFragment"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="0.5">
+
+                <ImageView
+                    android:id="@+id/img_test_clock_numberofquestion"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/questiontest" />
+
+                <TextView
+                    android:id="@+id/tv_test_numquest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="8dp"
+                    android:textSize="20sp"
+                    android:text="2/10" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="0.5">
+                <TextView
+                    android:id="@+id/chronometer_clock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ln_practice"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <fragment
-            android:id="@+id/fragment_tip_test"
-            android:name="olimpiadas.sena.com.olimpiadasmath.fragments.test.TestTipFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="0.5">
+
+                <ImageView
+                    android:id="@+id/img_test_tip_numberofquestion"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/questiontest" />
+
+                <TextView
+                    android:id="@+id/txt_test_tip_numberofquestion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="8dp"
+                    android:textSize="20sp"
+                    android:text="2/10" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="0.5">
+
+                <ImageView
+                    android:id="@+id/img_test_tip_einstein"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/einsteinanimado" />
+
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

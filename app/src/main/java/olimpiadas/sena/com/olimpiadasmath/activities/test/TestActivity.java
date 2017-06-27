@@ -1,6 +1,8 @@
 package olimpiadas.sena.com.olimpiadasmath.activities.test;
 
 import android.content.Context;
+import android.os.CountDownTimer;
+import android.os.SystemClock;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -9,8 +11,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Chronometer;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import io.realm.Realm;
 import olimpiadas.sena.com.olimpiadasmath.R;
@@ -33,15 +38,28 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     private ShadowTransformer mFragmentCardShadowTransformer;
 
     private boolean mShowingFragments = false;
+
     int flag = 0;
     int flagBet = 0;
+    int betcoin=0;
+
+    SeekBar seekBar;
+    TextView tvBet;
+
+    int page = 1;
 
     boolean scaled = false;
     View fragHeader;
     View fragBet;
+
     View fragPractice;
     View fragChallenge;
+
     LinearLayout linearPractice;
+    LinearLayout lnPractice;
+    LinearLayout lnChallenge;
+
+    TextView chronometer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,16 +71,22 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         // Cargando los fragments
         fragHeader = findViewById(R.id.fragment_test_header);
         fragBet = findViewById(R.id.fragment_test_apuesta);
-        fragPractice = findViewById(R.id.fragment_tip_test);
-        fragChallenge = findViewById(R.id.fragment_timer);
+
 
         linearPractice = (LinearLayout) findViewById(R.id.linear_practice);
+        lnPractice = (LinearLayout) findViewById(R.id.ln_practice);
+        lnChallenge = (LinearLayout) findViewById(R.id.ln_challenge);
+
         // Se controla que fragment aparece si es practica  = 1 o challenge = 2
+
+        // Apuesta
+        seekBar = (SeekBar) findViewById(R.id.seekbar);
+        tvBet = (TextView) findViewById(R.id.tv_bet);
 
         if (flagBet == 0) {
             fragBet.setVisibility(View.VISIBLE);
-            fragPractice.setVisibility(View.GONE);
-            fragChallenge.setVisibility(View.GONE);
+            lnPractice.setVisibility(View.GONE);
+            lnChallenge.setVisibility(View.GONE);
             linearPractice.setVisibility(View.GONE);
         }
 
@@ -87,24 +111,32 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         mViewPager.setAdapter(mCardAdapter);
         mViewPager.setPageTransformer(false, mCardShadowTransformer);
         mViewPager.setOffscreenPageLimit(10);
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                tvBet.setText(progress+"");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        chronometer = (TextView) findViewById(R.id.chronometer_clock);
+
     }
 
 
     @Override
     public void onClick(View view) {
-        if (!mShowingFragments) {
 
-            mButton.setText("Views");
-            mViewPager.setAdapter(mFragmentCardAdapter);
-            mViewPager.setPageTransformer(false, mFragmentCardShadowTransformer);
-
-        } else {
-            mButton.setText("Fragments");
-            mViewPager.setAdapter(mCardAdapter);
-            mViewPager.setPageTransformer(false, mCardShadowTransformer);
-        }
-
-        mShowingFragments = !mShowingFragments;
     }
 
     public static float dpToPixels(int dp, Context context) {
@@ -122,18 +154,35 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         flagBet = bet;
         if (flagBet != 0) {
             if (flag == 1) {
-                fragPractice.setVisibility(View.VISIBLE);
+                lnPractice.setVisibility(View.VISIBLE);
                 linearPractice.setVisibility(View.VISIBLE);
                 fragBet.setVisibility(View.GONE);
-                fragChallenge.setVisibility(View.GONE);
+                lnChallenge.setVisibility(View.GONE);
             } else if (flag == 2) {
+                timeChallenge();
                 fragBet.setVisibility(View.GONE);
-                fragPractice.setVisibility(View.GONE);
-                fragChallenge.setVisibility(View.VISIBLE);
+                lnPractice.setVisibility(View.GONE);
+                lnChallenge.setVisibility(View.VISIBLE);
                 linearPractice.setVisibility(View.VISIBLE);
             }
         }
         return flagBet;
+    }
+
+    public void timeChallenge(){
+        final CountDownTimer timer = new CountDownTimer(120000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                String v = String.format("%02d", millisUntilFinished/60000);
+                int va = (int)( (millisUntilFinished%60000)/1000);
+                chronometer.setText(v+":"+String.format("%02d",va));
+            }
+
+            public void onFinish() {
+                chronometer.setText("Time Up!");
+            }
+        }.start();
+
     }
 
     @Override

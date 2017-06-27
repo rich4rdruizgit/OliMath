@@ -15,6 +15,7 @@ import com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
+import olimpiadas.sena.com.olimpiadasmath.activities.session.LoginActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -65,7 +66,7 @@ public class SplashActivity extends AppCompatActivity implements AppControl.Init
                     }
 
 
-                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                    Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(intent);
                     SplashActivity.this.finish();

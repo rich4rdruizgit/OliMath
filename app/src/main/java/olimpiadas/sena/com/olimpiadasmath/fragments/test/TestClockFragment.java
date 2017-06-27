@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Chronometer;
+import android.widget.TextView;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
 
@@ -24,6 +26,8 @@ public class TestClockFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    Chronometer chronometer;
+    TextView tv_num_question;
 
     public TestClockFragment() {
         // Required empty public constructor
@@ -60,7 +64,12 @@ public class TestClockFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_test_clock, container, false);
+    }
+
+    public interface ChallengeFragmentListener{
+
     }
 
 }
