@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,8 @@ import android.widget.TextView;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.profile.ProfileActivity;
+import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
+import olimpiadas.sena.com.olimpiadasmath.model.User;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,8 +31,10 @@ public class HeaderFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private User user;
 
     ImageView imgHeaderProfile;
+    TextView tvCoins, tvTicket;
 
     public HeaderFragment() {
         // Required empty public constructor
@@ -72,6 +77,13 @@ public class HeaderFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_header, container, false);
         imgHeaderProfile = (ImageView) view.findViewById(R.id.img_header_profile);
+        tvCoins = (TextView) view.findViewById(R.id.tv_coins);
+        tvTicket = (TextView) view.findViewById(R.id.tv_ticket);
+
+        user = AppControl.getInstance().currentUser;
+        Log.d("Usuario header", AppControl.getInstance().currentUser.toString());
+        tvCoins.setText("X "+user.getCoins());
+        tvTicket.setText("X "+user.getTickets());
         imgHeaderProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

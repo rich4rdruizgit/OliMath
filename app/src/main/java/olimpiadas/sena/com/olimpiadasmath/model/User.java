@@ -1,24 +1,57 @@
 package olimpiadas.sena.com.olimpiadasmath.model;
 
+import java.util.UUID;
+
 import io.realm.RealmObject;
+import io.realm.annotations.Ignore;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by andres on 19/06/2017.
  */
 
-public class User  {
+public class User  extends RealmObject {
+    @Ignore
+    private final String TAG = User.class.toString();
+
+
+    @PrimaryKey
+    private String idUser;
+
     private String nickname;
     private int score;
     private int position;
     private int coins;
     private int tickets;
+    private int level;
     private double experience;
 
+    public User() {
+    }
 
     public User(String nickname, int score, int position) {
+        this.idUser = UUID.randomUUID().toString();
         this.nickname = nickname;
         this.score = score;
         this.position = position;
+    }
+
+    public User(String nickname, int score, int position, int coins, int tickets, int level, double experience) {
+        this.idUser = UUID.randomUUID().toString();
+        this.nickname = nickname;
+        this.score = score;
+        this.position = position;
+        this.coins = coins;
+        this.tickets = tickets;
+        this.level = level;
+        this.experience = experience;
+    }
+    public String getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
     }
 
     public String getNickname() {
@@ -67,5 +100,27 @@ public class User  {
 
     public void setExperience(double experience) {
         this.experience = experience;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "TAG='" + TAG + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", score=" + score +
+                ", position=" + position +
+                ", coins=" + coins +
+                ", tickets=" + tickets +
+                ", level=" + level +
+                ", experience=" + experience +
+                '}';
     }
 }

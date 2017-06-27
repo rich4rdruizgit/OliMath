@@ -58,6 +58,16 @@ public class AppControl {
             @Override
             public void execute(Realm realm) {
 
+                if(realm.where(User.class).findAll().isEmpty()){
+                    User user = new User("Juanito",305,30,50,8,1,30.0);
+                    realm.copyToRealm(user);
+                    currentUser = user;
+                }else{
+                    currentUser = new User();
+                    currentUser = realm.copyFromRealm(realm.where(User.class).findAll().first());
+//                    currentUser = (User) realm.where(User.class).findAll().first();
+                }
+                Log.d("Usuario header", currentUser.toString());
                 if (realm.where(BonusTable.class).findAll().isEmpty()) {
 
 

@@ -63,12 +63,12 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
 
         public RankingViewHolder(View itemView) {
             super(itemView);
-            txtPosition = (TextView) itemView.findViewById(R.id.txt_position);
+            txtPosition = (TextView) itemView.findViewById(R.id.txt_position_ranking);
 
 
-            txtNickName = (TextView) itemView.findViewById(R.id.txt_nickname);
+            txtNickName = (TextView) itemView.findViewById(R.id.txt_nickname_ranking);
 
-            txtPoints = (TextView) itemView.findViewById(R.id.txt_points);
+            txtPoints = (TextView) itemView.findViewById(R.id.txt_points_ranking);
 
             layout = (LinearLayout) itemView.findViewById(R.id.layout_ranking);
         }
