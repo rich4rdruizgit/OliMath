@@ -166,6 +166,23 @@ public class AppControl {
                     Log.d(TAG,"saved Question Table");
                 }
 
+                if (realm.where(User.class).findAll().isEmpty()) {
+                    Log.d(TAG,"Creating User Table");
+
+                    String user1 = (
+                            "{'nickname':'rich4rd',"+
+                            "'password':'1234',"+
+                            "'score':'1322',"+
+                            "'position':'7',"+
+                            "'coins':'47',"+
+                            "'tickets':'12',"+
+                            "'experience':'300',"+
+                            "'level':'10'}");
+
+                    User user_uno = new User("rich4rd","1234",1322,7,47,12,300,10);
+                    Log.d(TAG,"created User");
+                    realm.copyToRealm(user_uno);
+                }
 
 
             }
@@ -187,6 +204,5 @@ public class AppControl {
         return true;
 
     }
-
 
 }
