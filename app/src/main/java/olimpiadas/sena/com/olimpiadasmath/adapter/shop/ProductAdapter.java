@@ -1,12 +1,14 @@
 package olimpiadas.sena.com.olimpiadasmath.adapter.shop;
 
 import android.content.Context;
-import android.graphics.Typeface;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,8 +27,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public List<Product> lstProduct;
     static Context context;
 
-    public ProductAdapter(List<Product> lstProduct) {
+    public ProductAdapter(List<Product> lstProduct, Context context) {
         this.lstProduct = lstProduct;
+        this.context = context;
     }
 
     @Override
@@ -43,6 +46,29 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.txtName.setText(product.getName());
         holder.txtPrice.setText(product.getPrice());
         holder.txtConstraint.setText(product.getConstraint());
+
+        holder.btnBuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                alert.setMessage(R.string.alert_shop)
+                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+                alert.create();
+                alert.show();
+            }
+        });
     }
 
     @Override
@@ -56,15 +82,18 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         protected TextView txtName;
         protected TextView txtPrice;
         protected TextView txtConstraint;
+        protected Button btnBuy;
 
 
-        public ProductViewHolder(View itemView) {
+        public ProductViewHolder(final View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
             imgViewShop = (ImageView) itemView.findViewById(R.id.img_view_shop);
             txtName = (TextView) itemView.findViewById(R.id.txt_name_shop);
             txtPrice = (TextView) itemView.findViewById(R.id.txt_price_shop);
             txtConstraint = (TextView) itemView.findViewById(R.id.txt_const_level);
+            btnBuy = (Button) itemView.findViewById(R.id.btn_buy_product);
+
 
         }
 
