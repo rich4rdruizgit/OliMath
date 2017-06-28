@@ -55,11 +55,7 @@ public class ResultActivity extends AppCompatActivity {
         appControl = AppControl.getInstance();
 
 
-
-
         currentUser = appControl.currentUser;
-
-
 
 
         tempExp = (int) currentUser.getExperience()*MULTLEVEL;
