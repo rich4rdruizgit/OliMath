@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.profile.ProfileActivity;
+import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,6 +31,9 @@ public class HeaderFragment extends Fragment {
     private String mParam2;
 
     ImageView imgHeaderProfile;
+    TextView tvCoins,tvExp,tvTickets;
+
+    AppControl appControl;
 
     public HeaderFragment() {
         // Required empty public constructor
@@ -68,10 +72,21 @@ public class HeaderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
+        appControl = AppControl.getInstance();
 
         View view = inflater.inflate(R.layout.fragment_header, container, false);
         imgHeaderProfile = (ImageView) view.findViewById(R.id.img_header_profile);
+        tvCoins = (TextView) view.findViewById(R.id.tv_header_coins);
+        tvExp = (TextView) view.findViewById(R.id.tv_header_exp);
+        tvTickets = (TextView) view.findViewById(R.id.tv_header_ticket);
+
+
+        tvTickets.setText(" x " + appControl.currentUser.getTickets());
+        tvCoins.setText(" x " + appControl.currentUser.getCoins());
+        tvExp.setText(" x " + ((int)appControl.currentUser.getExperience()));
+
+
+
         imgHeaderProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
