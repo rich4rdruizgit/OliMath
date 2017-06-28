@@ -30,10 +30,6 @@ public class User extends RealmObject {
         this.level = level;
     }
 
-    public User(){
-
-    }
-
 
     public User(String nickname, int score, int position) {
         this.nickname = nickname;

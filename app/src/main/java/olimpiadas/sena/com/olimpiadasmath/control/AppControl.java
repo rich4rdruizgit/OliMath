@@ -169,9 +169,15 @@ public class AppControl {
                             "'experience':'300',"+
                             "'level':'10'}");
 
-                    User user_uno = new User("rich4rd","1234",1322,7,47,12,300,10);
+                    User user_uno = new User("rich4rd","1234",1322,7,47,12,10,2);
                     Log.d(TAG,"created User");
-                    realm.copyToRealm(user_uno);
+                    User manageduser = realm.copyToRealm(user_uno);
+                    ourInstance.currentUser = realm.copyFromRealm(manageduser);
+
+
+                }else{
+                    ourInstance.currentUser = realm.copyFromRealm(realm.where(User.class).findFirst());
+
                 }
 
 

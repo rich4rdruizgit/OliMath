@@ -26,7 +26,7 @@
             android:layout_marginTop="10dp">
 
             <TextView
-                android:id="@+id/tv_exp"
+                android:id="@+id/tv_header_exp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Exp"/>
@@ -68,7 +68,7 @@
                 android:layout_gravity="center"/>
 
             <TextView
-                android:id="@+id/tv_ticket"
+                android:id="@+id/tv_header_ticket"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" x 20"
@@ -91,7 +91,7 @@
                 android:layout_gravity="center"/>
 
             <TextView
-                android:id="@+id/tv_coins"
+                android:id="@+id/tv_header_coins"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" x 20"

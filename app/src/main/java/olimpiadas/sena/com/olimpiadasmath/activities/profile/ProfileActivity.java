@@ -7,10 +7,16 @@ import android.os.Bundle;
 import android.widget.TextView;
 import olimpiadas.sena.com.olimpiadasmath.R;
 
+import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.librerias.identicons.Identicon;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class ProfileActivity extends AppCompatActivity {
+
+
+    AppControl appControl;
+
+    TextView tvLvl,tvCoins,tvTickets;
 
 
     @Override
@@ -18,6 +24,17 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         getSupportActionBar().hide();
+
+        appControl = AppControl.getInstance();
+
+        tvLvl = (TextView) findViewById(R.id.tv_profile_level_number);
+        tvCoins = (TextView) findViewById(R.id.tv_profile_coins);
+        tvTickets = (TextView) findViewById(R.id.tv_profile_ticket);
+
+
+        tvLvl.setText(" x " + appControl.currentUser.getLevel());
+        tvCoins.setText(" x " + appControl.currentUser.getCoins());
+        tvTickets.setText(" x " + appControl.currentUser.getTickets());
 
 
 
