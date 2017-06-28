@@ -50,7 +50,8 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     SeekBar seekBar;
     TextView tvBet;
 
-    int page = 1;
+    int countPage = 1;
+    int totalPage=0;
 
     boolean scaled = false;
     View fragHeader;
@@ -64,6 +65,8 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     LinearLayout lnChallenge;
 
     TextView chronometer;
+    TextView tvTestNumQuest;
+    TextView tvTetTipNumQuet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,6 +137,11 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         chronometer = (TextView) findViewById(R.id.chronometer_clock);
+        tvTestNumQuest = (TextView) findViewById(R.id.tv_test_numquest);
+        tvTestNumQuest.setText(countPage+"/"+mCardAdapter.getCount());
+        totalPage=  mCardAdapter.getCount();
+        tvTetTipNumQuet = (TextView) findViewById(R.id.tv_test_tip_numberofquestion);
+        tvTetTipNumQuet.setText(countPage+"/"+mCardAdapter.getCount());
 
     }
 
@@ -224,6 +232,9 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void moveClick(int dir) {
+        countPage = dir + 1;
+        tvTestNumQuest.setText(countPage+"/"+totalPage);
+        tvTetTipNumQuet.setText(countPage+"/"+totalPage);
         mViewPager.setCurrentItem(dir);
     }
 
