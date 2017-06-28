@@ -196,11 +196,26 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         scaled = !scaled;
 
         if (scaled) {
-            lnPractice.setVisibility(View.VISIBLE);
-            fragHeader.setVisibility(View.GONE);
+            if(flag==1){
+                lnPractice.setVisibility(View.VISIBLE);
+                lnChallenge.setVisibility(View.GONE);
+                fragHeader.setVisibility(View.GONE);
+            }else if(flag==2){
+                lnPractice.setVisibility(View.GONE);
+                lnChallenge.setVisibility(View.VISIBLE);
+                fragHeader.setVisibility(View.GONE);
+            }
+
         } else {
-            lnPractice.setVisibility(View.VISIBLE);
-            fragHeader.setVisibility(View.VISIBLE);
+            if(flag == 1){
+                lnPractice.setVisibility(View.VISIBLE);
+                lnChallenge.setVisibility(View.GONE);
+                fragHeader.setVisibility(View.VISIBLE);
+            }else if(flag ==2 ){
+                lnPractice.setVisibility(View.GONE);
+                lnChallenge.setVisibility(View.VISIBLE);
+                fragHeader.setVisibility(View.VISIBLE);
+            }
         }
         mCardShadowTransformer.enableScaling(scaled);
         mFragmentCardShadowTransformer.enableScaling(scaled);
