@@ -1,6 +1,10 @@
 package olimpiadas.sena.com.olimpiadasmath.model;
 
+import java.util.UUID;
+
 import io.realm.RealmObject;
+import io.realm.annotations.Ignore;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by andres on 19/06/2017.
@@ -27,6 +31,7 @@ public class User  extends RealmObject {
     }
 
     public User(String nickname, String password, int score, int position, int coins, int tickets, double experience, int level) {
+        this.idUser = UUID.randomUUID().toString();
         this.nickname = nickname;
         this.password = password;
         this.score = score;
