@@ -27,16 +27,20 @@ public class ViewPagerPersonalizado extends ViewPager {
     public ViewPagerPersonalizado(Context context, AttributeSet attrs) {
         super(context, attrs);
         detector = new GestureDetectorCompat(context,new OnSwipeListener(){
+
             @Override
             public boolean onSwipe(Direction direction) {
 
                 // Possible implementation
+                int pos = getCurrentItem();
+
                 if(direction == Direction.right) {
-                    mCardAdapter.getMoveTestListener().moveClick(getCurrentItem()==0?0:getCurrentItem()-1);
+                    mCardAdapter.getMoveTestListener().moveClick(pos==0?0:pos-1);
                     return true;
                 }
                 else if(direction == Direction.left) {
-                    mCardAdapter.getMoveTestListener().moveClick(getCurrentItem()==mCardAdapter.getCount()-1?mCardAdapter.getCount()-1:getCurrentItem()+1);
+                    int sizeCard = mCardAdapter.getCount();
+                    mCardAdapter.getMoveTestListener().moveClick(pos== sizeCard-1? sizeCard-1:pos+1);
                     return true;
                 }
 
