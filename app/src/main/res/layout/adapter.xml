@@ -55,7 +55,7 @@
                 android:layout_weight="0.5"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Back" />
+                android:text="@string/back" />
             <Button
                 android:id="@+id/btn_test_next"
                 style="@style/ButtonStyle"
@@ -63,7 +63,7 @@
                 android:layout_weight="0.5"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Next" />
+                android:text="@string/next" />
         </LinearLayout>
     </LinearLayout>
 

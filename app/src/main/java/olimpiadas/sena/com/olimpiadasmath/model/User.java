@@ -42,6 +42,7 @@ public class User  extends RealmObject {
         this.level = level;
     }
 
+
     public User(String nickname, int score, int position) {
         this.idUser = UUID.randomUUID().toString();
         this.nickname = nickname;

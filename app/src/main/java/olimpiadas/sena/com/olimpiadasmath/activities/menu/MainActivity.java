@@ -23,6 +23,7 @@ import olimpiadas.sena.com.olimpiadasmath.activities.ranking.RankingActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.settings.SettingsActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.shop.ShopActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.test.TestActivity;
+import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.librerias.CircleMenu;
 import pl.droidsonroids.gif.GifImageView;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     CircleMenu circleMenu;
     Button btnShop, btnRanking,btnSettings;
     GifImageView gifMenu;
+    AppControl appControl;
 
 
     @Override
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         gifMenu = (GifImageView) findViewById(R.id.img_gif_menu); // Gif del menu principal
         gifMenu.setOnClickListener(this);
         getSupportActionBar().hide();
-
+        appControl = AppControl.getInstance();
 
         btnShop = (Button) findViewById(R.id.btn_menu_shop);
         btnShop.setOnClickListener(this);
@@ -101,6 +103,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //test
 
         try {
+
+            Log.d("Test","se va a obtener el usuario " + appControl.currentUser.getExperience() );
+
+
+
+
             Log.d("Test","se va a crear jobject");
             JSONObject test = new JSONObject("{'question':'Me comi una manzana....',\n" +
                     "\t\t'answers':[\n" +

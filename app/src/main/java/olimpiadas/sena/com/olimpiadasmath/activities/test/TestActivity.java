@@ -1,6 +1,7 @@
 package olimpiadas.sena.com.olimpiadasmath.activities.test;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.support.v4.app.Fragment;
@@ -19,9 +20,11 @@ import android.widget.TextView;
 
 import io.realm.Realm;
 import olimpiadas.sena.com.olimpiadasmath.R;
+import olimpiadas.sena.com.olimpiadasmath.activities.result.ResultActivity;
 import olimpiadas.sena.com.olimpiadasmath.adapter.test.CardFragmentPagerAdapter;
 import olimpiadas.sena.com.olimpiadasmath.adapter.test.CardPagerAdapter;
 
+import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.model.Question;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -30,7 +33,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         CompoundButton.OnCheckedChangeListener, Communication , CardPagerAdapter.CommunicationTest, CardPagerAdapter.MoveTestListener {
 
     private Button mButton;
-    private ViewPager mViewPager;
+    private ViewPagerPersonalizado mViewPager;
 
     private CardPagerAdapter mCardAdapter;
     private ShadowTransformer mCardShadowTransformer;
@@ -48,7 +51,9 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     SeekBar seekBar;
     TextView tvBet;
 
-    int page = 1;
+    int countPage = 1;
+    int totalPage=0;
+    int flagBackCountChallenge=0;
 
     boolean scaled = false;
     View fragHeader;
@@ -62,12 +67,17 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     LinearLayout lnChallenge;
 
     TextView chronometer;
+    TextView tvTestNumQuest;
+    TextView tvTetTipNumQuet;
+
+    Button btnBackChallenge;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
         getSupportActionBar().hide();
+
         flag = getIntent().getExtras().getInt("type"); // con esto miramos si es una practica o un challenge
 
         // Cargando los fragments
@@ -92,7 +102,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
             linearPractice.setVisibility(View.GONE);
         }
 
-        mViewPager = (ViewPager) findViewById(R.id.viewPager);
+        mViewPager = (ViewPagerPersonalizado) findViewById(R.id.viewPager);
         Realm realm = Realm.getDefaultInstance();
 
         mCardAdapter = new CardPagerAdapter(realm.where(Question.class).findAll());
@@ -107,6 +117,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         mCardShadowTransformer = new ShadowTransformer(mViewPager, mCardAdapter);
         mFragmentCardShadowTransformer = new ShadowTransformer(mViewPager, mFragmentCardAdapter);
 
+        mViewPager.setCardAdapter(mCardAdapter);
         mCardAdapter.setCommunicationTest(this);
         mCardAdapter.setMoveTestListener(this);
 
@@ -132,6 +143,13 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         chronometer = (TextView) findViewById(R.id.chronometer_clock);
+        tvTestNumQuest = (TextView) findViewById(R.id.tv_test_numquest);
+        tvTestNumQuest.setText(countPage+"/"+mCardAdapter.getCount());
+        totalPage=  mCardAdapter.getCount();
+        tvTetTipNumQuet = (TextView) findViewById(R.id.tv_test_tip_numberofquestion);
+        tvTetTipNumQuet.setText(countPage+"/"+mCardAdapter.getCount());
+
+        btnBackChallenge = (Button) findViewById(R.id.btn_test_back);
 
     }
 
@@ -156,11 +174,15 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         flagBet = bet;
         if (flagBet != 0) {
             if (flag == 1) {
+                AppControl.getInstance().onPractice = true;
+                AppControl.getInstance().onChallenge = false;
                 lnPractice.setVisibility(View.VISIBLE);
                 linearPractice.setVisibility(View.VISIBLE);
                 fragBet.setVisibility(View.GONE);
                 lnChallenge.setVisibility(View.GONE);
             } else if (flag == 2) {
+                AppControl.getInstance().onChallenge = true;
+                AppControl.getInstance().onPractice = false;
                 timeChallenge();
                 fragBet.setVisibility(View.GONE);
                 lnPractice.setVisibility(View.GONE);
@@ -194,11 +216,26 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         scaled = !scaled;
 
         if (scaled) {
-            fragPractice.setVisibility(View.VISIBLE);
-            fragHeader.setVisibility(View.GONE);
+            if(flag==1){
+                lnPractice.setVisibility(View.VISIBLE);
+                lnChallenge.setVisibility(View.GONE);
+                fragHeader.setVisibility(View.GONE);
+            }else if(flag==2){
+                lnPractice.setVisibility(View.GONE);
+                lnChallenge.setVisibility(View.VISIBLE);
+                fragHeader.setVisibility(View.GONE);
+            }
+
         } else {
-            fragPractice.setVisibility(View.VISIBLE);
-            fragHeader.setVisibility(View.VISIBLE);
+            if(flag == 1){
+                lnPractice.setVisibility(View.VISIBLE);
+                lnChallenge.setVisibility(View.GONE);
+                fragHeader.setVisibility(View.VISIBLE);
+            }else if(flag ==2 ){
+                lnPractice.setVisibility(View.GONE);
+                lnChallenge.setVisibility(View.VISIBLE);
+                fragHeader.setVisibility(View.VISIBLE);
+            }
         }
         mCardShadowTransformer.enableScaling(scaled);
         mFragmentCardShadowTransformer.enableScaling(scaled);
@@ -207,8 +244,25 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void moveClick(int dir) {
-        mViewPager.setCurrentItem(dir);
+        if(flag == 1){
+            countPage = dir + 1;
+            tvTetTipNumQuet.setText(countPage+"/"+totalPage);
+            mViewPager.setCurrentItem(dir);
+        }else if(flag == 2){
+            countPage = dir + 1;
+            tvTestNumQuest.setText(countPage+"/"+totalPage);
+            tvTetTipNumQuet.setText(countPage+"/"+totalPage);
+            mViewPager.setCurrentItem(dir);
+        }
+
     }
+
+    @Override
+    public void finished() {
+
+        startActivity(new Intent(this, ResultActivity.class));
+    }
+
     protected void attachBaseContext (Context newBase){
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
 
