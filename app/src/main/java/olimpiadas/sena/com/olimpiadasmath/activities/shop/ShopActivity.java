@@ -2,6 +2,7 @@ package olimpiadas.sena.com.olimpiadasmath.activities.shop;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
+import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.adapter.shop.ProductAdapter;
 import olimpiadas.sena.com.olimpiadasmath.fragments.header.HeaderFragment;
 import olimpiadas.sena.com.olimpiadasmath.model.Product;
@@ -32,6 +34,8 @@ public class ShopActivity extends AppCompatActivity {
 
 
         headerFragment = (HeaderFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_shop_header);
+
+
         // Adaptacion del recycler con el item shop
 
         GridLayoutManager llm = new GridLayoutManager(this, 2);
@@ -58,5 +62,10 @@ public class ShopActivity extends AppCompatActivity {
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(ShopActivity.this, MainActivity.class));
     }
 }
