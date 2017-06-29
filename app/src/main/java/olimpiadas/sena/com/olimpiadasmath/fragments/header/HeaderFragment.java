@@ -3,6 +3,7 @@ package olimpiadas.sena.com.olimpiadasmath.fragments.header;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.graphics.drawable.ClipDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -30,7 +31,9 @@ public class HeaderFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    ImageView imgHeaderProfile;
+    ImageView imgHeaderProfile, imgExp;
+    private ClipDrawable mImageDrawable;
+
     TextView tvCoins,tvExp,tvTickets;
 
     AppControl appControl;
@@ -76,9 +79,15 @@ public class HeaderFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_header, container, false);
         imgHeaderProfile = (ImageView) view.findViewById(R.id.img_header_profile);
+        imgExp = (ImageView) view.findViewById(R.id.img_header_progress_bar2);
         tvCoins = (TextView) view.findViewById(R.id.tv_header_coins);
         tvExp = (TextView) view.findViewById(R.id.tv_header_exp);
         tvTickets = (TextView) view.findViewById(R.id.tv_header_ticket);
+
+        mImageDrawable = (ClipDrawable) imgExp.getDrawable();
+
+
+        mImageDrawable.setLevel((int)appControl.currentUser.getExperience()*100);
 
 
         tvTickets.setText(" x " + appControl.currentUser.getTickets());

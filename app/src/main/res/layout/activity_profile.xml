@@ -129,24 +129,27 @@
             android:text="Exp"
             android:textSize="20sp" />
 
-
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center">
 
             <ImageView
-                android:id="@+id/img_header_progress_bar1"
-                android:layout_width="200dp"
-                android:layout_height="15dp"
-                android:src="@drawable/backg" />
+                android:id="@+id/img_profile_progress_bar1"
+                android:layout_width="150dp"
+                android:layout_height="14dp"
+                android:src="@drawable/backg"
+                android:layout_marginTop="3dp"
+
+
+                />
 
             <ImageView
-                android:id="@+id/img_header_progress_bar2"
-                android:layout_width="70dp"
-                android:layout_height="15dp"
-                android:background="@color/colorPrimary"
-                android:src="@drawable/clip_source" />
+                android:id="@+id/img_profile_progress_bar2"
+                android:layout_width="150dp"
+                android:layout_height="20dp"
+                android:src="@drawable/clip_source"
+                />
 
         </FrameLayout>
     </LinearLayout>

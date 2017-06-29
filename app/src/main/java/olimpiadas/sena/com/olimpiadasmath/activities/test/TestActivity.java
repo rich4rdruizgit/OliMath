@@ -203,6 +203,8 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             public void onFinish() {
+
+                startActivity(new Intent(TestActivity.this,ResultActivity.class));
                 chronometer.setText("Time Up!");
             }
         }.start();

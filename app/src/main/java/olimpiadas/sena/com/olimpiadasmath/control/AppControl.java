@@ -8,6 +8,7 @@ import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmObject;
+import io.realm.RealmResults;
 import olimpiadas.sena.com.olimpiadasmath.model.BonusTable;
 import olimpiadas.sena.com.olimpiadasmath.model.Question;
 import olimpiadas.sena.com.olimpiadasmath.model.User;
@@ -160,7 +161,9 @@ public class AppControl {
                     Log.d(TAG,"saved Question Table");
                 }
 
-                if (realm.where(User.class).findAll().isEmpty()) {
+
+                User user = realm.where(User.class).findFirst();
+                if (user == null ) {
                     Log.d(TAG,"Creating User Table");
 
                     String user1 = (
@@ -180,7 +183,8 @@ public class AppControl {
 
 
                 }else{
-                    ourInstance.currentUser = realm.copyFromRealm(realm.where(User.class).findFirst());
+                    ourInstance.currentUser = realm.copyFromRealm(user);
+                    //ourInstance.currentUser = user;
 
                 }
 

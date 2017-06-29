@@ -2,8 +2,11 @@ package olimpiadas.sena.com.olimpiadasmath.activities.profile;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.graphics.drawable.ClipDrawable;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 import olimpiadas.sena.com.olimpiadasmath.R;
 
@@ -17,6 +20,8 @@ public class ProfileActivity extends AppCompatActivity {
     AppControl appControl;
 
     TextView tvLvl,tvCoins,tvTickets;
+    ImageView imgExp;
+    private ClipDrawable mImageDrawable;
 
 
     @Override
@@ -37,6 +42,12 @@ public class ProfileActivity extends AppCompatActivity {
         tvTickets.setText(" x " + appControl.currentUser.getTickets());
 
 
+
+        ImageView imgExp = (ImageView) findViewById(R.id.img_profile_progress_bar2);
+        mImageDrawable = (ClipDrawable) imgExp.getDrawable();
+
+
+        mImageDrawable.setLevel((int)appControl.currentUser.getExperience() * 100);
 
 
 
