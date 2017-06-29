@@ -94,28 +94,30 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                     alert.create();
                     alert.show();
                     return;
+                }else {
+                    AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                    alert.setMessage(R.string.alert_shop)
+                            .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    appControl.currentUser.setCoins(appControl.currentUser.getCoins() - lstProduct.get(position).getPrice());
+                                    holder.btnBuy.setText("Usar");
+                                    ((ShopActivity)context).headerFragment.refreshInterface();
+                                    Toast.makeText(context, "Felicidades, has adquirido este nuevo item", Toast.LENGTH_SHORT).show();
+                                    //scontext.startActivity(new Intent(context, MainActivity.class));
+                                }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            });
+                    alert.create();
+                    alert.show();
                 }
 
-                AlertDialog.Builder alert = new AlertDialog.Builder(context);
-                alert.setMessage(R.string.alert_shop)
-                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                appControl.currentUser.setCoins(appControl.currentUser.getCoins() - lstProduct.get(position).getPrice());
-                                holder.btnBuy.setText("Usar");
-                                ((ShopActivity)context).headerFragment.refreshInterface();
-                               Toast.makeText(context, "Felicidades, has adquirido este nuevo item", Toast.LENGTH_SHORT).show();
-                                //scontext.startActivity(new Intent(context, MainActivity.class));
-                            }
-                        })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
 
-                            }
-                        });
-                alert.create();
-                alert.show();
             }
         });
     }

@@ -65,4 +65,12 @@ public class ProfileActivity extends AppCompatActivity {
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        tvCoins.setText(" X "+appControl.currentUser.getCoins());
+        tvTickets.setText(" X "+appControl.currentUser.getTickets());
+
+    }
 }

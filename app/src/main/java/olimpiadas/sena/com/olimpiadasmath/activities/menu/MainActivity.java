@@ -107,8 +107,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Log.d("Test","se va a obtener el usuario " + appControl.currentUser.getExperience() );
 
 
-
-
             Log.d("Test","se va a crear jobject");
             JSONObject test = new JSONObject("{'question':'Me comi una manzana....',\n" +
                     "\t\t'answers':[\n" +
@@ -166,4 +164,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
+
+
+
 }
