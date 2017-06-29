@@ -31,6 +31,8 @@ public class AppControl {
     public boolean musik;
     public boolean efects;
 
+    public boolean onChallenge = false;
+    public boolean onPractice = false;
 
     public User currentUser;
 

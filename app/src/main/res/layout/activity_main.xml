@@ -54,7 +54,8 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:background="@drawable/ranking"
-            android:elevation="10dp" />
+            android:elevation="10dp"
+            style="@style/ButtonStyle"/>
 
         <Button
             android:id="@+id/btn_menu_shop"
@@ -63,7 +64,8 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:background="@drawable/shop"
-            android:padding="5dp" />
+            android:padding="5dp"
+            style="@style/ButtonStyle"/>
 
         <Button
             android:id="@+id/btn_settings"
@@ -72,7 +74,8 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:background="@drawable/configuration"
-            android:padding="5dp" />
+            android:padding="5dp"
+            style="@style/ButtonStyle"/>
     </LinearLayout>
 
 </LinearLayout>

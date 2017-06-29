@@ -90,13 +90,15 @@
             android:id="@+id/btn_help"
             android:text="Ayuda sobre el juego"
             android:shadowColor="@color/colorAccent"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            style="@style/ButtonStyle"/>
 
         <Button
             android:id="@+id/btn_credits"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Creditos"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            style="@style/ButtonStyle"/>
 
 </LinearLayout>

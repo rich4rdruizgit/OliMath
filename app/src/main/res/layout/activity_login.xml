@@ -45,12 +45,14 @@
             android:id="@+id/btn_login"
             android:text="Iniciar Sesión"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            style="@style/ButtonStyle"/>
         <Button
             android:id="@+id/btn_lose_pass"
             android:layout_marginTop="10dp"
             android:text="Recuperar Contraseña"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            style="@style/ButtonStyle"/>
     </LinearLayout>
 </LinearLayout>
