@@ -1,12 +1,23 @@
 package olimpiadas.sena.com.olimpiadasmath.model;
 
+import java.util.UUID;
+
 import io.realm.RealmObject;
+import io.realm.annotations.Ignore;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by andres on 19/06/2017.
  */
 
-public class User extends RealmObject {
+public class User  extends RealmObject {
+    @Ignore
+    private final String TAG = User.class.toString();
+
+
+    @PrimaryKey
+    private String idUser;
+
     private String nickname;
     private String password;
     private int score;
@@ -20,6 +31,7 @@ public class User extends RealmObject {
     }
 
     public User(String nickname, String password, int score, int position, int coins, int tickets, double experience, int level) {
+        this.idUser = UUID.randomUUID().toString();
         this.nickname = nickname;
         this.password = password;
         this.score = score;
@@ -32,9 +44,28 @@ public class User extends RealmObject {
 
 
     public User(String nickname, int score, int position) {
+        this.idUser = UUID.randomUUID().toString();
         this.nickname = nickname;
         this.score = score;
         this.position = position;
+    }
+
+    public User(String nickname, int score, int position, int coins, int tickets, int level, double experience) {
+        this.idUser = UUID.randomUUID().toString();
+        this.nickname = nickname;
+        this.score = score;
+        this.position = position;
+        this.coins = coins;
+        this.tickets = tickets;
+        this.level = level;
+        this.experience = experience;
+    }
+    public String getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
     }
 
     public String getNickname() {

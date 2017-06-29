@@ -83,6 +83,7 @@ public class ResultActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ResultActivity.this, MainActivity.class));
+                finish();
             }
         });
         calculateCoins();
@@ -154,6 +155,11 @@ public class ResultActivity extends AppCompatActivity {
             }
         }
 
+
+    }
+
+    @Override
+    public void onBackPressed() {
 
     }
 }
