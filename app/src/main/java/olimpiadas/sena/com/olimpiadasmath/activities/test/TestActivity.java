@@ -148,7 +148,6 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         totalPage=  mCardAdapter.getCount();
         tvTetTipNumQuet = (TextView) findViewById(R.id.tv_test_tip_numberofquestion);
         tvTetTipNumQuet.setText(countPage+"/"+mCardAdapter.getCount());
-
         btnBackChallenge = (Button) findViewById(R.id.btn_test_back);
 
     }

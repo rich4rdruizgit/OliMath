@@ -102,12 +102,12 @@ public class AppControl {
 
                     Log.d(TAG,"Creating Question Table");
 
-                    String jsonText1 = ("{'text':' x= 10 + 3 * 4 ',\n" +
+                    String jsonText1 = ("{'text':' En una agencia de Empleos el 40% de los aspirantes son mujeres. De las mujeres que asisten a esta agencia el 30% son tecnólogas. Del total de asistentes a la agencia, ¿Qué porcentaje son mujeres que No son tecnólogas?',\n" +
                             "\t\t'answers':[\n" +
-                            "\t\t{'text':'Respuesta 22' ,'isCorrect':'1'},\n" +
-                            "\t\t{'text':'Respuesta 52' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'Respuesta 17' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'Respuesta 20' ,'isCorrect':'0'}]\n" +
+                            "\t\t{'text':'12%' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'30%' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'28%' ,'isCorrect':'1'},\n" +
+                            "\t\t{'text':'19%' ,'isCorrect':'0'}]\n" +
                             "\t\t\t\n" +
                             "\t\t}}");
                     String jsonText2 = ("{'text':'Cuanto es 2 +2 ....',\n" +
