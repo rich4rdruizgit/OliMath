@@ -40,6 +40,8 @@ public class AppControl {
 
     private boolean init = false;
 
+
+
     public static AppControl getInstance() {
         return ourInstance;
     }
