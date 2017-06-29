@@ -2,7 +2,6 @@ package olimpiadas.sena.com.olimpiadasmath.fragments.header;
 
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -98,5 +97,13 @@ public class HeaderFragment extends Fragment {
 
 
     }
+
+    public void refreshInterface(){
+        tvTickets.setText(" x " + appControl.currentUser.getTickets());
+        tvCoins.setText(" x " + appControl.currentUser.getCoins());
+        tvExp.setText(" x " + ((int)appControl.currentUser.getExperience()));
+
+    }
+
 
 }
