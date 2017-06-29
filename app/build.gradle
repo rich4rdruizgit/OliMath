@@ -38,6 +38,7 @@ dependencies {
     compile 'com.crystal:crystalrangeseekbar:1.1.1'
     testCompile 'junit:junit:4.12'
     compile 'uk.co.chrisjenx:calligraphy:2.1.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }
 
 //libreria MPAndroidChart para las graficas
