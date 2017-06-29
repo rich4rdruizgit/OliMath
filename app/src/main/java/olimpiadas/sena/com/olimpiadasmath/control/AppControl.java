@@ -1,15 +1,11 @@
 package olimpiadas.sena.com.olimpiadasmath.control;
 
-import android.content.Context;
 import android.util.Log;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import io.realm.Realm;
-import io.realm.RealmObject;
-import io.realm.RealmResults;
+import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.model.BonusTable;
+import olimpiadas.sena.com.olimpiadasmath.model.Product;
 import olimpiadas.sena.com.olimpiadasmath.model.Question;
 import olimpiadas.sena.com.olimpiadasmath.model.User;
 
@@ -42,8 +38,6 @@ public class AppControl {
     public int initBetCoins;
 
     private boolean init = false;
-
-
 
     public static AppControl getInstance() {
         return ourInstance;
@@ -113,36 +107,77 @@ public class AppControl {
                             "\t\t{'text':'Respuesta 20' ,'isCorrect':'0'}]\n" +
                             "\t\t\t\n" +
                             "\t\t}}");
-                    String jsonText2 = ("{'text':'Cuanto es 2 +2 ....',\n" +
+                    String jsonText2 = ("{'text':'En un centro de formación de Risaralda se tienen que el 20% de un grupo de  aprendices son técnicos, mientras que 1/9 de los aprendices son tecnólogos. Si sabemos que el total de sus libros está entre 50 y 100, ¿Cuál es el total de aprendices?',\n" +
                             "\t\t'answers':[\n" +
-                            "\t\t{'text':'Respuesta 4' ,'isCorrect':'1'},\n" +
-                            "\t\t{'text':'Respuesta 2' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'Respuesta 1' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'Respuesta 8' ,'isCorrect':'0'}]\n" +
+                            "\t\t{'text':'50' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'56' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'90' ,'isCorrect':'1'},\n" +
+                            "\t\t{'text':'63' ,'isCorrect':'0'}]\n" +
                             "\t\t\t\n" +
                             "\t\t}}");
-                    String jsonText3 = ("{'text':'Quien se comió el queso de...Maria del charco.',\n" +
+                    String jsonText3 = ("{'text':'¿Qué edad tendría Rodrigo en el 2011, si su edad en este año fue igual a la suma de los valores de las cifras del año de su nacimiento?',\n" +
                             "\t\t'answers':[\n" +
-                            "\t\t{'text':'Respuesta Jhon Yanguas' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'Respuesta Harold Muñoz' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'Respuesta Andres Muñoz' ,'isCorrect':'1'},\n" +
-                            "\t\t{'text':'Respuesta Andres Chapid' ,'isCorrect':'0'}]\n" +
+                            "\t\t{'text':'26 años' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'21 años' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'20 años' ,'isCorrect':'1'},\n" +
+                            "\t\t{'text':'19 años' ,'isCorrect':'0'}]\n" +
                             "\t\t\t\n" +
                             "\t\t}}");
-                    String jsonText4 = ("{'text':'Me comi una manzana....',\n" +
+                    String jsonText4 = ("{'text':'El volumen de una bacteria se duplica cada minuto, al poner una bacteria en un vaso cilíndrico se llena totalmente en 61 minutos, ¿en cuántos minutos estará lleno un vaso que tiene la mitad del volumen inicial con el mismo tipo de células?',\n" +
                             "\t\t'answers':[\n" +
-                            "\t\t{'text':'Respuesta 1' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'Respuesta 2' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'Respuesta 3' ,'isCorrect':'1'},\n" +
-                            "\t\t{'text':'Respuesta 4' ,'isCorrect':'0'}]\n" +
+                            "\t\t{'text':'31 min' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'60 min' ,'isCorrect':'1'},\n" +
+                            "\t\t{'text':'28 min' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'29 min' ,'isCorrect':'0'}]\n" +
                             "\t\t\t\n" +
                             "\t\t}}");
-                    String jsonText5 = ("{'text':'Me comi una manzana....',\n" +
+                    String jsonText5 = ("{'text':'En el Call Center del SENA tres Aprendices que sirven de operadores reciben llamadas cada 3, 5 y 9 minutos respectivamente, ¿Se quiere saber cuántas veces estarán simultáneamente hablando estos tres aprendices en un turno de 9 horas?',\n" +
                             "\t\t'answers':[\n" +
-                            "\t\t{'text':'Respuesta 1' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'Respuesta 2' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'Respuesta 3' ,'isCorrect':'1'},\n" +
-                            "\t\t{'text':'Respuesta 4' ,'isCorrect':'0'}]\n" +
+                            "\t\t{'text':'12' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'15' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'11' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'13' ,'isCorrect':'1'}]\n" +
+                            "\t\t\t\n" +
+                            "\t\t}}");
+                    String jsonText6 = ("{'text':'En matemáticas se sabe que un número perfecto es aquel que al sumar sus divisores menores a el mismo (incluyendo el 1) se obtiene como resultado el mismo número; teniendo en cuenta esto, cuál de los siguientes números es NO perfecto.',\n" +
+                            "\t\t'answers':[\n" +
+                            "\t\t{'text':'98' ,'isCorrect':'1'},\n" +
+                            "\t\t{'text':'28' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'6' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'496' ,'isCorrect':'0'}]\n" +
+                            "\t\t\t\n" +
+                            "\t\t}}");
+                    String jsonText7 = ("{'text':'En una bodega hay 100 bicicletas de dos marcas distintas M y P disponibles para vender, 40 bicicletas de la marca M y 60 bicicletas de la marca P.El 40 % de las bicicletas de marca M tienen un año de garantía, y las demás de la misma marca tienen 6 meses de garantía.\n" +
+                            "Si un vendedor elige al azar una bicicleta para exhibirla, ¿Cuál es la probabilidad de que la bicicleta elegida sea de la marca P y tenga un año de garantía?',\n" +
+                            "\t\t'answers':[\n" +
+                            "\t\t{'text':'10%' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'30%' ,'isCorrect':'1'},\n" +
+                            "\t\t{'text':'20%' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'50%' ,'isCorrect':'0'}]\n" +
+                            "\t\t\t\n" +
+                            "\t\t}}");
+                    String jsonText8 = ("{'text':'Los 70 empleados de una empresa están divididos en clase A y clase B. La empresa paga una prima de $20.000 a los empleados de clase A y de $10.000 pesos a los de clase B. Si el pago total de la prima es de $1’200.000, entonces el número total de empleados de clase A es:\n',\n" +
+                            "\t\t'answers':[\n" +
+                            "\t\t{'text':'40' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'30' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'20' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'50' ,'isCorrect':'1'}]\n" +
+                            "\t\t\t\n" +
+                            "\t\t}}");
+                    String jsonText9 = ("{'text':'pendiente pregunta 9',\n" +
+                            "\t\t'answers':[\n" +
+                            "\t\t{'text':'12' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'15' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'11' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'13' ,'isCorrect':'1'}]\n" +
+                            "\t\t\t\n" +
+                            "\t\t}}");
+                    String jsonText10 = ("{'text':'pendiente pregunta 10',\n" +
+                            "\t\t'answers':[\n" +
+                            "\t\t{'text':'12' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'15' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'11' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'13' ,'isCorrect':'1'}]\n" +
                             "\t\t\t\n" +
                             "\t\t}}");
                     Question question1 = new Question(jsonText1);
@@ -161,9 +196,7 @@ public class AppControl {
                     Log.d(TAG,"saved Question Table");
                 }
 
-
-                User user = realm.where(User.class).findFirst();
-                if (user == null ) {
+                if (realm.where(User.class).findAll().isEmpty()) {
                     Log.d(TAG,"Creating User Table");
 
                     String user1 = (
@@ -183,8 +216,27 @@ public class AppControl {
 
 
                 }else{
-                    ourInstance.currentUser = realm.copyFromRealm(user);
-                    //ourInstance.currentUser = user;
+                    ourInstance.currentUser = realm.copyFromRealm(realm.where(User.class).findFirst());
+
+                }
+
+                if(realm.where(Product.class).findAll().isEmpty()){
+
+                    Product pdt1 = new Product(R.drawable.marco18,"Dragons ring",200,"10",Product.FOR_BUY);
+                    Product pdt2 = new Product(R.drawable.marco,"Fire ring",20,"10",Product.FOR_BUY);
+                    Product pdt3 = new Product(R.drawable.marco2,"Happy ring",100,"10",Product.FOR_BUY);
+                    Product pdt4 = new Product(R.drawable.marco8,"Neon ring",25,"10",Product.FOR_BUY);
+                    Product pdt5 = new Product(R.drawable.marco11,"Blue ring",50,"10",Product.FOR_BUY);
+
+
+
+
+
+                    realm.copyToRealm(pdt1);
+                    realm.copyToRealm(pdt2);
+                    realm.copyToRealm(pdt3);
+                    realm.copyToRealm(pdt4);
+                    realm.copyToRealm(pdt5);
 
                 }
 

@@ -108,4 +108,12 @@ public class HeaderFragment extends Fragment {
 
     }
 
+    public void refreshInterface(){
+        tvTickets.setText(" x " + appControl.currentUser.getTickets());
+        tvCoins.setText(" x " + appControl.currentUser.getCoins());
+        tvExp.setText(" x " + ((int)appControl.currentUser.getExperience()));
+
+    }
+
+
 }
