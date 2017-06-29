@@ -1,14 +1,11 @@
 package olimpiadas.sena.com.olimpiadasmath.control;
 
-import android.content.Context;
 import android.util.Log;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import io.realm.Realm;
-import io.realm.RealmObject;
+import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.model.BonusTable;
+import olimpiadas.sena.com.olimpiadasmath.model.Product;
 import olimpiadas.sena.com.olimpiadasmath.model.Question;
 import olimpiadas.sena.com.olimpiadasmath.model.User;
 
@@ -220,6 +217,26 @@ public class AppControl {
 
                 }else{
                     ourInstance.currentUser = realm.copyFromRealm(realm.where(User.class).findFirst());
+
+                }
+
+                if(realm.where(Product.class).findAll().isEmpty()){
+
+                    Product pdt1 = new Product(R.drawable.marco18,"Dragons ring",200,"10",Product.FOR_BUY);
+                    Product pdt2 = new Product(R.drawable.marco,"Fire ring",20,"10",Product.FOR_BUY);
+                    Product pdt3 = new Product(R.drawable.marco2,"Happy ring",100,"10",Product.FOR_BUY);
+                    Product pdt4 = new Product(R.drawable.marco8,"Neon ring",25,"10",Product.FOR_BUY);
+                    Product pdt5 = new Product(R.drawable.marco11,"Blue ring",50,"10",Product.FOR_BUY);
+
+
+
+
+
+                    realm.copyToRealm(pdt1);
+                    realm.copyToRealm(pdt2);
+                    realm.copyToRealm(pdt3);
+                    realm.copyToRealm(pdt4);
+                    realm.copyToRealm(pdt5);
 
                 }
 
