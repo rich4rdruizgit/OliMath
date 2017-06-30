@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
+import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.model.User;
 
 /**
@@ -41,7 +42,7 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
         holder.txtNickName.setText(user.getNickname()+"");
         holder.txtPoints.setText(user.getScore()+"");
 
-        if(position == 5){
+        if(user.getNickname().equals(AppControl.getInstance().currentUser.getNickname())){
             holder.layout.setBackgroundResource(R.drawable.scall);
             holder.layout.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
             holder.txtPosition.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));

@@ -12,6 +12,7 @@ import java.util.List;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.adapter.ranking.RankingAdapter;
+import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.model.User;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -35,8 +36,9 @@ public class RankingActivity extends AppCompatActivity {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerViewRanking.setLayoutManager(llm);
 
-        User user = new User("yo", 10, 100);
-        if (user.getPosition() < 1) {
+//        User user = new User("yo", 10, 100);
+        User user = AppControl.getInstance().currentUser;
+        if (user.getPosition() < 20) {
             fragment = findViewById(R.id.fragment2);
             fragment.setVisibility(View.INVISIBLE);
         }
