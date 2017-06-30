@@ -16,6 +16,13 @@
 
     <string name="alert_shop">¿Esta seguro de realizar esta compra?</string>
     <string name="no_enought_coins">No tienes suficientes monedas :( ve a practicar para ganar más</string>
+    <string name="user">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="start_sesion">Iniciar Sesión</string>
+    <string name="recover_password">Recuperar Contraseña</string>
+    <string name="nombre_de_usuario">NOMBRE DE USUARIO</string>
+    <string name="level">Nivel</string>
+    <string name="experience">Experiencia</string>
 
 
     <string-array name="lenguages">

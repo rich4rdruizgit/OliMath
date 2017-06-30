@@ -1,10 +1,11 @@
 <resources>
     <dimen name="text_size">18dp</dimen>
+    <dimen name="text_size_tittle">25dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="card_padding">60dp</dimen>
     <dimen name="inter_space">10dp</dimen>
-    <dimen name="padding_views">24dp</dimen>
+    <dimen name="padding_views">14dp</dimen>
 
 </resources>
 
