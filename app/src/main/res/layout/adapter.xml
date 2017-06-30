@@ -40,6 +40,13 @@
                         style="@style/TextAppearance.AppCompat.Body1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:id="@+id/contentViewImage"
+                        android:src="@drawable/pj"
+                        android:textColor="@color/secondary_text"
+                        style="@style/TextAppearance.AppCompat.Body1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
                     <LinearLayout
                         android:layout_marginTop="30dp"
@@ -86,6 +93,15 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="-5dp"
                     android:src="@drawable/ic_bookmark_24dp" />
+                <ImageView
+                    android:id="@+id/img_test_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|left"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="-5dp"
+                    android:src="@drawable/ic_imagemark_24dp" />
 
             </FrameLayout>
             </ScrollView>

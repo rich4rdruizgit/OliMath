@@ -56,6 +56,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     int flagBackCountChallenge=0;
 
     boolean scaled = false;
+    boolean imaged = false;
     View fragHeader;
     View fragBet;
 
@@ -131,7 +132,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         mViewPager.setPageTransformer(false, mCardShadowTransformer);
         mViewPager.setOffscreenPageLimit(10);
 
-        if(AppControl.getInstance().currentUser.getCoins()<100){
+        if (AppControl.getInstance().currentUser.getCoins() < 100) {
             seekBar.setMax(AppControl.getInstance().currentUser.getCoins());
         }
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
