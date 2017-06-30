@@ -59,7 +59,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
         Picasso.with(holder.imgViewShop.getContext())
                 .load(lstProduct.get(position).getUrlImg())
-                .resize(150,150)
+                .resize(200,200)
                 .into(holder.imgViewShop);
 
 
@@ -67,7 +67,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.txtPrice.setText("" + product.getPrice());
         holder.txtConstraint.setText(product.getConstraint());
         if(product.getState()==Product.FOR_BUY){
-            holder.btnBuy.setText("Comprar");
+            holder.btnBuy.setText(""+product.getPrice());
         }
         if(product.getState()==Product.BOUGTH){
             holder.btnBuy.setText("Usar");
