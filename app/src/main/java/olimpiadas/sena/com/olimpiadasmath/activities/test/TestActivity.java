@@ -131,6 +131,9 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         mViewPager.setPageTransformer(false, mCardShadowTransformer);
         mViewPager.setOffscreenPageLimit(10);
 
+        if(AppControl.getInstance().currentUser.getCoins()<100){
+            seekBar.setMax(AppControl.getInstance().currentUser.getCoins());
+        }
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
