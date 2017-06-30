@@ -109,12 +109,12 @@ public class AppControl {
 
                     Log.d(TAG,"Creating Question Table");
 
-                    String jsonText1 = ("{'text':' x= 10 + 3 * 4 ',\n" +
+                    String jsonText1 = ("{'text':' En una agencia de Empleos el 40% de los aspirantes son mujeres. De las mujeres que asisten a esta agencia el 30% son tecnólogas. Del total de asistentes a la agencia, ¿Qué porcentaje son mujeres que No son tecnólogas?',\n" +
                             "\t\t'answers':[\n" +
-                            "\t\t{'text':'Respuesta 22' ,'isCorrect':'1'},\n" +
-                            "\t\t{'text':'Respuesta 52' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'Respuesta 17' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'Respuesta 20' ,'isCorrect':'0'}]\n" +
+                            "\t\t{'text':'12%' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'30%' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'28%' ,'isCorrect':'1'},\n" +
+                            "\t\t{'text':'19%' ,'isCorrect':'0'}]\n" +
                             "\t\t\t\n" +
                             "\t\t}}");
                     String jsonText2 = ("{'text':'En un centro de formación de Risaralda se tienen que el 20% de un grupo de  aprendices son técnicos, mientras que 1/9 de los aprendices son tecnólogos. Si sabemos que el total de sus libros está entre 50 y 100, ¿Cuál es el total de aprendices?',\n" +
@@ -182,12 +182,12 @@ public class AppControl {
                             "\t\t{'text':'13' ,'isCorrect':'1'}]\n" +
                             "\t\t\t\n" +
                             "\t\t}}");
-                    String jsonText10 = ("{'text':'pendiente pregunta 10',\n" +
+                    String jsonText10 = ("{'text':'Quien es ese Pokemon',\n" +
                             "\t\t'answers':[\n" +
-                            "\t\t{'text':'12' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'15' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'11' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'13' ,'isCorrect':'1'}]\n" +
+                            "\t\t{'text':'Andrew' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'Jefry' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'Andres' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'Andremon' ,'isCorrect':'1'}]\n" +
                             "\t\t\t\n" +
                             "\t\t}}");
                     Question question1 = new Question(jsonText1);
@@ -195,6 +195,11 @@ public class AppControl {
                     Question question3 = new Question(jsonText3);
                     Question question4 = new Question(jsonText4);
                     Question question5 = new Question(jsonText5);
+                    Question question6 = new Question(jsonText6);
+                    Question question7 = new Question(jsonText7);
+                    Question question8 = new Question(jsonText8);
+                    Question question9 = new Question(jsonText9);
+                    Question question10 = new Question(jsonText10);
 
                     Log.d(TAG,"created BonusTables");
                     realm.copyToRealm(question1);
@@ -202,6 +207,11 @@ public class AppControl {
                     realm.copyToRealm(question3);
                     realm.copyToRealm(question4);
                     realm.copyToRealm(question5);
+                    realm.copyToRealm(question6);
+                    realm.copyToRealm(question7);
+                    realm.copyToRealm(question8);
+                    realm.copyToRealm(question9);
+                    realm.copyToRealm(question10);
 
                     Log.d(TAG,"saved Question Table");
                 }

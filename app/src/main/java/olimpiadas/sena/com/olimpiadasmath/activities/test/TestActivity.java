@@ -15,11 +15,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Chronometer;
 import android.widget.CompoundButton;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import io.realm.Realm;
 import olimpiadas.sena.com.olimpiadasmath.R;
@@ -50,8 +48,14 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     int flagBet = 0;
     int betcoin=0;
 
-    int countPage =1;
+
+
+    SeekBar seekBar;
+    TextView tvBet;
+
+    int countPage = 1;
     int totalPage=0;
+    int flagBackCountChallenge=0;
 
     SeekBar seekBar;
     TextView tvBet;
@@ -59,6 +63,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     int page = 1;
 
     boolean scaled = false;
+    boolean imaged = false;
     View fragHeader;
     View fragBet;
 
@@ -114,6 +119,12 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         mCardAdapter.addCardItem(new CardItem(R.string.title_3, R.string.text_1));
         mCardAdapter.addCardItem(new CardItem(R.string.title_4, R.string.text_1));
         mCardAdapter.addCardItem(new CardItem(R.string.title_4, R.string.text_1));
+        mCardAdapter.addCardItem(new CardItem(R.string.title_4, R.string.text_1));
+        mCardAdapter.addCardItem(new CardItem(R.string.title_4, R.string.text_1));
+        mCardAdapter.addCardItem(new CardItem(R.string.title_4, R.string.text_1));
+        mCardAdapter.addCardItem(new CardItem(R.string.title_4, R.string.text_1));
+        mCardAdapter.addCardItem(new CardItem(R.string.title_4, R.string.text_1));
+
         mFragmentCardAdapter = new CardFragmentPagerAdapter(getSupportFragmentManager(),
                 dpToPixels(2, this));
 
@@ -128,8 +139,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         mViewPager.setPageTransformer(false, mCardShadowTransformer);
         mViewPager.setOffscreenPageLimit(10);
 
-
-        if (AppControl.getInstance().currentUser.getCoins() < 100){
+        if (AppControl.getInstance().currentUser.getCoins() < 100) {
             seekBar.setMax(AppControl.getInstance().currentUser.getCoins());
         }
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -154,10 +164,10 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         img_test_tip_einstein = (pl.droidsonroids.gif.GifImageView) findViewById(R.id.img_test_tip_einstein);
         img_test_tip_einstein.setOnClickListener(this);
         tvTestNumQuest = (TextView) findViewById(R.id.tv_test_numquest);
-        tvTestNumQuest.setText(countPage + "/" + mCardAdapter.getCount());
-        totalPage = mCardAdapter.getCount();
+        tvTestNumQuest.setText(countPage+"/"+mCardAdapter.getCount());
+        totalPage=  mCardAdapter.getCount();
         tvTetTipNumQuet = (TextView) findViewById(R.id.tv_test_tip_numberofquestion);
-        tvTetTipNumQuet.setText(countPage + "/" + mCardAdapter.getCount());
+        tvTetTipNumQuet.setText(countPage+"/"+mCardAdapter.getCount());
 
         btnBackChallenge = (Button) findViewById(R.id.btn_test_back);
 
@@ -207,18 +217,16 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         return flagBet;
     }
 
-    public void timeChallenge() {
+    public void timeChallenge(){
         final CountDownTimer timer = new CountDownTimer(120000, 1000) {
 
             public void onTick(long millisUntilFinished) {
-                String v = String.format("%02d", millisUntilFinished / 60000);
-                int va = (int) ((millisUntilFinished % 60000) / 1000);
-                chronometer.setText(v + ":" + String.format("%02d", va));
+                String v = String.format("%02d", millisUntilFinished/60000);
+                int va = (int)( (millisUntilFinished%60000)/1000);
+                chronometer.setText(v+":"+String.format("%02d",va));
             }
 
             public void onFinish() {
-
-                startActivity(new Intent(TestActivity.this,ResultActivity.class));
                 chronometer.setText("Time Up!");
             }
         }.start();
@@ -232,22 +240,22 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         scaled = !scaled;
 
         if (scaled) {
-            if (flag == 1) {
+            if(flag==1){
                 lnPractice.setVisibility(View.VISIBLE);
                 lnChallenge.setVisibility(View.GONE);
                 fragHeader.setVisibility(View.GONE);
-            } else if (flag == 2) {
+            }else if(flag==2){
                 lnPractice.setVisibility(View.GONE);
                 lnChallenge.setVisibility(View.VISIBLE);
                 fragHeader.setVisibility(View.GONE);
             }
 
         } else {
-            if (flag == 1) {
+            if(flag == 1){
                 lnPractice.setVisibility(View.VISIBLE);
                 lnChallenge.setVisibility(View.GONE);
                 fragHeader.setVisibility(View.VISIBLE);
-            } else if (flag == 2) {
+            }else if(flag ==2 ){
                 lnPractice.setVisibility(View.GONE);
                 lnChallenge.setVisibility(View.VISIBLE);
                 fragHeader.setVisibility(View.VISIBLE);
@@ -258,16 +266,17 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+
     @Override
     public void moveClick(int dir) {
-        if (flag == 1) {
+        if(flag == 1){
             countPage = dir + 1;
-            tvTetTipNumQuet.setText(countPage + "/" + totalPage);
+            tvTetTipNumQuet.setText(countPage+"/"+totalPage);
             mViewPager.setCurrentItem(dir);
-        } else if (flag == 2) {
+        }else if(flag == 2){
             countPage = dir + 1;
-            tvTestNumQuest.setText(countPage + "/" + totalPage);
-            tvTetTipNumQuet.setText(countPage + "/" + totalPage);
+            tvTestNumQuest.setText(countPage+"/"+totalPage);
+            tvTetTipNumQuet.setText(countPage+"/"+totalPage);
             mViewPager.setCurrentItem(dir);
         }
 
@@ -279,9 +288,8 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(new Intent(this, ResultActivity.class));
     }
 
-    protected void attachBaseContext(Context newBase) {
+    protected void attachBaseContext (Context newBase){
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
 
     }
-
 }
