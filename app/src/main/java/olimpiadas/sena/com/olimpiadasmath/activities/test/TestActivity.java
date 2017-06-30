@@ -56,6 +56,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     int flagBackCountChallenge=0;
 
     boolean scaled = false;
+    boolean imaged = false;
     View fragHeader;
     View fragBet;
 
@@ -247,6 +248,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         mFragmentCardShadowTransformer.enableScaling(scaled);
 
     }
+
 
     @Override
     public void moveClick(int dir) {
