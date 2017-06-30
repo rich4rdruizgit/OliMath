@@ -19,6 +19,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
+import olimpiadas.sena.com.olimpiadasmath.activities.library.LibraryActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.ranking.RankingActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.settings.SettingsActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.shop.ShopActivity;
@@ -78,6 +79,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 };
                                 Timer timer = new Timer();
                                 timer.schedule(tareap,1000);
+                                break;
+                            case 1:
+                                TimerTask tarealib =  new TimerTask() {
+                                    @Override
+                                    public void run() {
+                                        Intent intLibrary = new Intent(MainActivity.this, LibraryActivity.class);
+
+                                        startActivity(intLibrary);
+                                    }
+                                };
+                                Timer timerlib = new Timer();
+                                timerlib.schedule(tarealib,1000);
+
+
                                 break;
                             case 2:
                                 TimerTask tareac =  new TimerTask() {
