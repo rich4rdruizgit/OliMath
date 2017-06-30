@@ -94,11 +94,11 @@
                 android:orientation="horizontal"
                 android:layout_weight="0.5">
 
-                <ImageView
+                <pl.droidsonroids.gif.GifImageView
                     android:id="@+id/img_test_tip_einstein"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:src="@drawable/einsteinanimado" />
+                    android:background="@drawable/einsteinanimado" />
 
             </LinearLayout>
         </LinearLayout>

@@ -1,5 +1,6 @@
 package olimpiadas.sena.com.olimpiadasmath.activities.test;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.CountDownTimer;
@@ -26,6 +27,7 @@ import olimpiadas.sena.com.olimpiadasmath.adapter.test.CardPagerAdapter;
 
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.model.Question;
+import olimpiadas.sena.com.olimpiadasmath.util.DialogHelper;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
@@ -55,7 +57,11 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     int totalPage=0;
     int flagBackCountChallenge=0;
 
+
+    int page = 1;
+
     boolean scaled = false;
+    boolean imaged = false;
     View fragHeader;
     View fragBet;
 
@@ -67,6 +73,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     LinearLayout lnChallenge;
 
     TextView chronometer;
+    pl.droidsonroids.gif.GifImageView img_test_tip_einstein;
     TextView tvTestNumQuest;
     TextView tvTetTipNumQuet;
 
@@ -77,7 +84,6 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
         getSupportActionBar().hide();
-
         flag = getIntent().getExtras().getInt("type"); // con esto miramos si es una practica o un challenge
 
         // Cargando los fragments
@@ -131,6 +137,9 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         mViewPager.setPageTransformer(false, mCardShadowTransformer);
         mViewPager.setOffscreenPageLimit(10);
 
+        if (AppControl.getInstance().currentUser.getCoins() < 100) {
+            seekBar.setMax(AppControl.getInstance().currentUser.getCoins());
+        }
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -149,6 +158,9 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         chronometer = (TextView) findViewById(R.id.chronometer_clock);
+
+        img_test_tip_einstein = (pl.droidsonroids.gif.GifImageView) findViewById(R.id.img_test_tip_einstein);
+        img_test_tip_einstein.setOnClickListener(this);
         tvTestNumQuest = (TextView) findViewById(R.id.tv_test_numquest);
         tvTestNumQuest.setText(countPage+"/"+mCardAdapter.getCount());
         totalPage=  mCardAdapter.getCount();
@@ -162,7 +174,11 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-
+        switch (view.getId()){
+            case R.id.img_test_tip_einstein:
+                DialogHelper.showTipDialog(view.getContext());
+                break;
+        }
     }
 
     public static float dpToPixels(int dp, Context context) {
@@ -247,6 +263,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         mFragmentCardShadowTransformer.enableScaling(scaled);
 
     }
+
 
     @Override
     public void moveClick(int dir) {
