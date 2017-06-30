@@ -57,8 +57,6 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     int totalPage=0;
     int flagBackCountChallenge=0;
 
-    SeekBar seekBar;
-    TextView tvBet;
 
     int page = 1;
 

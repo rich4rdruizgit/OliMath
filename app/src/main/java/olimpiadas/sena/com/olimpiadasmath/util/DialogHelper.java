@@ -11,7 +11,9 @@ import android.widget.TextView;
 
 
 import olimpiadas.sena.com.olimpiadasmath.R;
+import olimpiadas.sena.com.olimpiadasmath.activities.library.LibraryActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
+import olimpiadas.sena.com.olimpiadasmath.activities.settings.SettingsActivity;
 
 
 /**
@@ -52,7 +54,7 @@ public class DialogHelper {
         ((Button)mProgressDialog.getWindow().findViewById(R.id.btn_show_more_tip)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context.getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(context.getApplicationContext(), SettingsActivity.class);
                 context.startActivity(intent);
             }
         });
@@ -60,7 +62,7 @@ public class DialogHelper {
         ((Button)mProgressDialog.getWindow().findViewById(R.id.btn_exit_tip)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mProgressDialog.setCancelable(true);
+                mProgressDialog.closeOptionsMenu();
             }
         });
         mProgressDialog.setCancelable(true);
