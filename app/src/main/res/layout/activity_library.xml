@@ -8,23 +8,24 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/fondo_b"
     android:orientation="vertical"
     tools:context=".activities.library.LibraryActivity">
 
-    <ListView
-        android:id="@+id/list_elements"
+
+    <fragment
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:dividerHeight="2dp"
-        android:divider="@color/colorPrimaryDark">
-
-    </ListView>
-
-    <Button
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NEXT"
-        style="@style/ButtonStyle"/>
+        android:name="olimpiadas.sena.com.olimpiadasmath.fragments.header.HeaderFragment"
+        android:id="@+id/fragment3" />
 
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_library"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

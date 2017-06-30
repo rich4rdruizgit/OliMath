@@ -176,18 +176,18 @@ public class AppControl {
                             "\t\t}}");
                     String jsonText9 = ("{'text':'pendiente pregunta 9',\n" +
                             "\t\t'answers':[\n" +
-                            "\t\t{'text':'12' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'15' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'11' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'13' ,'isCorrect':'1'}]\n" +
+                            "\t\t{'text':'' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'' ,'isCorrect':'1'}]\n" +
                             "\t\t\t\n" +
                             "\t\t}}");
                     String jsonText10 = ("{'text':'pendiente pregunta 10',\n" +
                             "\t\t'answers':[\n" +
-                            "\t\t{'text':'12' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'15' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'11' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'13' ,'isCorrect':'1'}]\n" +
+                            "\t\t{'text':'' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'' ,'isCorrect':'1'}]\n" +
                             "\t\t\t\n" +
                             "\t\t}}");
                     Question question1 = new Question(jsonText1);

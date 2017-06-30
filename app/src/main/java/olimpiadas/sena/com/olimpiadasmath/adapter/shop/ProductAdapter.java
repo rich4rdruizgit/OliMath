@@ -31,7 +31,7 @@ import olimpiadas.sena.com.olimpiadasmath.model.Product;
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder>{
 
     private static final String TAG = ProductAdapter.class.toString();
-    public List<Product> lstProductold;
+
     public RealmResults<Product> lstProduct;
     static Context context;
     AppControl appControl;

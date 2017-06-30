@@ -4,44 +4,40 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
+import olimpiadas.sena.com.olimpiadasmath.adapter.library.TopicAdapter;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class LibraryActivity extends AppCompatActivity {
 
-    ArrayAdapter<String> elemntsList;
-    ListView listElements;
+    TopicAdapter adapter;
+    RecyclerView listElements;
 
-    String[] programs = {
-            "Element 1",
-            "Element 2",
-            "Element 3",
-            "Element 4",
-            "Element 5"
-    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library);
-        listElements=(ListView)findViewById(R.id.list_elements);
+        listElements=(RecyclerView) findViewById(R.id.recycler_library);
 
-        elemntsList = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,programs);
-        listElements.setAdapter(elemntsList);
 
-        listElements.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(LibraryActivity.this, TopicInformationActivity.class);
-                intent.putExtra("position", position);
-                startActivity(intent);
-            }
-            });
+        GridLayoutManager llm = new GridLayoutManager(this, 2);
+        //LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(GridLayoutManager.VERTICAL);
+        listElements.setLayoutManager(llm);
+
+        adapter = new TopicAdapter(this);
+        listElements.setAdapter(adapter);
+
+
     }
     @Override
     protected void attachBaseContext(Context newBase) {
