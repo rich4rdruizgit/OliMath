@@ -49,6 +49,7 @@
             android:text="x4" />
     </LinearLayout>
 
+
     <LinearLayout
         android:id="@+id/ticket"
         android:layout_width="220dp"
