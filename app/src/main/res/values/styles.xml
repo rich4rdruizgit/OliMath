@@ -15,6 +15,8 @@
 
     </style>
 
+
+
     <style name="ButtonStyle" parent="Base.Widget.AppCompat.Button.Colored">
         <item name="colorButtonNormal">@color/colorAccent</item>
         <item name="android:textColor">@color/primary_light</item>
@@ -28,6 +30,8 @@
         <item name="android:textColor">@color/secondary_text</item>
 
     </style>
+
+
     <style name="Base.Widget.AppCompat.ImageButton." parent="Base.Widget.AppCompat.ImageButton">
     </style>
 

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:padding="@dimen/padding_views">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txt_tittle_tip"
+                android:textAlignment="center"
+                android:textSize="20dp"
+                android:text="Tip"/>
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/crear_boton"
+                android:layout_marginBottom="@dimen/inter_space"
+                android:background="#C8C9CB" />
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txt_argument_tip_one"
+                android:text="texto1"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txt_argument_tip_two"
+                android:text="texto2"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txt_argument_tip_three"
+                android:text="texto3"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+
+                <Button
+
+                    android:id="@+id/btn_exit_tip"
+                    android:layout_marginTop="30dp"
+                    android:text="Cerrar"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    style="@style/ButtonStyle"
+
+                    />
+
+                <View
+                    android:id="@+id/divider_botons"
+                    android:layout_width="@dimen/text_size"
+                    android:layout_height="1dp"
+
+                    />
+
+                <Button
+
+                    android:id="@+id/btn_show_more_tip"
+                    android:layout_marginTop="30dp"
+                    android:text="ver mas..."
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    style="@style/ButtonStyle"
+
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
