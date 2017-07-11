@@ -145,7 +145,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             txtConstraint = (TextView) itemView.findViewById(R.id.txt_const_level);
             btnBuy = (Button) itemView.findViewById(R.id.btn_buy_product);
 
-
         }
 
         @Override

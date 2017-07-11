@@ -109,7 +109,9 @@ public class AppControl {
 
                     Log.d(TAG,"Creating Question Table");
 
-                    String jsonText1 = ("{'text':' x= 10 + 3 * 4 ',\n" +
+                    String jsonText1 = ("{'text':' x= 10 + 3 * 4 '," +
+                            "\n'img':''" +
+                            "\n" +
                             "\t\t'answers':[\n" +
                             "\t\t{'text':'Respuesta 22' ,'isCorrect':'1'},\n" +
                             "\t\t{'text':'Respuesta 52' ,'isCorrect':'0'},\n" +

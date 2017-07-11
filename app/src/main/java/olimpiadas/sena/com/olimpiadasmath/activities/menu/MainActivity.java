@@ -25,6 +25,7 @@ import olimpiadas.sena.com.olimpiadasmath.activities.shop.ShopActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.test.TestActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.librerias.CircleMenu;
+import olimpiadas.sena.com.olimpiadasmath.util.DialogHelper;
 import pl.droidsonroids.gif.GifImageView;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -46,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         gifMenu.setOnClickListener(this);
         getSupportActionBar().hide();
         appControl = AppControl.getInstance();
+
+
 
         btnShop = (Button) findViewById(R.id.btn_menu_shop);
         btnShop.setOnClickListener(this);
@@ -106,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             Log.d("Test","se va a obtener el usuario " + appControl.currentUser.getExperience() );
 
+            //DialogHelper.showBusyDialog(this,"cargando");
 
             Log.d("Test","se va a crear jobject");
             JSONObject test = new JSONObject("{'question':'Me comi una manzana....',\n" +

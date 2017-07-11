@@ -20,10 +20,16 @@ public class DialogHelper {
     static Dialog mProgressDialog;
 
     public static void showBusyDialog(Context context,String message) {
+
+
         mProgressDialog = new Dialog(context);
+
         mProgressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
         mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
         mProgressDialog.setContentView(R.layout.dialog_processing);
+
         ((TextView)mProgressDialog.getWindow().findViewById(R.id.tv_dialogProcessInfo)).setText(message);
         mProgressDialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme;
         mProgressDialog.setCancelable(false);
@@ -37,4 +43,6 @@ public class DialogHelper {
             mProgressDialog = null;
         }
     }
+
+
 }
