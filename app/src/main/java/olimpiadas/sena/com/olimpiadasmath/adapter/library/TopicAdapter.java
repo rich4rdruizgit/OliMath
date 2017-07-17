@@ -8,20 +8,23 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
+import olimpiadas.sena.com.olimpiadasmath.activities.library.LibraryActivity;
 import olimpiadas.sena.com.olimpiadasmath.model.Topic;
 
 /**
  * Created by jyanguas on 29/06/2017.
+ * Modificado por Mile 17/07/2017
  */
 
 public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.TopicViewHolder>{
 
-    Context context;
+    public Context context;
     List<Topic> topics;
 
     public TopicAdapter(Context ctx) {
@@ -29,10 +32,10 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.TopicViewHol
         context = ctx;
 
         topics = new ArrayList<Topic>();
-        topics.add(new Topic("Ecuacion", R.mipmap.ic_launcher));
-        topics.add(new Topic("Geometria", R.mipmap.ic_launcher));
-        topics.add(new Topic("Tema3", R.mipmap.ic_launcher));
-        topics.add(new Topic("Tema4", R.mipmap.ic_launcher));
+        topics.add(new Topic("Ecuaciones"));
+        topics.add(new Topic("Geometría"));
+        topics.add(new Topic("Tema3"));
+        topics.add(new Topic("Tema4"));
 
     }
 
@@ -48,7 +51,7 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.TopicViewHol
 
 
         holder.txtName.setText(topics.get(position).getName());
-        holder.imgTopic.setImageResource(topics.get(position).getImage());
+
 
 
     }
@@ -63,23 +66,27 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicAdapter.TopicViewHol
 
     public static class TopicViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        protected ImageView imgTopic;
         protected TextView txtName;
-        protected Button btnGo;
+
 
 
         public TopicViewHolder(final View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-            imgTopic = (ImageView) itemView.findViewById(R.id.img_view_topic);
+
             txtName = (TextView) itemView.findViewById(R.id.txt_name_topic);
-            btnGo = (Button) itemView.findViewById(R.id.btn_go_topic);
+
 
         }
 
         @Override
         public void onClick(View v) {
 
+            Toast toast =
+                    Toast.makeText(v.getContext(),
+                            "Toast por defecto", Toast.LENGTH_SHORT);
+
+            toast.show();
         }
     }
 }
