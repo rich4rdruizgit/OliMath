@@ -9,7 +9,7 @@
     <android.support.v7.widget.CardView
         android:padding="10dp"
         android:id="@+id/cardview_shop"
-        android:layout_width="140dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="10dp">
         <LinearLayout
@@ -17,14 +17,6 @@
             android:layout_height="match_parent"
             android:background="@drawable/shadow"
             android:orientation="vertical">
-
-            <ImageView
-                android:padding="5dp"
-                android:id="@+id/img_view_topic"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@mipmap/ic_launcher" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -39,20 +31,10 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Tema"
+                    android:padding="5dp"
                     android:textColor="@color/primary_text"
                     android:textSize="20sp" />
 
-                <Button
-                    android:layout_gravity="center"
-                    android:id="@+id/btn_go_topic"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight=".5"
-                    android:layout_margin="10dp"
-                    android:text="Ir"
-                    android:textAlignment="center"
-                    android:textColor="@color/primary_light"
-                    style="@style/ButtonStyle"/>
             </LinearLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>
