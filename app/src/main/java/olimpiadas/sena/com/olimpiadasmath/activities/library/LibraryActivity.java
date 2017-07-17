@@ -25,6 +25,7 @@ public class LibraryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library);
+        getSupportActionBar().hide();
         listElements=(RecyclerView) findViewById(R.id.recycler_library);
         listElements.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(this);
