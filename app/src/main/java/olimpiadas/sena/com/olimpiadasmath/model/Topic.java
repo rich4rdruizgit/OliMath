@@ -7,12 +7,12 @@ package olimpiadas.sena.com.olimpiadasmath.model;
 public class Topic {
 
     String name;
-    int image;
 
 
-    public Topic(String name, int image) {
+
+    public Topic(String name) {
         this.name = name;
-        this.image = image;
+
     }
 
     public String getName() {
@@ -23,11 +23,5 @@ public class Topic {
         this.name = name;
     }
 
-    public int getImage() {
-        return image;
-    }
 
-    public void setImage(int image) {
-        this.image = image;
-    }
 }
