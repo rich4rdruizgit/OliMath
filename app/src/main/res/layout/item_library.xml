@@ -20,7 +20,7 @@
 
             <ImageView
                 android:padding="5dp"
-                android:id="@+id/img_view_shop"
+                android:id="@+id/img_view_topic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -30,49 +30,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_gravity="center"
-                >
+                android:layout_gravity="center">
 
                 <TextView
                     android:layout_gravity="center"
-                    android:id="@+id/txt_name_shop"
+                    android:id="@+id/txt_name_topic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Producto"
+                    android:text="Tema"
                     android:textColor="@color/primary_text"
                     android:textSize="20sp" />
 
-                <TextView
-                    android:layout_gravity="center"
-                    android:id="@+id/txt_price_shop"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Precio"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="10sp" />
-
-                <TextView
-                    android:layout_gravity="center"
-                    android:id="@+id/txt_const_level"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-
-                    android:text="nivel :30"
-                    android:textColor="@color/secondary_text"
-                    android:textSize="10sp" />
-
                 <Button
-
                     android:layout_gravity="center"
-                    android:id="@+id/btn_buy_product"
+                    android:id="@+id/btn_go_topic"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight=".5"
                     android:layout_margin="10dp"
-                    android:text="comprar"
+                    android:text="Ir"
+                    android:textAlignment="center"
                     android:textColor="@color/primary_light"
                     style="@style/ButtonStyle"/>
             </LinearLayout>

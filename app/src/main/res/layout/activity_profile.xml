@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo_b"
+    android:padding="@dimen/padding_views"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.profile.ProfileActivity">
 
     <TextView
@@ -14,9 +15,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="10dp"
-        android:text="NOMBRE DE USUARIO"
+        android:text="@string/nombre_de_usuario"
         android:textColor="@color/colorPrimary"
-        android:textSize="30dp" />
+        android:textSize="@dimen/text_size_tittle" />
 
     <LinearLayout
         android:id="@+id/level"
@@ -26,22 +27,28 @@
         android:orientation="horizontal">
         <TextView
             android:id="@+id/tv_level"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp"
-            android:textSize="20dp"
-            android:textColor="@color/orangeSena"
-            android:text="Nivel :  "/>
+            android:padding="@dimen/padding_views"
+            android:textSize="@dimen/text_size"
+            android:textColor="@color/greenSena"
+            android:text="@string/level"/>
+
+        <View
+            android:layout_width="@dimen/text_size"
+            android:layout_height="1dp"
+
+            />
+
         <TextView
             android:id="@+id/tv_profile_level_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/greenSena"
-            android:textSize="20dp"
-            android:text="       X 4 " />
+            android:padding="@dimen/padding_views"
+            android:textSize="@dimen/text_size"
+            android:text="x4" />
     </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/ticket"
@@ -54,19 +61,23 @@
             android:id="@+id/imgTickets"
             android:layout_width="80dp"
             android:layout_height="50dp"
+            android:padding="@dimen/padding_views"
             android:src="@drawable/ticket"
-            android:layout_weight="1"
             android:layout_below="@+id/identicon" />
+
+        <View
+            android:layout_width="@dimen/text_size"
+            android:layout_height="1dp"
+
+            />
         <TextView
             android:id="@+id/tv_profile_ticket"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_alignTop="@+id/imageView"
-            android:textColor="@color/greenSena"
-            android:textSize="20dp"
-            android:layout_weight="1"
-            android:text="X 4 " />
+            android:padding="@dimen/padding_views"
+            android:textSize="@dimen/text_size"
+            android:text="x4" />
     </LinearLayout>
 
     <LinearLayout
@@ -80,23 +91,24 @@
 
         <ImageView
             android:id="@+id/img_coins"
-            android:layout_width="30dp"
-            android:layout_height="40dp"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
             android:layout_below="@+id/identicon"
-            android:layout_marginLeft="30dp"
-            android:layout_weight="1"
-            android:src="@drawable/coin" />
+            android:src="@drawable/coin"
+            android:padding="@dimen/padding_views"/>
+        <View
+            android:layout_width="@dimen/text_size"
+            android:layout_height="1dp"
+
+            />
 
         <TextView
             android:id="@+id/tv_profile_coins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/imageView"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:text="     X 4 "
-            android:textColor="@color/greenSena"
-            android:textSize="20dp" />
+            android:text="x4"
+            android:padding="@dimen/padding_views"
+            android:textSize="@dimen/text_size" />
     </LinearLayout>
 
     <olimpiadas.sena.com.olimpiadasmath.librerias.identicons.SymmetricIdenticon
@@ -115,18 +127,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/coinsLayout"
-        android:layout_margin="10dp"
-        android:layout_marginBottom="0dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="0dp"
+       android:padding="@dimen/padding_views"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tv_exp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="Exp"
+            android:padding="@dimen/padding_views"
+            android:text="@string/experience"
             android:textSize="20sp" />
 
         <FrameLayout

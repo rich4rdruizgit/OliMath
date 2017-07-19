@@ -146,7 +146,7 @@ public class ResultActivity extends AppCompatActivity {
         }else{
             mImageDrawable.setLevel(tempExp);
             if (tempExp <= currentUser.getExperience()*MULTLEVEL) {
-                Log.d("tag", "el nicel es " + tempExp);
+                Log.d("tag", "el nivel es " + tempExp);
                 mUpHandler.postDelayed(animateUpImage, DELAY);
             } else {
                 mUpHandler.removeCallbacks(animateUpImage);

@@ -32,6 +32,8 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
     CommunicationTest  communicationTest;
 
     Button btnNext,btnBack;
+    //ImageView imgViewTest;
+    public boolean imageScaled = false;
 
     public MoveTestListener getMoveTestListener() {
         return moveTestListener;
@@ -98,6 +100,25 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
             btnBack = (Button) view.findViewById(R.id.btn_test_back);
         }
         ImageView imgScale = (ImageView) view.findViewById(R.id.img_test_scale);
+        ImageView imgScaleView = (ImageView) view.findViewById(R.id.img_test_image);
+        final ImageView imgViewTest = (ImageView) view.findViewById(R.id.contentViewImage);
+        imgViewTest.setVisibility(View.GONE);
+
+        imgScaleView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageScaled = !imageScaled;
+                if(imageScaled){
+                    Log.d(TAG,"img_test_image pressed");
+                    imgViewTest.setVisibility(View.VISIBLE);
+                }else{
+                    Log.d(TAG,"img_test_image pressed");
+                    imgViewTest.setVisibility(View.GONE);
+                }
+            }
+        });
+
+
 
 
         if(position == getCount() - 1){
@@ -132,6 +153,9 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
 
 
         imgScale.setOnClickListener(this);
+        //imgScaleView.setOnClickListener(this);
+
+
         bind(question.get(position), view,position);
         CardView cardView = (CardView) view.findViewById(R.id.cardView);
 
@@ -155,6 +179,8 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
         TextView titleTextView = (TextView) view.findViewById(R.id.titleTextView);
         TextView contentTextView = (TextView) view.findViewById(R.id.contentTextView);
 
+
+
         Log.d(TAG,"Question text : " + item.getQuestionText() );
         titleTextView.setText(item.getQuestionText());
         RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.rg_group_answer);
@@ -171,6 +197,10 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
         switch (v.getId()){
             case R.id.img_test_scale:
                 if(communicationTest!=null){communicationTest.changeScale();}
+                break;
+            case R.id.img_test_image:
+                Log.d(TAG,"img_test_image pressed");
+
                 break;
 
         }

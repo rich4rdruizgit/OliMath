@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/fondo_b"
     android:orientation="vertical"
+    android:padding="@dimen/padding_views"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.session.LoginActivity"
     android:weightSum="1">
     <ImageView
@@ -22,37 +23,37 @@
         android:orientation="vertical"
         >
         <LinearLayout
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/padding_views"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <EditText
                 android:id="@+id/etv_login_user"
                 android:gravity="center"
-                android:hint="Usuario"
+                android:hint="@string/user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <EditText
                 android:id="@+id/etv_login_pass"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:hint="Contraseña"
+                android:hint="@string/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
         <Button
             android:id="@+id/btn_login"
-            android:text="Iniciar Sesión"
+            android:text="@string/start_sesion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/ButtonStyle"/>
+            />
         <Button
             android:id="@+id/btn_lose_pass"
             android:layout_marginTop="10dp"
-            android:text="Recuperar Contraseña"
+            android:text="@string/recover_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/ButtonStyle"/>
+            />
     </LinearLayout>
 </LinearLayout>
