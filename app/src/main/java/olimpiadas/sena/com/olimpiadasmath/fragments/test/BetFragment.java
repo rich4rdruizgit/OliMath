@@ -32,9 +32,8 @@ public class BetFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_bet, container, false);
-        //btnBetAcept = (Button) container.findViewById(R.id.btn_bet_acept);
         btnBetAcept = (Button) view.findViewById(R.id.btn_bet_acept);
 
         btnBetAcept.setOnClickListener(this);
@@ -46,8 +45,6 @@ public class BetFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()){
             case R.id.btn_bet_acept:
                 bet = 1;
-                Log.d("Estamos en ","el boton de aposta'00000000000000000000000000000000000000000000000000000000r");
-
                 communication.sendBet(bet);
                 break;
         }

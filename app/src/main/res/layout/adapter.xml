@@ -42,7 +42,7 @@
                         android:layout_height="wrap_content"/>
                     <ImageView
                         android:id="@+id/contentViewImage"
-                        android:src="@drawable/pj"
+                        android:src="@drawable/image_default"
                         android:textColor="@color/secondary_text"
                         style="@style/TextAppearance.AppCompat.Body1"
                         android:layout_width="match_parent"
@@ -92,7 +92,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="-5dp"
-                    android:src="@drawable/ic_bookmark_24dp" />
+                    android:src="@drawable/ic_search_black" />
                 <ImageView
                     android:id="@+id/img_test_image"
                     android:layout_width="wrap_content"
@@ -101,7 +101,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="-5dp"
-                    android:src="@drawable/ic_imagemark_24dp" />
+                    android:src="@drawable/ic_photo_library" />
 
             </FrameLayout>
             </ScrollView>
