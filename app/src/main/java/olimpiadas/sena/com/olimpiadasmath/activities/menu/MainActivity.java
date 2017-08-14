@@ -1,5 +1,6 @@
 package olimpiadas.sena.com.olimpiadasmath.activities.menu;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -37,10 +38,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnShop, btnRanking,btnSettings;
     GifImageView gifMenu;
     AppControl appControl;
-
+    Context context;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -48,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         gifMenu.setOnClickListener(this);
         getSupportActionBar().hide();
         appControl = AppControl.getInstance();
-
 
 
         btnShop = (Button) findViewById(R.id.btn_menu_shop);
@@ -88,7 +88,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     @Override
                                     public void run() {
                                         Intent intLibrary = new Intent(MainActivity.this, LibraryActivity.class);
-
                                         startActivity(intLibrary);
                                     }
                                 };
@@ -98,18 +97,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                                 break;
                             case 2:
-                                TimerTask tareac =  new TimerTask() {
+
+                                MainActivity.this.runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        Intent intChallenge = new Intent(MainActivity.this, TestActivity.class);
-                                        intChallenge.putExtra("type",2);
-                                        startActivity(intChallenge);
+                                        DialogHelper.showChallengeDialog(MainActivity.this);
+                                    }
+                                });
+
+                                /*TimerTask tareac =  new TimerTask() {
+                                    @Override
+                                    public void run() {
+
                                     }
                                 };
                                 Timer timerc = new Timer();
-                                timerc.schedule(tareac,1000);
-
-
+                                timerc.schedule(tareac,1000);*/
                                 break;
 
                         }
@@ -124,7 +127,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             Log.d("Test","se va a obtener el usuario " + appControl.currentUser.getExperience() );
 
-            //DialogHelper.showBusyDialog(this,"cargando");
 
             Log.d("Test","se va a crear jobject");
             JSONObject test = new JSONObject("{'question':'Me comi una manzana....',\n" +

@@ -85,7 +85,11 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_test);
         getSupportActionBar().hide();
         flag = getIntent().getExtras().getInt("type"); // con esto miramos si es una practica o un challenge
-
+        if(flag==1){
+            AppControl.getInstance().onPractice = true;
+        }else{
+            AppControl.getInstance().onChallenge =true;
+        }
         // Cargando los fragments
         fragHeader = findViewById(R.id.fragment_test_header);
         fragBet = findViewById(R.id.fragment_test_apuesta);
@@ -102,10 +106,23 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         tvBet = (TextView) findViewById(R.id.tv_bet);
 
         if (flagBet == 0) {
-            fragBet.setVisibility(View.VISIBLE);
-            lnPractice.setVisibility(View.GONE);
-            lnChallenge.setVisibility(View.GONE);
-            linearPractice.setVisibility(View.GONE);
+            if(AppControl.getInstance().onChallenge){
+                AppControl.getInstance().onChallenge = true;
+                AppControl.getInstance().onPractice = false;
+                timeChallenge();
+                fragBet.setVisibility(View.GONE);
+                lnPractice.setVisibility(View.GONE);
+                lnChallenge.setVisibility(View.VISIBLE);
+                linearPractice.setVisibility(View.VISIBLE);
+            }
+            if(AppControl.getInstance().onPractice){
+                AppControl.getInstance().onChallenge = false;
+                AppControl.getInstance().onPractice = true;
+                fragBet.setVisibility(View.VISIBLE);
+                lnPractice.setVisibility(View.GONE);
+                lnChallenge.setVisibility(View.GONE);
+                linearPractice.setVisibility(View.GONE);
+            }
         }
 
         mViewPager = (ViewPagerPersonalizado) findViewById(R.id.viewPager);
@@ -202,14 +219,6 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
                 linearPractice.setVisibility(View.VISIBLE);
                 fragBet.setVisibility(View.GONE);
                 lnChallenge.setVisibility(View.GONE);
-            } else if (flag == 2) {
-                AppControl.getInstance().onChallenge = true;
-                AppControl.getInstance().onPractice = false;
-                timeChallenge();
-                fragBet.setVisibility(View.GONE);
-                lnPractice.setVisibility(View.GONE);
-                lnChallenge.setVisibility(View.VISIBLE);
-                linearPractice.setVisibility(View.VISIBLE);
             }
         }
         return flagBet;
