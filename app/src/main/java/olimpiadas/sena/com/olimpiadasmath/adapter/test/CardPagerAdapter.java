@@ -30,6 +30,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
     private RealmResults<Question> question;
     private float mBaseElevation;
     CommunicationTest  communicationTest;
+    AppControl appControl;
 
     Button btnNext,btnBack;
     //ImageView imgViewTest;
@@ -58,6 +59,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
     public CardPagerAdapter(RealmResults<Question> question) {
         this.question = question;
         mViews = new ArrayList<>();
+        appControl = AppControl.getInstance();
     }
 
     public void addCardItem(CardItem item) {
@@ -86,7 +88,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
 
     @Override
     public Object instantiateItem(ViewGroup container, final int position) {
-        View view = LayoutInflater.from(container.getContext())
+        final View view = LayoutInflater.from(container.getContext())
                 .inflate(R.layout.adapter, container, false);
         container.addView(view);
 
@@ -127,7 +129,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
         }else{
             btnNext.setText(R.string.next);
         }
-
+        final RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.rg_group_answer);
 
         if(btnBack!=null){
             btnBack.setOnClickListener(new View.OnClickListener() {
@@ -142,6 +144,17 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG,"Respuesta es " + radioGroup.getCheckedRadioButtonId());
+                Log.d(TAG,"Respuesta es " + ((RadioButton) view.findViewById(radioGroup.getCheckedRadioButtonId())).getText());
+                int idx = radioGroup.indexOfChild(view.findViewById(radioGroup.getCheckedRadioButtonId()));
+                Log.d(TAG, "EL indice es " + idx);
+                Log.d(TAG, "Correct answer " + question.get(position).getAnswerCorrect(idx));
+                if(question.get(position).getAnswerCorrect(idx).equals("1")){
+                    appControl.answers[position] = 1;
+                }else
+                {
+                    appControl.answers[position] = 0;
+                }
                 if( position +1 < getCount()){
                     moveTestListener.moveClick(position +1);
 
@@ -185,7 +198,12 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
         titleTextView.setText(item.getQuestionText());
         RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.rg_group_answer);
         for(int x = 0 ; x<4 ;x++){
-            contentTextView.setText(item.getAnswerText(x));
+            Log.d(TAG,"item" + x + " correct" + item.getAnswerCorrect(x));
+
+            if(item.getAnswerCorrect(x).equals("1") ) {
+                Log.d(TAG,"Entro 1");
+                contentTextView.setText(item.getAnswerText(x));
+            }
             RadioButton radioButton = new RadioButton(view.getContext());
             radioButton.setText(item.getAnswerText(x));
             radioGroup.addView(radioButton);

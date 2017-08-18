@@ -279,6 +279,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         if(flag == 1){
             countPage = dir + 1;
             tvTetTipNumQuet.setText(countPage+"/"+totalPage);
+
             mViewPager.setCurrentItem(dir);
         }else if(flag == 2){
             countPage = dir + 1;

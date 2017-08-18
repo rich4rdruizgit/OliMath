@@ -24,7 +24,8 @@ public class AppControl {
     private static final AppControl ourInstance = new AppControl();
 
     public int language;
-    public int numberOfQuestions;
+    public int numberOfQuestions = 10;
+    public int[] answers;
     public boolean musik;
     public boolean efects;
 
@@ -50,7 +51,7 @@ public class AppControl {
     public boolean init(final InitComplete listener){
 
         init = true;
-
+        answers = new  int[10];
         Realm realm = Realm.getDefaultInstance();
 
         realm.executeTransactionAsync(new Realm.Transaction() {
@@ -71,7 +72,7 @@ public class AppControl {
 
 
                     Log.d(TAG,"Creating BonusTables");
-
+                    //float max, float min, float coin, float ticket, float exp, float score, int type
                     //Practice
                     BonusTable bonus1 = new BonusTable(1, 0.9f, 2, 3, 3, 1.5f, 1);
                     BonusTable bonus2 = new BonusTable(0.8f, 0.89f,2 , 3, 3, 1.5f, 1);
