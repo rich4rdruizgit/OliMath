@@ -58,23 +58,27 @@
                         android:text="Experiencia"
                         android:textColor="@color/primary_text"/>
 
-
-                    <ImageView
-                        android:id="@+id/img_header_progress_bar2"
-                        android:layout_width="match_parent"
-                        android:layout_height="10dp"
-                        android:src="@drawable/clip_source" />
-
                     <FrameLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center">
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="10dp">
+
+
 
                         <ImageView
                             android:id="@+id/img_header_progress_bar1"
                             android:layout_width="70dp"
                             android:layout_height="10dp"
-                            android:src="@drawable/backg" />
+                            android:src="@drawable/backg"
+                            android:layout_marginBottom="10dp"/>
+
+                        <ImageView
+                            android:id="@+id/img_header_progress_bar2"
+                            android:layout_width="70dp"
+                            android:layout_height="10dp"
+                            android:src="@drawable/clip_source"
+                            android:layout_marginLeft="1.5dp"/>
 
                     </FrameLayout>
                 </LinearLayout>
