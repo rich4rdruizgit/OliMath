@@ -2,100 +2,148 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/background_base"
     tools:context="olimpiadas.sena.com.olimpiadasmath.fragments.header.HeaderFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/img_header_profile"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/pj"
-            android:layout_margin="10dp"
-            android:background="@drawable/borde_redondo"/>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp">
-
-            <TextView
-                android:id="@+id/tv_header_exp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Exp"/>
-
-
-            <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center">
-
-                <ImageView
-                    android:id="@+id/img_header_progress_bar1"
-                    android:layout_width="70dp"
-                    android:layout_height="10dp"
-                    android:src="@drawable/backg" />
-
-                <ImageView
-                    android:id="@+id/img_header_progress_bar2"
-                    android:layout_width="70dp"
-                    android:layout_height="10dp"
-                    android:src="@drawable/clip_source" />
-
-            </FrameLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="20dp"
-            >
+        android:orientation="horizontal"
+        android:layout_marginTop="2dp">
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/ticket"
-                android:layout_marginLeft="20dp"
-                android:layout_gravity="center"/>
-
-            <TextView
-                android:id="@+id/tv_header_ticket"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" x 20"
-                android:layout_gravity="center"/>
-        </LinearLayout>
+                android:id="@+id/img_header_profile"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/borde_redondo"
+                android:src="@drawable/pj" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="20dp"
-            >
+            android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/coin"
-                android:layout_marginLeft="20dp"
-                android:layout_gravity="center"/>
 
             <TextView
-                android:id="@+id/tv_header_coins"
-                android:layout_width="wrap_content"
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=" x 20"
-                android:layout_gravity="center"/>
+                android:gravity="center_horizontal"
+                android:text="Fulano Perez"
+                android:textColor="@color/primary_text"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_header_exp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Experiencia"
+                        android:textColor="@color/primary_text"/>
+
+
+                    <ImageView
+                        android:id="@+id/img_header_progress_bar2"
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:src="@drawable/clip_source" />
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
+
+                        <ImageView
+                            android:id="@+id/img_header_progress_bar1"
+                            android:layout_width="70dp"
+                            android:layout_height="10dp"
+                            android:src="@drawable/backg" />
+
+                    </FrameLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_header_ticket"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tickets"
+                        android:textColor="@color/primary_text"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/ticket" />
+
+                    <TextView
+                        android:id="@+id/tv_header_ticket"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text=" x 20"
+                        android:textColor="@color/primary_text"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_header_coin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Monedas"
+                        android:textColor="@color/primary_text"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/coin" />
+
+                    <TextView
+                        android:id="@+id/tv_header_coins"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text=" x 20"
+                        android:textColor="@color/primary_text"/>
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/ic_launcher_round"
+                    android:layout_marginLeft="10dp"/>
+
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

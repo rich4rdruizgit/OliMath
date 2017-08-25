@@ -273,7 +273,6 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-
     @Override
     public void moveClick(int dir) {
         if(flag == 1){
