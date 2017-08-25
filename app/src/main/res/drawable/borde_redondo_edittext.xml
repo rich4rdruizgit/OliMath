@@ -12,4 +12,5 @@
         android:bottom="7dp"/>
     <stroke android:width="2dip" android:color="#B1BCBE" />
     <corners android:radius="10px"/>
+
 </shape>

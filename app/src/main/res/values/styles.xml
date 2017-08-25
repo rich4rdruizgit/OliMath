@@ -26,7 +26,7 @@
 
 
     <style name="Widget.AppCompat.EditText" parent="Base.Widget.AppCompat.EditText">
-        <item name="android:textColor">@color/secondary_text</item>
+        <item name="android:textColor">#ffffff</item>
         <item name="android:background">@drawable/borde_redondo_edittext</item>
     </style>
 
