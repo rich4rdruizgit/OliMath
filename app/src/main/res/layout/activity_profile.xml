@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/padding_views"
+    android:background="#434b5b"
     android:orientation="vertical"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.profile.ProfileActivity">
 
@@ -29,9 +30,18 @@
     </LinearLayout>
 
     <LinearLayout
+        android:padding="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:src="@drawable/user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
         <TextView
+            android:layout_gravity="center"
+            android:layout_marginLeft="30dp"
+            android:textSize="20dp"
             android:text="PERFIL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -44,13 +54,15 @@
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="wrap_content"
+            android:layout_weight="0.4"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/coinsLayout"
-            android:padding="@dimen/padding_views"
+
             android:orientation="vertical">
 
             <TextView
+                android:layout_gravity="center"
                 android:id="@+id/tv_exp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,18 +71,16 @@
                 android:textSize="20sp" />
 
             <FrameLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 >
 
                 <ImageView
                     android:id="@+id/img_profile_progress_bar1"
-                    android:layout_width="150dp"
+                    android:layout_width="130dp"
                     android:layout_height="14dp"
                     android:src="@drawable/backg"
                     android:layout_marginTop="3dp"
-
-
                     />
 
                 <ImageView
@@ -81,40 +91,34 @@
                     />
 
             </FrameLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/level"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_nick"
-            android:orientation="vertical">
             <TextView
-                android:id="@+id/tv_level"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_views"
-                android:textSize="@dimen/text_size"
-                android:textColor="@color/greenSena"
-                android:text="@string/level"/>
-
-            <TextView
-                android:id="@+id/tv_profile_level_number"
+                android:layout_gravity="center"
+                android:id="@+id/tv_profile_percent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/imageView"
                 android:padding="@dimen/padding_views"
                 android:textSize="@dimen/text_size"
-                android:text="x4" />
+                android:text="30%" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/ticket"
-            android:layout_width="wrap_content"
+            android:layout_weight="0.3"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_below="@id/level"
             android:weightSum="2">
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_views"
+                android:text="Boletos"
+                android:textSize="20sp" />
             <ImageView
+                android:layout_gravity="center"
                 android:id="@+id/imgTickets"
                 android:layout_width="80dp"
                 android:layout_height="50dp"
@@ -123,6 +127,7 @@
                 android:layout_below="@+id/identicon" />
 
             <TextView
+                android:layout_gravity="center"
                 android:id="@+id/tv_profile_ticket"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -131,32 +136,90 @@
                 android:textSize="@dimen/text_size"
                 android:text="x4" />
         </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:id="@+id/coinsLayout"
+            android:layout_weight="0.3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ticket"
+            android:layout_marginBottom="0dp"
+            android:orientation="vertical"
+            android:weightSum="2">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_views"
+                android:text="Monedas"
+                android:textSize="18sp" />
+            <ImageView
+                android:id="@+id/img_coins"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/identicon"
+                android:src="@drawable/coin"
+                android:padding="@dimen/padding_views"/>
+
+
+            <TextView
+                android:id="@+id/tv_profile_coins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x4"
+                android:padding="@dimen/padding_views"
+                android:textSize="@dimen/text_size" />
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/coinsLayout"
+        android:id="@+id/level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ticket"
-        android:layout_marginBottom="0dp"
-        android:orientation="vertical"
-        android:weightSum="2">
-
-        <ImageView
-            android:id="@+id/img_coins"
+        android:layout_below="@+id/tv_nick"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_level"
             android:layout_width="80dp"
-            android:layout_height="50dp"
-            android:layout_below="@+id/identicon"
-            android:src="@drawable/coin"
-            android:padding="@dimen/padding_views"/>
-
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_views"
+            android:textSize="@dimen/text_size"
+            android:textColor="@color/greenSena"
+            android:text="@string/level"/>
 
         <TextView
-            android:id="@+id/tv_profile_coins"
+            android:id="@+id/tv_profile_level_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="x4"
             android:padding="@dimen/padding_views"
-            android:textSize="@dimen/text_size" />
+            android:textSize="@dimen/text_size"
+            android:text="x4" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_gravity="center"
+            android:textSize="30sp"
+            android:text="PTS"
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_height="wrap_content" />
+        <TextView
+
+            android:layout_gravity="center"
+            android:layout_marginLeft="30dp"
+            android:textSize="40sp"
+            android:text="19000"
+            android:layout_width="0dp"
+            android:layout_weight="0.6"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/user"
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_height="90dp" />
     </LinearLayout>
 
 </LinearLayout>
