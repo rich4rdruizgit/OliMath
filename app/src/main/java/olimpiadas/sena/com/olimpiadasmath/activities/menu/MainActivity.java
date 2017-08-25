@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     String arrayName[] = {"Practice","Study","Challenge"};
     CircleMenu circleMenu;
-    Button btnShop, btnRanking,btnSettings;
+    Button btnShop, btnRanking,btnSettings,btnPractice,btnChallenge,btnLibrary;
     GifImageView gifMenu;
     AppControl appControl;
     Context context;
@@ -59,6 +59,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btnSettings = (Button) findViewById(R.id.btn_settings);
         btnSettings.setOnClickListener(this);
+
+        btnPractice = (Button) findViewById(R.id.btn_menu_practice);
+        btnPractice.setOnClickListener(this);
+
+        btnChallenge = (Button) findViewById(R.id.btn_menu_challenge);
+        btnChallenge.setOnClickListener(this);
+
+        btnLibrary = (Button) findViewById(R.id.btn_menu_tutor);
+        btnLibrary.setOnClickListener(this);
 
         circleMenu = (CircleMenu) findViewById(R.id.circle_menu);
         circleMenu.setOnClickListener(this);
@@ -152,6 +161,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.circle_menu:
                 toggle();
+                break;
+            case R.id.btn_menu_practice:
+                Intent intPractice = new Intent(MainActivity.this, TestActivity.class);
+                intPractice.putExtra("type",1);
+                startActivity(intPractice);
+                break;
+            case R.id.btn_menu_challenge:
+                MainActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        DialogHelper.showChallengeDialog(MainActivity.this);
+                    }
+                });
                 break;
             case R.id.btn_menu_shop:
                 Intent intent = new Intent(MainActivity.this, ShopActivity.class);
