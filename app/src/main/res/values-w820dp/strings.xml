@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="password">Contraseña</string>
+    <string name="recover_password">Recuperar Contraseña</string>
+    <string name="experience">Experiencia</string>
+</resources>

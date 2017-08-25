@@ -31,7 +31,7 @@ import olimpiadas.sena.com.olimpiadasmath.model.Product;
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder>{
 
     private static final String TAG = ProductAdapter.class.toString();
-    public List<Product> lstProductold;
+
     public RealmResults<Product> lstProduct;
     static Context context;
     AppControl appControl;
@@ -144,7 +144,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             txtPrice = (TextView) itemView.findViewById(R.id.txt_price_shop);
             txtConstraint = (TextView) itemView.findViewById(R.id.txt_const_level);
             btnBuy = (Button) itemView.findViewById(R.id.btn_buy_product);
-
 
         }
 

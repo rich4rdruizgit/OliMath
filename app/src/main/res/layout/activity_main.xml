@@ -21,7 +21,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.75"
+        android:layout_weight="0.5"
         android:layout_gravity="center"
         android:orientation="vertical"
         >
@@ -43,39 +43,178 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.25"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:layout_weight="0.4"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:orientation="horizontal"
 
-        <Button
-            android:id="@+id/btn_menu_ranking"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/ranking"
-            android:elevation="10dp"
-            style="@style/ButtonStyle"/>
+            >
 
-        <Button
-            android:id="@+id/btn_menu_shop"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/shop"
-            android:padding="5dp"
-            style="@style/ButtonStyle"/>
+            <LinearLayout
+                android:layout_weight="0.3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="center"
 
-        <Button
-            android:id="@+id/btn_settings"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/configuration"
-            android:padding="5dp"
-            style="@style/ButtonStyle"/>
+                android:background="@drawable/background_transparent_with_stroke">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="practice"
+                    android:layout_gravity="center"
+                    />
+
+                <Button
+                    android:id="@+id/btn_menu_practice"
+                    android:layout_width="35dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@mipmap/ic_launcher_round"
+                    android:elevation="10dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="0.3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/background_transparent_with_stroke">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tutor"
+                    android:layout_gravity="center"/>
+
+                <Button
+                    android:id="@+id/btn_menu_tutor"
+                    android:layout_width="35dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@mipmap/ic_launcher_round"
+                    android:elevation="10dp"
+                    android:layout_gravity="center"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="0.3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/background_transparent_with_stroke"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tutor"
+                    android:layout_gravity="center"/>
+
+                <Button
+                    android:id="@+id/btn_menu_challenge"
+                    android:layout_width="35dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@mipmap/ic_launcher_round"
+                    android:elevation="10dp"
+                    android:layout_gravity="center"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
+
+            <LinearLayout
+                android:layout_weight="0.3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/background_transparent_with_stroke">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="practice"
+                    android:layout_gravity="center"
+
+                    />
+
+                <Button
+                    android:id="@+id/btn_menu_ranking"
+                    android:layout_width="35dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@mipmap/ic_launcher_round"
+                    android:elevation="10dp"
+                    android:layout_gravity="center"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="0.3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+
+                android:background="@drawable/background_transparent_with_stroke">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tutor"
+                    android:layout_gravity="center"
+                    />
+                <Button
+                    android:id="@+id/btn_menu_shop"
+                    android:layout_width="35dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@mipmap/ic_launcher_round"
+                    android:padding="5dp"
+                    android:layout_gravity="center"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="0.3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/background_transparent_with_stroke">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tutor"
+                    android:layout_gravity="center"/>
+                <Button
+                    android:id="@+id/btn_settings"
+                    android:layout_width="35dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@mipmap/ic_launcher_round"
+                    android:padding="5dp"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>

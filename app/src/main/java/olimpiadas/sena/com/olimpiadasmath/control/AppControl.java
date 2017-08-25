@@ -24,7 +24,8 @@ public class AppControl {
     private static final AppControl ourInstance = new AppControl();
 
     public int language;
-    public int numberOfQuestions;
+    public int numberOfQuestions = 10;
+    public int[] answers;
     public boolean musik;
     public boolean efects;
 
@@ -50,7 +51,7 @@ public class AppControl {
     public boolean init(final InitComplete listener){
 
         init = true;
-
+        answers = new  int[10];
         Realm realm = Realm.getDefaultInstance();
 
         realm.executeTransactionAsync(new Realm.Transaction() {
@@ -71,7 +72,7 @@ public class AppControl {
 
 
                     Log.d(TAG,"Creating BonusTables");
-
+                    //float max, float min, float coin, float ticket, float exp, float score, int type
                     //Practice
                     BonusTable bonus1 = new BonusTable(1, 0.9f, 2, 3, 3, 1.5f, 1);
                     BonusTable bonus2 = new BonusTable(0.8f, 0.89f,2 , 3, 3, 1.5f, 1);
@@ -182,12 +183,12 @@ public class AppControl {
                             "\t\t{'text':'13' ,'isCorrect':'1'}]\n" +
                             "\t\t\t\n" +
                             "\t\t}}");
-                    String jsonText10 = ("{'text':'Quien es ese Pokemon',\n" +
+                    String jsonText10 = ("{'text':'pendiente pregunta 10',\n" +
                             "\t\t'answers':[\n" +
-                            "\t\t{'text':'Andrew' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'Jefry' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'Andres' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'Andremon' ,'isCorrect':'1'}]\n" +
+                            "\t\t{'text':'12' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'15' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'11' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'13' ,'isCorrect':'1'}]\n" +
                             "\t\t\t\n" +
                             "\t\t}}");
                     Question question1 = new Question(jsonText1);

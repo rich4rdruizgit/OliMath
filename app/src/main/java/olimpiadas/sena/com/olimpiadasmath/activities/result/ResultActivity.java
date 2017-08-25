@@ -11,9 +11,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import io.realm.Realm;
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
+import olimpiadas.sena.com.olimpiadasmath.model.BonusTable;
 import olimpiadas.sena.com.olimpiadasmath.model.User;
 
 
@@ -23,10 +25,15 @@ public class ResultActivity extends AppCompatActivity {
     AppControl appControl;
 
     Button btnContinue;
-    TextView tvCoins,tvTickets,tvExp;
+    TextView tvCoins,tvTickets,tvExp,tvCorAns,tvIncAns;
     private ClipDrawable mImageDrawable;
     private User currentUser;
-    int expWon;
+    int correctAnswers = 0,expWon;
+
+    Realm realm;
+
+    BonusTable bonusTable;
+
 
 
     public static final int MULTLEVEL = 100;
@@ -62,22 +69,14 @@ public class ResultActivity extends AppCompatActivity {
         tempLvl = currentUser.getLevel();
 
         btnContinue = (Button) findViewById(R.id.btn_result_continue);
+        tvCorAns = (TextView) findViewById(R.id.tv_result_rigth_answer_number);
+        tvIncAns = (TextView) findViewById(R.id.tv_result_wrong_answer_number);
         tvCoins = (TextView) findViewById(R.id.tv_result_win_coins_number);
         tvTickets = (TextView) findViewById(R.id.tv_result_win_ticket_number);
         tvExp = (TextView) findViewById(R.id.tv_result_exp_number);
-
-
-
-
-
         ImageView img = (ImageView) findViewById(R.id.img_result_progress_bar2);
         mImageDrawable = (ClipDrawable) img.getDrawable();
-
-
         mImageDrawable.setLevel(tempExp);
-
-
-
 
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +85,21 @@ public class ResultActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        for(int i = 0; i < appControl.answers.length; i++){
+            correctAnswers += appControl.answers[i];
+        }
+
+
+        realm = Realm.getDefaultInstance();
+
+        tvCorAns.setText(String.valueOf(correctAnswers));
+        tvIncAns.setText(String.valueOf(appControl.answers.length - correctAnswers));
+        Log.d(TAG,"Correct answers " + correctAnswers);
+
+        float bonus = appControl.answers.length/correctAnswers;
+
+        bonusTable = realm.where(BonusTable.class).greaterThan("min",bonus).lessThanOrEqualTo("max",bonus).findFirst();
         calculateCoins();
         calculateTickets();
         calculateExp();
@@ -94,7 +108,9 @@ public class ResultActivity extends AppCompatActivity {
 
     private void calculateExp(){
 
-        expWon = 15;
+
+
+        expWon = (int) (correctAnswers * bonusTable.getExp());
         double finalExp = currentUser.getExperience() + expWon;
         if(finalExp >=100){
             currentUser.setExperience(finalExp - 100);
@@ -108,14 +124,17 @@ public class ResultActivity extends AppCompatActivity {
     private void calculateCoins(){
 
 
-        int winCoins = 7;
+        int winCoins = (int)(correctAnswers * bonusTable.getCoin());
         tvCoins.setText(" x " + winCoins);
 
         currentUser.setCoins(currentUser.getCoins() + winCoins);
 
     }
     private void calculateTickets(){
-        int win = 2;
+        int win = (int)bonusTable.getTicket();
+
+
+
         tvTickets.setText(" x " + win);
 
         currentUser.setTickets(currentUser.getTickets() + win);
@@ -146,7 +165,7 @@ public class ResultActivity extends AppCompatActivity {
         }else{
             mImageDrawable.setLevel(tempExp);
             if (tempExp <= currentUser.getExperience()*MULTLEVEL) {
-                Log.d("tag", "el nicel es " + tempExp);
+                Log.d("tag", "el nivel es " + tempExp);
                 mUpHandler.postDelayed(animateUpImage, DELAY);
             } else {
                 mUpHandler.removeCallbacks(animateUpImage);
