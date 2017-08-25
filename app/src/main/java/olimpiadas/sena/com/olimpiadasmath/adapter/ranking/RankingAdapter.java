@@ -42,13 +42,13 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
         holder.txtNickName.setText(user.getNickname()+"");
         holder.txtPoints.setText(user.getScore()+"");
 
-        if(user.getNickname().equals(AppControl.getInstance().currentUser.getNickname())){
-            holder.layout.setBackgroundResource(R.drawable.scall);
-            holder.layout.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
-            holder.txtPosition.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
-            holder.txtNickName.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
-            holder.txtPoints.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
-        }
+//        if(user.getNickname().equals(AppControl.getInstance().currentUser.getNickname())){
+//            holder.layout.setBackgroundResource(R.drawable.scall);
+//            holder.layout.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
+//            holder.txtPosition.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
+//            holder.txtNickName.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
+//            holder.txtPoints.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
+//        }
     }
     @Override
     public int getItemCount() {
@@ -65,12 +65,8 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
         public RankingViewHolder(View itemView) {
             super(itemView);
             txtPosition = (TextView) itemView.findViewById(R.id.txt_position_ranking);
-
-
             txtNickName = (TextView) itemView.findViewById(R.id.txt_nickname_ranking);
-
             txtPoints = (TextView) itemView.findViewById(R.id.txt_points_ranking);
-
             layout = (LinearLayout) itemView.findViewById(R.id.layout_ranking);
         }
     }

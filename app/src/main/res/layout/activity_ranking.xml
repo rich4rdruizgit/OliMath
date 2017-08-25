@@ -6,49 +6,53 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    android:background="@drawable/fondo_b"
+    android:background="#4b5465"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.ranking.RankingActivity">
-
-    <TextView
-        android:id="@+id/txt_title_ranking"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:text="RANKING ACTUAL"
-        />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:weightSum="3"
-        android:layout_height="wrap_content" android:orientation="horizontal"
-        >
-        <TextView
-            android:gravity="center"
-            android:id="@+id/txt_title_position"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="POSITION"/>
-        <TextView
-            android:gravity="center"
-            android:id="@+id/txt_title_nickname"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="NICKNAME"/>
-        <TextView
-            android:gravity="center"
-            android:id="@+id/txt_title_points"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="POINTS"/>
+        android:layout_height="70dp">
+        <fragment
+            android:id="@+id/fragment"
+            android:name="olimpiadas.sena.com.olimpiadasmath.fragments.header.HeaderFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="15dp"
+            android:layout_weight=".15"
+            android:src="@android:drawable/arrow_down_float"
+            android:rotation="90"
+            />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".15"
+            android:src="@android:drawable/btn_star_big_on"
+            />
+        <TextView
+            android:id="@+id/txt_title_ranking"
+            android:layout_width="0dp"
+            android:layout_weight=".7"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:paddingLeft="20dp"
+            android:text="RANKING"
+            android:textColor="#fff"
+            />
+    </LinearLayout>
+
     <fragment
         android:id="@+id/fragment2"
         android:name="olimpiadas.sena.com.olimpiadasmath.fragments.ranking.RankingFragment"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <android.support.v7.widget.RecyclerView

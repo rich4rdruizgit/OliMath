@@ -14,34 +14,70 @@
         >
         <!-- TODO: Update blank fragment layout -->
         <TextView
-            android:gravity="center"
             android:id="@+id/txt_my_position"
+            android:gravity="center_horizontal|center_vertical"
             android:layout_width="0dp"
-            android:layout_weight=".2"
-            android:layout_height="wrap_content"
-            android:text="my position"
-            android:textSize="@dimen/text_size"
-            android:textColor="@color/cardview_light_background"/>
+            android:layout_weight=".1"
+            android:layout_height="match_parent"
+            android:text="1"
+            android:textSize="30sp"
+            android:textColor="@color/cardview_light_background"
+            />
 
-        <TextView
-            android:gravity="center"
-            android:id="@+id/txt_my_nickname"
+        <ImageView
             android:layout_width="0dp"
-            android:layout_weight=".5"
-            android:layout_height="wrap_content"
-            android:text="my position"
-            android:textSize="@dimen/text_size"
-            android:textColor="@color/cardview_light_background"/>
+            android:layout_weight=".25"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_launcher_round"/>
+        <LinearLayout
+            android:padding="2dp"
+            android:layout_width="0dp"
+            android:layout_weight="0.65"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="4">
 
-        <TextView
-            android:gravity="center"
-            android:id="@+id/txt_my_points"
-            android:layout_width="0dp"
-            android:layout_weight=".3"
-            android:layout_height="wrap_content"
-            android:text="my position"
-            android:textSize="@dimen/text_size"
-            android:textColor="@color/cardview_light_background"/>
+            <TextView
+                android:id="@+id/txt_my_nickname"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="Juanito Alimaña"
+                android:textSize="18sp"
+                android:textColor="#ffffff"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="PTS:"
+                android:textSize="16sp"
+                android:textColor="#ffffff"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                android:weightSum="1">
+                <TextView
+                    android:id="@+id/txt_my_points"
+                    android:gravity="center_vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.7"
+                    android:textSize="25sp"
+                    android:text="25.000"
+                    android:textColor="#ffffff"
+                    />
+                <ImageView
+                    android:tint="#1a1717"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3"
+                    android:src="@android:drawable/ic_menu_myplaces"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </FrameLayout>

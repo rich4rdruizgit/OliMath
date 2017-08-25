@@ -50,7 +50,7 @@ public class RankingActivity extends AppCompatActivity {
 
     private void llenarUsers() {
         users = new ArrayList<>();
-        for (int i = 1; i <= 20; i++) {
+        for (int i = 1; i <= 10; i++) {
             users.add(new User("nick" + i, 100, i));
         }
     }

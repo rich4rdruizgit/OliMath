@@ -2,44 +2,79 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/layout_ranking"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="90dp"
+    android:layout_margin="10dp"
     android:layout_marginBottom="5dp"
-    android:background="@drawable/scall"
-    android:backgroundTint="@color/orangeSena"
+    android:background="@drawable/shape_ranking"
     android:orientation="horizontal"
     android:weightSum="1">
 
     <TextView
         android:id="@+id/txt_position_ranking"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight=".2"
-        android:gravity="right"
-        android:text="position"
+        android:layout_height="match_parent"
+        android:layout_weight=".1"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="1"
         android:textColor="@color/cardview_light_background"
-        android:textSize="@dimen/text_size" />
+        android:textSize="30sp" />
 
-    <TextView
-        android:id="@+id/txt_nickname_ranking"
+    <ImageView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight=".5"
-        android:gravity="center"
-        android:text="nickname"
-        android:textColor="@color/cardview_light_background"
-        android:textSize="@dimen/text_size" />
+        android:layout_height="match_parent"
+        android:layout_weight=".25"
+        android:src="@mipmap/ic_launcher_round" />
 
-    <TextView
-        android:paddingRight="15dp"
-        android:id="@+id/txt_points_ranking"
+    <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight=".3"
-        android:gravity="right"
-        android:text="points"
-        android:textColor="@color/cardview_light_background"
-        android:textSize="@dimen/text_size" />
+        android:layout_height="match_parent"
+        android:layout_weight="0.65"
+        android:orientation="vertical"
+        android:padding="2dp"
+        android:weightSum="4">
+
+        <TextView
+            android:id="@+id/txt_nickname_ranking"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Juanito Alimaña"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="PTS:"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/txt_points_ranking"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="center_vertical"
+                android:text="25.000"
+                android:textColor="#ffffff"
+                android:textSize="25sp" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:src="@android:drawable/ic_menu_myplaces"
+                android:tint="#1a1717" />
+        </LinearLayout>
+    </LinearLayout>
+
+
 </LinearLayout>

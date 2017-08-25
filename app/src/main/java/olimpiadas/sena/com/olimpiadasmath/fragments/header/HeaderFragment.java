@@ -34,7 +34,7 @@ public class HeaderFragment extends Fragment {
     ImageView imgHeaderProfile, imgExp;
     private ClipDrawable mImageDrawable;
 
-    TextView tvCoins,tvExp,tvTickets;
+    TextView tvCoins,tvExp,tvTickets, tvName;
 
     AppControl appControl;
 
@@ -81,6 +81,7 @@ public class HeaderFragment extends Fragment {
         imgHeaderProfile = (ImageView) view.findViewById(R.id.img_header_profile);
         imgExp = (ImageView) view.findViewById(R.id.img_header_progress_bar2);
         tvCoins = (TextView) view.findViewById(R.id.tv_header_coins);
+        tvName = (TextView) view.findViewById(R.id.tv_header_name);
         tvExp = (TextView) view.findViewById(R.id.tv_header_exp);
         tvTickets = (TextView) view.findViewById(R.id.tv_header_ticket);
 
@@ -90,6 +91,7 @@ public class HeaderFragment extends Fragment {
         mImageDrawable.setLevel((int)appControl.currentUser.getExperience()*100);
 
 
+        tvName.setText(appControl.currentUser.getNickname());
         tvTickets.setText(" x " + appControl.currentUser.getTickets());
         tvCoins.setText(" x " + appControl.currentUser.getCoins());
         tvExp.setText(" x " + ((int)appControl.currentUser.getExperience()));
