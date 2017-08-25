@@ -50,15 +50,6 @@ public class ProfileActivity extends AppCompatActivity {
         mImageDrawable.setLevel((int)appControl.currentUser.getExperience() * 100);
 
 
-
-        Identicon identicon = (Identicon) findViewById(R.id.identicon);
-        identicon.show("mcabrerapatino@gmail.com");
-        // identicon.show(myObject);
-        // identicon.show(42);
-        // identicon.show(System.currentTimeMillis());
-        // identicon.show(true);
-
-
     }
 
     @Override
