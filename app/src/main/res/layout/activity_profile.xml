@@ -1,92 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_profile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo_b"
     android:padding="@dimen/padding_views"
+    android:orientation="vertical"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.profile.ProfileActivity">
 
-    <TextView
-        android:id="@+id/tv_nick"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="@string/nombre_de_usuario"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/text_size_tittle" />
-
-    <LinearLayout
-        android:id="@+id/level"
-        android:layout_width="220dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/tv_nick"
         android:orientation="horizontal">
-        <TextView
-            android:id="@+id/tv_level"
+        <ImageView
+            android:src="@drawable/user"
             android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/padding_views"
-            android:textSize="@dimen/text_size"
-            android:textColor="@color/greenSena"
-            android:text="@string/level"/>
-
-        <View
-            android:layout_width="@dimen/text_size"
-            android:layout_height="1dp"
-
-            />
-
+            android:layout_height="80dp" />
         <TextView
-            android:id="@+id/tv_profile_level_number"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_nick"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/padding_views"
-            android:textSize="@dimen/text_size"
-            android:text="x4" />
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/nombre_de_usuario"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_size_tittle" />
     </LinearLayout>
-
 
     <LinearLayout
-        android:id="@+id/ticket"
-        android:layout_width="220dp"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:layout_below="@id/level"
-        android:weightSum="2">
-        <ImageView
-            android:id="@+id/imgTickets"
-            android:layout_width="80dp"
-            android:layout_height="50dp"
-            android:padding="@dimen/padding_views"
-            android:src="@drawable/ticket"
-            android:layout_below="@+id/identicon" />
-
-        <View
-            android:layout_width="@dimen/text_size"
-            android:layout_height="1dp"
-
-            />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/tv_profile_ticket"
+            android:text="PERFIL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/imageView"
+            android:layout_below="@+id/coinsLayout"
             android:padding="@dimen/padding_views"
-            android:textSize="@dimen/text_size"
-            android:text="x4" />
-    </LinearLayout>
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/tv_exp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_views"
+                android:text="@string/experience"
+                android:textSize="20sp" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+
+                <ImageView
+                    android:id="@+id/img_profile_progress_bar1"
+                    android:layout_width="150dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/backg"
+                    android:layout_marginTop="3dp"
+
+
+                    />
+
+                <ImageView
+                    android:id="@+id/img_profile_progress_bar2"
+                    android:layout_width="150dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/clip_source"
+                    />
+
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_nick"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_level"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_views"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/greenSena"
+                android:text="@string/level"/>
+
+            <TextView
+                android:id="@+id/tv_profile_level_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_views"
+                android:textSize="@dimen/text_size"
+                android:text="x4" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/level"
+            android:weightSum="2">
+            <ImageView
+                android:id="@+id/imgTickets"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:padding="@dimen/padding_views"
+                android:src="@drawable/ticket"
+                android:layout_below="@+id/identicon" />
+
+            <TextView
+                android:id="@+id/tv_profile_ticket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/imageView"
+                android:padding="@dimen/padding_views"
+                android:textSize="@dimen/text_size"
+                android:text="x4" />
+        </LinearLayout>
+    </LinearLayout>
     <LinearLayout
         android:id="@+id/coinsLayout"
-        android:layout_width="220dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/ticket"
         android:layout_marginBottom="0dp"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:weightSum="2">
 
         <ImageView
@@ -96,11 +148,7 @@
             android:layout_below="@+id/identicon"
             android:src="@drawable/coin"
             android:padding="@dimen/padding_views"/>
-        <View
-            android:layout_width="@dimen/text_size"
-            android:layout_height="1dp"
 
-            />
 
         <TextView
             android:id="@+id/tv_profile_coins"
@@ -111,67 +159,4 @@
             android:textSize="@dimen/text_size" />
     </LinearLayout>
 
-    <olimpiadas.sena.com.olimpiadasmath.librerias.identicons.SymmetricIdenticon
-        android:id="@+id/identicon"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_below="@+id/tv_nick"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="12dp" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/coinsLayout"
-       android:padding="@dimen/padding_views"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/tv_exp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/padding_views"
-            android:text="@string/experience"
-            android:textSize="20sp" />
-
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-
-            <ImageView
-                android:id="@+id/img_profile_progress_bar1"
-                android:layout_width="150dp"
-                android:layout_height="14dp"
-                android:src="@drawable/backg"
-                android:layout_marginTop="3dp"
-
-
-                />
-
-            <ImageView
-                android:id="@+id/img_profile_progress_bar2"
-                android:layout_width="150dp"
-                android:layout_height="20dp"
-                android:src="@drawable/clip_source"
-                />
-
-        </FrameLayout>
-    </LinearLayout>
-
-    <fragment
-        android:id="@+id/fragment4"
-        android:layout_margin="3dp"
-        android:name="olimpiadas.sena.com.olimpiadasmath.fragments.profile.StatisticFragment"
-        android:layout_width="match_parent"
-        android:layout_height="280dp"
-        android:layout_below="@+id/linearLayout"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-
-</RelativeLayout>
+</LinearLayout>

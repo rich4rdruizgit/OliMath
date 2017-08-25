@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/fondo_b"
+    android:background="#434b5b"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity">
 
     <LinearLayout
@@ -64,12 +64,11 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:layout_gravity="center"
-
                 android:background="@drawable/background_transparent_with_stroke">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="practice"
+                    android:text="practica"
                     android:layout_gravity="center"
                     />
 
