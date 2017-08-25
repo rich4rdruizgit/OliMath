@@ -188,7 +188,7 @@ public class AppControl {
                             "\t\t{'text':'12' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'15' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'11' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'13' ,'isCorrect':'1'}]\n" +
+                            "\t\t{'text':'13' ,'is  Correct':'1'}]\n" +
                             "\t\t\t\n" +
                             "\t\t}}");
                     Question question1 = new Question(jsonText1);

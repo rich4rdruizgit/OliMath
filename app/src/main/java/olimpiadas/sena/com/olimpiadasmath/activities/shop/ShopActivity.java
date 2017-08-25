@@ -32,7 +32,6 @@ public class ShopActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         recyclerViewShop = (RecyclerView) findViewById(R.id.recycler_shop);
 
-
         headerFragment = (HeaderFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_shop_header);
 
 

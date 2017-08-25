@@ -5,55 +5,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo_b"
     android:orientation="vertical"
-    android:padding="@dimen/padding_views"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.session.LoginActivity"
     android:weightSum="1">
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:id="@+id/splash"
-        android:background="@drawable/fondo_login"
-        android:layout_weight="0.32" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.68"
-        android:orientation="vertical"
-        >
-        <LinearLayout
-            android:layout_marginTop="@dimen/padding_views"
-            android:layout_width="match_parent"
+        android:layout_weight="0.5">
+        <ImageView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <EditText
-                android:id="@+id/etv_login_user"
-                android:gravity="center"
-                android:hint="@string/user"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <EditText
-                android:id="@+id/etv_login_pass"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:hint="@string/password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+            android:id="@+id/splash"
+            android:background="@drawable/fondo_login"
+            />
 
-        <Button
-            android:id="@+id/btn_login"
-            android:text="@string/start_sesion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-        <Button
-            android:id="@+id/btn_lose_pass"
-            android:layout_marginTop="10dp"
-            android:text="@string/recover_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:layout_marginTop="@dimen/padding_views"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:orientation="vertical">
+                <EditText
+                    android:id="@+id/etv_login_user"
+                    android:gravity="center"
+                    android:hint="@string/user"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:id="@+id/etv_login_pass"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:hint="@string/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:orientation="vertical"
+                >
+                <Button
+                    android:id="@+id/btn_login"
+                    android:text="@string/start_sesion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+                <Button
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/btn_lose_pass"
+                    android:text="@string/recover_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
 </LinearLayout>
