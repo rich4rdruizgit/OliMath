@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo_b"
+    android:background="#434b5b"
     android:orientation="vertical"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.test.TestActivity">
 
