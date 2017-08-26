@@ -23,6 +23,12 @@
     <string name="nombre_de_usuario">NOMBRE DE USUARIO</string>
     <string name="level">Nivel</string>
     <string name="experience">Experiencia</string>
+    <string name="practice">Practica</string>
+    <string name="library">Tutor</string>
+    <string name="challenge">Reto</string>
+    <string name="ranking">Ranking</string>
+    <string name="options">Opciones</string>
+    <string name="store">Market</string>
 
 
     <string-array name="lenguages">
