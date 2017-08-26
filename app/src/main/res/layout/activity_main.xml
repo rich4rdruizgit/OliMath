@@ -78,7 +78,7 @@
                     android:layout_height="80dp"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@mipmap/ic_launcher_round"
+                    android:background="@drawable/practica_icon"
                     android:elevation="10dp"
                     android:layout_gravity="center"
                     android:gravity="center"/>
