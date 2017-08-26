@@ -5,18 +5,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/fondo_b"
+    android:background="#434b5b"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.settings.SettingsActivity">
 
-    <TextView
-        android:id="@+id/txt_tittle_settings"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+        <fragment
+            android:id="@+id/fragment_shop_header"
+            android:name="olimpiadas.sena.com.olimpiadasmath.fragments.header.HeaderFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="3dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:text="AJUSTES"
-        android:layout_marginBottom="20dp"
-        />
+        android:weightSum="1">
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="15dp"
+            android:layout_weight=".15"
+            android:src="@android:drawable/arrow_down_float"
+            android:rotation="90"
+            />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".15"
+            android:src="@android:drawable/btn_star_big_on"
+            />
+        <TextView
+            android:id="@+id/txt_title_ranking"
+            android:layout_width="0dp"
+            android:layout_weight=".7"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:paddingLeft="20dp"
+            android:text="SETTINGS"
+            android:textColor="#fff"
+            />
+    </LinearLayout>
 
     <LinearLayout
         android:gravity="center"
