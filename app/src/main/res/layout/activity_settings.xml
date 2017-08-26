@@ -62,7 +62,8 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_size"
-            android:text="Música"/>
+            android:text="Música"
+            android:textColor="@color/primary_text"/>
 
         <Switch
             android:layout_width="wrap_content"
@@ -83,7 +84,8 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_size"
-            android:text="Efectos"/>
+            android:text="Efectos"
+            android:textColor="@color/primary_text"/>
 
         <Switch
             android:layout_width="wrap_content"
@@ -105,7 +107,8 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_size"
-            android:text="Idioma"/>
+            android:text="Idioma"
+            android:textColor="@color/primary_text"/>
 
         <Spinner
             android:layout_width="150dp"
@@ -113,7 +116,8 @@
             android:id="@+id/spn_enguage"
             android:textSize="@dimen/text_size"
             android:shadowColor="@color/colorAccent"
-            android:entries="@array/lenguages"/>
+            android:entries="@array/lenguages"
+            android:textColor="@color/primary_text"/>
     </LinearLayout>
 
         <Button
