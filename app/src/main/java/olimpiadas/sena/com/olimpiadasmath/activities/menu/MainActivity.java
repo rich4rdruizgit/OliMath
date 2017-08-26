@@ -155,10 +155,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.img_gif_menu:
-                toggle();
-                circleMenu.openMenu();
-                break;
             case R.id.circle_menu:
                 toggle();
                 break;
@@ -195,10 +191,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void toggle(){
         if(gifMenu.getVisibility() == View.GONE){
             gifMenu.setVisibility(View.VISIBLE);
-            circleMenu.setVisibility(View.GONE);
+
         }else{
             gifMenu.setVisibility(View.GONE);
-            circleMenu.setVisibility(View.VISIBLE);
+
         }
 
     }
