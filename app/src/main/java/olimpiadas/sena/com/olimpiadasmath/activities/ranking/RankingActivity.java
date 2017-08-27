@@ -58,6 +58,7 @@ public class RankingActivity extends AppCompatActivity {
         users.add(new User("Carlos","1234",2000,2,57,12,10,2,"marco8"));
         users.add(new User("Didier","1234",10000,1,47,12,10,2,"marco18"));
 
+
         /*for (int i = 1; i <= 10; i++) {
             if (i%2 == 0){
             users.add(new User("rich4rd","1234",1322,7,47,12,10,2,"jhonny"));
