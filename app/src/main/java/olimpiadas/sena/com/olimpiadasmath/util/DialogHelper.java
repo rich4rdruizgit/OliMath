@@ -15,6 +15,7 @@ import olimpiadas.sena.com.olimpiadasmath.activities.library.LibraryActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.settings.SettingsActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.test.TestActivity;
+import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 
 
 /**
@@ -63,7 +64,7 @@ public class DialogHelper {
         ((Button)mProgressDialog.getWindow().findViewById(R.id.btn_exit_tip)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mProgressDialog.closeOptionsMenu();
+                mProgressDialog.dismiss();
             }
         });
         mProgressDialog.setCancelable(true);
@@ -82,6 +83,7 @@ public class DialogHelper {
             public void onClick(View v) {
                 Intent intChallenge = new Intent(context.getApplicationContext(), TestActivity.class);
                 intChallenge.putExtra("type",2);
+                AppControl.getInstance().currentUser.addTickets(-2);
                 context.startActivity(intChallenge);
             }
         });
@@ -89,7 +91,7 @@ public class DialogHelper {
         ((Button)mProgressDialog.getWindow().findViewById(R.id.btn_exit_tip)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mProgressDialog.closeOptionsMenu();
+                mProgressDialog.dismiss();
             }
         });
         mProgressDialog.setCancelable(true);
