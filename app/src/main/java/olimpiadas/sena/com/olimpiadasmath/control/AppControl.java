@@ -235,10 +235,8 @@ public class AppControl {
                     User manageduser = realm.copyToRealm(user_uno);
                     ourInstance.currentUser = realm.copyFromRealm(manageduser);
 
-
                 }else{
                     ourInstance.currentUser = realm.copyFromRealm(realm.where(User.class).findFirst());
-
                 }
 
                 if(realm.where(Product.class).findAll().isEmpty()){
@@ -248,10 +246,6 @@ public class AppControl {
                     Product pdt3 = new Product(R.drawable.marco2,"Happy ring",100,"10",Product.FOR_BUY,"marco2");
                     Product pdt4 = new Product(R.drawable.marco8,"Neon ring",25,"10",Product.FOR_BUY,"marco8");
                     Product pdt5 = new Product(R.drawable.marco11,"Blue ring",50,"10",Product.FOR_BUY,"marco11");
-
-
-
-
 
                     realm.copyToRealm(pdt1);
                     realm.copyToRealm(pdt2);

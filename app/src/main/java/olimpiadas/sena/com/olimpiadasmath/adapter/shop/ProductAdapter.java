@@ -36,6 +36,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     static Context context;
     AppControl appControl;
     Realm realm;
+    int idCardView;
+
 
     public ProductAdapter(List<Product> lstProduct, Context context) {
 
@@ -56,6 +58,23 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         });
 
     }
+    private void updateState(){
+
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                RealmResults<Product> result2 = realm.where(Product.class)
+                        .equalTo("state", 3)
+                        .findAll();
+                for(int i  = 0 ; i < result2.size(); i++){
+                    result2.get(i).setState(Product.BOUGTH);
+                }
+
+            }
+        });
+    }
+
+
     @Override
     public ProductAdapter.ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_shop,parent ,false);
@@ -131,9 +150,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 }
                 else if(product.getState() == Product.BOUGTH){
 
+                    updateState();
                     appControl.currentUser.setAvatar(product.getSourceName());
                     ProductAdapter.this.updateProductState(position,Product.USED);
                     ((ShopActivity)context).headerFragment.refreshInterface();
+                    ((ShopActivity)context).finish();
+                    ((ShopActivity)context).startActivity(((ShopActivity)context).getIntent());
                 }
                 if(product.getState() == Product.USED){
 
@@ -141,6 +163,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             }
         });
     }
+
 
     @Override
     public int getItemCount() {
