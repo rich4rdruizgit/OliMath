@@ -118,6 +118,9 @@ public class User  extends RealmObject {
     public void setTickets(int tickets) {
         this.tickets = tickets;
     }
+    public void addTickets(int tickets) {
+        this.tickets = this.tickets -  tickets;
+    }
 
     public double getExperience() {
         return experience;

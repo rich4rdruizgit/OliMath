@@ -22,10 +22,11 @@
         android:layout_height="wrap_content"
         android:weightSum="1">
 
-        <ImageView
+        <ImageButton
+            android:id="@+id/btn_back_tutor"
             android:layout_gravity="center"
-            android:layout_width="0dp"
-            android:layout_height="15dp"
+            android:layout_width="1dp"
+            android:layout_height="12dp"
             android:layout_weight=".15"
             android:src="@android:drawable/arrow_down_float"
             android:rotation="90" />
@@ -48,13 +49,13 @@
 
     </LinearLayout>
 
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_library"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-    </android.support.v7.widget.RecyclerView>
-
+        <Button
+            android:id="@+id/btn_equations_library"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ecuaciones"
+            android:textSize="@dimen/text_size"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
 </LinearLayout>

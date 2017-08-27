@@ -1,11 +1,10 @@
 package olimpiadas.sena.com.olimpiadasmath.activities.menu;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +32,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private static final String TAG = "MainActivity";
     String arrayName[] = {"Practice","Study","Challenge"};
     CircleMenu circleMenu;
     Button btnShop, btnRanking,btnSettings,btnPractice,btnChallenge,btnLibrary;
@@ -50,7 +50,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getSupportActionBar().hide();
         appControl = AppControl.getInstance();
 
+        Context context = this;
+        int id = context.getResources().getIdentifier("fondo_b.png", "drawable", context.getPackageName());
+        int resID = getResources().getIdentifier("fondo_b", "drawable", getPackageName());
+        Log.d(TAG,"el id del recurso es " + resID);
 
+        resID = getResources().getIdentifier("fondo_b", "drawable", getPackageName());
+        Log.d(TAG,"el id del recurso es " + resID);
+        /* CONSULTA DE UN WEBSERVICES
+        WebConnectionManager webConnectionManager = WebConnectionManager.getWebConnectionManager();
+        Log.d(TAG,"Se va a consultar");
+        webConnectionManager.getRanking("http://192.168.43.54:8097/WebServiceRankings.asmx/mostrarRankings");
+        */
         btnShop = (Button) findViewById(R.id.btn_menu_shop);
         btnShop.setOnClickListener(this);
 
@@ -172,16 +183,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 });
                 break;
             case R.id.btn_menu_shop:
-                Intent intent = new Intent(MainActivity.this, ShopActivity.class);
-                startActivity(intent);
+                Intent intentShop = new Intent(MainActivity.this, ShopActivity.class);
+                startActivity(intentShop);
                 break;
             case R.id.btn_menu_ranking:
-                Intent intent1 = new Intent(MainActivity.this, RankingActivity.class);
-                startActivity(intent1);
+                Intent intentRanking = new Intent(MainActivity.this, RankingActivity.class);
+                startActivity(intentRanking);
                 break;
             case R.id.btn_settings:
-                Intent intents = new Intent(MainActivity.this, SettingsActivity.class);
-                startActivity(intents);
+                Intent intentSettings = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(intentSettings);
+                break;
+            case R.id.btn_menu_tutor:
+                Intent intentTutor = new Intent(MainActivity.this, LibraryActivity.class);
+                startActivity(intentTutor);
                 break;
             default:
                 break;
