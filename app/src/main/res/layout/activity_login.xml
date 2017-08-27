@@ -50,7 +50,10 @@
                         android:gravity="center"
                         android:hint="@string/user"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:maxLines="1"
+                        android:inputType="text"
+                        />
                     <ImageView
                         android:layout_marginTop="3dp"
                         android:layout_marginLeft="10dp"

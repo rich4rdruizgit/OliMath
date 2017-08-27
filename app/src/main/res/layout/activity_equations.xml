@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#4b5465"
+    tools:context="olimpiadas.sena.com.olimpiadasmath.activities.library.EquationsActivity">
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="olimpiadas.sena.com.olimpiadasmath.fragments.header.HeaderFragment"
+        android:id="@+id/fragment4" />
+
+    <WebView
+        android:id="@+id/webview_equations"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:background="#4b5465"/>
+
+</LinearLayout>
