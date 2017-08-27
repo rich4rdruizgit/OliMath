@@ -23,12 +23,27 @@
     <string name="nombre_de_usuario">NOMBRE DE USUARIO</string>
     <string name="level">Nivel</string>
     <string name="experience">Experiencia</string>
-    <string name="practice">Practica</string>
+    <string name="practice">Práctica</string>
     <string name="library">Tutor</string>
     <string name="challenge">Reto</string>
     <string name="ranking">Ranking</string>
     <string name="options">Opciones</string>
     <string name="store">Market</string>
+    <string name="profile">PERFIL</string>
+    <string name="tickets">Boletos</string>
+    <string name="coins">Monedas</string>
+    <string name="pts">PTS</string>
+    <string name="corrects_answers">Respuestas correctas:</string>
+    <string name="incorrects_answers">Respuestas incorrectas:</string>
+    <string name="won">Ganaste</string>
+    <string name="exp">Exp:</string>
+    <string name="settings">Ajustes</string>
+    <string name="music">Música</string>
+    <string name="effects">Efectos</string>
+    <string name="lenguage">Idioma</string>
+    <string name="aboutgame">Ayuda sobre el juego</string>
+    <string name="copyright">Creditos</string>
+    <string name="shop">Shop</string>
 
 
     <string-array name="lenguages">

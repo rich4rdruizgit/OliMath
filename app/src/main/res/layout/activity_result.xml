@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="#4b5465"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.result.ResultActivity">
 
     <LinearLayout
@@ -18,7 +20,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Felicitaciones, debes mejorar un poco..." />
+            android:text="Felicitaciones, debes mejorar un poco..."
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/text_size"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,8 +35,10 @@
                 android:id="@+id/tv_result_rigth_answer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Respuestas correctas:"
-                android:textSize="@dimen/text_size"/>
+                android:text="@string/corrects_answers"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/primary_text"
+                />
 
             <TextView
                 android:id="@+id/tv_result_rigth_answer_number"
@@ -40,7 +46,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="8"
-                android:textSize="@dimen/text_size"/>
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/primary_text"/>
         </LinearLayout>
 
 
@@ -56,8 +63,9 @@
                 android:id="@+id/tv_result_wrong_answer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Respuestas incorrectas:"
-                android:textSize="@dimen/text_size"/>
+                android:text="@string/incorrects_answers"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/primary_text"/>
 
             <TextView
                 android:id="@+id/tv_result_wrong_answer_number"
@@ -65,7 +73,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="2"
-                android:textSize="@dimen/text_size"/>
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/primary_text"/>
         </LinearLayout>
 
         <TextView
@@ -73,8 +82,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Ganaste:"
-            android:textSize="@dimen/text_size"/>
+            android:text="@string/won"
+            android:textSize="@dimen/text_size"
+            android:textColor="@color/primary_text"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -95,7 +105,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text=" x 2"
-                android:textSize="@dimen/text_size"/>
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/primary_text"/>
 
 
         </LinearLayout>
@@ -119,7 +130,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text=" x 1"
-                android:textSize="@dimen/text_size"/>
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/primary_text"/>
 
 
         </LinearLayout>
@@ -136,7 +148,9 @@
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Exp:"/>
+                android:text="@string/exp"
+                android:textSize="@dimen/text_size"
+                android:textColor="@color/primary_text"/>
 
 
             <FrameLayout

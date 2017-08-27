@@ -15,29 +15,25 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.4"
+        android:orientation="vertical"
         >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="300sp"
+            android:layout_margin="10dp"
+            android:id="@+id/splash"
+            android:background="@drawable/logoappnombre" />
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/splash"
-            android:background="@drawable/fondo_splash" />
-    </LinearLayout>
-    <!-- Aqui poner el loading gif o lo que sea-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.3"
-        >
+            android:background="@drawable/logosena" />
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/logosena" />
     </LinearLayout>
-    <!-- Aqui poner el logo del sena-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.3"
-        >
 
-    </LinearLayout>
 
 </LinearLayout>
 

@@ -6,6 +6,8 @@
     <dimen name="card_padding">60dp</dimen>
     <dimen name="inter_space">10dp</dimen>
     <dimen name="padding_views">14dp</dimen>
+    <dimen name="tamanoiconmenuprincipal">50dp</dimen>
+    <dimen name="tamanoletrasubtitulos">15sp</dimen>
 
 </resources>
 
