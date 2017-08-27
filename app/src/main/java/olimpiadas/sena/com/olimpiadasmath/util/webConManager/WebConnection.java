@@ -111,7 +111,7 @@ public class WebConnection {
         executeRequest.execute(url,operation,multiPart);
     }
 
-    public void executeGetRequest(String url){
+    public void executeAsyncGetRequest(String url){
 
 
         Log.d(TAG,"Url getRequest " + url);

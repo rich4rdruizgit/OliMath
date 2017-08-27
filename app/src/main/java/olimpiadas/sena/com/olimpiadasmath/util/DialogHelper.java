@@ -15,6 +15,7 @@ import olimpiadas.sena.com.olimpiadasmath.activities.library.LibraryActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.settings.SettingsActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.test.TestActivity;
+import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 
 
 /**
@@ -82,6 +83,7 @@ public class DialogHelper {
             public void onClick(View v) {
                 Intent intChallenge = new Intent(context.getApplicationContext(), TestActivity.class);
                 intChallenge.putExtra("type",2);
+                AppControl.getInstance().currentUser.addTickets(-2);
                 context.startActivity(intChallenge);
             }
         });

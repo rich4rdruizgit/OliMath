@@ -116,7 +116,7 @@ public class AppControl {
                             "\t\t{'text':'30%' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'28%' ,'isCorrect':'1'},\n" +
                             "\t\t{'text':'19%' ,'isCorrect':'0'}]\n" +
-                            "\t\t\t\n" +
+                            
                             "\t\t}}");
                     String jsonText2 = ("{'text':'En un centro de formación de Risaralda se tienen que el 20% de un grupo de  aprendices son técnicos, mientras que 1/9 de los aprendices son tecnólogos. Si sabemos que el total de sus libros está entre 50 y 100, ¿Cuál es el total de aprendices?',\n" +
                             "\t\t'answers':[\n" +
@@ -124,7 +124,7 @@ public class AppControl {
                             "\t\t{'text':'56' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'90' ,'isCorrect':'1'},\n" +
                             "\t\t{'text':'63' ,'isCorrect':'0'}]\n" +
-                            "\t\t\t\n" +
+                            
                             "\t\t}}");
                     String jsonText3 = ("{'text':'¿Qué edad tendría Rodrigo en el 2011, si su edad en este año fue igual a la suma de los valores de las cifras del año de su nacimiento?',\n" +
                             "\t\t'answers':[\n" +
@@ -132,7 +132,7 @@ public class AppControl {
                             "\t\t{'text':'21 años' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'20 años' ,'isCorrect':'1'},\n" +
                             "\t\t{'text':'19 años' ,'isCorrect':'0'}]\n" +
-                            "\t\t\t\n" +
+                            
                             "\t\t}}");
                     String jsonText4 = ("{'text':'El volumen de una bacteria se duplica cada minuto, al poner una bacteria en un vaso cilíndrico se llena totalmente en 61 minutos, ¿en cuántos minutos estará lleno un vaso que tiene la mitad del volumen inicial con el mismo tipo de células?',\n" +
                             "\t\t'answers':[\n" +
@@ -140,7 +140,7 @@ public class AppControl {
                             "\t\t{'text':'60 min' ,'isCorrect':'1'},\n" +
                             "\t\t{'text':'28 min' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'29 min' ,'isCorrect':'0'}]\n" +
-                            "\t\t\t\n" +
+                            
                             "\t\t}}");
                     String jsonText5 = ("{'text':'En el Call Center del SENA tres Aprendices que sirven de operadores reciben llamadas cada 3, 5 y 9 minutos respectivamente, ¿Se quiere saber cuántas veces estarán simultáneamente hablando estos tres aprendices en un turno de 9 horas?',\n" +
                             "\t\t'answers':[\n" +
@@ -148,7 +148,7 @@ public class AppControl {
                             "\t\t{'text':'15' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'11' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'13' ,'isCorrect':'1'}]\n" +
-                            "\t\t\t\n" +
+                            
                             "\t\t}}");
                     String jsonText6 = ("{'text':'En matemáticas se sabe que un número perfecto es aquel que al sumar sus divisores menores a el mismo (incluyendo el 1) se obtiene como resultado el mismo número; teniendo en cuenta esto, cuál de los siguientes números es NO perfecto.',\n" +
                             "\t\t'answers':[\n" +
@@ -156,7 +156,7 @@ public class AppControl {
                             "\t\t{'text':'28' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'6' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'496' ,'isCorrect':'0'}]\n" +
-                            "\t\t\t\n" +
+                            
                             "\t\t}}");
                     String jsonText7 = ("{'text':'En una bodega hay 100 bicicletas de dos marcas distintas M y P disponibles para vender, 40 bicicletas de la marca M y 60 bicicletas de la marca P.El 40 % de las bicicletas de marca M tienen un año de garantía, y las demás de la misma marca tienen 6 meses de garantía.\n" +
                             "Si un vendedor elige al azar una bicicleta para exhibirla, ¿Cuál es la probabilidad de que la bicicleta elegida sea de la marca P y tenga un año de garantía?',\n" +
@@ -165,7 +165,7 @@ public class AppControl {
                             "\t\t{'text':'30%' ,'isCorrect':'1'},\n" +
                             "\t\t{'text':'20%' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'50%' ,'isCorrect':'0'}]\n" +
-                            "\t\t\t\n" +
+                            
                             "\t\t}}");
                     String jsonText8 = ("{'text':'Los 70 empleados de una empresa están divididos en clase A y clase B. La empresa paga una prima de $20.000 a los empleados de clase A y de $10.000 pesos a los de clase B. Si el pago total de la prima es de $1’200.000, entonces el número total de empleados de clase A es:\n',\n" +
                             "\t\t'answers':[\n" +
@@ -173,7 +173,7 @@ public class AppControl {
                             "\t\t{'text':'30' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'20' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'50' ,'isCorrect':'1'}]\n" +
-                            "\t\t\t\n" +
+                            
                             "\t\t}}");
                     String jsonText9 = ("{'text':'pendiente pregunta 9',\n" +
                             "\t\t'answers':[\n" +
@@ -181,15 +181,15 @@ public class AppControl {
                             "\t\t{'text':'15' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'11' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'13' ,'isCorrect':'1'}]\n" +
-                            "\t\t\t\n" +
+                            
                             "\t\t}}");
                     String jsonText10 = ("{'text':'pendiente pregunta 10',\n" +
                             "\t\t'answers':[\n" +
                             "\t\t{'text':'12' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'15' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'11' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'13' ,'is  Correct':'1'}]\n" +
-                            "\t\t\t\n" +
+                            "\t\t{'text':'13' ,'isCorrect':'1'}]\n" +
+                            
                             "\t\t}}");
                     Question question1 = new Question(jsonText1);
                     Question question2 = new Question(jsonText2);

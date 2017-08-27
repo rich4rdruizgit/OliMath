@@ -28,11 +28,13 @@ import olimpiadas.sena.com.olimpiadasmath.activities.test.TestActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.librerias.CircleMenu;
 import olimpiadas.sena.com.olimpiadasmath.util.DialogHelper;
+import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnectionManager;
 import pl.droidsonroids.gif.GifImageView;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private static final String TAG = "MainActivity";
     String arrayName[] = {"Practice","Study","Challenge"};
     CircleMenu circleMenu;
     Button btnShop, btnRanking,btnSettings,btnPractice,btnChallenge,btnLibrary;
@@ -50,7 +52,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getSupportActionBar().hide();
         appControl = AppControl.getInstance();
 
+        Context context = this;
+        int id = context.getResources().getIdentifier("fondo_b.png", "drawable", context.getPackageName());
+        int resID = getResources().getIdentifier("fondo_b", "drawable", getPackageName());
+        Log.d(TAG,"el id del recurso es " + resID);
 
+        resID = getResources().getIdentifier("fondo_b", "drawable", getPackageName());
+        Log.d(TAG,"el id del recurso es " + resID);
+        /* CONSULTA DE UN WEBSERVICES
+        WebConnectionManager webConnectionManager = WebConnectionManager.getWebConnectionManager();
+        Log.d(TAG,"Se va a consultar");
+        webConnectionManager.getRanking("http://192.168.43.54:8097/WebServiceRankings.asmx/mostrarRankings");
+        */
         btnShop = (Button) findViewById(R.id.btn_menu_shop);
         btnShop.setOnClickListener(this);
 
