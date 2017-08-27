@@ -63,7 +63,7 @@ public class DialogHelper {
         ((Button)mProgressDialog.getWindow().findViewById(R.id.btn_exit_tip)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mProgressDialog.closeOptionsMenu();
+                mProgressDialog.dismiss();
             }
         });
         mProgressDialog.setCancelable(true);
@@ -89,7 +89,7 @@ public class DialogHelper {
         ((Button)mProgressDialog.getWindow().findViewById(R.id.btn_exit_tip)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mProgressDialog.closeOptionsMenu();
+                mProgressDialog.dismiss();
             }
         });
         mProgressDialog.setCancelable(true);
