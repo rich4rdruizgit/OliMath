@@ -2,7 +2,6 @@ package olimpiadas.sena.com.olimpiadasmath.fragments.header;
 
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.graphics.drawable.ClipDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,9 +12,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.profile.ProfileActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
+import olimpiadas.sena.com.olimpiadasmath.util.CircleImage.CropCircleTransformation;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -102,8 +104,14 @@ public class HeaderFragment extends Fragment {
         Log.d(TAG,"Antes de recibir la imagen");
         int avatar = getActivity().getBaseContext().getResources().getIdentifier(appControl.currentUser.getAvatar(),recurso, getActivity().getBaseContext().getPackageName());
         Log.d(TAG,"id cargado " +avatar+ " __ "+ appControl.currentUser.getAvatar());
-        imgHeaderProfile.setImageResource(avatar);
         Log.d(TAG,"Antes de recibir la imagen");
+
+        imgHeaderProfile.setImageResource(avatar);
+        Picasso.with(imgHeaderProfile.getContext())
+                .load(avatar)
+                .transform(new CropCircleTransformation())
+                .resize(65,65)
+                .into(imgHeaderProfile);
 
         imgHeaderProfile.setOnClickListener(new View.OnClickListener() {
             @Override

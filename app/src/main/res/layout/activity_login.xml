@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.5"
-        android:background="@drawable/background_base_login">
+        android:background="@drawable/shape_ranking">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
