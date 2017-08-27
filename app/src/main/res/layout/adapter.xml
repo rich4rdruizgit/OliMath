@@ -89,17 +89,17 @@
 
                 <ImageView
                     android:id="@+id/img_test_scale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="top|end"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="-5dp"
-                    android:src="@drawable/ic_search_black" />
+                    android:src="@drawable/zoomscreen" />
                 <ImageView
                     android:id="@+id/img_test_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="top|left"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
