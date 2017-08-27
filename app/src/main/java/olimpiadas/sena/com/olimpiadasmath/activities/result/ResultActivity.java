@@ -29,6 +29,7 @@ public class ResultActivity extends AppCompatActivity {
     private ClipDrawable mImageDrawable;
     private User currentUser;
     int correctAnswers = 0,expWon;
+    int noAnswered = 0;
 
     Realm realm;
 
@@ -64,7 +65,6 @@ public class ResultActivity extends AppCompatActivity {
 
         currentUser = appControl.currentUser;
 
-
         tempExp = (int) currentUser.getExperience()*MULTLEVEL;
         tempLvl = currentUser.getLevel();
 
@@ -87,7 +87,12 @@ public class ResultActivity extends AppCompatActivity {
         });
 
         for(int i = 0; i < appControl.answers.length; i++){
-            correctAnswers += appControl.answers[i];
+            if(appControl.answers[i] == -1){
+                noAnswered += 1;
+            }else{
+                correctAnswers += appControl.answers[i];
+            }
+
         }
 
 
@@ -97,12 +102,21 @@ public class ResultActivity extends AppCompatActivity {
         tvIncAns.setText(String.valueOf(appControl.answers.length - correctAnswers));
         Log.d(TAG,"Correct answers " + correctAnswers);
 
-        float bonus = appControl.answers.length/correctAnswers;
+        float bonus = correctAnswers/appControl.answers.length;
 
+        Log.d(TAG,"Bonus = " + bonus);
+        Log.d(TAG,"Bonus Size" +realm.where(BonusTable.class).findAll().size());
         bonusTable = realm.where(BonusTable.class).greaterThan("min",bonus).lessThanOrEqualTo("max",bonus).findFirst();
-        calculateCoins();
-        calculateTickets();
-        calculateExp();
+
+        if(bonusTable ==null){
+            Log.d(TAG,"NO existe el bonus");
+        }else{
+            calculateCoins();
+            calculateTickets();
+            calculateExp();
+        }
+
+
     }
 
 
@@ -123,8 +137,14 @@ public class ResultActivity extends AppCompatActivity {
     }
     private void calculateCoins(){
 
+        if(bonusTable.getCoin()<0){
+
+        }
 
         int winCoins = (int)(correctAnswers * bonusTable.getCoin());
+
+
+
         tvCoins.setText(" x " + winCoins);
 
         currentUser.setCoins(currentUser.getCoins() + winCoins);

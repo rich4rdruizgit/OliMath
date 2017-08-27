@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="olimpiadas.sena.com.olimpiadasmath">
 
+
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+
     <application
         android:name=".control.MyApplication"
         android:allowBackup="true"
