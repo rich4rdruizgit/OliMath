@@ -23,7 +23,6 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
     private List<User> users;
     private Context context;
 
-
     public RankingAdapter(List<User> users, Context context) {
         this.users = users;
         this.context = context;
@@ -37,14 +36,18 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
     }
     @Override
     public void onBindViewHolder(RankingViewHolder holder, int position) {
+
         User user = users.get(position);
         holder.txtPosition.setText(user.getPosition()+"");
         holder.txtNickName.setText(user.getNickname()+"");
         holder.txtPoints.setText(user.getScore()+"");
 
-        // Nota esta linea no estoy seguro si funciona
         int avatar = context.getResources().getIdentifier(user.getAvatar(),"drawable", context.getPackageName());
+
         holder.imgAvatarRanking.setImageResource(avatar);
+
+       // holder.imgAvatarRanking.setImageResource(Integer.parseInt(user.getAvatar()));
+
 
 //        if(user.getNickname().equals(AppControl.getInstance().currentUser.getNickname())){
 //            holder.layout.setBackgroundResource(R.drawable.scall);
