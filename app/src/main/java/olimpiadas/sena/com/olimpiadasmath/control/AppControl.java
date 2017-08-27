@@ -59,7 +59,7 @@ public class AppControl {
             public void execute(Realm realm) {
 
                 if(realm.where(User.class).findAll().isEmpty()){
-                    User user = new User("Juanito",305,30,50,8,1,30.0);
+                    User user = new User("Juanito",305,30,5000,8,1,30.0,"jhonny");
                     realm.copyToRealm(user);
                     currentUser = user;
                 }else{
@@ -230,7 +230,7 @@ public class AppControl {
                             "'experience':'300',"+
                             "'level':'10'}");
 
-                    User user_uno = new User("rich4rd","1234",1322,7,47,12,10,2);
+                    User user_uno = new User("rich4rd","1234",1322,7,47,12,10,2,"jhonny");
                     Log.d(TAG,"created User");
                     User manageduser = realm.copyToRealm(user_uno);
                     ourInstance.currentUser = realm.copyFromRealm(manageduser);
@@ -243,11 +243,11 @@ public class AppControl {
 
                 if(realm.where(Product.class).findAll().isEmpty()){
 
-                    Product pdt1 = new Product(R.drawable.marco18,"Dragons ring",200,"10",Product.FOR_BUY);
-                    Product pdt2 = new Product(R.drawable.marco,"Fire ring",20,"10",Product.FOR_BUY);
-                    Product pdt3 = new Product(R.drawable.marco2,"Happy ring",100,"10",Product.FOR_BUY);
-                    Product pdt4 = new Product(R.drawable.marco8,"Neon ring",25,"10",Product.FOR_BUY);
-                    Product pdt5 = new Product(R.drawable.marco11,"Blue ring",50,"10",Product.FOR_BUY);
+                    Product pdt1 = new Product(R.drawable.marco18,"Dragons ring",200,"10",Product.FOR_BUY,"marco18");
+                    Product pdt2 = new Product(R.drawable.marco,"Fire ring",20,"10",Product.FOR_BUY,"marco");
+                    Product pdt3 = new Product(R.drawable.marco2,"Happy ring",100,"10",Product.FOR_BUY,"marco2");
+                    Product pdt4 = new Product(R.drawable.marco8,"Neon ring",25,"10",Product.FOR_BUY,"marco8");
+                    Product pdt5 = new Product(R.drawable.marco11,"Blue ring",50,"10",Product.FOR_BUY,"marco11");
 
 
 
