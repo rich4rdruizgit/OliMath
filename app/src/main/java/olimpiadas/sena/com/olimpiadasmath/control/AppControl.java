@@ -5,6 +5,7 @@ import android.util.Log;
 import io.realm.Realm;
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.model.BonusTable;
+import olimpiadas.sena.com.olimpiadasmath.model.Configuration;
 import olimpiadas.sena.com.olimpiadasmath.model.Product;
 import olimpiadas.sena.com.olimpiadasmath.model.Question;
 import olimpiadas.sena.com.olimpiadasmath.model.User;
@@ -36,11 +37,14 @@ public class AppControl {
     public int currentBet = 0;
     public int baseWinCoins = 10;
 
+
     //ranking
     public int betCoins;
     public int initBetCoins;
 
     private boolean init = false;
+
+    public boolean isLogged = false;
 
     public static AppControl getInstance() {
         return ourInstance;
@@ -255,6 +259,16 @@ public class AppControl {
                     realm.copyToRealm(pdt4);
                     realm.copyToRealm(pdt5);
 
+                }
+
+                Configuration config = realm.where(Configuration.class).equalTo("key","isLogged").findFirst();
+                if(config != null){
+                    Log.d(TAG,"Configuration isLogged  founded = " + config.getValue());
+                    AppControl.this.isLogged = config.getValue();
+                }else{
+                    Log.d(TAG,"Configuration isLogged not founded");
+                    config = new Configuration("isLogged",false);
+                    realm.copyToRealm(config);
                 }
 
 
