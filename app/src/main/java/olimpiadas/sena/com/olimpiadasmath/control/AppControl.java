@@ -33,6 +33,8 @@ public class AppControl {
     public boolean onPractice = false;
 
     public User currentUser;
+    public int currentBet = 0;
+    public int baseWinCoins = 10;
 
     //ranking
     public int betCoins;
@@ -74,18 +76,18 @@ public class AppControl {
                     Log.d(TAG,"Creating BonusTables");
                     //float max, float min, float coin, float ticket, float exp, float score, int type
                     //Practice
-                    BonusTable bonus1 = new BonusTable(1, 0.9f, 2, 3, 3, 1.5f, 1);
-                    BonusTable bonus2 = new BonusTable(0.8f, 0.89f,2 , 3, 3, 1.5f, 1);
-                    BonusTable bonus3 = new BonusTable(0.6f, 0.79f, 1, 1, 1, 1f, 1);
-                    BonusTable bonus4 = new BonusTable(0.40f, 0.59f, 0, 0, 0, 0f, 1);
-                    BonusTable bonus5 = new BonusTable(0, 0.39f, -1, -1, 0, 1.5f, 1);
+                    BonusTable bonus1 = new BonusTable(1.1f, 0.9f, 2, 3, 3, 1.5f, 1);
+                    BonusTable bonus2 = new BonusTable(0.89f, 0.8f,2 , 3, 3, 1.5f, 1);
+                    BonusTable bonus3 = new BonusTable(0.79f, 0.6f, 1, 1, 1, 1f, 1);
+                    BonusTable bonus4 = new BonusTable(0.59f, 0.4f, 0, 0, 0, 0f, 1);
+                    BonusTable bonus5 = new BonusTable(0.38f, 0, -1, -1, 0, 1.5f, 1);
 
                     //challenge
-                    BonusTable bonus6 = new BonusTable(1, 0.9f, 2, 3, 3, 1.5f, 2);
-                    BonusTable bonus7 = new BonusTable(0.8f, 0.89f,2 , 3, 3, 1.5f, 2);
-                    BonusTable bonus8 = new BonusTable(0.6f, 0.79f, 1, 1, 1, 1f, 2);
-                    BonusTable bonus9 = new BonusTable(0.40f, 0.59f, 0, 0, 0, 0f, 2);
-                    BonusTable bonus10 = new BonusTable(0, 0.39f, -1, -1, 0, 1.5f, 2);
+                    BonusTable bonus6 = new BonusTable(1.1f, 0.9f, 2, 3, 3, 1.5f, 2);
+                    BonusTable bonus7 = new BonusTable(0.89f, 0.8f,2 , 3, 3, 1.5f, 2);
+                    BonusTable bonus8 = new BonusTable(0.79f, 0.6f, 1, 1, 1, 1f, 2);
+                    BonusTable bonus9 = new BonusTable(0.59f, 0.40f, 0, 0, 0, 0f, 2);
+                    BonusTable bonus10 = new BonusTable(0.39f, 0, -1, -1, 0, 1.5f, 2);
 
 
 

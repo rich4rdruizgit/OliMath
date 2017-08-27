@@ -87,8 +87,10 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         flag = getIntent().getExtras().getInt("type"); // con esto miramos si es una practica o un challenge
         if(flag==1){
             AppControl.getInstance().onPractice = true;
+            AppControl.getInstance().onChallenge = false;
         }else{
             AppControl.getInstance().onChallenge =true;
+            AppControl.getInstance().onPractice = false;
         }
         // Cargando los fragments
         fragHeader = findViewById(R.id.fragment_test_header);
@@ -213,6 +215,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         flagBet = bet;
         if (flagBet != 0) {
             if (flag == 1) {
+                AppControl.getInstance().currentBet = seekBar.getProgress();
                 AppControl.getInstance().onPractice = true;
                 AppControl.getInstance().onChallenge = false;
                 lnPractice.setVisibility(View.VISIBLE);
