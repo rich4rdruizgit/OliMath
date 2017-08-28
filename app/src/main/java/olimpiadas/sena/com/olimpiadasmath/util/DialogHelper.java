@@ -110,8 +110,9 @@ public class DialogHelper {
         ((Button)mProgressDialog.getWindow().findViewById(R.id.btn_show_more_tip)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((MainActivity)context).finishAffinity();
                 ((MainActivity)context).finish();
-                System.exit(0);
+
 
             }
         });
