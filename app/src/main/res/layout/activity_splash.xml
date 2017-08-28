@@ -15,21 +15,24 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.5"
+        android:orientation="vertical"
         >
         <ImageView
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="300sp"
+            android:layout_margin="10dp"
             android:id="@+id/splash"
-            android:background="@drawable/logo_login_01" />
+            android:background="@drawable/logoappnombre" />
+
+        >
+
+
     </LinearLayout>
-    <!-- Aqui poner el loading gif o lo que sea-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.25"
         android:gravity="center"
-
         >
         <com.github.ybq.android.spinkit.SpinKitView
             android:layout_marginTop="20dp"
@@ -48,6 +51,11 @@
         android:layout_height="0dp"
         android:layout_weight="0.25"
         >
+        <ImageView
+            android:scaleX="0.5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/logosena" />
 
     </LinearLayout>
 

@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                         Intent intPractice = new Intent(MainActivity.this, TestActivity.class);
                                         intPractice.putExtra("type",1);
                                         startActivity(intPractice);
+                                        finish();
                                     }
                                 };
                                 Timer timer = new Timer();
@@ -109,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     public void run() {
                                         Intent intLibrary = new Intent(MainActivity.this, LibraryActivity.class);
                                         startActivity(intLibrary);
+                                        finish();
                                     }
                                 };
                                 Timer timerlib = new Timer();
@@ -220,5 +222,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    @Override
+    public void onBackPressed() {
 
+        DialogHelper.ConfimrExitDialog(this);
+
+    }
 }

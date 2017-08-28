@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#434b5b"
+    android:background="#4b5465"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity">
 
     <LinearLayout
@@ -68,16 +68,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/primary_text"
                     android:text="@string/practice"
                     android:layout_gravity="center"
                     />
 
                 <Button
                     android:id="@+id/btn_menu_practice"
-                    android:layout_width="35dp"
-                    android:layout_height="80dp"
+                    android:layout_width="@dimen/tamanoiconmenuprincipal"
+                    android:layout_height="@dimen/tamanoiconmenuprincipal"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
                     android:background="@drawable/practica_icon"
                     android:elevation="10dp"
                     android:layout_gravity="center"
@@ -94,18 +94,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/primary_text"
                     android:text="@string/library"
                     android:layout_gravity="center"/>
 
                 <Button
                     android:id="@+id/btn_menu_tutor"
-                    android:layout_width="35dp"
-                    android:layout_height="80dp"
+                    android:layout_width="@dimen/tamanoiconmenuprincipal"
+                    android:layout_height="@dimen/tamanoiconmenuprincipal"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@mipmap/ic_launcher_round"
+                    android:background="@drawable/tutorblanco"
                     android:elevation="10dp"
                     android:layout_gravity="center"
+                    android:gravity="center"
                     />
             </LinearLayout>
             <LinearLayout
@@ -119,18 +120,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/primary_text"
                     android:text="@string/challenge"
                     android:layout_gravity="center"/>
 
                 <Button
                     android:id="@+id/btn_menu_challenge"
-                    android:layout_width="35dp"
-                    android:layout_height="80dp"
+                    android:layout_width="@dimen/tamanoiconmenuprincipal"
+                    android:layout_height="@dimen/tamanoiconmenuprincipal"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@mipmap/ic_launcher_round"
+                    android:background="@drawable/retoblanco"
                     android:elevation="10dp"
                     android:layout_gravity="center"
+                    android:gravity="center"
                     />
             </LinearLayout>
         </LinearLayout>
@@ -151,6 +153,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/primary_text"
                     android:text="@string/ranking"
                     android:layout_gravity="center"
 
@@ -158,13 +161,13 @@
 
                 <Button
                     android:id="@+id/btn_menu_ranking"
-                    android:layout_width="35dp"
-                    android:layout_height="80dp"
+                    android:layout_width="@dimen/tamanoiconmenuprincipal"
+                    android:layout_height="@dimen/tamanoiconmenuprincipal"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@mipmap/ic_launcher_round"
+                    android:background="@drawable/rankingblanco"
                     android:elevation="10dp"
                     android:layout_gravity="center"
+                    android:gravity="center"
                     />
             </LinearLayout>
 
@@ -179,18 +182,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/primary_text"
                     android:text="@string/options"
                     android:layout_gravity="center"
                     />
                 <Button
                     android:id="@+id/btn_settings"
-                    android:layout_width="35dp"
-                    android:layout_height="80dp"
+                    android:layout_width="@dimen/tamanoiconmenuprincipal"
+                    android:layout_height="@dimen/tamanoiconmenuprincipal"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@mipmap/ic_launcher_round"
-                    android:padding="5dp"
+                    android:background="@drawable/settingsblanco"
+                    android:elevation="10dp"
                     android:layout_gravity="center"
+                    android:gravity="center"
                     />
             </LinearLayout>
             <LinearLayout
@@ -202,17 +206,18 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/primary_text"
                     android:text="@string/store"
                     android:layout_gravity="center"/>
                 <Button
                     android:id="@+id/btn_menu_shop"
-                    android:layout_width="35dp"
-                    android:layout_height="80dp"
+                    android:layout_width="@dimen/tamanoiconmenuprincipal"
+                    android:layout_height="@dimen/tamanoiconmenuprincipal"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@mipmap/ic_launcher_round"
-                    android:padding="5dp"
-                    android:layout_gravity="center"/>
+                    android:background="@drawable/tiendablanco"
+                    android:elevation="10dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

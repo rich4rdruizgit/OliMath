@@ -156,7 +156,7 @@ public class ResultActivity extends AppCompatActivity {
 
         int winCoins = 0;
         if(bonusTable.getCoin()<0){
-            winCoins = (int) (((appControl.numberOfQuestions - correctAnswers) * bonusTable.getCoin()) - appControl.currentBet);
+            winCoins = - appControl.currentBet;
         }else if(bonusTable.getCoin()==0){
             winCoins = appControl.currentBet;
         }else{

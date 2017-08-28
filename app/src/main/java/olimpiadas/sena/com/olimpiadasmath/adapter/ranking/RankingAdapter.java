@@ -9,10 +9,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.model.User;
+import olimpiadas.sena.com.olimpiadasmath.util.CircleImage.CropCircleTransformation;
 
 /**
  * Created by andres on 19/06/2017.
@@ -45,9 +48,10 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
         int avatar = context.getResources().getIdentifier(user.getAvatar(),"drawable", context.getPackageName());
 
         holder.imgAvatarRanking.setImageResource(avatar);
-
-       // holder.imgAvatarRanking.setImageResource(Integer.parseInt(user.getAvatar()));
-
+        Picasso.with(holder.imgAvatarRanking.getContext())
+                .load(avatar)
+                .transform(new CropCircleTransformation())
+                .into(holder.imgAvatarRanking);
 
 //        if(user.getNickname().equals(AppControl.getInstance().currentUser.getNickname())){
 //            holder.layout.setBackgroundResource(R.drawable.scall);

@@ -36,6 +36,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         if(AppControl.getInstance().isLogged == true){
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
         }
 
 
