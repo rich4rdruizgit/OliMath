@@ -53,7 +53,8 @@
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="Al terminar puedes ganar hasta 30 monedas"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            android:textColor="@color/primary_text"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -61,7 +62,8 @@
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="Puedes apostar  tus monedas para ganar más!!!"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            android:textColor="@color/primary_text"/>
         <TextView
             android:layout_marginTop="40dp"
             android:id="@+id/tv_bet"
@@ -69,7 +71,8 @@
             android:textSize="40dp"
             android:text="0"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/primary_text"/>
 
         <LinearLayout
             android:layout_marginTop="40dp"
@@ -88,7 +91,6 @@
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/ButtonStyle"
 
         />
 
