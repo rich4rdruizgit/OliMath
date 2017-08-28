@@ -94,7 +94,6 @@
                     android:layout_gravity="top|end"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
-                    android:layout_marginTop="-5dp"
                     android:src="@drawable/zoomscreen" />
                 <ImageView
                     android:id="@+id/img_test_image"
@@ -103,7 +102,6 @@
                     android:layout_gravity="top|left"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
-                    android:layout_marginTop="-5dp"
                     android:src="@drawable/ic_photo_library" />
 
             </FrameLayout>
