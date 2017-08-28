@@ -110,7 +110,6 @@ public class HeaderFragment extends Fragment {
         Picasso.with(imgHeaderProfile.getContext())
                 .load(avatar)
                 .transform(new CropCircleTransformation())
-                .resize(65,65)
                 .into(imgHeaderProfile);
 
         imgHeaderProfile.setOnClickListener(new View.OnClickListener() {
