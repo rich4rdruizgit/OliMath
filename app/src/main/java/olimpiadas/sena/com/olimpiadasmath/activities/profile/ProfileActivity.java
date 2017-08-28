@@ -1,17 +1,17 @@
 package olimpiadas.sena.com.olimpiadasmath.activities.profile;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.graphics.drawable.ClipDrawable;
-import android.media.Image;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
-import olimpiadas.sena.com.olimpiadasmath.R;
 
+import com.squareup.picasso.Picasso;
+
+import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
-import olimpiadas.sena.com.olimpiadasmath.librerias.identicons.Identicon;
+import olimpiadas.sena.com.olimpiadasmath.util.CircleImage.CropCircleTransformation;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -48,13 +48,16 @@ public class ProfileActivity extends AppCompatActivity {
         tvCoins.setText(" x " + appControl.currentUser.getCoins());
         tvTickets.setText(" x " + appControl.currentUser.getTickets());
 
-
-
         ImageView imgExp = (ImageView) findViewById(R.id.img_profile_progress_bar2);
         mImageDrawable = (ClipDrawable) imgExp.getDrawable();
 
-
         mImageDrawable.setLevel((int)appControl.currentUser.getExperience() * 100);
+
+        imgProfile.setImageResource(avatar);
+        Picasso.with(imgProfile.getContext())
+                .load(avatar)
+                .transform(new CropCircleTransformation())
+                .into(imgProfile);
 
 
     }
