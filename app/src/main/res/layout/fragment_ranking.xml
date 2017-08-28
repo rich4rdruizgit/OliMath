@@ -46,14 +46,14 @@
                 android:layout_weight="1"
                 android:text="Juanito Alimaña"
                 android:textSize="18sp"
-                android:textColor="#ffffff"/>
+                android:textColor="@color/primary_text"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="PTS:"
                 android:textSize="16sp"
-                android:textColor="#ffffff"/>
+                android:textColor="@color/primary_text"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"

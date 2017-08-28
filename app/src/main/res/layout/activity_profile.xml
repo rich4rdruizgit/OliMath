@@ -14,12 +14,14 @@
         android:layout_height="wrap_content"
         android:background="@drawable/shape_ranking"
         android:orientation="horizontal">
+
         <ImageView
-            android:padding="5dp"
             android:id="@+id/img_profile_user"
+            android:padding="5dp"
             android:src="@drawable/user"
             android:layout_width="100dp"
             android:layout_height="100dp" />
+
         <TextView
             android:layout_gravity="center"
             android:id="@+id/txt_profile_user"
@@ -30,6 +32,7 @@
             android:text="@string/nombre_de_usuario"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/text_size_tittle" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -91,7 +94,7 @@
 
                 <ImageView
                     android:id="@+id/img_profile_progress_bar1"
-                    android:layout_width="130dp"
+                    android:layout_width="120dp"
                     android:layout_height="14dp"
                     android:src="@drawable/backg"
                     android:layout_gravity="center"
@@ -99,9 +102,10 @@
 
                 <ImageView
                     android:id="@+id/img_profile_progress_bar2"
-                    android:layout_width="150dp"
-                    android:layout_height="20dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_width="119dp"
+                    android:layout_height="14dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="4.5dp"
                     android:src="@drawable/clip_source" />
 
             </FrameLayout>
@@ -245,6 +249,8 @@
             android:textColor="@color/greenSena"
             android:text="@string/level"/>
     </LinearLayout>
+
+
     <LinearLayout
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"

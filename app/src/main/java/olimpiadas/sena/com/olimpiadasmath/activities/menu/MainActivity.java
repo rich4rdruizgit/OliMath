@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     GifImageView gifMenu;
     AppControl appControl;
     Context context;
+    pl.droidsonroids.gif.GifImageView getGifMenu;
+    int cont = 0;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -49,8 +51,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         gifMenu.setOnClickListener(this);
         getSupportActionBar().hide();
         appControl = AppControl.getInstance();
-
         Context context = this;
+
         int id = context.getResources().getIdentifier("fondo_b.png", "drawable", context.getPackageName());
         int resID = getResources().getIdentifier("fondo_b", "drawable", getPackageName());
         Log.d(TAG,"el id del recurso es " + resID);
@@ -80,69 +82,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnLibrary = (Button) findViewById(R.id.btn_menu_tutor);
         btnLibrary.setOnClickListener(this);
 
-        circleMenu = (CircleMenu) findViewById(R.id.circle_menu);
-        circleMenu.setOnClickListener(this);
-        circleMenu.setVisibility(View.GONE);
-        circleMenu.setCloseAction(gifMenu,circleMenu);
-        circleMenu.setMainMenu(Color.parseColor("#CDCDCD"),R.drawable.albertee,R.drawable.albertee).addSubMenu(Color.parseColor("#258CFF"),R.drawable.practicar).
-                addSubMenu(Color.parseColor("#6d4c41"),R.drawable.study).addSubMenu(Color.parseColor("#FF0000"),R.drawable.challenge)
-                .setOnMenuSelectedListener(new OnMenuSelectedListener() {
-                    @Override
-                    public void onMenuSelected(int i) {
-                        Toast.makeText(MainActivity.this, "Seleccionaste "+ arrayName[i], Toast.LENGTH_SHORT).show();
-                        switch (i){
-                            case 0:
-                                TimerTask tareap =  new TimerTask() {
-                                    @Override
-                                    public void run() {
-                                        Intent intPractice = new Intent(MainActivity.this, TestActivity.class);
-                                        intPractice.putExtra("type",1);
-                                        startActivity(intPractice);
-                                        finish();
-                                    }
-                                };
-                                Timer timer = new Timer();
-                                timer.schedule(tareap,1000);
-                                break;
-                            case 1:
-                                TimerTask tarealib =  new TimerTask() {
-                                    @Override
-                                    public void run() {
-                                        Intent intLibrary = new Intent(MainActivity.this, LibraryActivity.class);
-                                        startActivity(intLibrary);
-                                        finish();
-                                    }
-                                };
-                                Timer timerlib = new Timer();
-                                timerlib.schedule(tarealib,1000);
-
-
-                                break;
-                            case 2:
-
-                                MainActivity.this.runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        DialogHelper.showChallengeDialog(MainActivity.this);
-                                    }
-                                });
-
-                                /*TimerTask tareac =  new TimerTask() {
-                                    @Override
-                                    public void run() {
-
-                                    }
-                                };
-                                Timer timerc = new Timer();
-                                timerc.schedule(tareac,1000);*/
-                                break;
-
-                        }
-                    }
-                });
-
-
-
         //test
 
         try {
@@ -168,9 +107,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.circle_menu:
-                toggle();
-                break;
+
             case R.id.btn_menu_practice:
                 Intent intPractice = new Intent(MainActivity.this, TestActivity.class);
                 intPractice.putExtra("type",1);
