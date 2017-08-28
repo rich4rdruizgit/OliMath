@@ -17,10 +17,11 @@
         android:layout_weight="0.5"
         >
         <ImageView
+            android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/splash"
-            android:background="@drawable/fondo_splash" />
+            android:background="@drawable/logo_login_01" />
     </LinearLayout>
     <!-- Aqui poner el loading gif o lo que sea-->
     <LinearLayout
