@@ -60,10 +60,8 @@ public class SplashActivity extends AppCompatActivity implements AppControl.Init
                 try {
                     int waited = 0;
                     while (loading) {
-                        sleep(2000);
+                        sleep(5000);
                     }
-
-
                     Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(intent);
