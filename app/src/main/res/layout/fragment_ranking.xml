@@ -25,7 +25,7 @@
             />
 
         <ImageView
-            android:id="@+id/img_avatar_fragment_ranking"
+            android:id="@+id/img_my_avatar_fragment_ranking"
             android:layout_width="0dp"
             android:layout_weight=".25"
             android:layout_height="match_parent"
