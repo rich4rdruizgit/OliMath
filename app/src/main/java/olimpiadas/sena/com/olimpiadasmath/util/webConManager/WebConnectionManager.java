@@ -2,20 +2,14 @@ package olimpiadas.sena.com.olimpiadasmath.util.webConManager;
 
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import cz.msebera.android.httpclient.HttpEntity;
 import cz.msebera.android.httpclient.NameValuePair;
-import cz.msebera.android.httpclient.entity.ContentType;
-import cz.msebera.android.httpclient.entity.mime.MultipartEntityBuilder;
 import cz.msebera.android.httpclient.message.BasicNameValuePair;
 
 
@@ -80,6 +74,11 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
     @Override
     public void webConnectionComplete(String type, String resp) {
         Log.d(TAG,"webCon Response = " + resp);
+
+        resp = resp.replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>","");
+        resp = resp.replace("<string xmlns=\"http://tempuri.org/\">","");
+        resp = resp.replace("</string>","");
+        Log.d(TAG,"webCon Response cambiado = " + resp);
 
         Response response = new Response(type,resp);
         Log.d(TAG,"Response = " +  response.toString());
@@ -146,8 +145,12 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
     public void getVehiclePlates (String url){
 
-        webConnection.executeGetRequest(url);
+        webConnection.executeAsyncGetRequest(url);
 
+    }
+
+    public void getRanking(String url){
+        webConnection.executeAsyncGetRequest(url);
     }
 
     public String getSyncConfig (String url){
@@ -182,7 +185,9 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
             operationType = OperationType.fromString(type);
             JSONObject respJObject = null;
             try{
-                respJObject = new JSONObject(resp);
+                //respJObject = new JSONObject(resp);
+                JSONArray resparray = new JSONArray(resp);
+                Log.d(TAG,"Array ok "  + resp.length());
             }catch (JSONException e){
 
                 status = ERROR;

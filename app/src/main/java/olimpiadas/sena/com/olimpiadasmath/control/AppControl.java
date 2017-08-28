@@ -5,6 +5,7 @@ import android.util.Log;
 import io.realm.Realm;
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.model.BonusTable;
+import olimpiadas.sena.com.olimpiadasmath.model.Configuration;
 import olimpiadas.sena.com.olimpiadasmath.model.Product;
 import olimpiadas.sena.com.olimpiadasmath.model.Question;
 import olimpiadas.sena.com.olimpiadasmath.model.User;
@@ -33,12 +34,17 @@ public class AppControl {
     public boolean onPractice = false;
 
     public User currentUser;
+    public int currentBet = 0;
+    public int baseWinCoins = 10;
+
 
     //ranking
     public int betCoins;
     public int initBetCoins;
 
     private boolean init = false;
+
+    public boolean isLogged = false;
 
     public static AppControl getInstance() {
         return ourInstance;
@@ -59,7 +65,7 @@ public class AppControl {
             public void execute(Realm realm) {
 
                 if(realm.where(User.class).findAll().isEmpty()){
-                    User user = new User("Juanito",305,30,50,8,1,30.0);
+                    User user = new User("Juanito",305,30,5000,8,1,30.0,"jhonny");
                     realm.copyToRealm(user);
                     currentUser = user;
                 }else{
@@ -74,18 +80,18 @@ public class AppControl {
                     Log.d(TAG,"Creating BonusTables");
                     //float max, float min, float coin, float ticket, float exp, float score, int type
                     //Practice
-                    BonusTable bonus1 = new BonusTable(1, 0.9f, 2, 3, 3, 1.5f, 1);
-                    BonusTable bonus2 = new BonusTable(0.8f, 0.89f,2 , 3, 3, 1.5f, 1);
-                    BonusTable bonus3 = new BonusTable(0.6f, 0.79f, 1, 1, 1, 1f, 1);
-                    BonusTable bonus4 = new BonusTable(0.40f, 0.59f, 0, 0, 0, 0f, 1);
-                    BonusTable bonus5 = new BonusTable(0, 0.39f, -1, -1, 0, 1.5f, 1);
+                    BonusTable bonus1 = new BonusTable(1.1f, 0.9f, 2, 3, 3, 1.5f, 1);
+                    BonusTable bonus2 = new BonusTable(0.89f, 0.8f,2 , 3, 3, 1.5f, 1);
+                    BonusTable bonus3 = new BonusTable(0.79f, 0.6f, 1, 1, 1, 1f, 1);
+                    BonusTable bonus4 = new BonusTable(0.59f, 0.4f, 0, 0, 0, 0f, 1);
+                    BonusTable bonus5 = new BonusTable(0.38f, 0, -1, -1, 0, 1.5f, 1);
 
                     //challenge
-                    BonusTable bonus6 = new BonusTable(1, 0.9f, 2, 3, 3, 1.5f, 2);
-                    BonusTable bonus7 = new BonusTable(0.8f, 0.89f,2 , 3, 3, 1.5f, 2);
-                    BonusTable bonus8 = new BonusTable(0.6f, 0.79f, 1, 1, 1, 1f, 2);
-                    BonusTable bonus9 = new BonusTable(0.40f, 0.59f, 0, 0, 0, 0f, 2);
-                    BonusTable bonus10 = new BonusTable(0, 0.39f, -1, -1, 0, 1.5f, 2);
+                    BonusTable bonus6 = new BonusTable(1.1f, 0.9f, 2, 3, 3, 1.5f, 2);
+                    BonusTable bonus7 = new BonusTable(0.89f, 0.8f,2 , 3, 3, 1.5f, 2);
+                    BonusTable bonus8 = new BonusTable(0.79f, 0.6f, 1, 1, 1, 1f, 2);
+                    BonusTable bonus9 = new BonusTable(0.59f, 0.40f, 0, 0, 0, 0f, 2);
+                    BonusTable bonus10 = new BonusTable(0.39f, 0, -1, -1, 0, 1.5f, 2);
 
 
 
@@ -116,7 +122,7 @@ public class AppControl {
                             "\t\t{'text':'30%' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'28%' ,'isCorrect':'1'},\n" +
                             "\t\t{'text':'19%' ,'isCorrect':'0'}]\n" +
-                            "\t\t\t\n" +
+                            
                             "\t\t}}");
                     String jsonText2 = ("{'text':'En un centro de formación de Risaralda se tienen que el 20% de un grupo de  aprendices son técnicos, mientras que 1/9 de los aprendices son tecnólogos. Si sabemos que el total de sus libros está entre 50 y 100, ¿Cuál es el total de aprendices?',\n" +
                             "\t\t'answers':[\n" +
@@ -124,7 +130,7 @@ public class AppControl {
                             "\t\t{'text':'56' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'90' ,'isCorrect':'1'},\n" +
                             "\t\t{'text':'63' ,'isCorrect':'0'}]\n" +
-                            "\t\t\t\n" +
+                            
                             "\t\t}}");
                     String jsonText3 = ("{'text':'¿Qué edad tendría Rodrigo en el 2011, si su edad en este año fue igual a la suma de los valores de las cifras del año de su nacimiento?',\n" +
                             "\t\t'answers':[\n" +
@@ -132,7 +138,7 @@ public class AppControl {
                             "\t\t{'text':'21 años' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'20 años' ,'isCorrect':'1'},\n" +
                             "\t\t{'text':'19 años' ,'isCorrect':'0'}]\n" +
-                            "\t\t\t\n" +
+                            
                             "\t\t}}");
                     String jsonText4 = ("{'text':'El volumen de una bacteria se duplica cada minuto, al poner una bacteria en un vaso cilíndrico se llena totalmente en 61 minutos, ¿en cuántos minutos estará lleno un vaso que tiene la mitad del volumen inicial con el mismo tipo de células?',\n" +
                             "\t\t'answers':[\n" +
@@ -140,7 +146,7 @@ public class AppControl {
                             "\t\t{'text':'60 min' ,'isCorrect':'1'},\n" +
                             "\t\t{'text':'28 min' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'29 min' ,'isCorrect':'0'}]\n" +
-                            "\t\t\t\n" +
+                            
                             "\t\t}}");
                     String jsonText5 = ("{'text':'En el Call Center del SENA tres Aprendices que sirven de operadores reciben llamadas cada 3, 5 y 9 minutos respectivamente, ¿Se quiere saber cuántas veces estarán simultáneamente hablando estos tres aprendices en un turno de 9 horas?',\n" +
                             "\t\t'answers':[\n" +
@@ -148,7 +154,7 @@ public class AppControl {
                             "\t\t{'text':'15' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'11' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'13' ,'isCorrect':'1'}]\n" +
-                            "\t\t\t\n" +
+                            
                             "\t\t}}");
                     String jsonText6 = ("{'text':'En matemáticas se sabe que un número perfecto es aquel que al sumar sus divisores menores a el mismo (incluyendo el 1) se obtiene como resultado el mismo número; teniendo en cuenta esto, cuál de los siguientes números es NO perfecto.',\n" +
                             "\t\t'answers':[\n" +
@@ -156,7 +162,7 @@ public class AppControl {
                             "\t\t{'text':'28' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'6' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'496' ,'isCorrect':'0'}]\n" +
-                            "\t\t\t\n" +
+                            
                             "\t\t}}");
                     String jsonText7 = ("{'text':'En una bodega hay 100 bicicletas de dos marcas distintas M y P disponibles para vender, 40 bicicletas de la marca M y 60 bicicletas de la marca P.El 40 % de las bicicletas de marca M tienen un año de garantía, y las demás de la misma marca tienen 6 meses de garantía.\n" +
                             "Si un vendedor elige al azar una bicicleta para exhibirla, ¿Cuál es la probabilidad de que la bicicleta elegida sea de la marca P y tenga un año de garantía?',\n" +
@@ -165,7 +171,7 @@ public class AppControl {
                             "\t\t{'text':'30%' ,'isCorrect':'1'},\n" +
                             "\t\t{'text':'20%' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'50%' ,'isCorrect':'0'}]\n" +
-                            "\t\t\t\n" +
+                            
                             "\t\t}}");
                     String jsonText8 = ("{'text':'Los 70 empleados de una empresa están divididos en clase A y clase B. La empresa paga una prima de $20.000 a los empleados de clase A y de $10.000 pesos a los de clase B. Si el pago total de la prima es de $1’200.000, entonces el número total de empleados de clase A es:\n',\n" +
                             "\t\t'answers':[\n" +
@@ -173,7 +179,7 @@ public class AppControl {
                             "\t\t{'text':'30' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'20' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'50' ,'isCorrect':'1'}]\n" +
-                            "\t\t\t\n" +
+                            
                             "\t\t}}");
                     String jsonText9 = ("{'text':'pendiente pregunta 9',\n" +
                             "\t\t'answers':[\n" +
@@ -181,15 +187,15 @@ public class AppControl {
                             "\t\t{'text':'15' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'11' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'13' ,'isCorrect':'1'}]\n" +
-                            "\t\t\t\n" +
+                            
                             "\t\t}}");
                     String jsonText10 = ("{'text':'pendiente pregunta 10',\n" +
                             "\t\t'answers':[\n" +
                             "\t\t{'text':'12' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'15' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'11' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'13' ,'is  Correct':'1'}]\n" +
-                            "\t\t\t\n" +
+                            "\t\t{'text':'13' ,'isCorrect':'1'}]\n" +
+                            
                             "\t\t}}");
                     Question question1 = new Question(jsonText1);
                     Question question2 = new Question(jsonText2);
@@ -230,28 +236,22 @@ public class AppControl {
                             "'experience':'300',"+
                             "'level':'10'}");
 
-                    User user_uno = new User("rich4rd","1234",1322,7,47,12,10,2);
+                    User user_uno = new User("rich4rd","1234",1322,7,47,12,10,2,"jhonny");
                     Log.d(TAG,"created User");
                     User manageduser = realm.copyToRealm(user_uno);
                     ourInstance.currentUser = realm.copyFromRealm(manageduser);
 
-
                 }else{
                     ourInstance.currentUser = realm.copyFromRealm(realm.where(User.class).findFirst());
-
                 }
 
                 if(realm.where(Product.class).findAll().isEmpty()){
 
-                    Product pdt1 = new Product(R.drawable.marco18,"Dragons ring",200,"10",Product.FOR_BUY);
-                    Product pdt2 = new Product(R.drawable.marco,"Fire ring",20,"10",Product.FOR_BUY);
-                    Product pdt3 = new Product(R.drawable.marco2,"Happy ring",100,"10",Product.FOR_BUY);
-                    Product pdt4 = new Product(R.drawable.marco8,"Neon ring",25,"10",Product.FOR_BUY);
-                    Product pdt5 = new Product(R.drawable.marco11,"Blue ring",50,"10",Product.FOR_BUY);
-
-
-
-
+                    Product pdt1 = new Product(R.drawable.marco18,"Dragons ring",200,"10",Product.FOR_BUY,"marco18");
+                    Product pdt2 = new Product(R.drawable.marco,"Fire ring",20,"10",Product.FOR_BUY,"marco");
+                    Product pdt3 = new Product(R.drawable.marco2,"Happy ring",100,"10",Product.FOR_BUY,"marco2");
+                    Product pdt4 = new Product(R.drawable.marco8,"Neon ring",25,"10",Product.FOR_BUY,"marco8");
+                    Product pdt5 = new Product(R.drawable.marco11,"Blue ring",50,"10",Product.FOR_BUY,"marco11");
 
                     realm.copyToRealm(pdt1);
                     realm.copyToRealm(pdt2);
@@ -259,6 +259,16 @@ public class AppControl {
                     realm.copyToRealm(pdt4);
                     realm.copyToRealm(pdt5);
 
+                }
+
+                Configuration config = realm.where(Configuration.class).equalTo("key","isLogged").findFirst();
+                if(config != null){
+                    Log.d(TAG,"Configuration isLogged  founded = " + config.getValue());
+                    AppControl.this.isLogged = config.getValue();
+                }else{
+                    Log.d(TAG,"Configuration isLogged not founded");
+                    config = new Configuration("isLogged",false);
+                    realm.copyToRealm(config);
                 }
 
 

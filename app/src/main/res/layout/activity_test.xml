@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo_b"
+    android:background="#434b5b"
     android:orientation="vertical"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.test.TestActivity">
 
@@ -98,7 +98,7 @@
                     android:id="@+id/img_test_tip_einstein"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:background="@drawable/einsteinanimado" />
+                    android:background="@drawable/albertee" />
 
             </LinearLayout>
         </LinearLayout>

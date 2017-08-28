@@ -8,14 +8,32 @@
     android:layout_gravity="center"
     android:id="@+id/lin_lay"
     android:gravity="center"
-    android:background="@drawable/background_base"
+    android:background="@drawable/shape_ranking"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.splash.SplashActivity">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/splash"
-        android:background="@drawable/fondo_splash" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:orientation="vertical"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="300sp"
+            android:layout_margin="10dp"
+            android:id="@+id/splash"
+            android:background="@drawable/logoappnombre" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/logosena" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/logosena" />
+    </LinearLayout>
+
 
 </LinearLayout>
 

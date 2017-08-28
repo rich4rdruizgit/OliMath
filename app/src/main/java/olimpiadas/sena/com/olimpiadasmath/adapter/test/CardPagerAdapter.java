@@ -144,18 +144,33 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG,"Respuesta es " + radioGroup.getCheckedRadioButtonId());
-                Log.d(TAG,"Respuesta es " + ((RadioButton) view.findViewById(radioGroup.getCheckedRadioButtonId())).getText());
-                int idx = radioGroup.indexOfChild(view.findViewById(radioGroup.getCheckedRadioButtonId()));
-                Log.d(TAG, "EL indice es " + idx);
-                Log.d(TAG, "Correct answer " + question.get(position).getAnswerCorrect(idx));
-                if(question.get(position).getAnswerCorrect(idx).equals("1")){
-                    appControl.answers[position] = 1;
-                }else
-                {
-                    appControl.answers[position] = 0;
+
+                int selectedId = radioGroup.getCheckedRadioButtonId();
+
+                if(selectedId == -1){
+                    appControl.answers[position] = -1;
+                }else{
+
+                    Log.d(TAG,"Respuesta es " + radioGroup.getCheckedRadioButtonId());
+                    Log.d(TAG,"Respuesta es " + ((RadioButton) view.findViewById(radioGroup.getCheckedRadioButtonId())).getText());
+                    int idx = radioGroup.indexOfChild(view.findViewById(radioGroup.getCheckedRadioButtonId()));
+                    Log.d(TAG, "EL indice es " + idx);
+                    Log.d(TAG, "Correct answer " + question.get(position).getAnswerCorrect(idx));
+                    if(question.get(position).getAnswerCorrect(idx).equals("1")){
+                        appControl.answers[position] = 1;
+                    }else
+                    {
+                        appControl.answers[position] = 0;
+                    }
+
                 }
+
+
+
+
                 if( position +1 < getCount()){
+
+
                     moveTestListener.moveClick(position +1);
 
                 }else{

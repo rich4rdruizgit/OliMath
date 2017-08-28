@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/background_base"
+    android:background="@drawable/shape_ranking"
     tools:context="olimpiadas.sena.com.olimpiadasmath.fragments.header.HeaderFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -13,14 +13,22 @@
         android:layout_height="80dp"
         android:orientation="horizontal"
         android:layout_marginTop="2dp">
-
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/img_header_background"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_margin="10dp"
+                />
             <ImageView
                 android:id="@+id/img_header_profile"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_margin="10dp"
-                android:background="@drawable/borde_redondo"
                 android:src="@drawable/pj" />
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -100,7 +108,7 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ticket" />
+                        android:src="@drawable/creditos_icon" />
 
                     <TextView
                         android:id="@+id/tv_header_ticket"
@@ -129,7 +137,7 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/coin" />
+                        android:src="@drawable/monedas_icon" />
 
                     <TextView
                         android:id="@+id/tv_header_coins"

@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import io.realm.Realm;
+import io.realm.RealmResults;
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
@@ -29,6 +30,8 @@ public class ResultActivity extends AppCompatActivity {
     private ClipDrawable mImageDrawable;
     private User currentUser;
     int correctAnswers = 0,expWon;
+    int noAnswered = 0;
+
 
     Realm realm;
 
@@ -64,7 +67,6 @@ public class ResultActivity extends AppCompatActivity {
 
         currentUser = appControl.currentUser;
 
-
         tempExp = (int) currentUser.getExperience()*MULTLEVEL;
         tempLvl = currentUser.getLevel();
 
@@ -87,7 +89,12 @@ public class ResultActivity extends AppCompatActivity {
         });
 
         for(int i = 0; i < appControl.answers.length; i++){
-            correctAnswers += appControl.answers[i];
+            if(appControl.answers[i] == -1){
+                noAnswered += 1;
+            }else{
+                correctAnswers += appControl.answers[i];
+            }
+
         }
 
 
@@ -96,13 +103,37 @@ public class ResultActivity extends AppCompatActivity {
         tvCorAns.setText(String.valueOf(correctAnswers));
         tvIncAns.setText(String.valueOf(appControl.answers.length - correctAnswers));
         Log.d(TAG,"Correct answers " + correctAnswers);
+        Log.d(TAG,"total Questions " + appControl.answers.length);
 
-        float bonus = appControl.answers.length/correctAnswers;
 
-        bonusTable = realm.where(BonusTable.class).greaterThan("min",bonus).lessThanOrEqualTo("max",bonus).findFirst();
-        calculateCoins();
-        calculateTickets();
-        calculateExp();
+        float bonus = (float)correctAnswers/(float)appControl.answers.length;
+
+        Log.d(TAG,"Bonus = " + bonus);
+        Log.d(TAG,"Bonus Size" +realm.where(BonusTable.class).findAll().size());
+        //RealmResults<BonusTable> asdf =
+        bonusTable = realm.where(BonusTable.class).greaterThanOrEqualTo("max",bonus).lessThanOrEqualTo("min",bonus).findFirst();
+        /*
+        for(int i = 0; i < asdf.size(); i++){
+            Log.d(TAG,"Max = " + asdf.get(i).getMax() + "min = " + asdf.get(i).getMin());
+        }
+        Log.d(TAG,"asdf Size" + asdf.size());
+        RealmResults<BonusTable> fin = realm.where(BonusTable.class).lessThanOrEqualTo("min",bonus).findAll();
+        Log.d(TAG,"fin Size" + fin.size());
+
+        for(int i = 0; i < fin.size(); i++){
+            Log.d(TAG,"Max = " + fin.get(i).getMax() + "min = " + fin.get(i).getMin());
+        }
+        */
+        if(bonusTable ==null){
+            Log.d(TAG,"NO existe el bonus");
+        }else{
+            Log.d(TAG,"El bonus min = " + bonusTable.getMin() + " El bonus max = " + bonusTable.getMax());
+            calculateCoins();
+            calculateTickets();
+            calculateExp();
+        }
+
+
     }
 
 
@@ -123,8 +154,19 @@ public class ResultActivity extends AppCompatActivity {
     }
     private void calculateCoins(){
 
+        int winCoins = 0;
+        if(bonusTable.getCoin()<0){
+            winCoins = - appControl.currentBet;
+        }else if(bonusTable.getCoin()==0){
+            winCoins = appControl.currentBet;
+        }else{
+            winCoins = (int)( ( correctAnswers * bonusTable.getCoin() ) +  ( appControl.currentBet * bonusTable.getCoin() ) );
+        }
 
-        int winCoins = (int)(correctAnswers * bonusTable.getCoin());
+        //winCoins = (int)(correctAnswers * bonusTable.getCoin());
+
+
+
         tvCoins.setText(" x " + winCoins);
 
         currentUser.setCoins(currentUser.getCoins() + winCoins);

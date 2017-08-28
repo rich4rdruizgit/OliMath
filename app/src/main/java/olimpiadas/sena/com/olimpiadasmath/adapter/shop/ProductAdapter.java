@@ -35,15 +35,45 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public RealmResults<Product> lstProduct;
     static Context context;
     AppControl appControl;
+    Realm realm;
+    int idCardView;
+
 
     public ProductAdapter(List<Product> lstProduct, Context context) {
 
-        Realm realm = Realm.getDefaultInstance();
+        realm = Realm.getDefaultInstance();
         lstProduct = realm.where(Product.class).findAll();
         this.lstProduct = (RealmResults<Product>) lstProduct;
         this.context = context;
         appControl = AppControl.getInstance();
     }
+
+    private void updateProductState(final int pos,final int state){
+
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                lstProduct.get(pos).setState(state);
+            }
+        });
+
+    }
+    private void updateState(){
+
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                RealmResults<Product> result2 = realm.where(Product.class)
+                        .equalTo("state", 3)
+                        .findAll();
+                for(int i  = 0 ; i < result2.size(); i++){
+                    result2.get(i).setState(Product.BOUGTH);
+                }
+
+            }
+        });
+    }
+
 
     @Override
     public ProductAdapter.ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -53,7 +83,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     @Override
     public void onBindViewHolder(final ProductAdapter.ProductViewHolder holder, final int position) {
-        Product product = lstProduct.get(position);
+        final Product product = lstProduct.get(position);
         Log.d(TAG,product.toString());
         holder.imgViewShop.setImageResource(product.getUrlImg());
 
@@ -79,48 +109,61 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(product.getState() == Product.FOR_BUY){ // para comprar
+                    if(appControl.currentUser.getCoins()< lstProduct.get(position).getPrice()){
+                        AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                        alert.setMessage(R.string.no_enought_coins)
+                                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
 
+                                    }
+                                })
+                        ;
+                        alert.create();
+                        alert.show();
+                        return;
+                    }else {
+                        AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                        alert.setMessage(R.string.alert_shop)
+                                .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        appControl.currentUser.setCoins(appControl.currentUser.getCoins() - lstProduct.get(position).getPrice());
+                                        holder.btnBuy.setText("Usar");
+                                        ProductAdapter.this.updateProductState(position,Product.BOUGTH);
+                                        //product.setState(Product.BOUGTH);
+                                        ((ShopActivity)context).headerFragment.refreshInterface();
+                                        Toast.makeText(context, "Felicidades, has adquirido este nuevo item", Toast.LENGTH_SHORT).show();
+                                        //scontext.startActivity(new Intent(context, MainActivity.class));
+                                    }
+                                })
+                                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
 
-                if(appControl.currentUser.getCoins()< lstProduct.get(position).getPrice()){
-                    AlertDialog.Builder alert = new AlertDialog.Builder(context);
-                    alert.setMessage(R.string.no_enought_coins)
-                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-
-                                }
-                            })
-                            ;
-                    alert.create();
-                    alert.show();
-                    return;
-                }else {
-                    AlertDialog.Builder alert = new AlertDialog.Builder(context);
-                    alert.setMessage(R.string.alert_shop)
-                            .setPositiveButton("Si", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    appControl.currentUser.setCoins(appControl.currentUser.getCoins() - lstProduct.get(position).getPrice());
-                                    holder.btnBuy.setText("Usar");
-                                    ((ShopActivity)context).headerFragment.refreshInterface();
-                                    Toast.makeText(context, "Felicidades, has adquirido este nuevo item", Toast.LENGTH_SHORT).show();
-                                    //scontext.startActivity(new Intent(context, MainActivity.class));
-                                }
-                            })
-                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-
-                                }
-                            });
-                    alert.create();
-                    alert.show();
+                                    }
+                                });
+                        alert.create();
+                        alert.show();
+                    }
                 }
+                else if(product.getState() == Product.BOUGTH){
 
+                    updateState();
+                    appControl.currentUser.setAvatar(product.getSourceName());
+                    ProductAdapter.this.updateProductState(position,Product.USED);
+                    ((ShopActivity)context).headerFragment.refreshInterface();
+                    ((ShopActivity)context).finish();
+                    ((ShopActivity)context).startActivity(((ShopActivity)context).getIntent());
+                }
+                if(product.getState() == Product.USED){
 
+                }
             }
         });
     }
+
 
     @Override
     public int getItemCount() {

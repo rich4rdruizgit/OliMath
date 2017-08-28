@@ -2,19 +2,22 @@ package olimpiadas.sena.com.olimpiadasmath.fragments.header;
 
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.graphics.drawable.ClipDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.profile.ProfileActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
+import olimpiadas.sena.com.olimpiadasmath.util.CircleImage.CropCircleTransformation;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,10 +29,13 @@ public class HeaderFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private static final String TAG = HeaderFragment.class.toString() ;
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private String recurso = "drawable";
 
     ImageView imgHeaderProfile, imgExp;
     private ClipDrawable mImageDrawable;
@@ -95,8 +101,16 @@ public class HeaderFragment extends Fragment {
         tvTickets.setText(" x " + appControl.currentUser.getTickets());
         tvCoins.setText(" x " + appControl.currentUser.getCoins());
         tvExp.setText(" x " + ((int)appControl.currentUser.getExperience()));
+        Log.d(TAG,"Antes de recibir la imagen");
+        int avatar = getActivity().getBaseContext().getResources().getIdentifier(appControl.currentUser.getAvatar(),recurso, getActivity().getBaseContext().getPackageName());
+        Log.d(TAG,"id cargado " +avatar+ " __ "+ appControl.currentUser.getAvatar());
+        Log.d(TAG,"Antes de recibir la imagen");
 
-
+        imgHeaderProfile.setImageResource(avatar);
+        Picasso.with(imgHeaderProfile.getContext())
+                .load(avatar)
+                .transform(new CropCircleTransformation())
+                .into(imgHeaderProfile);
 
         imgHeaderProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,6 +128,9 @@ public class HeaderFragment extends Fragment {
         tvTickets.setText(" x " + appControl.currentUser.getTickets());
         tvCoins.setText(" x " + appControl.currentUser.getCoins());
         tvExp.setText(" x " + ((int)appControl.currentUser.getExperience()));
+        int avatar = getActivity().getBaseContext().getResources().getIdentifier(appControl.currentUser.getAvatar(),recurso, getActivity().getBaseContext().getPackageName());
+        imgHeaderProfile.setImageResource(avatar);
+
 
     }
 

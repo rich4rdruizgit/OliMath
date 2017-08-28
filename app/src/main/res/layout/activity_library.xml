@@ -4,7 +4,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo_b"
+    android:background="#4b5465"
     android:orientation="vertical"
     tools:context=".activities.library.LibraryActivity">
 
@@ -15,13 +15,47 @@
         android:name="olimpiadas.sena.com.olimpiadasmath.fragments.header.HeaderFragment"
         android:id="@+id/fragment3" />
 
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_library"
+    <LinearLayout
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:weightSum="1">
 
+        <ImageButton
+            android:id="@+id/btn_back_tutor"
+            android:layout_gravity="center"
+            android:layout_width="1dp"
+            android:layout_height="12dp"
+            android:layout_weight=".15"
+            android:src="@android:drawable/arrow_down_float"
+            android:rotation="90" />
 
-    </android.support.v7.widget.RecyclerView>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".15"
+            android:src="@android:drawable/ic_menu_agenda" />
 
+        <TextView
+            android:id="@+id/txt_title_library"
+            android:layout_width="0dp"
+            android:layout_weight=".7"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:paddingLeft="20dp"
+            android:text="Tutor"
+            android:textColor="@color/primary_text" />
+
+    </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_equations_library"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ecuaciones"
+            android:textSize="@dimen/text_size"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
 </LinearLayout>

@@ -5,18 +5,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/fondo_b"
+    android:background="#434b5b"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.settings.SettingsActivity">
 
-    <TextView
-        android:id="@+id/txt_tittle_settings"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+        <fragment
+            android:id="@+id/fragment_shop_header"
+            android:name="olimpiadas.sena.com.olimpiadasmath.fragments.header.HeaderFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="3dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:text="AJUSTES"
-        android:layout_marginBottom="20dp"
-        />
+        android:weightSum="1">
+
+        <ImageView
+            android:layout_width="@dimen/tamanoiconmenuprincipal"
+            android:layout_height="@dimen/tamanoiconmenuprincipal"
+            android:layout_weight=".15"
+            android:src="@drawable/settingsblanco"
+            />
+        <TextView
+            android:id="@+id/txt_title_ranking"
+            android:layout_width="0dp"
+            android:layout_weight=".7"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:paddingLeft="20dp"
+            android:text="@string/settings"
+            android:textColor="@color/primary_text"
+            />
+    </LinearLayout>
 
     <LinearLayout
         android:gravity="center"
@@ -30,7 +55,8 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_size"
-            android:text="Música"/>
+            android:text="@string/music"
+            android:textColor="@color/primary_text"/>
 
         <Switch
             android:layout_width="wrap_content"
@@ -51,7 +77,8 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_size"
-            android:text="Efectos"/>
+            android:text="@string/effects"
+            android:textColor="@color/primary_text"/>
 
         <Switch
             android:layout_width="wrap_content"
@@ -73,7 +100,8 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_size"
-            android:text="Idioma"/>
+            android:text="@string/lenguage"
+            android:textColor="@color/primary_text"/>
 
         <Spinner
             android:layout_width="150dp"
@@ -81,14 +109,15 @@
             android:id="@+id/spn_enguage"
             android:textSize="@dimen/text_size"
             android:shadowColor="@color/colorAccent"
-            android:entries="@array/lenguages"/>
+            android:entries="@array/lenguages"
+            android:textColor="@color/primary_text"/>
     </LinearLayout>
 
         <Button
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:id="@+id/btn_help"
-            android:text="Ayuda sobre el juego"
+            android:text="@string/aboutgame"
             android:shadowColor="@color/colorAccent"
             android:layout_gravity="center"
             style="@style/ButtonStyle"/>
@@ -97,7 +126,7 @@
             android:id="@+id/btn_credits"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Creditos"
+            android:text="@string/copyright"
             android:layout_gravity="center"
             style="@style/ButtonStyle"/>
 

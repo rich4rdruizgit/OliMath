@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="olimpiadas.sena.com.olimpiadasmath">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".control.MyApplication"
         android:allowBackup="true"
@@ -24,9 +26,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.settings.SettingsActivity" />
-        <activity android:name=".activities.result.ResultActivity"></activity>
-        <activity android:name=".activities.session.LoginActivity"></activity>
-        <activity android:name=".activities.library.LibraryActivity"></activity>
+        <activity android:name=".activities.result.ResultActivity" />
+        <activity android:name=".activities.session.LoginActivity" />
+        <activity android:name=".activities.library.LibraryActivity" />
+        <activity android:name=".activities.library.EquationsActivity"></activity>
     </application>
 
 </manifest>
