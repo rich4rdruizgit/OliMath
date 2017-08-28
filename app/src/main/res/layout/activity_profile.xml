@@ -14,12 +14,14 @@
         android:layout_height="wrap_content"
         android:background="@drawable/shape_ranking"
         android:orientation="horizontal">
+
         <ImageView
-            android:padding="5dp"
             android:id="@+id/img_profile_user"
+            android:padding="5dp"
             android:src="@drawable/user"
             android:layout_width="100dp"
             android:layout_height="100dp" />
+
         <TextView
             android:layout_gravity="center"
             android:id="@+id/txt_profile_user"
@@ -30,6 +32,7 @@
             android:text="@string/nombre_de_usuario"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/text_size_tittle" />
+
     </LinearLayout>
 
     <LinearLayout
