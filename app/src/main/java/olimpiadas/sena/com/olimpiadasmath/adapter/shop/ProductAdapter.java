@@ -38,6 +38,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     Realm realm;
     int idCardView;
 
+    int currentAvatar = 1;
+    Button currentAvatarButton = null;
+
 
     public ProductAdapter(List<Product> lstProduct, Context context) {
 
@@ -104,6 +107,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         }
         if(product.getState()==Product.USED){
             holder.btnBuy.setText("Usado");
+            currentAvatarButton = holder.btnBuy;
         }
 
         holder.btnBuy.setOnClickListener(new View.OnClickListener() {
@@ -150,12 +154,19 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 }
                 else if(product.getState() == Product.BOUGTH){
 
+                    if(currentAvatarButton != null ){
+                        currentAvatarButton.setText("Usar");
+
+                    }
+                    currentAvatarButton = holder.btnBuy;
+                    holder.btnBuy.setText("Usado");
+                    currentAvatar = position;
                     updateState();
                     appControl.currentUser.setAvatar(product.getSourceName());
                     ProductAdapter.this.updateProductState(position,Product.USED);
                     ((ShopActivity)context).headerFragment.refreshInterface();
-                    ((ShopActivity)context).finish();
-                    ((ShopActivity)context).startActivity(((ShopActivity)context).getIntent());
+                    //((ShopActivity)context).finish();
+                    //((ShopActivity)context).startActivity(((ShopActivity)context).getIntent());
                 }
                 if(product.getState() == Product.USED){
 
