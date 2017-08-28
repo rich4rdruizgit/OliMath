@@ -81,10 +81,68 @@ public class DialogHelper {
         ((Button)mProgressDialog.getWindow().findViewById(R.id.btn_show_more_tip)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mProgressDialog.dismiss();
                 Intent intChallenge = new Intent(context.getApplicationContext(), TestActivity.class);
                 intChallenge.putExtra("type",2);
                 AppControl.getInstance().currentUser.addTickets(-2);
                 context.startActivity(intChallenge);
+                ((MainActivity)context).finish();
+
+            }
+        });
+
+        ((Button)mProgressDialog.getWindow().findViewById(R.id.btn_exit_tip)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mProgressDialog.dismiss();
+            }
+        });
+        mProgressDialog.setCancelable(true);
+        mProgressDialog.show();
+    }
+    public static void ConfimrExitDialog(final Context context) {
+        mProgressDialog = new Dialog(context);
+        mProgressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        mProgressDialog.setContentView(R.layout.dialog_confirm_exit);
+        mProgressDialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme;
+
+        ((Button)mProgressDialog.getWindow().findViewById(R.id.btn_show_more_tip)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)context).finish();
+                System.exit(0);
+
+            }
+        });
+
+        ((Button)mProgressDialog.getWindow().findViewById(R.id.btn_exit_tip)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mProgressDialog.dismiss();
+            }
+        });
+        mProgressDialog.setCancelable(true);
+        mProgressDialog.show();
+    }
+
+    public static void ConfimrFinishTestDialog(final Context context,String msg) {
+        mProgressDialog = new Dialog(context);
+        mProgressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        mProgressDialog.setContentView(R.layout.dialog_confirm_exit);
+        ((TextView)mProgressDialog.getWindow().findViewById(R.id.txt_msg_dialog)).setText(msg);
+
+        mProgressDialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme;
+
+
+        ((Button)mProgressDialog.getWindow().findViewById(R.id.btn_show_more_tip)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((TestActivity)context).finish();
+                context.startActivity(new Intent(context, MainActivity.class));
+
+
             }
         });
 

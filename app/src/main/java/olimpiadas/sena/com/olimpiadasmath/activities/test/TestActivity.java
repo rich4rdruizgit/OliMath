@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import io.realm.Realm;
 import olimpiadas.sena.com.olimpiadasmath.R;
+import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.result.ResultActivity;
 import olimpiadas.sena.com.olimpiadasmath.adapter.test.CardFragmentPagerAdapter;
 import olimpiadas.sena.com.olimpiadasmath.adapter.test.CardPagerAdapter;
@@ -34,6 +35,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class TestActivity extends AppCompatActivity implements View.OnClickListener,
         CompoundButton.OnCheckedChangeListener, Communication , CardPagerAdapter.CommunicationTest, CardPagerAdapter.MoveTestListener {
 
+    private AppControl appControl;
     private Button mButton;
     private ViewPagerPersonalizado mViewPager;
 
@@ -47,6 +49,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     int flag = 0;
     int flagBet = 0;
     int betcoin=0;
+    private boolean initTest = false;
 
 
 
@@ -84,6 +87,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
         getSupportActionBar().hide();
+        appControl = AppControl.getInstance();
         flag = getIntent().getExtras().getInt("type"); // con esto miramos si es una practica o un challenge
         if(flag==1){
             AppControl.getInstance().onPractice = true;
@@ -215,6 +219,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         flagBet = bet;
         if (flagBet != 0) {
             if (flag == 1) {
+                initTest = true;
                 AppControl.getInstance().currentBet = seekBar.getProgress();
                 AppControl.getInstance().onPractice = true;
                 AppControl.getInstance().onChallenge = false;
@@ -300,6 +305,24 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
 
     protected void attachBaseContext (Context newBase){
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if(appControl.onPractice){
+            if(initTest){
+                DialogHelper.ConfimrFinishTestDialog(this,"Seguro que quieres terminar la practica? \nPerderas lo apostado");
+            }else{
+                finish();
+                startActivity(new Intent(TestActivity.this, MainActivity.class));
+            }
+
+        }else{
+            DialogHelper.ConfimrFinishTestDialog(this,"Seguro que quieres terminar el reto? \nPerderas los créditos que pagaste para ingresar y se contará como perdido");
+        }
+
 
     }
 }
