@@ -5,7 +5,6 @@
     android:id="@+id/activity_profile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/padding_views"
     android:background="#434b5b"
     android:orientation="vertical"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.profile.ProfileActivity">
@@ -13,13 +12,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/shape_ranking"
         android:orientation="horizontal">
         <ImageView
+            android:padding="5dp"
+            android:id="@+id/img_profile_user"
             android:src="@drawable/user"
             android:layout_width="100dp"
             android:layout_height="100dp" />
         <TextView
-            android:id="@+id/tv_nick"
+            android:layout_gravity="center"
+            android:id="@+id/txt_profile_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -52,11 +55,13 @@
             android:text="@string/profile"
             android:textColor="@color/primary_text"
             />
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:background="@drawable/background_transparent_with_stroke"
         >
 
         <LinearLayout
@@ -79,6 +84,7 @@
                 android:textColor="@color/primary_text"/>
 
             <FrameLayout
+                android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 >
@@ -180,6 +186,7 @@
                 />
         </LinearLayout>
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/level"
         android:layout_width="wrap_content"
@@ -210,6 +217,7 @@
         android:orientation="horizontal"
         android:layout_gravity="center">
         <TextView
+            android:gravity="center"
             android:layout_gravity="center"
             android:textSize="30sp"
             android:text="@string/pts"
@@ -218,7 +226,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/primary_text"/>
         <TextView
-
+            android:gravity="center"
             android:layout_gravity="center"
             android:layout_marginLeft="30dp"
             android:textSize="40sp"
@@ -228,11 +236,49 @@
             android:layout_height="wrap_content"
             android:textColor="@color/primary_text"/>
         <ImageView
-            android:layout_marginLeft="10dp"
+            android:layout_gravity="left"
             android:src="@drawable/user"
             android:layout_width="0dp"
             android:layout_weight="0.2"
             android:layout_height="90dp" />
     </LinearLayout>
+    <LinearLayout
 
+        android:id="@+id/level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_nick"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_gravity="center"
+            android:id="@+id/tv_profile_level_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_views"
+            android:textSize="40sp"
+            android:text="x4" />
+        <TextView
+            android:layout_gravity="center"
+            android:id="@+id/tv_level"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_views"
+            android:textSize="20sp"
+            android:textColor="@color/greenSena"
+            android:text="@string/level"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+        <Button
+            android:text="Cerrar Sesión"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 </LinearLayout>

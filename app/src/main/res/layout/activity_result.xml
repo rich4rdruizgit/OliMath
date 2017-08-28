@@ -15,16 +15,19 @@
         android:orientation="vertical"
         android:gravity="center_vertical">
 
+
         <TextView
-            android:id="@+id/tv_result_advice"
+            android:textSize="30sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Felicitaciones, debes mejorar un poco..."
+            android:text="TERMINADO"
             android:textColor="@color/primary_text"
             android:textSize="@dimen/text_size"/>
 
+
         <LinearLayout
+            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -41,6 +44,7 @@
                 />
 
             <TextView
+
                 android:id="@+id/tv_result_rigth_answer_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

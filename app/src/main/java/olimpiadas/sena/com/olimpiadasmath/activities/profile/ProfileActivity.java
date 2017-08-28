@@ -19,10 +19,10 @@ public class ProfileActivity extends AppCompatActivity {
 
     AppControl appControl;
 
-    TextView tvLvl,tvCoins,tvTickets;
-    ImageView imgExp;
+    TextView tvLvl,tvCoins,tvTickets,txtNameUser;
+    ImageView imgExp, imgProfile;
     private ClipDrawable mImageDrawable;
-
+    private String recurso= "drawable";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +32,19 @@ public class ProfileActivity extends AppCompatActivity {
 
         appControl = AppControl.getInstance();
 
+        imgProfile = (ImageView) findViewById(R.id.img_profile_user);
+        int avatar = getResources().getIdentifier(appControl.currentUser.getAvatar(),recurso, getPackageName());
+        imgProfile.setImageResource(avatar);
+
+        txtNameUser = (TextView) findViewById(R.id.txt_profile_user);
+        txtNameUser.setText(appControl.currentUser.getNickname());
+
         tvLvl = (TextView) findViewById(R.id.tv_profile_level_number);
         tvCoins = (TextView) findViewById(R.id.tv_profile_coins);
         tvTickets = (TextView) findViewById(R.id.tv_profile_ticket);
 
 
-        tvLvl.setText(" x " + appControl.currentUser.getLevel());
+        tvLvl.setText(""+appControl.currentUser.getLevel());
         tvCoins.setText(" x " + appControl.currentUser.getCoins());
         tvTickets.setText(" x " + appControl.currentUser.getTickets());
 

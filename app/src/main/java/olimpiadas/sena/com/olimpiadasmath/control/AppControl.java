@@ -5,6 +5,7 @@ import android.util.Log;
 import io.realm.Realm;
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.model.BonusTable;
+import olimpiadas.sena.com.olimpiadasmath.model.Configuration;
 import olimpiadas.sena.com.olimpiadasmath.model.Product;
 import olimpiadas.sena.com.olimpiadasmath.model.Question;
 import olimpiadas.sena.com.olimpiadasmath.model.User;
@@ -33,12 +34,17 @@ public class AppControl {
     public boolean onPractice = false;
 
     public User currentUser;
+    public int currentBet = 0;
+    public int baseWinCoins = 10;
+
 
     //ranking
     public int betCoins;
     public int initBetCoins;
 
     private boolean init = false;
+
+    public boolean isLogged = false;
 
     public static AppControl getInstance() {
         return ourInstance;
@@ -74,18 +80,18 @@ public class AppControl {
                     Log.d(TAG,"Creating BonusTables");
                     //float max, float min, float coin, float ticket, float exp, float score, int type
                     //Practice
-                    BonusTable bonus1 = new BonusTable(1, 0.9f, 2, 3, 3, 1.5f, 1);
-                    BonusTable bonus2 = new BonusTable(0.8f, 0.89f,2 , 3, 3, 1.5f, 1);
-                    BonusTable bonus3 = new BonusTable(0.6f, 0.79f, 1, 1, 1, 1f, 1);
-                    BonusTable bonus4 = new BonusTable(0.40f, 0.59f, 0, 0, 0, 0f, 1);
-                    BonusTable bonus5 = new BonusTable(0, 0.39f, -1, -1, 0, 1.5f, 1);
+                    BonusTable bonus1 = new BonusTable(1.1f, 0.9f, 2, 3, 3, 1.5f, 1);
+                    BonusTable bonus2 = new BonusTable(0.89f, 0.8f,2 , 3, 3, 1.5f, 1);
+                    BonusTable bonus3 = new BonusTable(0.79f, 0.6f, 1, 1, 1, 1f, 1);
+                    BonusTable bonus4 = new BonusTable(0.59f, 0.4f, 0, 0, 0, 0f, 1);
+                    BonusTable bonus5 = new BonusTable(0.38f, 0, -1, -1, 0, 1.5f, 1);
 
                     //challenge
-                    BonusTable bonus6 = new BonusTable(1, 0.9f, 2, 3, 3, 1.5f, 2);
-                    BonusTable bonus7 = new BonusTable(0.8f, 0.89f,2 , 3, 3, 1.5f, 2);
-                    BonusTable bonus8 = new BonusTable(0.6f, 0.79f, 1, 1, 1, 1f, 2);
-                    BonusTable bonus9 = new BonusTable(0.40f, 0.59f, 0, 0, 0, 0f, 2);
-                    BonusTable bonus10 = new BonusTable(0, 0.39f, -1, -1, 0, 1.5f, 2);
+                    BonusTable bonus6 = new BonusTable(1.1f, 0.9f, 2, 3, 3, 1.5f, 2);
+                    BonusTable bonus7 = new BonusTable(0.89f, 0.8f,2 , 3, 3, 1.5f, 2);
+                    BonusTable bonus8 = new BonusTable(0.79f, 0.6f, 1, 1, 1, 1f, 2);
+                    BonusTable bonus9 = new BonusTable(0.59f, 0.40f, 0, 0, 0, 0f, 2);
+                    BonusTable bonus10 = new BonusTable(0.39f, 0, -1, -1, 0, 1.5f, 2);
 
 
 
@@ -235,10 +241,8 @@ public class AppControl {
                     User manageduser = realm.copyToRealm(user_uno);
                     ourInstance.currentUser = realm.copyFromRealm(manageduser);
 
-
                 }else{
                     ourInstance.currentUser = realm.copyFromRealm(realm.where(User.class).findFirst());
-
                 }
 
                 if(realm.where(Product.class).findAll().isEmpty()){
@@ -249,16 +253,22 @@ public class AppControl {
                     Product pdt4 = new Product(R.drawable.marco8,"Neon ring",25,"10",Product.FOR_BUY,"marco8");
                     Product pdt5 = new Product(R.drawable.marco11,"Blue ring",50,"10",Product.FOR_BUY,"marco11");
 
-
-
-
-
                     realm.copyToRealm(pdt1);
                     realm.copyToRealm(pdt2);
                     realm.copyToRealm(pdt3);
                     realm.copyToRealm(pdt4);
                     realm.copyToRealm(pdt5);
 
+                }
+
+                Configuration config = realm.where(Configuration.class).equalTo("key","isLogged").findFirst();
+                if(config != null){
+                    Log.d(TAG,"Configuration isLogged  founded = " + config.getValue());
+                    AppControl.this.isLogged = config.getValue();
+                }else{
+                    Log.d(TAG,"Configuration isLogged not founded");
+                    config = new Configuration("isLogged",false);
+                    realm.copyToRealm(config);
                 }
 
 

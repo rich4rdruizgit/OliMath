@@ -5,18 +5,59 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#434b5b"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="olimpiadas.sena.com.olimpiadasmath.fragments.test.BetFragment">
+    <LinearLayout
+        android:layout_marginTop="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:gravity="center"
+        >
 
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".15"
+            android:src="@android:drawable/btn_star_big_on"
+            />
+        <TextView
+            android:gravity="center"
+            android:id="@+id/txt_title_ranking"
+            android:layout_width="0dp"
+            android:layout_weight=".7"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:paddingLeft="20dp"
+            android:text="PRACTICAR"
+            android:textColor="#fff"
+            />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".15"
+            android:src="@android:drawable/btn_star_big_on"
+            />
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        >
         <TextView
-
-            android:textSize="20dp"
+            android:layout_marginTop="20dp"
+            android:textSize="18dp"
             android:gravity="center"
-            android:text="Apuesta y gana más monedas"
+            android:text="COVER"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginTop="20dp"
+            android:textSize="18dp"
+            android:gravity="center"
+            android:text="Apuesta  Monedas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <TextView
@@ -40,6 +81,7 @@
     </LinearLayout>
 
     <Button
+        android:text="continuar"
         android:id="@+id/btn_bet_acept"
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"

@@ -5,13 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
-import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.model.User;
 
 /**
@@ -22,7 +22,6 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
 
     private List<User> users;
     private Context context;
-
 
     public RankingAdapter(List<User> users, Context context) {
         this.users = users;
@@ -37,10 +36,18 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
     }
     @Override
     public void onBindViewHolder(RankingViewHolder holder, int position) {
+
         User user = users.get(position);
         holder.txtPosition.setText(user.getPosition()+"");
         holder.txtNickName.setText(user.getNickname()+"");
         holder.txtPoints.setText(user.getScore()+"");
+
+        int avatar = context.getResources().getIdentifier(user.getAvatar(),"drawable", context.getPackageName());
+
+        holder.imgAvatarRanking.setImageResource(avatar);
+
+       // holder.imgAvatarRanking.setImageResource(Integer.parseInt(user.getAvatar()));
+
 
 //        if(user.getNickname().equals(AppControl.getInstance().currentUser.getNickname())){
 //            holder.layout.setBackgroundResource(R.drawable.scall);
@@ -60,6 +67,7 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
         protected TextView txtPosition;
         protected TextView txtNickName;
         protected TextView txtPoints;
+        protected ImageView imgAvatarRanking;
         protected LinearLayout layout;
 
         public RankingViewHolder(View itemView) {
@@ -67,6 +75,7 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
             txtPosition = (TextView) itemView.findViewById(R.id.txt_position_ranking);
             txtNickName = (TextView) itemView.findViewById(R.id.txt_nickname_ranking);
             txtPoints = (TextView) itemView.findViewById(R.id.txt_points_ranking);
+            imgAvatarRanking = (ImageView) itemView.findViewById(R.id.img_avatar_ranking);
             layout = (LinearLayout) itemView.findViewById(R.id.layout_ranking);
         }
     }
