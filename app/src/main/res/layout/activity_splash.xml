@@ -15,40 +15,25 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.5"
+        android:orientation="vertical"
         >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="300sp"
+            android:layout_margin="10dp"
+            android:id="@+id/splash"
+            android:background="@drawable/logoappnombre" />
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/splash"
-            android:background="@drawable/fondo_splash" />
-    </LinearLayout>
-    <!-- Aqui poner el loading gif o lo que sea-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.25"
-        android:gravity="center"
+            android:background="@drawable/logosena" />
 
-        >
-        <com.github.ybq.android.spinkit.SpinKitView
-            android:layout_marginTop="20dp"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/spin_kit"
-            style="@style/SpinKitView.WanderingCubes"
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:SpinKit_Color="@color/colorAccent" />
-
+            android:background="@drawable/logosena" />
     </LinearLayout>
-    <!-- Aqui poner el logo del sena-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.25"
-        >
 
-    </LinearLayout>
 
 </LinearLayout>
 

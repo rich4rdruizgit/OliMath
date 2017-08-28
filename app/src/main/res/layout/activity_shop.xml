@@ -23,18 +23,10 @@
         android:layout_height="wrap_content"
         android:weightSum="1">
         <ImageView
-            android:layout_gravity="center"
-            android:layout_width="0dp"
-            android:layout_height="15dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_weight=".15"
-            android:src="@android:drawable/arrow_down_float"
-            android:rotation="90"
-            />
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight=".15"
-            android:src="@android:drawable/btn_star_big_on"
+            android:src="@drawable/tiendablanco"
             />
         <TextView
             android:id="@+id/txt_title_ranking"
@@ -43,8 +35,8 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:paddingLeft="20dp"
-            android:text="SHOP"
-            android:textColor="#fff"
+            android:text="@string/shop"
+            android:textColor="@color/primary_text"
             />
     </LinearLayout>
     <LinearLayout
