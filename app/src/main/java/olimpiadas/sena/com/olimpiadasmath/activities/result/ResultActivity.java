@@ -1,5 +1,6 @@
 package olimpiadas.sena.com.olimpiadasmath.activities.result;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ClipDrawable;
 import android.os.Handler;
@@ -18,6 +19,7 @@ import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.model.BonusTable;
 import olimpiadas.sena.com.olimpiadasmath.model.User;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
 public class ResultActivity extends AppCompatActivity {
@@ -222,5 +224,10 @@ public class ResultActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }
