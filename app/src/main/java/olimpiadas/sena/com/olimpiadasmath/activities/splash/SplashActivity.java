@@ -61,7 +61,7 @@ public class SplashActivity extends AppCompatActivity implements AppControl.Init
                 try {
                     int waited = 0;
                     while (loading) {
-                        sleep(2000);
+                        sleep(5000);
                     }
 
 
