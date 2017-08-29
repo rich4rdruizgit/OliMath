@@ -136,6 +136,8 @@ public class ResultActivity extends AppCompatActivity {
             calculateExp();
         }
 
+        User.updateUser(appControl.currentUser);
+
 
     }
 

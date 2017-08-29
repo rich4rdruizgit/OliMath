@@ -23,6 +23,7 @@ import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.shop.ShopActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.model.Product;
+import olimpiadas.sena.com.olimpiadasmath.model.User;
 
 /**
  * Created by rich4 on 16/06/2017.
@@ -164,6 +165,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                     updateState();
                     appControl.currentUser.setAvatar(product.getSourceName());
                     ProductAdapter.this.updateProductState(position,Product.USED);
+                    User.updateUser(appControl.currentUser);
                     ((ShopActivity)context).headerFragment.refreshInterface();
                     //((ShopActivity)context).finish();
                     //((ShopActivity)context).startActivity(((ShopActivity)context).getIntent());

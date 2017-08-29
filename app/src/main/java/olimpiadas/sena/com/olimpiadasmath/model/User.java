@@ -2,6 +2,7 @@ package olimpiadas.sena.com.olimpiadasmath.model;
 
 import java.util.UUID;
 
+import io.realm.Realm;
 import io.realm.RealmObject;
 import io.realm.annotations.Ignore;
 import io.realm.annotations.PrimaryKey;
@@ -145,4 +146,18 @@ public class User  extends RealmObject {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public static void updateUser(final User user){
+
+
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                realm.insertOrUpdate(user);
+            }
+        });
+
+    }
+
 }
