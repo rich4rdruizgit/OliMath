@@ -65,7 +65,7 @@ public class AppControl {
             public void execute(Realm realm) {
 
                 if(realm.where(User.class).findAll().isEmpty()){
-                    User user = new User("Juanito",305,30,5000,8,1,30.0,"jhonny");
+                    User user = new User("Juanito",305,30,150,8,1,30.0,"jhonny");
                     realm.copyToRealm(user);
                     currentUser = user;
                 }else{

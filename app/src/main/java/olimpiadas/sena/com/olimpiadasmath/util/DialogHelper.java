@@ -24,6 +24,11 @@ import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 
 public class DialogHelper {
 
+    public interface DialogHelperListener{
+        public void dialogEnd(boolean result);
+    }
+    public static int BUY = 1;
+    public static int NO_BUY = 2;
 
     static Dialog mProgressDialog;
 
@@ -153,6 +158,42 @@ public class DialogHelper {
                 mProgressDialog.dismiss();
             }
         });
+        mProgressDialog.setCancelable(true);
+        mProgressDialog.show();
+    }
+
+    public static void ConfimrBuyDialog(final Context context,String msg,int type, final DialogHelperListener dialogHelperListener) {
+        mProgressDialog = new Dialog(context);
+        mProgressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        mProgressDialog.setContentView(R.layout.dialog_confirm_buy);
+        ((TextView)mProgressDialog.getWindow().findViewById(R.id.txt_msg_dialog)).setText(msg);
+
+        mProgressDialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme;
+
+
+        Button ok = ((Button)mProgressDialog.getWindow().findViewById(R.id.btn_show_more_tip));
+        Button cancel = ((Button)mProgressDialog.getWindow().findViewById(R.id.btn_exit_tip));
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            dialogHelperListener.dialogEnd(true);
+                mProgressDialog.dismiss();
+            }
+        });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mProgressDialog.dismiss();
+            }
+        });
+
+        if(type == NO_BUY){
+            ok.setVisibility(View.GONE);
+            cancel.setText("Aceptar");
+        }
+
         mProgressDialog.setCancelable(true);
         mProgressDialog.show();
     }
