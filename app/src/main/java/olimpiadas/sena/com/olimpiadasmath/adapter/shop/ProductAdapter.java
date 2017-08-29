@@ -24,12 +24,13 @@ import olimpiadas.sena.com.olimpiadasmath.activities.shop.ShopActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.model.Product;
 import olimpiadas.sena.com.olimpiadasmath.model.User;
+import olimpiadas.sena.com.olimpiadasmath.util.DialogHelper;
 
 /**
  * Created by rich4 on 16/06/2017.
  */
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder>{
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> implements DialogHelper.DialogHelperListener{
 
     private static final String TAG = ProductAdapter.class.toString();
 
@@ -41,6 +42,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     int currentAvatar = 1;
     Button currentAvatarButton = null;
+    Button currentBuyItem = null;
+    int currentPosition = 0;
 
 
     public ProductAdapter(List<Product> lstProduct, Context context) {
@@ -115,7 +118,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             @Override
             public void onClick(View v) {
                 if(product.getState() == Product.FOR_BUY){ // para comprar
+                    currentBuyItem = holder.btnBuy;
+                    currentPosition = position;
+
                     if(appControl.currentUser.getCoins()< lstProduct.get(position).getPrice()){
+                        DialogHelper.ConfimrBuyDialog(context,context.getString(R.string.no_enought_coins),DialogHelper.NO_BUY,ProductAdapter.this);
+                        /*
                         AlertDialog.Builder alert = new AlertDialog.Builder(context);
                         alert.setMessage(R.string.no_enought_coins)
                                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -127,9 +135,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                         ;
                         alert.create();
                         alert.show();
+                        */
                         return;
                     }else {
-                        AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                        DialogHelper.ConfimrBuyDialog(context,context.getString(R.string.alert_shop),DialogHelper.BUY,ProductAdapter.this);
+                        /*AlertDialog.Builder alert = new AlertDialog.Builder(context);
                         alert.setMessage(R.string.alert_shop)
                                 .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                                     @Override
@@ -151,6 +161,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                                 });
                         alert.create();
                         alert.show();
+                        */
                     }
                 }
                 else if(product.getState() == Product.BOUGTH){
@@ -181,6 +192,19 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @Override
     public int getItemCount() {
         return lstProduct.size();
+    }
+
+    @Override
+    public void dialogEnd(boolean result) {
+        if(result){
+            appControl.currentUser.setCoins(appControl.currentUser.getCoins() - lstProduct.get(currentPosition).getPrice());
+            currentBuyItem.setText("Usar");
+            ProductAdapter.this.updateProductState(currentPosition,Product.BOUGTH);
+            //product.setState(Product.BOUGTH);
+            ((ShopActivity)context).headerFragment.refreshInterface();
+            User.updateUser(appControl.currentUser);
+            Toast.makeText(context, "Felicidades, has adquirido este nuevo item", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public static class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
