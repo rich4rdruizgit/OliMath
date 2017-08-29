@@ -101,14 +101,14 @@
                         android:id="@+id/txt_header_ticket"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tickets"
+                        android:text="@string/tickets"
                         android:textColor="@color/primary_text"/>
 
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/creditos_icon" />
+                        android:src="@drawable/ticket" />
 
                     <TextView
                         android:id="@+id/tv_header_ticket"
@@ -137,7 +137,7 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/monedas_icon" />
+                        android:src="@drawable/coin" />
 
                     <TextView
                         android:id="@+id/tv_header_coins"
@@ -148,11 +148,22 @@
                         android:textColor="@color/primary_text"/>
                 </LinearLayout>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@mipmap/ic_launcher_round"
-                    android:layout_marginLeft="10dp"/>
+                <LinearLayout
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/golden_medal"
+                    android:layout_marginLeft="5dp">
+
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="45dp"
+                        android:textColor="@color/primary_text"
+                        android:text="1"
+                        android:gravity="center"
+                        android:layout_marginBottom="3dp"/>
+                </LinearLayout>
+
+
 
             </LinearLayout>
 
