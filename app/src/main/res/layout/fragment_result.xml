@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_base"
     tools:context="olimpiadas.sena.com.olimpiadasmath.fragments.test.ResultFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -14,29 +15,37 @@
         android:gravity="center_vertical">
 
         <TextView
+            android:padding="20dp"
             android:id="@+id/txt_result_advice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
             android:text="Felicitaciones, debes mejorar un poco..." />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center_horizontal"
+            android:layout_margin="8dp"
+            android:weightSum="1"
             android:orientation="horizontal">
 
             <TextView
+                android:gravity="right"
                 android:id="@+id/txt_result_rigth_answer"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight=".6"
                 android:layout_height="wrap_content"
-                android:text="Respuestas correctas:"
-                android:textSize="@dimen/text_size"/>
+                android:text="Correctas:"
+                android:textColor="#fff"
+                android:textSize="@dimen/text_size" />
 
             <TextView
+                android:textColor="#ffffff"
                 android:id="@+id/txt_result_rigth_answer_number"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight=".4"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="8"
@@ -47,26 +56,33 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:gravity="center_horizontal"
+            android:weightSum="1"
             android:orientation="horizontal">
 
             <TextView
+                android:gravity="right"
                 android:id="@+id/txt_result_wrong_answer"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight=".6"
                 android:layout_height="wrap_content"
-                android:text="Respuestas incorrectas:"
-                android:textSize="@dimen/text_size"/>
+                android:text="Incorrectas:"
+                android:textSize="@dimen/text_size"
+                android:textColor="#fff"/>
 
             <TextView
+
+                android:textColor="#ffffff"
                 android:id="@+id/txt_result_wrong_answer_number"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:layout_weight=".4"
                 android:text="2"
-                android:textSize="@dimen/text_size"/>
+                android:textSize="@dimen/text_size" />
         </LinearLayout>
 
         <LinearLayout
+            android:weightSum="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -74,27 +90,35 @@
             android:orientation="horizontal">
 
             <TextView
+
+                android:gravity="right"
                 android:id="@+id/txt_result_win_coins"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Ganaste :"
-                android:textSize="@dimen/text_size"/>
+                android:layout_weight=".6"
+                android:text="Ganaste:"
+                android:textSize="@dimen/text_size"
+                android:textColor="#fff"/>
 
             <TextView
+                android:textColor="#ffffff"
                 android:id="@+id/txt_result_win_coins_number"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight=".1"
                 android:layout_marginLeft="10dp"
                 android:text="2"
                 android:textSize="@dimen/text_size"/>
 
             <ImageView
-                android:layout_width="30dp"
+                android:layout_width="0dp"
                 android:layout_height="30dp"
+                android:layout_weight=".3"
                 android:src="@drawable/coin" />
         </LinearLayout>
 
         <LinearLayout
+            android:weightSum="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -102,30 +126,36 @@
             android:orientation="horizontal">
 
             <TextView
+                android:gravity="right"
                 android:id="@+id/txt_result_win_ticket"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight=".6"
                 android:text="Ganaste:"
-                android:textSize="@dimen/text_size"/>
+                android:textSize="@dimen/text_size"
+                android:textColor="#fff"/>
 
             <TextView
+                android:textColor="#ffffff"
                 android:id="@+id/txt_result_win_ticket_number"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight=".1"
                 android:layout_marginLeft="10dp"
                 android:text="1"
                 android:textSize="@dimen/text_size"/>
 
             <ImageView
-                android:layout_width="30dp"
+                android:layout_width="0dp"
                 android:layout_height="30dp"
+                android:layout_weight=".3"
                 android:src="@drawable/ticket" />
         </LinearLayout>
 
 
         <Button
             android:id="@+id/btn_result_continue"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Continuar" />
