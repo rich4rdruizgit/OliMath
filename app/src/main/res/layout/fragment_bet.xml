@@ -20,7 +20,8 @@
             android:layout_height="12dp"
             android:layout_weight=".15"
             android:src="@android:drawable/arrow_down_float"
-            android:rotation="90" />
+            android:rotation="90"
+            android:visibility="gone"/>
 
         <ImageView
             android:layout_width="@dimen/tamanoiconmenuprincipal"

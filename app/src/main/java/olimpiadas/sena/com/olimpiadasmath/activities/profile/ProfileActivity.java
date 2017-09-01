@@ -19,7 +19,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     AppControl appControl;
 
-    TextView tvLvl,tvCoins,tvTickets,txtNameUser;
+    TextView tvLvl,tvCoins,tvTickets,txtNameUser,tvScore;
     ImageView imgExp, imgProfile;
     private ClipDrawable mImageDrawable;
     private String recurso= "drawable";
@@ -42,12 +42,13 @@ public class ProfileActivity extends AppCompatActivity {
         tvLvl = (TextView) findViewById(R.id.tv_profile_level_number);
         tvCoins = (TextView) findViewById(R.id.tv_profile_coins);
         tvTickets = (TextView) findViewById(R.id.tv_profile_ticket);
+        tvScore = (TextView) findViewById(R.id.tv_profile_score);
 
 
         tvLvl.setText(""+appControl.currentUser.getLevel());
         tvCoins.setText(" x " + appControl.currentUser.getCoins());
         tvTickets.setText(" x " + appControl.currentUser.getTickets());
-
+        tvScore.setText("" + appControl.currentUser.getScore());
         ImageView imgExp = (ImageView) findViewById(R.id.img_profile_progress_bar2);
         mImageDrawable = (ClipDrawable) imgExp.getDrawable();
 
