@@ -10,7 +10,7 @@
         android:padding="10dp"
         android:id="@+id/cardview_shop"
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_height="280dp"
         app:cardCornerRadius="6dp"
         app:cardElevation="10dp"
         app:cardUseCompatPadding="true"
@@ -34,10 +34,10 @@
             <ImageView
                 android:padding="5dp"
                 android:id="@+id/img_view_shop"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
                 android:layout_gravity="center"
-                android:src="@mipmap/ic_launcher" />
+                 />
 
             <LinearLayout
                 android:layout_width="wrap_content"
