@@ -4,11 +4,25 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
+import olimpiadas.sena.com.olimpiadasmath.adapter.profile.AchievementAdapter;
+import olimpiadas.sena.com.olimpiadasmath.adapter.ranking.RankingAdapter;
+import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
+import olimpiadas.sena.com.olimpiadasmath.model.User;
+import olimpiadas.sena.com.olimpiadasmath.util.CircleImage.CropCircleTransformation;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +42,13 @@ public class LogroFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+
+    AppControl appControl;
+
+    private List<User> users;
+
+    RecyclerView recyclerView;
+    AchievementAdapter achievementAdapter;
     private OnFragmentInteractionListener mListener;
 
     public LogroFragment() {
@@ -59,13 +80,28 @@ public class LogroFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_logro, container, false);
+
+        View view =  inflater.inflate(R.layout.fragment_logro, container, false);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_achievement);
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(llm);
+
+        llenarUsers();
+        inicializarAdaptador();
+
+        return view;
+    }
+
+    private void inicializarAdaptador() {
+        achievementAdapter = new AchievementAdapter(users,getActivity());
+        recyclerView.setAdapter(achievementAdapter);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -105,5 +141,16 @@ public class LogroFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    private void llenarUsers() {
+        users = new ArrayList<>();
+
+        users.add(new User("Didier","1234",3000,1,47,12,10,2,"marco18"));
+        users.add(new User("Carlos","1234",2000,2,57,12,10,2,"marco8"));
+        users.add(new User("Harold","1234",1500,3,49,12,10,2,"marco11"));
+        users.add(new User("Rich4rd","1234",1322,4,47,12,10,2,"jhonny"));
+        users.add(new User("Jefferson","1234",1300,5,47,12,10,2,"marco"));
+
     }
 }

@@ -4,10 +4,13 @@
     android:layout_height="match_parent"
     tools:context="olimpiadas.sena.com.olimpiadasmath.fragments.profile.LogroFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/recycler_achievement"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_marginBottom="10dp">
+    </android.support.v7.widget.RecyclerView>
 
 </FrameLayout>
