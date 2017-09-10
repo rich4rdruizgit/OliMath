@@ -2,7 +2,9 @@ package olimpiadas.sena.com.olimpiadasmath.activities.profile;
 
 import android.content.Context;
 import android.graphics.drawable.ClipDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -10,14 +12,20 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
+import olimpiadas.sena.com.olimpiadasmath.adapter.profile.ViewPagerAdapter;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
+import olimpiadas.sena.com.olimpiadasmath.fragments.profile.AvatarFragment;
+import olimpiadas.sena.com.olimpiadasmath.fragments.profile.LogroFragment;
+import olimpiadas.sena.com.olimpiadasmath.fragments.profile.PerfilFragment;
 import olimpiadas.sena.com.olimpiadasmath.util.CircleImage.CropCircleTransformation;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity implements PerfilFragment.OnFragmentInteractionListener, LogroFragment.OnFragmentInteractionListener, AvatarFragment.OnFragmentInteractionListener {
 
 
     AppControl appControl;
+
+    ViewPager viewPager;
 
     TextView tvLvl,tvCoins,tvTickets,txtNameUser,tvScore;
     ImageView imgExp, imgProfile;
@@ -29,6 +37,9 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         getSupportActionBar().hide();
+
+        viewPager = (ViewPager) findViewById(R.id.vpPager);
+        viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
 
         appControl = AppControl.getInstance();
 
@@ -45,14 +56,14 @@ public class ProfileActivity extends AppCompatActivity {
         tvScore = (TextView) findViewById(R.id.tv_profile_score);
 
 
-        tvLvl.setText(""+appControl.currentUser.getLevel());
-        tvCoins.setText(" x " + appControl.currentUser.getCoins());
-        tvTickets.setText(" x " + appControl.currentUser.getTickets());
-        tvScore.setText("" + appControl.currentUser.getScore());
-        ImageView imgExp = (ImageView) findViewById(R.id.img_profile_progress_bar2);
-        mImageDrawable = (ClipDrawable) imgExp.getDrawable();
+//        tvLvl.setText(""+appControl.currentUser.getLevel());
+//        tvCoins.setText(" x " + appControl.currentUser.getCoins());
+//        tvTickets.setText(" x " + appControl.currentUser.getTickets());
+//        tvScore.setText("" + appControl.currentUser.getScore());
+//        ImageView imgExp = (ImageView) findViewById(R.id.img_profile_progress_bar2);
+//        mImageDrawable = (ClipDrawable) imgExp.getDrawable();
 
-        mImageDrawable.setLevel((int)appControl.currentUser.getExperience() * 100);
+//        mImageDrawable.setLevel((int)appControl.currentUser.getExperience() * 100);
 
         imgProfile.setImageResource(avatar);
         Picasso.with(imgProfile.getContext())
@@ -71,8 +82,13 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        tvCoins.setText(" X "+appControl.currentUser.getCoins());
-        tvTickets.setText(" X "+appControl.currentUser.getTickets());
+        //tvCoins.setText(" X "+appControl.currentUser.getCoins());
+        //tvTickets.setText(" X "+appControl.currentUser.getTickets());
+
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
 
     }
 }
