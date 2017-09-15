@@ -22,6 +22,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="1">
+
+        <ImageButton
+            android:id="@+id/btn_back_shop"
+            android:layout_gravity="center"
+            android:layout_width="1dp"
+            android:layout_height="12dp"
+            android:layout_weight=".15"
+            android:src="@android:drawable/arrow_down_float"
+            android:rotation="90"
+            android:visibility="gone" />
+
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -39,15 +50,18 @@
             android:textColor="@color/primary_text"
             />
     </LinearLayout>
-    <LinearLayout
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vpPagerShop"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/shape_ranking"
-        >
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_shop"
+        android:layout_height="wrap_content">
+        <android.support.v4.view.PagerTabStrip
+            android:id="@+id/pager_header_shop"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </android.support.v7.widget.RecyclerView>
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp" />
+    </android.support.v4.view.ViewPager>
 </LinearLayout>

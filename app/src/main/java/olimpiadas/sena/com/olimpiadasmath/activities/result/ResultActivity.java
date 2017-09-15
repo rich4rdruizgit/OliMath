@@ -134,8 +134,31 @@ public class ResultActivity extends AppCompatActivity {
             calculateCoins();
             calculateTickets();
             calculateExp();
+            calculateScore();
         }
 
+        User.updateUser(appControl.currentUser);
+
+
+    }
+
+    private void calculateScore() {
+        int winScore = 0;
+        if(bonusTable.getScore()<0){
+            winScore = - appControl.answers.length - correctAnswers;
+        }else if(bonusTable.getCoin()==0){
+            winScore = appControl.currentBet;
+        }else{
+            winScore = (int)( ( correctAnswers * bonusTable.getCoin() ) +  ( appControl.currentBet * bonusTable.getCoin() ) );
+        }
+
+        //winCoins = (int)(correctAnswers * bonusTable.getCoin());
+
+
+
+        tvCoins.setText(" x " + winScore);
+
+        currentUser.setCoins(currentUser.getCoins() + winScore);
 
     }
 

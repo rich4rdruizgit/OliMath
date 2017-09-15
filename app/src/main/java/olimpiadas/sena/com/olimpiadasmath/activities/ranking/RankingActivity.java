@@ -52,11 +52,13 @@ public class RankingActivity extends AppCompatActivity {
     private void llenarUsers() {
         users = new ArrayList<>();
 
-        users.add(new User("Rich4rd","1234",1322,4,47,12,10,2,"jhonny"));
-        users.add(new User("Harold","1234",1500,3,49,12,10,2,"marco11"));
-        users.add(new User("Jefferson","1234",1300,5,47,12,10,2,"marco"));
+        users.add(new User("Didier","1234",3000,1,47,12,10,2,"marco18"));
         users.add(new User("Carlos","1234",2000,2,57,12,10,2,"marco8"));
-        users.add(new User("Didier","1234",10000,1,47,12,10,2,"marco18"));
+        users.add(new User("Harold","1234",1500,3,49,12,10,2,"marco11"));
+        users.add(new User("Rich4rd","1234",1322,4,47,12,10,2,"jhonny"));
+        users.add(new User("Jefferson","1234",1300,5,47,12,10,2,"marco"));
+
+
 
 
         /*for (int i = 1; i <= 10; i++) {

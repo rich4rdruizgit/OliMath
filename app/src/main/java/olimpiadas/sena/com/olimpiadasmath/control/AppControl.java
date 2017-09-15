@@ -65,7 +65,7 @@ public class AppControl {
             public void execute(Realm realm) {
 
                 if(realm.where(User.class).findAll().isEmpty()){
-                    User user = new User("Juanito",305,30,5000,8,1,30.0,"jhonny");
+                    User user = new User("Juanito",305,30,150,8,1,30.0,"jhonny");
                     realm.copyToRealm(user);
                     currentUser = user;
                 }else{
@@ -84,14 +84,14 @@ public class AppControl {
                     BonusTable bonus2 = new BonusTable(0.89f, 0.8f,2 , 3, 3, 1.5f, 1);
                     BonusTable bonus3 = new BonusTable(0.79f, 0.6f, 1, 1, 1, 1f, 1);
                     BonusTable bonus4 = new BonusTable(0.59f, 0.4f, 0, 0, 0, 0f, 1);
-                    BonusTable bonus5 = new BonusTable(0.38f, 0, -1, -1, 0, 1.5f, 1);
+                    BonusTable bonus5 = new BonusTable(0.38f, 0, -1, -1, 0, -1, 1);
 
                     //challenge
                     BonusTable bonus6 = new BonusTable(1.1f, 0.9f, 2, 3, 3, 1.5f, 2);
                     BonusTable bonus7 = new BonusTable(0.89f, 0.8f,2 , 3, 3, 1.5f, 2);
                     BonusTable bonus8 = new BonusTable(0.79f, 0.6f, 1, 1, 1, 1f, 2);
                     BonusTable bonus9 = new BonusTable(0.59f, 0.40f, 0, 0, 0, 0f, 2);
-                    BonusTable bonus10 = new BonusTable(0.39f, 0, -1, -1, 0, 1.5f, 2);
+                    BonusTable bonus10 = new BonusTable(0.39f, 0, -1, -1, 0, -1, 2);
 
 
 
@@ -181,21 +181,21 @@ public class AppControl {
                             "\t\t{'text':'50' ,'isCorrect':'1'}]\n" +
                             
                             "\t\t}}");
-                    String jsonText9 = ("{'text':'pendiente pregunta 9',\n" +
+                    String jsonText9 = ("{'text':'El volumen de una bacteria se duplica cada minuto, al poner una bacteria en un vaso cilíndrico se llena totalmente en 61 minutos, ¿en cuántos minutos estará lleno un vaso que tiene la mitad del volumen inicial con el mismo tipo de células?',\n" +
                             "\t\t'answers':[\n" +
-                            "\t\t{'text':'12' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'15' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'11' ,'isCorrect':'0'},\n" +
-                            "\t\t{'text':'13' ,'isCorrect':'1'}]\n" +
-                            
+                            "\t\t{'text':'31 min' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'60 min' ,'isCorrect':'1'},\n" +
+                            "\t\t{'text':'28 min' ,'isCorrect':'0'},\n" +
+                            "\t\t{'text':'29 min' ,'isCorrect':'0'}]\n" +
+
                             "\t\t}}");
-                    String jsonText10 = ("{'text':'pendiente pregunta 10',\n" +
+                    String jsonText10 = ("{'text':'En el Call Center del SENA tres Aprendices que sirven de operadores reciben llamadas cada 3, 5 y 9 minutos respectivamente, ¿Se quiere saber cuántas veces estarán simultáneamente hablando estos tres aprendices en un turno de 9 horas?',\n" +
                             "\t\t'answers':[\n" +
                             "\t\t{'text':'12' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'15' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'11' ,'isCorrect':'0'},\n" +
                             "\t\t{'text':'13' ,'isCorrect':'1'}]\n" +
-                            
+
                             "\t\t}}");
                     Question question1 = new Question(jsonText1);
                     Question question2 = new Question(jsonText2);
@@ -247,11 +247,11 @@ public class AppControl {
 
                 if(realm.where(Product.class).findAll().isEmpty()){
 
-                    Product pdt1 = new Product(R.drawable.marco18,"Dragons ring",200,"10",Product.FOR_BUY,"marco18");
-                    Product pdt2 = new Product(R.drawable.marco,"Fire ring",20,"10",Product.FOR_BUY,"marco");
-                    Product pdt3 = new Product(R.drawable.marco2,"Happy ring",100,"10",Product.FOR_BUY,"marco2");
-                    Product pdt4 = new Product(R.drawable.marco8,"Neon ring",25,"10",Product.FOR_BUY,"marco8");
-                    Product pdt5 = new Product(R.drawable.marco11,"Blue ring",50,"10",Product.FOR_BUY,"marco11");
+                    Product pdt1 = new Product(R.drawable.marco18,"Dragon\nblanco",80,"10",Product.FOR_BUY,"marco18");
+                    Product pdt4 = new Product(R.drawable.marco8,"Dragon\nverde",100,"10",Product.FOR_BUY,"marco8");
+                    Product pdt2 = new Product(R.drawable.marco,"Dragon\nazul",20,"10",Product.FOR_BUY,"marco");
+                    Product pdt3 = new Product(R.drawable.marco2,"Dragon\nrojo",250,"10",Product.FOR_BUY,"marco2");
+                    Product pdt5 = new Product(R.drawable.marco11,"Dragon\nnaranja",150,"10",Product.FOR_BUY,"marco11");
 
                     realm.copyToRealm(pdt1);
                     realm.copyToRealm(pdt2);

@@ -35,7 +35,8 @@
                     android:id="@+id/img_test_clock_numberofquestion"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:src="@drawable/questiontest" />
+                    android:layout_margin="5dp"
+                    android:src="@drawable/practica_icon" />
 
                 <TextView
                     android:id="@+id/tv_test_numquest"
@@ -77,7 +78,8 @@
                     android:id="@+id/img_test_tip_numberofquestion"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:src="@drawable/questiontest" />
+                    android:layout_margin="5dp"
+                    android:src="@drawable/practica_icon" />
 
                 <TextView
                     android:id="@+id/tv_test_tip_numberofquestion"
