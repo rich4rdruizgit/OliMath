@@ -9,7 +9,7 @@
 .externalNativeBuild
 /.idea/vcs.xml
 /.idea/misc.xml
-gradle.properties
+.gradle.properties
 
 # Archivos de la aplicacion creados.
 *.apk
