@@ -30,12 +30,12 @@ import olimpiadas.sena.com.olimpiadasmath.util.DialogHelper;
 import pl.droidsonroids.gif.GifImageView;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "MainActivity";
-    String arrayName[] = {"Practice","Study","Challenge"};
+    String arrayName[] = {"Practice", "Study", "Challenge"};
     CircleMenu circleMenu;
-    Button btnShop, btnRanking,btnSettings,btnPractice,btnChallenge,btnLibrary;
+    Button btnShop, btnRanking, btnSettings, btnPractice, btnChallenge, btnLibrary;
     GifImageView gifMenu;
     AppControl appControl;
     Context context;
@@ -55,10 +55,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         int id = context.getResources().getIdentifier("fondo_b.png", "drawable", context.getPackageName());
         int resID = getResources().getIdentifier("fondo_b", "drawable", getPackageName());
-        Log.d(TAG,"el id del recurso es " + resID);
+        Log.d(TAG, "el id del recurso es " + resID);
 
         resID = getResources().getIdentifier("fondo_b", "drawable", getPackageName());
-        Log.d(TAG,"el id del recurso es " + resID);
+        Log.d(TAG, "el id del recurso es " + resID);
         /* CONSULTA DE UN WEBSERVICES
         WebConnectionManager webConnectionManager = WebConnectionManager.getWebConnectionManager();
         Log.d(TAG,"Se va a consultar");
@@ -70,26 +70,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnRanking = (Button) findViewById(R.id.btn_menu_ranking);
         btnRanking.setOnClickListener(this);
 
-        btnSettings = (Button) findViewById(R.id.btn_settings);
-        btnSettings.setOnClickListener(this);
-
         btnPractice = (Button) findViewById(R.id.btn_menu_practice);
         btnPractice.setOnClickListener(this);
 
         btnChallenge = (Button) findViewById(R.id.btn_menu_challenge);
         btnChallenge.setOnClickListener(this);
 
-        btnLibrary = (Button) findViewById(R.id.btn_menu_tutor);
-        btnLibrary.setOnClickListener(this);
+
+//
+//        btnSettings = (Button) findViewById(R.id.btn_settings);
+//        btnSettings.setOnClickListener(this);
+//        btnLibrary = (Button) findViewById(R.id.btn_menu_tutor);
+//        btnLibrary.setOnClickListener(this);
 
         //test
 
         try {
 
-            Log.d("Test","se va a obtener el usuario " + appControl.currentUser.getExperience() );
+            Log.d("Test", "se va a obtener el usuario " + appControl.currentUser.getExperience());
 
 
-            Log.d("Test","se va a crear jobject");
+            Log.d("Test", "se va a crear jobject");
             JSONObject test = new JSONObject("{'question':'Me comi una manzana....',\n" +
                     "\t\t'answers':[\n" +
                     "\t\t{'answ1':'Respuesta 1' ,'isCorrect':'0'},\n" +
@@ -98,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     "\t\t{'answ4':'Respuesta 4' ,'isCorrect':'0'}]\n" +
                     "\t\t\t\n" +
                     "\t\t}}");
-            Log.d("Test","se creo jobject");
+            Log.d("Test", "se creo jobject");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -106,11 +107,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
 
             case R.id.btn_menu_practice:
                 Intent intPractice = new Intent(MainActivity.this, TestActivity.class);
-                intPractice.putExtra("type",1);
+                intPractice.putExtra("type", 1);
                 startActivity(intPractice);
                 break;
             case R.id.btn_menu_challenge:
@@ -129,24 +130,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intentRanking = new Intent(MainActivity.this, RankingActivity.class);
                 startActivity(intentRanking);
                 break;
-            case R.id.btn_settings:
-                Intent intentSettings = new Intent(MainActivity.this, SettingsActivity.class);
-                startActivity(intentSettings);
-                break;
-            case R.id.btn_menu_tutor:
-                Intent intentTutor = new Intent(MainActivity.this, LibraryActivity.class);
-                startActivity(intentTutor);
-                break;
+//            case R.id.btn_settings:
+//                Intent intentSettings = new Intent(MainActivity.this, SettingsActivity.class);
+//                startActivity(intentSettings);
+//                break;
+//            case R.id.btn_menu_tutor:
+//                Intent intentTutor = new Intent(MainActivity.this, LibraryActivity.class);
+//                startActivity(intentTutor);
+//                break;
             default:
                 break;
         }
     }
 
-    private void toggle(){
-        if(gifMenu.getVisibility() == View.GONE){
+    private void toggle() {
+        if (gifMenu.getVisibility() == View.GONE) {
             gifMenu.setVisibility(View.VISIBLE);
 
-        }else{
+        } else {
             gifMenu.setVisibility(View.GONE);
 
         }
