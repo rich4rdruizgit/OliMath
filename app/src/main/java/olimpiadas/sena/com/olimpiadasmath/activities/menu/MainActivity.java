@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnChallenge = (Button) findViewById(R.id.btn_menu_challenge);
         btnChallenge.setOnClickListener(this);
 
+
 //
 //        btnSettings = (Button) findViewById(R.id.btn_settings);
 //        btnSettings.setOnClickListener(this);
