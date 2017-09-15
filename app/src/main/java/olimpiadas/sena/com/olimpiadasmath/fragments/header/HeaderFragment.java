@@ -101,7 +101,7 @@ public class HeaderFragment extends Fragment {
 
 
         tvName.setText(appControl.currentUser.getNickname());
-        tvTickets.setText(" x " + appControl.currentUser.getTickets());
+//        tvTickets.setText(" x " + appControl.currentUser.getTickets());
         tvCoins.setText(" x " + appControl.currentUser.getCoins());
         tvExp.setText(" x " + ((int)appControl.currentUser.getExperience()));
         Log.d(TAG,"Antes de recibir la imagen");
