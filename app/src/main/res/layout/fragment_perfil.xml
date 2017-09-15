@@ -1,0 +1,240 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="olimpiadas.sena.com.olimpiadasmath.fragments.profile.PerfilFragment">
+
+    <LinearLayout
+        android:layout_marginTop="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".15"
+            android:src="@android:drawable/btn_star_big_on" />
+
+        <TextView
+            android:id="@+id/txt_title_ranking"
+            android:layout_width="0dp"
+            android:layout_weight=".7"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:paddingLeft="20dp"
+            android:text="@string/profile"
+            android:textColor="@color/primary_text"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/background_transparent_with_stroke"
+        >
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_weight="0.4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/coinsLayout"
+
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_gravity="center"
+                android:id="@+id/tv_exp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_views"
+                android:text="@string/experience"
+                android:textSize="@dimen/tamanoletrasubtitulos"
+                android:textColor="@color/primary_text"/>
+
+            <FrameLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                >
+
+                <ImageView
+                    android:id="@+id/img_profile_progress_bar1"
+                    android:layout_width="120dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/backg"
+                    android:layout_gravity="center"
+                    />
+
+                <ImageView
+                    android:id="@+id/img_profile_progress_bar2"
+                    android:layout_width="119dp"
+                    android:layout_height="14dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="4.5dp"
+                    android:src="@drawable/clip_source" />
+
+            </FrameLayout>
+            <TextView
+                android:layout_gravity="center"
+                android:id="@+id/tv_profile_percent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/imageView"
+                android:padding="@dimen/padding_views"
+                android:textSize="@dimen/text_size"
+                android:text="30%" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ticket"
+            android:layout_weight="0.3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="2">
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_views"
+                android:text="@string/tickets"
+                android:textSize="@dimen/tamanoletrasubtitulos"
+                android:textColor="@color/primary_text"/>
+            <ImageView
+                android:layout_gravity="center"
+                android:id="@+id/imgTickets"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:padding="@dimen/padding_views"
+                android:src="@drawable/ticket"
+                android:layout_below="@+id/identicon" />
+
+            <TextView
+                android:layout_gravity="center"
+                android:id="@+id/tv_profile_ticket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/imageView"
+                android:padding="@dimen/padding_views"
+                android:textSize="@dimen/text_size"
+                android:text="x4" />
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:id="@+id/coinsLayout"
+            android:layout_weight="0.3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ticket"
+            android:layout_marginBottom="0dp"
+            android:orientation="vertical"
+            android:weightSum="2">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_views"
+                android:text="@string/coins"
+                android:textSize="@dimen/tamanoletrasubtitulos"
+                android:textColor="@color/primary_text"/>
+            <ImageView
+                android:id="@+id/img_coins"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/identicon"
+                android:src="@drawable/coin"
+                android:padding="@dimen/padding_views"/>
+
+
+            <TextView
+                android:id="@+id/tv_profile_coins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x4"
+                android:padding="@dimen/padding_views"
+                android:textSize="@dimen/text_size"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+        <TextView
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textSize="30sp"
+            android:text="@string/pts"
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primary_text"/>
+        <TextView
+            android:id="@+id/tv_profile_score"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginLeft="30dp"
+            android:textSize="40sp"
+            android:text="19000"
+            android:layout_width="0dp"
+            android:layout_weight="0.6"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primary_text"/>
+        <ImageView
+            android:layout_gravity="left"
+            android:src="@drawable/user"
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_height="90dp"
+            android:visibility="gone"/>
+    </LinearLayout>
+    <LinearLayout
+
+        android:id="@+id/level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_nick"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_gravity="center"
+            android:id="@+id/tv_profile_level_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_views"
+            android:textSize="40sp"
+            android:text="x4" />
+        <TextView
+            android:layout_gravity="center"
+            android:id="@+id/tv_level"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_views"
+            android:textSize="20sp"
+            android:textColor="@color/greenSena"
+            android:text="@string/level"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+        <Button
+            android:text="Cerrar Sesión"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+</LinearLayout>
