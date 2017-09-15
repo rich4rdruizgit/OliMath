@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,6 +17,7 @@ import com.squareup.picasso.Picasso;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.profile.ProfileActivity;
+import olimpiadas.sena.com.olimpiadasmath.activities.settings.SettingsActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.util.CircleImage.CropCircleTransformation;
 
@@ -41,6 +43,7 @@ public class HeaderFragment extends Fragment {
     private ClipDrawable mImageDrawable;
 
     TextView tvCoins,tvExp,tvTickets, tvName;
+    ImageButton btnSettings;
 
     AppControl appControl;
 
@@ -89,7 +92,7 @@ public class HeaderFragment extends Fragment {
         tvCoins = (TextView) view.findViewById(R.id.tv_header_coins);
         tvName = (TextView) view.findViewById(R.id.tv_header_name);
         tvExp = (TextView) view.findViewById(R.id.tv_header_exp);
-        tvTickets = (TextView) view.findViewById(R.id.tv_header_ticket);
+        btnSettings = (ImageButton) view.findViewById(R.id.btn_settings_header);
 
         mImageDrawable = (ClipDrawable) imgExp.getDrawable();
 
@@ -106,6 +109,16 @@ public class HeaderFragment extends Fragment {
         Log.d(TAG,"id cargado " +avatar+ " __ "+ appControl.currentUser.getAvatar());
         Log.d(TAG,"Antes de recibir la imagen");
 
+
+
+        btnSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentSettings = new Intent(getActivity(), SettingsActivity.class);
+                startActivity(intentSettings);
+            }
+        });
+
         imgHeaderProfile.setImageResource(avatar);
         Picasso.with(imgHeaderProfile.getContext())
                 .load(avatar)
@@ -120,6 +133,8 @@ public class HeaderFragment extends Fragment {
             }
         });
         return view;
+
+
 
 
     }
