@@ -124,17 +124,17 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
             if(AppControl.getInstance().onPractice){
                 AppControl.getInstance().onChallenge = false;
                 AppControl.getInstance().onPractice = true;
-                fragBet.setVisibility(View.VISIBLE);
-                lnPractice.setVisibility(View.GONE);
-                lnChallenge.setVisibility(View.GONE);
-                linearPractice.setVisibility(View.GONE);
+                fragBet.setVisibility(View.GONE);
+                lnPractice.setVisibility(View.VISIBLE);
+                lnChallenge.setVisibility(View.VISIBLE);
+                linearPractice.setVisibility(View.VISIBLE);
             }
         }
 
         mViewPager = (ViewPagerPersonalizado) findViewById(R.id.viewPager);
         Realm realm = Realm.getDefaultInstance();
 
-        mCardAdapter = new CardPagerAdapter(realm.where(Question.class).findAll());
+        mCardAdapter = new CardPagerAdapter(realm.where(Question.class).findAll(),getApplicationContext());
         mCardAdapter.addCardItem(new CardItem(R.string.title_1, R.string.text_1));
         mCardAdapter.addCardItem(new CardItem(R.string.title_2, R.string.text_1));
         mCardAdapter.addCardItem(new CardItem(R.string.title_3, R.string.text_1));
@@ -159,6 +159,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         mViewPager.setAdapter(mCardAdapter);
         mViewPager.setPageTransformer(false, mCardShadowTransformer);
         mViewPager.setOffscreenPageLimit(10);
+
 
         if (AppControl.getInstance().currentUser.getCoins() < 100) {
             seekBar.setMax(AppControl.getInstance().currentUser.getCoins());
@@ -187,6 +188,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         tvTestNumQuest = (TextView) findViewById(R.id.tv_test_numquest);
         tvTestNumQuest.setText(countPage+"/"+mCardAdapter.getCount());
         totalPage=  mCardAdapter.getCount();
+        tvTetTipNumQuet = (TextView) findViewById(R.id.tv_test_tip_numberofquestion);
         tvTetTipNumQuet = (TextView) findViewById(R.id.tv_test_tip_numberofquestion);
         tvTetTipNumQuet.setText(countPage+"/"+mCardAdapter.getCount());
 
@@ -286,7 +288,6 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         if(flag == 1){
             countPage = dir + 1;
             tvTetTipNumQuet.setText(countPage+"/"+totalPage);
-
             mViewPager.setCurrentItem(dir);
         }else if(flag == 2){
             countPage = dir + 1;
@@ -299,7 +300,6 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void finished() {
-
         startActivity(new Intent(this, ResultActivity.class));
     }
 
@@ -310,7 +310,6 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onBackPressed() {
-
         if(appControl.onPractice){
             if(initTest){
                 DialogHelper.ConfimrFinishTestDialog(this,"Seguro que quieres terminar la practica? \nPerderas lo apostado");
@@ -318,11 +317,8 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
                 startActivity(new Intent(TestActivity.this, MainActivity.class));
             }
-
         }else{
             DialogHelper.ConfimrFinishTestDialog(this,"Seguro que quieres terminar el reto? \nPerderas los créditos que pagaste para ingresar y se contará como perdido");
         }
-
-
     }
 }

@@ -34,7 +34,7 @@ public class HeaderFragment extends Fragment {
     private static final String TAG = HeaderFragment.class.toString() ;
 
 
-    // TODO: Rename and change types of parameters
+
     private String mParam1;
     private String mParam2;
     private String recurso = "drawable";
@@ -51,15 +51,6 @@ public class HeaderFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HeaderFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static HeaderFragment newInstance(String param1, String param2) {
         HeaderFragment fragment = new HeaderFragment();
         Bundle args = new Bundle();
@@ -72,18 +63,15 @@ public class HeaderFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         appControl = AppControl.getInstance();
 
         View view = inflater.inflate(R.layout.fragment_header, container, false);
@@ -95,8 +83,6 @@ public class HeaderFragment extends Fragment {
         btnSettings = (ImageButton) view.findViewById(R.id.btn_settings_header);
 
         mImageDrawable = (ClipDrawable) imgExp.getDrawable();
-
-
         mImageDrawable.setLevel((int)appControl.currentUser.getExperience()*100);
 
 
@@ -107,8 +93,6 @@ public class HeaderFragment extends Fragment {
         int avatar = getActivity().getBaseContext().getResources().getIdentifier(appControl.currentUser.getAvatar(),recurso, getActivity().getBaseContext().getPackageName());
         Log.d(TAG,"id cargado " +avatar+ " __ "+ appControl.currentUser.getAvatar());
         Log.d(TAG,"Antes de recibir la imagen");
-
-
 
         btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,13 +117,9 @@ public class HeaderFragment extends Fragment {
         });
         return view;
 
-
-
-
     }
 
     public void refreshInterface(){
-        tvTickets.setText(" x " + appControl.currentUser.getTickets());
         tvCoins.setText(" x " + appControl.currentUser.getCoins());
         tvExp.setText(" x " + ((int)appControl.currentUser.getExperience()));
         int avatar = getActivity().getBaseContext().getResources().getIdentifier(appControl.currentUser.getAvatar(),recurso, getActivity().getBaseContext().getPackageName());
