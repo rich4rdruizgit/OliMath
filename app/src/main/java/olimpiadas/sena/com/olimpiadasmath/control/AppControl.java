@@ -45,6 +45,8 @@ public class AppControl {
     private boolean init = false;
 
     public boolean isLogged = false;
+    public boolean isPreview = false;
+    public boolean previewUsed = false;
 
     public static AppControl getInstance() {
         return ourInstance;

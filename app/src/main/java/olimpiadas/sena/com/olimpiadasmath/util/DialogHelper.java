@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 
 import olimpiadas.sena.com.olimpiadasmath.R;
+import olimpiadas.sena.com.olimpiadasmath.activities.challenge.ChallengeActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.library.LibraryActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.practice.PracticeActivity;
@@ -88,7 +89,7 @@ public class DialogHelper {
             @Override
             public void onClick(View v) {
                 mProgressDialog.dismiss();
-                Intent intChallenge = new Intent(context.getApplicationContext(), TestActivity.class);
+                Intent intChallenge = new Intent(context.getApplicationContext(), ChallengeActivity.class);
                 intChallenge.putExtra("type",2);
                 AppControl.getInstance().currentUser.addTickets(-2);
                 context.startActivity(intChallenge);
