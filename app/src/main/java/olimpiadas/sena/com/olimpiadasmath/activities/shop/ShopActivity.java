@@ -45,17 +45,7 @@ public class ShopActivity extends AppCompatActivity implements AvatarShopFragmen
 
     }
 
-    public static List<Product> llenarLista(){
-        List<Product>  lista =  new ArrayList<>();
-        lista.add(new Product(R.mipmap.ic_launcher,"View Animator",5,"10",Product.FOR_BUY,""));
-        lista.add(new Product(R.mipmap.ic_launcher,"View Animator",20,"10",Product.FOR_BUY,""));
-        lista.add(new Product(R.mipmap.ic_launcher,"View Animator",100,"10",Product.FOR_BUY,""));
-        lista.add(new Product(R.mipmap.ic_launcher,"View Animator",2500,"10",Product.FOR_BUY,""));
-        lista.add(new Product(R.mipmap.ic_launcher,"View Animator",2500,"10",Product.FOR_BUY,""));
-        lista.add(new Product(R.mipmap.ic_launcher,"View Animator",2500,"10",Product.FOR_BUY,""));
-        lista.add(new Product(R.mipmap.ic_launcher,"View Animator",2500,"10",Product.FOR_BUY,""));
-        return lista;
-    }
+
 
     @Override
     protected void attachBaseContext(Context newBase) {

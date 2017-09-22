@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -47,6 +48,7 @@ public class PracticeActivity extends AppCompatActivity implements CardPagerAdap
     boolean scaled = false;
     View fragHeader;
     LinearLayout lnPractice;
+    LinearLayout lnFragmentPractice;
 
     Chronometer chronometer; // Cronometro
 
@@ -56,6 +58,8 @@ public class PracticeActivity extends AppCompatActivity implements CardPagerAdap
     //
     TextView tvTetTipNumQuet;
     Button btnBackChallenge;
+    ImageView btn_settings_header;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +75,10 @@ public class PracticeActivity extends AppCompatActivity implements CardPagerAdap
 
         //Fragment Header
         fragHeader = findViewById(R.id.fragment_test_header);
+        btn_settings_header = (ImageView) findViewById(R.id.btn_settings_header);
+        btn_settings_header.setVisibility(View.GONE);
         lnPractice = (LinearLayout) findViewById(R.id.ln_practice);
+        lnFragmentPractice = (LinearLayout) findViewById(R.id.lnFragmentPractice);
         //Referencias
         tvTetTipNumQuet = (TextView) findViewById(R.id.tv_test_tip_numberofquestion); // Numero de Pregunta
         chronometer = (Chronometer) findViewById(R.id.chronometer_clocked);//Cronometro
@@ -140,11 +147,11 @@ public class PracticeActivity extends AppCompatActivity implements CardPagerAdap
 
         if (scaled) {
             lnPractice.setVisibility(View.VISIBLE);
-            fragHeader.setVisibility(View.GONE);
+            lnFragmentPractice.setVisibility(View.GONE);
 
         } else {
             lnPractice.setVisibility(View.VISIBLE);
-            fragHeader.setVisibility(View.VISIBLE);
+            lnFragmentPractice.setVisibility(View.VISIBLE);
         }
         mCardShadowTransformer.enableScaling(scaled);
         mFragmentCardShadowTransformer.enableScaling(scaled);

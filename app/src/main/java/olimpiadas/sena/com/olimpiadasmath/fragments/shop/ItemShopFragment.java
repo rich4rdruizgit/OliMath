@@ -84,28 +84,15 @@ public class ItemShopFragment extends Fragment {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
 
-        llenarLista();
         inicializarAdaptador();
 
         return view;
     }
 
     private void inicializarAdaptador() {
-        productAdapter = new ProductAdapter(productList,getActivity());
+        String type = "item";
+        productAdapter = new ProductAdapter(productList,getActivity(),type);
         recyclerView.setAdapter(productAdapter);
-    }
-
-
-    public static List<Product> llenarLista(){
-        List<Product>  lista =  new ArrayList<>();
-        lista.add(new Product(R.mipmap.ic_launcher,"View Animator",5,"10",Product.FOR_BUY,""));
-        lista.add(new Product(R.mipmap.ic_launcher,"View Animator",20,"10",Product.FOR_BUY,""));
-        lista.add(new Product(R.mipmap.ic_launcher,"View Animator",100,"10",Product.FOR_BUY,""));
-        lista.add(new Product(R.mipmap.ic_launcher,"View Animator",2500,"10",Product.FOR_BUY,""));
-        lista.add(new Product(R.mipmap.ic_launcher,"View Animator",2500,"10",Product.FOR_BUY,""));
-        lista.add(new Product(R.mipmap.ic_launcher,"View Animator",2500,"10",Product.FOR_BUY,""));
-        lista.add(new Product(R.mipmap.ic_launcher,"View Animator",2500,"10",Product.FOR_BUY,""));
-        return lista;
     }
 
 
