@@ -85,7 +85,6 @@ public class HeaderFragment extends Fragment {
         mImageDrawable = (ClipDrawable) imgExp.getDrawable();
         mImageDrawable.setLevel((int)appControl.currentUser.getExperience()*100);
 
-
         tvName.setText(appControl.currentUser.getNickname());
         tvCoins.setText(" x " + appControl.currentUser.getCoins());
         tvExp.setText(" x " + ((int)appControl.currentUser.getExperience()));

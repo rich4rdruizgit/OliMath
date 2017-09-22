@@ -35,6 +35,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     private static final String TAG = ProductAdapter.class.toString();
 
     public RealmResults<Product> lstProduct;
+    public RealmResults<Product> lstProductItem;
+
+
     static Context context;
     AppControl appControl;
     Realm realm;
@@ -46,14 +49,20 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     int currentPosition = 0;
 
 
-    public ProductAdapter(List<Product> lstProduct, Context context) {
+    public ProductAdapter(List<Product> lstProduct, Context context, String type) {
 
         realm = Realm.getDefaultInstance();
-        lstProduct = realm.where(Product.class).findAll();
+        if(type.equals("avatar")){
+            lstProduct = realm.where(Product.class).equalTo("type","avatar").findAll();
+        }
+        if(type.equals("item")){
+            lstProduct = realm.where(Product.class).equalTo("type","item").findAll();
+        }
         this.lstProduct = (RealmResults<Product>) lstProduct;
         this.context = context;
         appControl = AppControl.getInstance();
     }
+
 
     private void updateProductState(final int pos,final int state){
 

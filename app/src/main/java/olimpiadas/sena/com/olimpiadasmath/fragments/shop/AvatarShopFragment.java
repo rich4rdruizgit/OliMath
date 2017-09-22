@@ -14,8 +14,11 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.realm.Realm;
+import io.realm.RealmResults;
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.adapter.shop.ProductAdapter;
+import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.model.Product;
 
 /**
@@ -38,7 +41,8 @@ public class AvatarShopFragment extends Fragment {
 
     RecyclerView recyclerView;
     ProductAdapter productAdapter;
-    private List<Product> productList;
+    public RealmResults<Product> lstProduct;
+
 
     private OnFragmentInteractionListener mListener;
 
@@ -76,7 +80,6 @@ public class AvatarShopFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view  = inflater.inflate(R.layout.fragment_avatar_shop, container, false);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_avatar_shop);
@@ -84,29 +87,17 @@ public class AvatarShopFragment extends Fragment {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
 
-        llenarLista();
         inicializarAdaptador();
 
         return view;
     }
 
     private void inicializarAdaptador() {
-        productAdapter = new ProductAdapter(productList,getActivity());
+        String type ="avatar";
+        productAdapter = new ProductAdapter(lstProduct,getActivity(),type);
         recyclerView.setAdapter(productAdapter);
     }
 
-
-    public static List<Product> llenarLista(){
-        List<Product>  lista =  new ArrayList<>();
-        lista.add(new Product(R.mipmap.ic_launcher,"View Animator",5,"10",Product.FOR_BUY,""));
-        lista.add(new Product(R.mipmap.ic_launcher,"View Animator",20,"10",Product.FOR_BUY,""));
-        lista.add(new Product(R.mipmap.ic_launcher,"View Animator",100,"10",Product.FOR_BUY,""));
-        lista.add(new Product(R.mipmap.ic_launcher,"View Animator",2500,"10",Product.FOR_BUY,""));
-        lista.add(new Product(R.mipmap.ic_launcher,"View Animator",2500,"10",Product.FOR_BUY,""));
-        lista.add(new Product(R.mipmap.ic_launcher,"View Animator",2500,"10",Product.FOR_BUY,""));
-        lista.add(new Product(R.mipmap.ic_launcher,"View Animator",2500,"10",Product.FOR_BUY,""));
-        return lista;
-    }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -132,18 +123,8 @@ public class AvatarShopFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
+
         void onFragmentInteraction(Uri uri);
     }
 }

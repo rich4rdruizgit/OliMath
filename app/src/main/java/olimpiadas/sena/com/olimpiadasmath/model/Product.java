@@ -20,20 +20,19 @@ public class Product extends RealmObject {
     protected String name;
     protected int price;
     protected String constraint; // Restriccion del nivel para acceder al item
-
-
-
     protected String sourceName;
     protected int state;
+    protected String type;
 
 
-    public Product(int urlImg, String name, int price, String constraint, int state, String sourceName) {
+    public Product(int urlImg, String name, int price, String constraint, int state, String sourceName, String type) {
         this.urlImg = urlImg;
         this.name = name;
         this.price = price;
         this.constraint = constraint;
         this.state = state;
         this.sourceName = sourceName;
+        this.type = type;
     }
 
     public Product() {
@@ -77,6 +76,14 @@ public class Product extends RealmObject {
 
     public void setSourceName(String sourceName) {
         this.sourceName = sourceName;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override
