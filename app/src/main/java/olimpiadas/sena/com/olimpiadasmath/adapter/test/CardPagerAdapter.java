@@ -1,5 +1,6 @@
 package olimpiadas.sena.com.olimpiadasmath.adapter.test;
 
+import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v7.widget.CardView;
 import android.util.Log;
@@ -20,8 +21,9 @@ import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.test.CardItem;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.model.Question;
+import olimpiadas.sena.com.olimpiadasmath.util.DialogHelper;
 
-public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.OnClickListener {
+public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.OnClickListener, DialogHelper.FeedbackDialogListener {
 
     private static final String TAG = CardPagerAdapter.class.toString();
     private List<CardView> mViews;
@@ -31,10 +33,13 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
     private float mBaseElevation;
     CommunicationTest  communicationTest;
     AppControl appControl;
+    Context context;
 
     Button btnNext,btnBack;
     //ImageView imgViewTest;
     public boolean imageScaled = false;
+    public int currentPosition = 0;
+
 
     public MoveTestListener getMoveTestListener() {
         return moveTestListener;
@@ -56,10 +61,12 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
 
 
 
-    public CardPagerAdapter(RealmResults<Question> question) {
+    public CardPagerAdapter(RealmResults<Question> question, Context context) {
         this.question = question;
         mViews = new ArrayList<>();
         appControl = AppControl.getInstance();
+        this.context = context;
+
     }
 
     public void addCardItem(CardItem item) {
@@ -100,6 +107,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
         if(AppControl.getInstance().onPractice){
             btnNext = (Button) view.findViewById(R.id.btn_test_next);
             btnBack = (Button) view.findViewById(R.id.btn_test_back);
+            btnBack.setVisibility(View.GONE);
         }
         ImageView imgScale = (ImageView) view.findViewById(R.id.img_test_scale);
         ImageView imgScaleView = (ImageView) view.findViewById(R.id.img_test_image);
@@ -131,13 +139,14 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
         }
         final RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.rg_group_answer);
 
+
         if(btnBack!=null){
             btnBack.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (position - 1 >= 0) {
+                    /*if (position - 1 >= 0) {
                         moveTestListener.moveClick(position - 1);
-                    }
+                    }*/
                 }
             });
         }
@@ -158,23 +167,30 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
                     Log.d(TAG, "Correct answer " + question.get(position).getAnswerCorrect(idx));
                     if(question.get(position).getAnswerCorrect(idx).equals("1")){
                         appControl.answers[position] = 1;
+                        if( position +1 < getCount()){
+                            moveTestListener.moveClick(position +1);
+                        }else{
+                            moveTestListener.finished();
+                        }
                     }else
                     {
                         appControl.answers[position] = 0;
+                        String myasnwer = "my answer";
+                        String theanswer = "the answer";
+                        String feedback = "feedback papu";
+                        currentPosition= position;
+                        DialogHelper.FeedbackDialog(context,myasnwer,theanswer,feedback,CardPagerAdapter.this);
                     }
 
                 }
 
-
-
-
                 if( position +1 < getCount()){
 
 
-                    moveTestListener.moveClick(position +1);
+                    //moveTestListener.moveClick(position +1);
 
                 }else{
-                    moveTestListener.finished();
+                    //moveTestListener.finished();
                 }
             }
         });
@@ -238,6 +254,22 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
 
         }
     }
+
+    @Override
+    public void closeFeedBackDialog() {
+
+        //Pasar a la siguiente interfaz
+            if( currentPosition +1 < getCount()){
+
+
+            moveTestListener.moveClick(currentPosition +1);
+
+        }else{
+            moveTestListener.finished();
+        }
+
+    }
+
     public interface MoveTestListener{
         public final int NEXT = 1;
         public final int BACK = 2;

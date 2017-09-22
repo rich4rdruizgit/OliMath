@@ -11,8 +11,10 @@ import android.widget.TextView;
 
 
 import olimpiadas.sena.com.olimpiadasmath.R;
+import olimpiadas.sena.com.olimpiadasmath.activities.challenge.ChallengeActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.library.LibraryActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
+import olimpiadas.sena.com.olimpiadasmath.activities.practice.PracticeActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.settings.SettingsActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.test.TestActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
@@ -87,7 +89,7 @@ public class DialogHelper {
             @Override
             public void onClick(View v) {
                 mProgressDialog.dismiss();
-                Intent intChallenge = new Intent(context.getApplicationContext(), TestActivity.class);
+                Intent intChallenge = new Intent(context.getApplicationContext(), ChallengeActivity.class);
                 intChallenge.putExtra("type",2);
                 AppControl.getInstance().currentUser.addTickets(-2);
                 context.startActivity(intChallenge);
@@ -145,7 +147,7 @@ public class DialogHelper {
         ((Button)mProgressDialog.getWindow().findViewById(R.id.btn_show_more_tip)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((TestActivity)context).finish();
+                ((PracticeActivity)context).finish();
                 context.startActivity(new Intent(context, MainActivity.class));
 
 
@@ -198,5 +200,33 @@ public class DialogHelper {
         mProgressDialog.show();
     }
 
+    public static void FeedbackDialog(final Context context, String myanswer, String theanswer , String feedback, final FeedbackDialogListener listener) {
+
+
+        mProgressDialog = new Dialog(context);
+        mProgressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        mProgressDialog.setContentView(R.layout.dialog_retroalimentacion);
+        ((TextView)mProgressDialog.getWindow().findViewById(R.id.txt_myanswer_retro)).setText(myanswer);
+        ((TextView)mProgressDialog.getWindow().findViewById(R.id.txt_theanswer_retro)).setText(theanswer);
+        ((TextView)mProgressDialog.getWindow().findViewById(R.id.txt_justification)).setText(feedback);
+
+        mProgressDialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme;
+
+
+        ((Button)mProgressDialog.getWindow().findViewById(R.id.btn_retro_next)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mProgressDialog.dismiss();
+                listener.closeFeedBackDialog();
+            }
+        });
+
+        mProgressDialog.setCancelable(false);
+        mProgressDialog.show();
+    }
+    public interface FeedbackDialogListener{
+        void closeFeedBackDialog();
+    }
 }
 

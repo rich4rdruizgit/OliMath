@@ -12,24 +12,49 @@
         android:roundIcon="@drawable/icono"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.menu.MainActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".activities.test.TestActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".activities.shop.ShopActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".activities.ranking.RankingActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".activities.statistics.StatisticActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".activities.profile.ProfileActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".activities.splash.SplashActivity" android:screenOrientation="portrait">
+        <activity
+            android:name=".activities.menu.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.test.TestActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.shop.ShopActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.ranking.RankingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.statistics.StatisticActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.profile.ProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.splash.SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.settings.SettingsActivity" android:screenOrientation="portrait" />
-        <activity android:name=".activities.result.ResultActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".activities.session.LoginActivity" android:screenOrientation="portrait" />
-        <activity android:name=".activities.library.LibraryActivity" android:screenOrientation="portrait" />
-        <activity android:name=".activities.library.EquationsActivity" android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activities.settings.SettingsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.result.ResultActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.session.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.library.LibraryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.library.EquationsActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activities.challenge.ChallengeActivity"></activity>
     </application>
 
 </manifest>

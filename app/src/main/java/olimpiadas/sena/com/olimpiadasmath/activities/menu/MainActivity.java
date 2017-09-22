@@ -20,6 +20,7 @@ import java.util.TimerTask;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.library.LibraryActivity;
+import olimpiadas.sena.com.olimpiadasmath.activities.practice.PracticeActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.ranking.RankingActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.settings.SettingsActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.shop.ShopActivity;
@@ -110,8 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
 
             case R.id.btn_menu_practice:
-                Intent intPractice = new Intent(MainActivity.this, TestActivity.class);
-                intPractice.putExtra("type", 1);
+                Intent intPractice = new Intent(MainActivity.this, PracticeActivity.class);
                 startActivity(intPractice);
                 break;
             case R.id.btn_menu_challenge:

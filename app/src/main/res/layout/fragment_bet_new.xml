@@ -1,0 +1,109 @@
+<LinearLayout
+    android:padding="20dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#434b5b"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="olimpiadas.sena.com.olimpiadasmath.fragments.test.BetFragment">
+    <LinearLayout
+        android:layout_marginTop="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+        <ImageButton
+            android:id="@+id/btn_back_practice"
+            android:layout_gravity="center"
+            android:layout_width="1dp"
+            android:layout_height="12dp"
+            android:layout_weight=".15"
+            android:src="@android:drawable/arrow_down_float"
+            android:rotation="90"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:layout_width="@dimen/tamanoiconmenuprincipal"
+            android:layout_height="@dimen/tamanoiconmenuprincipal"
+            android:layout_weight=".15"
+            android:src="@drawable/practica_icon"
+            />
+        <TextView
+            android:id="@+id/txt_title_ranking"
+            android:layout_width="0dp"
+            android:layout_weight=".7"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:paddingLeft="20dp"
+            android:text="@string/practice"
+            android:textColor="#fff"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Al terminar puedes ganar hasta 30 monedas"
+            android:textSize="18dp"
+            android:textColor="@color/primary_text"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Puedes apostar  tus monedas para ganar más!!!"
+            android:textSize="18dp"
+            android:textColor="@color/primary_text"/>
+        <TextView
+            android:layout_marginTop="40dp"
+            android:id="@+id/tv_bet"
+            android:gravity="center"
+            android:textSize="40dp"
+            android:text="0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primary_text"/>
+
+        <LinearLayout
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <SeekBar
+                android:id="@+id/seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:text="Preview"
+        android:id="@+id/btn_bet_preview"
+        android:layout_marginTop="15dp"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
+        />
+    <Button
+        android:text="continuar"
+        android:id="@+id/btn_bet_start"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        />
+
+
+
+
+</LinearLayout>
