@@ -76,11 +76,13 @@ public class ResultActivity extends AppCompatActivity {
         btnContinue = (Button) findViewById(R.id.btn_result_continue);
         tvCorAns = (TextView) findViewById(R.id.tv_result_rigth_answer_number);
         tvIncAns = (TextView) findViewById(R.id.tv_result_wrong_answer_number);
-        tvCoins = (TextView) findViewById(R.id.tv_result_win_coins_number);
-        tvTickets = (TextView) findViewById(R.id.tv_result_win_ticket_number);
-        tvExp = (TextView) findViewById(R.id.tv_result_exp_number);
-        ImageView img = (ImageView) findViewById(R.id.img_result_progress_bar2);
-        mImageDrawable = (ClipDrawable) img.getDrawable();
+//        tvCoins = (TextView) findViewById(R.id.tv_result_win_coins_number);
+
+//        tvTickets = (TextView) findViewById(R.id.tv_result_win_ticket_number);
+//        tvExp = (TextView) findViewById(R.id.tv_result_exp_number);
+//        ImageView img = (ImageView) findViewById(R.id.img_result_progress_bar2);
+//        mImageDrawable = (ClipDrawable) img.getDrawable();
+
         mImageDrawable.setLevel(tempExp);
 
         btnContinue.setOnClickListener(new View.OnClickListener() {

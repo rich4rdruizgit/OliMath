@@ -7,12 +7,9 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
-        <!--Hecho por Andres-->
+        <!--Hecho por Andres -->
         <item name="android:buttonStyle">@style/ButtonStyle</item>
         <item name="android:editTextStyle">@style/Widget.AppCompat.EditText</item>
-
-
-
     </style>
 
 
@@ -37,6 +34,13 @@
     <style name="DialogTheme">
         <item name="android:windowEnterAnimation">@anim/slide_left</item>
         <item name="android:windowExitAnimation">@anim/slide_right</item>
+    </style>
+
+
+    <style name="PagerTabStripText">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/orangeSena</item>
     </style>
 
 </resources>

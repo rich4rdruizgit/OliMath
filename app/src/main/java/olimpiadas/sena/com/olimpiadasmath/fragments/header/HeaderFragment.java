@@ -144,8 +144,6 @@ public class HeaderFragment extends Fragment {
         tvExp.setText(" x " + ((int)appControl.currentUser.getExperience()));
         int avatar = getActivity().getBaseContext().getResources().getIdentifier(appControl.currentUser.getAvatar(),recurso, getActivity().getBaseContext().getPackageName());
         imgHeaderProfile.setImageResource(avatar);
-
-
     }
 
 
