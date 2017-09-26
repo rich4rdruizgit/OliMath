@@ -54,6 +54,10 @@
         <activity
             android:name=".activities.library.EquationsActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activities.practice.PracticeActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".activities.challenge.ChallengeActivity"></activity>
     </application>
 

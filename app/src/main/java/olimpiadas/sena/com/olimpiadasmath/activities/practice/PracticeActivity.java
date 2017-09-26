@@ -7,7 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -24,6 +26,7 @@ import olimpiadas.sena.com.olimpiadasmath.adapter.test.CardPagerAdapter;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.model.Question;
 import olimpiadas.sena.com.olimpiadasmath.util.DialogHelper;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class PracticeActivity extends AppCompatActivity implements CardPagerAdapter.CommunicationTest, CardPagerAdapter.MoveTestListener ,View.OnClickListener,
         CompoundButton.OnCheckedChangeListener{
@@ -45,17 +48,17 @@ public class PracticeActivity extends AppCompatActivity implements CardPagerAdap
     boolean scaled = false;
     View fragHeader;
     LinearLayout lnPractice;
+    LinearLayout lnFragmentPractice;
 
-
-
-    TextView chronometer; // Cronometro
+    Chronometer chronometer; // Cronometro
 
     //Inicio de la practica
     private boolean initTest = false;
 
-
     //
     TextView tvTetTipNumQuet;
+    Button btnBackChallenge;
+    ImageView btn_settings_header;
 
 
     @Override
@@ -72,15 +75,20 @@ public class PracticeActivity extends AppCompatActivity implements CardPagerAdap
 
         //Fragment Header
         fragHeader = findViewById(R.id.fragment_test_header);
+        btn_settings_header = (ImageView) findViewById(R.id.btn_settings_header);
+        btn_settings_header.setVisibility(View.GONE);
         lnPractice = (LinearLayout) findViewById(R.id.ln_practice);
+        lnFragmentPractice = (LinearLayout) findViewById(R.id.lnFragmentPractice);
         //Referencias
         tvTetTipNumQuet = (TextView) findViewById(R.id.tv_test_tip_numberofquestion); // Numero de Pregunta
-        chronometer = (TextView) findViewById(R.id.chronometer_clock);//Cronometro
+        chronometer = (Chronometer) findViewById(R.id.chronometer_clocked);//Cronometro
+        timeChallenge();
 
         mViewPager = (ViewPagerPersonalizado) findViewById(R.id.viewPager);
+        mViewPager.setPagingEnabled(false);
         Realm realm = Realm.getDefaultInstance();
 
-        mCardAdapter = new CardPagerAdapter(realm.where(Question.class).findAll());
+        mCardAdapter = new CardPagerAdapter(realm.where(Question.class).findAll(),this);
         mCardAdapter.addCardItem(new CardItem(R.string.title_1, R.string.text_1));
         mCardAdapter.addCardItem(new CardItem(R.string.title_2, R.string.text_1));
         mCardAdapter.addCardItem(new CardItem(R.string.title_3, R.string.text_1));
@@ -106,14 +114,9 @@ public class PracticeActivity extends AppCompatActivity implements CardPagerAdap
         mViewPager.setPageTransformer(false, mCardShadowTransformer);
         mViewPager.setOffscreenPageLimit(10);
 
-
-        //tvTestNumQuest = (TextView) findViewById(R.id.tv_test_numquest);
-        //tvTestNumQuest.setText(countPage+"/"+mCardAdapter.getCount());
         totalPage=  mCardAdapter.getCount();
-        //tvTetTipNumQuet = (TextView) findViewById(R.id.tv_test_tip_numberofquestion);
-        //tvTetTipNumQuet = (TextView) findViewById(R.id.tv_test_tip_numberofquestion);
-        //tvTetTipNumQuet.setText(countPage+"/"+mCardAdapter.getCount());
-        //btnBackChallenge = (Button) findViewById(R.id.btn_test_back);
+        tvTetTipNumQuet.setText(countPage+"/"+mCardAdapter.getCount());
+        btnBackChallenge = (Button) findViewById(R.id.btn_test_back);
 
 
     }
@@ -123,19 +126,7 @@ public class PracticeActivity extends AppCompatActivity implements CardPagerAdap
     }
 
     public void timeChallenge(){
-        final CountDownTimer timer = new CountDownTimer(120000, 1000) {
-
-            public void onTick(long millisUntilFinished) {
-                String v = String.format("%02d", millisUntilFinished/60000);
-                int va = (int)( (millisUntilFinished%60000)/1000);
-                chronometer.setText(v+":"+String.format("%02d",va));
-            }
-
-            public void onFinish() {
-                chronometer.setText("Time Up!");
-            }
-        }.start();
-
+        chronometer.start();
     }
 
     @Override
@@ -156,11 +147,11 @@ public class PracticeActivity extends AppCompatActivity implements CardPagerAdap
 
         if (scaled) {
             lnPractice.setVisibility(View.VISIBLE);
-            fragHeader.setVisibility(View.GONE);
+            lnFragmentPractice.setVisibility(View.GONE);
 
         } else {
             lnPractice.setVisibility(View.VISIBLE);
-            fragHeader.setVisibility(View.VISIBLE);
+            lnFragmentPractice.setVisibility(View.VISIBLE);
         }
         mCardShadowTransformer.enableScaling(scaled);
         mFragmentCardShadowTransformer.enableScaling(scaled);
@@ -179,7 +170,6 @@ public class PracticeActivity extends AppCompatActivity implements CardPagerAdap
 
     @Override
     public void onBackPressed() {
-
         if(appControl.onPractice){
             if(initTest){
                 DialogHelper.ConfimrFinishTestDialog(this,"Seguro que quieres terminar la practica? \nPerderas lo apostado");
@@ -187,11 +177,13 @@ public class PracticeActivity extends AppCompatActivity implements CardPagerAdap
                 finish();
                 startActivity(new Intent(PracticeActivity.this, MainActivity.class));
             }
-
         }else{
             DialogHelper.ConfimrFinishTestDialog(this,"Seguro que quieres terminar el reto? \nPerderas los créditos que pagaste para ingresar y se contará como perdido");
         }
+    }
 
-
+    //Ajuste de la fuente de la letra
+    protected void attachBaseContext (Context newBase){
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

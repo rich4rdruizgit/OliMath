@@ -249,17 +249,26 @@ public class AppControl {
 
                 if(realm.where(Product.class).findAll().isEmpty()){
 
-                    Product pdt1 = new Product(R.drawable.marco18,"Dragon\nblanco",80,"10",Product.FOR_BUY,"marco18");
-                    Product pdt4 = new Product(R.drawable.marco8,"Dragon\nverde",100,"10",Product.FOR_BUY,"marco8");
-                    Product pdt2 = new Product(R.drawable.marco,"Dragon\nazul",20,"10",Product.FOR_BUY,"marco");
-                    Product pdt3 = new Product(R.drawable.marco2,"Dragon\nrojo",250,"10",Product.FOR_BUY,"marco2");
-                    Product pdt5 = new Product(R.drawable.marco11,"Dragon\nnaranja",150,"10",Product.FOR_BUY,"marco11");
+                    Product pdt1 = new Product(R.drawable.marco18,"Dragon\nblanco",80,"10",Product.FOR_BUY,"marco18","avatar");
+                    Product pdt4 = new Product(R.drawable.marco8,"Dragon\nverde",100,"10",Product.FOR_BUY,"marco8","avatar");
+                    Product pdt2 = new Product(R.drawable.marco,"Dragon\nazul",20,"10",Product.FOR_BUY,"marco","avatar");
+                    Product pdt3 = new Product(R.drawable.marco2,"Dragon\nrojo",250,"10",Product.FOR_BUY,"marco2","avatar");
+                    Product pdt5 = new Product(R.drawable.marco11,"Dragon\nnaranja",150,"10",Product.FOR_BUY,"marco11","avatar");
+
+                    Product pdt6 = new Product(R.drawable.marco11,"Pocion\nTime",150,"10",Product.FOR_BUY,"marco11","item");
+                    Product pdt7 = new Product(R.drawable.marco11,"Pocion\nMonedas",150,"10",Product.FOR_BUY,"marco11","item");
+                    Product pdt8 = new Product(R.drawable.marco11,"Pocion\nSalvavidas",150,"10",Product.FOR_BUY,"marco11","item");
+                    Product pdt9 = new Product(R.drawable.marco11,"Pocion\nVida",150,"10",Product.FOR_BUY,"marco11","item");
 
                     realm.copyToRealm(pdt1);
                     realm.copyToRealm(pdt2);
                     realm.copyToRealm(pdt3);
                     realm.copyToRealm(pdt4);
                     realm.copyToRealm(pdt5);
+                    realm.copyToRealm(pdt6);
+                    realm.copyToRealm(pdt7);
+                    realm.copyToRealm(pdt8);
+                    realm.copyToRealm(pdt9);
 
                 }
 

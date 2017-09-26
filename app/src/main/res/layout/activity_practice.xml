@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#434b5b"
+    android:orientation="vertical"
+    android:weightSum="1"
+    tools:context="olimpiadas.sena.com.olimpiadasmath.activities.practice.PracticeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/lnFragmentPractice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <fragment
+                android:id="@+id/fragment_test_header"
+                android:name="olimpiadas.sena.com.olimpiadasmath.fragments.header.HeaderFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ln_practice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                >
+
+                <ImageView
+                    android:id="@+id/img_test_tip_numberofquestion"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_height="35dp"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/practica_icon" />
+
+                <TextView
+                    android:id="@+id/tv_test_tip_numberofquestion"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="8dp"
+                    android:textSize="20sp"
+                    />
+                <Chronometer
+                    android:text="0:00"
+                    android:id="@+id/chronometer_clocked"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linear_practice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="false">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <olimpiadas.sena.com.olimpiadasmath.activities.test.ViewPagerPersonalizado
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:clipToPadding="false"
+                    android:overScrollMode="always"
+                    android:paddingBottom="0dp"
+                    />
+            </LinearLayout>
+        </android.support.design.widget.CoordinatorLayout>
+    </LinearLayout>
+</LinearLayout>

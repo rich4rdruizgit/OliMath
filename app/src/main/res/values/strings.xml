@@ -35,8 +35,6 @@
     <string name="tickets">Boletos</string>
     <string name="coins">Monedas</string>
     <string name="pts">PTS</string>
-    <string name="corrects_answers">Respuestas correctas:</string>
-    <string name="incorrects_answers">Respuestas incorrectas:</string>
     <string name="won">Ganaste</string>
     <string name="exp">Exp:</string>
     <string name="settings">Ajustes</string>
@@ -46,7 +44,11 @@
     <string name="aboutgame">Ayuda sobre el juego</string>
     <string name="copyright">Creditos</string>
     <string name="shop">Tienda</string>
+    <string name="result_title">RECOMPENSAS</string>
 
+    <string name="corrects_answers_challenge">Correctas:</string>
+    <string name="time_challenge">Tiempo:</string>
+    <string name="coins_challenge">Coins:</string>
 
     <string-array name="lenguages">
         <item>Español</item>
