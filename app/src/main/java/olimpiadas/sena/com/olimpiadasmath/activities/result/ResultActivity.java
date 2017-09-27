@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import io.realm.Realm;
-import io.realm.RealmResults;
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
@@ -28,7 +27,7 @@ public class ResultActivity extends AppCompatActivity {
     AppControl appControl;
 
     Button btnContinue;
-    TextView tvCoins,tvTickets,tvExp,tvCorAns,tvIncAns;
+    TextView tvCoins,tvTickets,tvExp,tvCorAns, tvTime;
     private ClipDrawable mImageDrawable;
     private User currentUser;
     int correctAnswers = 0,expWon;
@@ -74,9 +73,9 @@ public class ResultActivity extends AppCompatActivity {
         tempLvl = currentUser.getLevel();
 
         btnContinue = (Button) findViewById(R.id.btn_result_continue);
-        tvCorAns = (TextView) findViewById(R.id.tv_result_rigth_answer_number);
-        tvIncAns = (TextView) findViewById(R.id.tv_result_wrong_answer_number);
-//        tvCoins = (TextView) findViewById(R.id.tv_result_win_coins_number);
+        tvCorAns = (TextView) findViewById(R.id.tv_result_correct_answer_number);
+        tvTime = (TextView) findViewById(R.id.tv_result_time);
+        tvCoins = (TextView) findViewById(R.id.tv_result_coins_number);
 
 //        tvTickets = (TextView) findViewById(R.id.tv_result_win_ticket_number);
         tvExp = (TextView) findViewById(R.id.tv_result_exp_number);
@@ -106,7 +105,7 @@ public class ResultActivity extends AppCompatActivity {
         realm = Realm.getDefaultInstance();
 
         tvCorAns.setText(String.valueOf(correctAnswers));
-        tvIncAns.setText(String.valueOf(appControl.answers.length - correctAnswers));
+        tvTime.setText(String.valueOf(appControl.answers.length - correctAnswers));
         Log.d(TAG,"Correct answers " + correctAnswers);
         Log.d(TAG,"total Questions " + appControl.answers.length);
 

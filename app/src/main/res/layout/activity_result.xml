@@ -82,7 +82,7 @@
                         android:textSize="@dimen/text_size" />
 
                     <TextView
-                        android:id="@+id/tv_result_rigth_coins_number"
+                        android:id="@+id/tv_result_coins_number"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
@@ -120,7 +120,7 @@
                         android:textSize="@dimen/text_size" />
 
                     <TextView
-                        android:id="@+id/tv_result_rigth_answer_number"
+                        android:id="@+id/tv_result_correct_answer_number"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
@@ -157,7 +157,7 @@
                         android:textSize="@dimen/text_size" />
 
                     <TextView
-                        android:id="@+id/tv_result_wrong_answer_number"
+                        android:id="@+id/tv_result_time"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
@@ -247,7 +247,6 @@
                 style="@style/ButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_gravity=""
                 android:layout_margin="5dp"
                 android:layout_weight=".9"
                 android:text="CONTINUAR" />
