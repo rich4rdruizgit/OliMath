@@ -83,7 +83,7 @@ public class ResultActivity extends AppCompatActivity {
 //        ImageView img = (ImageView) findViewById(R.id.img_result_progress_bar2);
 //        mImageDrawable = (ClipDrawable) img.getDrawable();
 
-        mImageDrawable.setLevel(tempExp);
+        //mImageDrawable.setLevel(tempExp);
 
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override

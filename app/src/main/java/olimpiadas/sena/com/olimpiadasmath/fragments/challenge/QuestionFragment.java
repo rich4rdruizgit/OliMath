@@ -6,15 +6,20 @@ import android.os.Bundle;
 
 import android.os.CountDownTimer;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
+import olimpiadas.sena.com.olimpiadasmath.activities.challenge.ChallengeActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
+import olimpiadas.sena.com.olimpiadasmath.model.Question;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,13 +32,16 @@ import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 public class QuestionFragment extends Fragment {
 
 
-
+    private static final String TAG = "QuestionFragment";
     private OnQuestionFragmentListener mListener;
-    private TextView tvCountDown;
+    private TextView tvCountDown,tvQuestionContent,tvTitle;
     private CardView cardView;
     private ImageView imgScale;
+    private Button btnNext;
     AppControl appControl = AppControl.getInstance();
     boolean isScaled = false;
+    private Question currentQuestion;
+
 
     public QuestionFragment() {
         // Required empty public constructor
@@ -71,6 +79,24 @@ public class QuestionFragment extends Fragment {
         tvCountDown = (TextView) view.findViewById(R.id.tv_count_down);
         cardView = (CardView) view.findViewById(R.id.cardView);
         imgScale = (ImageView) view.findViewById(R.id.img_test_scale);
+        btnNext = (Button) view.findViewById(R.id.btn_question_next);
+        tvTitle = (TextView) view.findViewById(R.id.titleTextView);
+        tvQuestionContent = (TextView) view.findViewById(R.id.tv_question_content);
+        tvTitle.setText(currentQuestion.getQuestionText());
+
+        RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.rg_group_answer);
+        for(int x = 0 ; x<4 ;x++){
+            Log.d(TAG,"item" + x + " correct" + currentQuestion.getAnswerCorrect(x));
+
+            if(currentQuestion.getAnswerCorrect(x).equals("1") ) {
+                Log.d(TAG,"Entro 1");
+                tvQuestionContent.setText(currentQuestion.getAnswerText(x));
+            }
+            RadioButton radioButton = new RadioButton(view.getContext());
+            radioButton.setText(currentQuestion.getAnswerText(x));
+            radioGroup.addView(radioButton);
+        }
+
         long miliseconds = 180000;
         if(appControl.isPreview){
             miliseconds = 15000;
@@ -101,6 +127,17 @@ public class QuestionFragment extends Fragment {
             }
         }.start();
 
+        if(appControl.currentQuestion == appControl.numberOfQuestions-1){
+            btnNext.setText("Terminar");
+        }
+
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.onQuestionEnd();
+            }
+        });
+
         return view;
     }
 
@@ -114,6 +151,9 @@ public class QuestionFragment extends Fragment {
         super.onAttach(context);
         if (context instanceof OnQuestionFragmentListener) {
             mListener = (OnQuestionFragmentListener) context;
+            ChallengeActivity ca = (ChallengeActivity) context;
+            currentQuestion = ca.getQuestions().get(appControl.currentQuestion);
+
         } else {
             throw new RuntimeException(context.toString() + " must implement OnQuestionFragmentListener");
         }

@@ -1,14 +1,20 @@
 package olimpiadas.sena.com.olimpiadasmath.activities.challenge;
 
 
+import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.util.List;
+
+import io.realm.Realm;
 import olimpiadas.sena.com.olimpiadasmath.R;
+import olimpiadas.sena.com.olimpiadasmath.activities.result.ResultActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.fragments.challenge.BetFragment;
 import olimpiadas.sena.com.olimpiadasmath.fragments.challenge.QuestionFragment;
+import olimpiadas.sena.com.olimpiadasmath.model.Question;
 
 
 import static java.lang.Thread.sleep;
@@ -21,6 +27,8 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
     BetFragment bet;
     QuestionFragment question;
     AppControl appControl = AppControl.getInstance();
+    List<Question> questions;
+
 
 
     @Override
@@ -35,6 +43,9 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
                 .add(R.id.container, bet)
                 .commit();
 
+        Realm realm = Realm.getDefaultInstance();
+        appControl.currentQuestion = 0;
+        questions = realm.where(Question.class).findAll().subList(0,appControl.numberOfQuestions);
 
         //getFragmentManager().addOnBackStackChangedListener(this);
     }
@@ -113,9 +124,18 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
 
     @Override
     public void onQuestionEnd() {
-        flipCard();
+        appControl.currentQuestion++;
+        if(appControl.currentQuestion == appControl.numberOfQuestions){
+            startActivity(new Intent(ChallengeActivity.this, ResultActivity.class));
+        }else{
+            flipCard();
+        }
+
         //Aqui termina la pregunta, y debe hacerse la logica de pasar a la siguiente pregunta.
 
+    }
 
+    public List<Question> getQuestions() {
+        return questions;
     }
 }
