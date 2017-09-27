@@ -79,9 +79,9 @@ public class ResultActivity extends AppCompatActivity {
 //        tvCoins = (TextView) findViewById(R.id.tv_result_win_coins_number);
 
 //        tvTickets = (TextView) findViewById(R.id.tv_result_win_ticket_number);
-//        tvExp = (TextView) findViewById(R.id.tv_result_exp_number);
-//        ImageView img = (ImageView) findViewById(R.id.img_result_progress_bar2);
-//        mImageDrawable = (ClipDrawable) img.getDrawable();
+        tvExp = (TextView) findViewById(R.id.tv_result_exp_number);
+        ImageView img = (ImageView) findViewById(R.id.img_result_progress_bar2);
+        mImageDrawable = (ClipDrawable) img.getDrawable();
 
         mImageDrawable.setLevel(tempExp);
 
@@ -134,9 +134,9 @@ public class ResultActivity extends AppCompatActivity {
         }else{
             Log.d(TAG,"El bonus min = " + bonusTable.getMin() + " El bonus max = " + bonusTable.getMax());
             calculateCoins();
-            calculateTickets();
+//            calculateTickets();
             calculateExp();
-            calculateScore();
+//            calculateScore();
         }
 
         User.updateUser(appControl.currentUser);
@@ -144,25 +144,25 @@ public class ResultActivity extends AppCompatActivity {
 
     }
 
-    private void calculateScore() {
-        int winScore = 0;
-        if(bonusTable.getScore()<0){
-            winScore = - appControl.answers.length - correctAnswers;
-        }else if(bonusTable.getCoin()==0){
-            winScore = appControl.currentBet;
-        }else{
-            winScore = (int)( ( correctAnswers * bonusTable.getCoin() ) +  ( appControl.currentBet * bonusTable.getCoin() ) );
-        }
-
-        //winCoins = (int)(correctAnswers * bonusTable.getCoin());
-
-
-
-        tvCoins.setText(" x " + winScore);
-
-        currentUser.setCoins(currentUser.getCoins() + winScore);
-
-    }
+//    private void calculateScore() {
+//        int winScore = 0;
+//        if(bonusTable.getScore()<0){
+//            winScore = - appControl.answers.length - correctAnswers;
+//        }else if(bonusTable.getCoin()==0){
+//            winScore = appControl.currentBet;
+//        }else{
+//            winScore = (int)( ( correctAnswers * bonusTable.getCoin() ) +  ( appControl.currentBet * bonusTable.getCoin() ) );
+//        }
+//
+//        //winCoins = (int)(correctAnswers * bonusTable.getCoin());
+//
+//
+//
+//        tvCoins.setText(" x " + winScore);
+//
+//        currentUser.setCoins(currentUser.getCoins() + winScore);
+//
+//    }
 
 
     private void calculateExp(){
@@ -200,16 +200,16 @@ public class ResultActivity extends AppCompatActivity {
         currentUser.setCoins(currentUser.getCoins() + winCoins);
 
     }
-    private void calculateTickets(){
-        int win = (int)bonusTable.getTicket();
-
-
-
-        tvTickets.setText(" x " + win);
-
-        currentUser.setTickets(currentUser.getTickets() + win);
-
-    }
+//    private void calculateTickets(){
+//        int win = (int)bonusTable.getTicket();
+//
+//
+//
+//        tvTickets.setText(" x " + win);
+//
+//        currentUser.setTickets(currentUser.getTickets() + win);
+//
+//    }
 
 
 
