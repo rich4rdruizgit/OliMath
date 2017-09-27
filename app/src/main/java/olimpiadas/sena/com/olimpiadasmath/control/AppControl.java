@@ -25,7 +25,7 @@ public class AppControl {
     private static final AppControl ourInstance = new AppControl();
 
     public int language;
-    public int numberOfQuestions = 10;
+    public int numberOfQuestions = 5;
     public int[] answers;
     public boolean musik;
     public boolean efects;
@@ -35,6 +35,7 @@ public class AppControl {
 
     public User currentUser;
     public int currentBet = 0;
+    public int currentQuestion = 0;
     public int baseWinCoins = 10;
 
 
