@@ -14,13 +14,13 @@ import com.squareup.picasso.Picasso;
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.adapter.profile.ViewPagerAdapter;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
-import olimpiadas.sena.com.olimpiadasmath.fragments.profile.AvatarFragment;
 import olimpiadas.sena.com.olimpiadasmath.fragments.profile.LogroFragment;
 import olimpiadas.sena.com.olimpiadasmath.fragments.profile.PerfilFragment;
+import olimpiadas.sena.com.olimpiadasmath.fragments.profile.ProfileResultsFragment;
 import olimpiadas.sena.com.olimpiadasmath.util.CircleImage.CropCircleTransformation;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class ProfileActivity extends AppCompatActivity implements PerfilFragment.OnFragmentInteractionListener, LogroFragment.OnFragmentInteractionListener, AvatarFragment.OnFragmentInteractionListener {
+public class ProfileActivity extends AppCompatActivity implements PerfilFragment.OnFragmentInteractionListener, LogroFragment.OnFragmentInteractionListener, ProfileResultsFragment.OnFragmentInteractionListener {
 
 
     AppControl appControl;

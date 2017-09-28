@@ -5,9 +5,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import olimpiadas.sena.com.olimpiadasmath.fragments.profile.AvatarFragment;
 import olimpiadas.sena.com.olimpiadasmath.fragments.profile.LogroFragment;
 import olimpiadas.sena.com.olimpiadasmath.fragments.profile.PerfilFragment;
+import olimpiadas.sena.com.olimpiadasmath.fragments.profile.ProfileResultsFragment;
 
 /**
  * Created by rich4 on 10/09/2017.
@@ -17,7 +17,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter{
 
     final int PAGE_COUNT = 3;
 
-    private String tabtitles[] = new String[]{"Perfil","Logros","Avatar" };
+    private String tabtitles[] = new String[]{"Perfil","Logros","Resultados" };
     Context context;
 
 
@@ -41,8 +41,8 @@ public class ViewPagerAdapter extends FragmentPagerAdapter{
                 Fragment fragmentLogro = new LogroFragment();
                 return fragmentLogro;
             case 2:
-                Fragment fragmentAvatar = new AvatarFragment();
-                return fragmentAvatar;
+                Fragment fragmentResultado = new ProfileResultsFragment();
+                return fragmentResultado;
         }
         return null;
     }
