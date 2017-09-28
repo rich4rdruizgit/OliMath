@@ -3,6 +3,7 @@ package olimpiadas.sena.com.olimpiadasmath.activities.menu;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -42,12 +43,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Context context;
     pl.droidsonroids.gif.GifImageView getGifMenu;
     int cont = 0;
+    public static MediaPlayer sound;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sound = MediaPlayer.create(this,R.raw.soundbackground);
+        sound.start();
         gifMenu = (GifImageView) findViewById(R.id.img_gif_menu); // Gif del menu principal
         gifMenu.setOnClickListener(this);
         getSupportActionBar().hide();
@@ -165,5 +169,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         DialogHelper.ConfimrExitDialog(this);
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        sound.stop();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //sound.pause();
     }
 }

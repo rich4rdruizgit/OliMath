@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="200sp"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_tittle"
+                android:textAlignment="center"
+                android:text="Equipo de desarrollo"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Harold Andrés Muñoz\nCarlos Andrés Chapid\nRichard Ruiz\nDidier Enrique Ramirez\nJefferson Andrés Muñoz\nJhon Yanguas\nMilena Cabrera"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_tittle"
+                android:textAlignment="center"
+                android:text="Equipo de Diseño y Multimedia"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Erick Ortiz\nErick Ortiz\nErick Ortiz\nErick Ortiz\nErick Ortiz\nErick Ortiz\nErick Ortiz\nErick Ortiz\nErick Ortiz\nErick Ortiz\nErick Ortiz\nErick Ortiz\nErick Ortiz\nErick Ortiz\nErick Ortiz\nErick Ortiz\nErick Ortiz\nErick Ortiz\nErick Ortiz\nErick Ortiz\nErick Ortiz\nErick Ortiz\nErick Ortiz\nErick Ortiz\nErick Ortiz\nErick Ortiz\nErick Ortiz\n"/>
+
+            <Button
+
+                android:id="@+id/btn_exit_tip"
+                android:layout_marginTop="30dp"
+                android:text="Cerrar"
+                android:layout_width="100dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                style="@style/ButtonStyle"
+
+                />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
