@@ -16,6 +16,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.challenge.ChallengeActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
@@ -38,6 +39,7 @@ public class QuestionFragment extends Fragment {
     private CardView cardView;
     private ImageView imgScale;
     private Button btnNext;
+    RadioGroup radioGroup;
     AppControl appControl = AppControl.getInstance();
     boolean isScaled = false;
     private Question currentQuestion;
@@ -76,7 +78,7 @@ public class QuestionFragment extends Fragment {
 
 
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_question, container, false);
+        final View view = inflater.inflate(R.layout.fragment_question, container, false);
         tvCountDown = (TextView) view.findViewById(R.id.tv_count_down);
         cardView = (CardView) view.findViewById(R.id.cardView);
         imgScale = (ImageView) view.findViewById(R.id.img_test_scale);
@@ -85,7 +87,7 @@ public class QuestionFragment extends Fragment {
         tvQuestionContent = (TextView) view.findViewById(R.id.tv_question_content);
         tvTitle.setText(currentQuestion.getQuestionText());
 
-        RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.rg_group_answer);
+        radioGroup = (RadioGroup) view.findViewById(R.id.rg_group_answer);
         for(int x = 0 ; x<4 ;x++){
             Log.d(TAG,"item" + x + " correct" + currentQuestion.getAnswerCorrect(x));
 
@@ -104,6 +106,7 @@ public class QuestionFragment extends Fragment {
         }else if(appControl.previewUsed){
             miliseconds -= 15000;
         }
+        final long totalMilisec = miliseconds;
 
         imgScale.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,10 +121,12 @@ public class QuestionFragment extends Fragment {
                 String v = String.format("%02d", millisUntilFinished/60000);
                 int va = (int)( (millisUntilFinished%60000)/1000);
                 tvCountDown.setText(v+":"+String.format("%02d",va));
+                appControl.currentTime += 1;
             }
 
             public void onFinish() {
                 tvCountDown.setText("00:00");
+                appControl.currentTime += totalMilisec/1000;
                 if (mListener != null) {
                     mListener.onPreviewEnd();
                 }
@@ -135,7 +140,30 @@ public class QuestionFragment extends Fragment {
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+                int selectedId = radioGroup.getCheckedRadioButtonId();
+                Log.d(TAG, "EL selectedId es " + selectedId);
+                if(selectedId == -1){
+                    appControl.answers[appControl.currentQuestion] = -1;
+                }else{
+
+                    Log.d(TAG,"Respuesta es " + radioGroup.getCheckedRadioButtonId());
+                    //Log.d(TAG,"Respuesta es " + ((RadioButton) view.findViewById(radioGroup.getCheckedRadioButtonId())).getText());
+                    int idx = radioGroup.indexOfChild(view.findViewById(radioGroup.getCheckedRadioButtonId()));
+                    Log.d(TAG, "EL indice es " + idx);
+                    Log.d(TAG, "Correct answer " + currentQuestion.getAnswerCorrect(idx));
+                    if(currentQuestion.getAnswerCorrect(idx).equals("1")){
+                        appControl.answers[appControl.currentQuestion] = 1;
+
+                    }else
+                    {
+                        appControl.answers[appControl.currentQuestion] = 0;
+                        String myasnwer = "my answer";
+                        String theanswer = "the answer";
+                        String feedback = "feedback papu";
+                    }
+
+                }
                 currentTimer.cancel();
                 mListener.onQuestionEnd();
             }

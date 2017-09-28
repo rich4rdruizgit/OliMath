@@ -36,6 +36,7 @@ public class AppControl {
     public User currentUser;
     public int currentBet = 0;
     public int currentQuestion = 0;
+    public long currentTime = 0;
     public int baseWinCoins = 10;
 
 
@@ -60,7 +61,7 @@ public class AppControl {
     public boolean init(final InitComplete listener){
 
         init = true;
-        answers = new  int[10];
+        answers = new  int[numberOfQuestions];
         Realm realm = Realm.getDefaultInstance();
 
         realm.executeTransactionAsync(new Realm.Transaction() {

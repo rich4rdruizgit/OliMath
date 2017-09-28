@@ -105,7 +105,7 @@ public class ResultActivity extends AppCompatActivity {
         realm = Realm.getDefaultInstance();
 
         tvCorAns.setText(String.valueOf(correctAnswers));
-        tvTime.setText(String.valueOf(appControl.answers.length - correctAnswers));
+        tvTime.setText(String.valueOf(appControl.currentTime));
         Log.d(TAG,"Correct answers " + correctAnswers);
         Log.d(TAG,"total Questions " + appControl.answers.length);
 
