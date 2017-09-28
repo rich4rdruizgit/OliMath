@@ -4,11 +4,17 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import olimpiadas.sena.com.olimpiadasmath.R;
+import olimpiadas.sena.com.olimpiadasmath.adapter.profile.ResultAdapter;
+import olimpiadas.sena.com.olimpiadasmath.model.User;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +33,11 @@ public class ProfileResultsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private List<User> users;
+    RecyclerView recyclerView;
+    ResultAdapter resultAdapter;
+
 
     private OnFragmentInteractionListener mListener;
 
@@ -65,7 +76,23 @@ public class ProfileResultsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile_results, container, false);
+
+        View view =  inflater.inflate(R.layout.fragment_profile_results, container, false);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_result_profile);
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(llm);
+
+        recyclerView.setAdapter(resultAdapter);
+        //inicializarAdaptador();
+
+        return view;
+    }
+
+
+    private void inicializarAdaptador() {
+        resultAdapter = new ResultAdapter(users,getActivity());
+        recyclerView.setAdapter(resultAdapter);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
