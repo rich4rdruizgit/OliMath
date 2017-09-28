@@ -41,6 +41,7 @@ public class QuestionFragment extends Fragment {
     AppControl appControl = AppControl.getInstance();
     boolean isScaled = false;
     private Question currentQuestion;
+    CountDownTimer currentTimer;
 
 
     public QuestionFragment() {
@@ -111,7 +112,7 @@ public class QuestionFragment extends Fragment {
             }
         });
 
-        new CountDownTimer(miliseconds, 1000) {
+        currentTimer = new CountDownTimer(miliseconds, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 String v = String.format("%02d", millisUntilFinished/60000);
@@ -125,7 +126,8 @@ public class QuestionFragment extends Fragment {
                     mListener.onPreviewEnd();
                 }
             }
-        }.start();
+        };
+        currentTimer.start();
 
         if(appControl.currentQuestion == appControl.numberOfQuestions-1){
             btnNext.setText("Terminar");
@@ -134,6 +136,7 @@ public class QuestionFragment extends Fragment {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                currentTimer.cancel();
                 mListener.onQuestionEnd();
             }
         });
@@ -158,6 +161,7 @@ public class QuestionFragment extends Fragment {
             throw new RuntimeException(context.toString() + " must implement OnQuestionFragmentListener");
         }
     }
+
 
     @Override
     public void onDetach() {
