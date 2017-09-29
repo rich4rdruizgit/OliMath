@@ -11,12 +11,17 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.adapter.profile.ViewPagerAdapter;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.fragments.profile.LogroFragment;
 import olimpiadas.sena.com.olimpiadasmath.fragments.profile.PerfilFragment;
 import olimpiadas.sena.com.olimpiadasmath.fragments.profile.ProfileResultsFragment;
+import olimpiadas.sena.com.olimpiadasmath.model.Achievements;
+import olimpiadas.sena.com.olimpiadasmath.model.User;
 import olimpiadas.sena.com.olimpiadasmath.util.CircleImage.CropCircleTransformation;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -31,6 +36,7 @@ public class ProfileActivity extends AppCompatActivity implements PerfilFragment
     ImageView imgExp, imgProfile;
     private ClipDrawable mImageDrawable;
     private String recurso= "drawable";
+    List<Achievements> achievementsList ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,4 +97,24 @@ public class ProfileActivity extends AppCompatActivity implements PerfilFragment
     public void onFragmentInteraction(Uri uri) {
 
     }
+
+    private void llenarUsers() {
+        achievementsList = new ArrayList<>();
+
+        achievementsList.add(new Achievements("marco18", "Mi primer logro", "ACTIVO", "marco18"));
+        achievementsList.add(new Achievements("marco18", "Mi primer logro", "ACTIVO", "marco18"));
+        achievementsList.add(new Achievements("marco18", "Mi primer logro", "ACTIVO", "marco18"));
+        achievementsList.add(new Achievements("marco18", "Mi primer logro", "ACTIVO", "marco18"));
+        achievementsList.add(new Achievements("marco18", "Mi primer logro", "ACTIVO", "marco18"));
+        achievementsList.add(new Achievements("marco18", "Mi primer logro", "ACTIVO", "marco18"));
+        achievementsList.add(new Achievements("marco18", "Mi primer logro", "ACTIVO", "marco18"));
+        achievementsList.add(new Achievements("marco18", "Mi primer logro", "ACTIVO", "marco18"));
+        achievementsList.add(new Achievements("marco18", "Mi primer logro", "ACTIVO", "marco18"));
+        achievementsList.add(new Achievements("marco18", "Mi primer logro", "ACTIVO", "marco18"));
+        achievementsList.add(new Achievements("marco18", "Mi primer logro", "ACTIVO", "marco18"));
+        achievementsList.add(new Achievements("marco18", "Mi primer logro", "ACTIVO", "marco18"));
+        achievementsList.add(new Achievements("marco18", "Mi primer logro", "ACTIVO", "marco18"));
+    }
+
+
 }
