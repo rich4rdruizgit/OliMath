@@ -25,10 +25,10 @@ import olimpiadas.sena.com.olimpiadasmath.util.CircleImage.CropCircleTransformat
 
 public class AchievementAdapter extends RecyclerView.Adapter<AchievementAdapter.AchievementViewHolder> {
 
-    private List<User> achievementses;
+    private List<Achievements> achievementses;
     private Context context;
 
-    public AchievementAdapter(List<User> achievementses, Context context) {
+    public AchievementAdapter(List<Achievements> achievementses, Context context) {
         this.achievementses = achievementses;
         this.context = context;
     }
@@ -42,19 +42,19 @@ public class AchievementAdapter extends RecyclerView.Adapter<AchievementAdapter.
 
     @Override
     public void onBindViewHolder(AchievementAdapter.AchievementViewHolder holder, int position) {
-        User user = achievementses.get(position);
-        holder.txtPosition.setText(user.getPosition()+"");
-        holder.txtNickName.setText(user.getNickname()+"");
-        holder.txtPoints.setText(user.getScore()+"");
+        Achievements user = achievementses.get(position);
 
-        int avatar = context.getResources().getIdentifier(user.getAvatar(),"drawable", context.getPackageName());
+        holder.txtAchievement.setText(user.getNameAchievement()+"");
 
-        holder.imgAvatarRanking.setImageResource(avatar);
-        Picasso.with(holder.imgAvatarRanking.getContext())
+        int avatar = context.getResources().getIdentifier(user.getImageAchievement(),"drawable", context.getPackageName());
+
+        holder.imgAchievement.setImageResource(avatar);
+
+        /*Picasso.with(holder.imgAchievement.getContext())
                 .load(avatar)
                 .transform(new CropCircleTransformation())
-                .into(holder.imgAvatarRanking);
-
+                .into(holder.imgAchievement);
+    */
     }
 
     @Override
@@ -63,19 +63,14 @@ public class AchievementAdapter extends RecyclerView.Adapter<AchievementAdapter.
     }
 
     public class AchievementViewHolder extends RecyclerView.ViewHolder {
-        protected TextView txtPosition;
-        protected TextView txtNickName;
-        protected TextView txtPoints;
-        protected ImageView imgAvatarRanking;
-        protected LinearLayout layout;
+        protected ImageView imgAchievement;
+        protected TextView txtAchievement;
+
 
         public AchievementViewHolder(View itemView) {
             super(itemView);
-            txtPosition = (TextView) itemView.findViewById(R.id.txt_position_ranking);
-            txtNickName = (TextView) itemView.findViewById(R.id.txt_nickname_ranking);
-            txtPoints = (TextView) itemView.findViewById(R.id.txt_points_ranking);
-            imgAvatarRanking = (ImageView) itemView.findViewById(R.id.img_avatar_ranking);
-            layout = (LinearLayout) itemView.findViewById(R.id.layout_ranking);
+            imgAchievement = (ImageView) itemView.findViewById(R.id.img_achievement);
+            txtAchievement = (TextView) itemView.findViewById(R.id.txt_achievement);
         }
     }
 }

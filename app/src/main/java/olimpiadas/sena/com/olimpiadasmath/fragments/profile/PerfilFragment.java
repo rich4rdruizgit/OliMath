@@ -1,14 +1,18 @@
 package olimpiadas.sena.com.olimpiadasmath.fragments.profile;
 
 import android.content.Context;
+import android.graphics.drawable.ClipDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
+import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +31,10 @@ public class PerfilFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    AppControl appControl;
+    TextView tvLvl,tvCoins,tvTickets,txtNameUser,tvScore, tvPercent;
+    private ClipDrawable mImageDrawable;
 
     private OnFragmentInteractionListener mListener;
 
@@ -59,13 +67,30 @@ public class PerfilFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        appControl = AppControl.getInstance();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_perfil, container, false);
+        View view = inflater.inflate(R.layout.fragment_perfil, container, false);
+        tvPercent = (TextView) view.findViewById(R.id.tv_profile_percent);
+        tvLvl = (TextView) view.findViewById(R.id.tv_profile_level_number);
+        tvCoins = (TextView) view.findViewById(R.id.tv_profile_coins);
+        tvTickets = (TextView) view.findViewById(R.id.tv_profile_ticket);
+        tvScore = (TextView) view.findViewById(R.id.tv_profile_score);
+
+        tvPercent.setText(""+appControl.currentUser.getExperience()+"%");
+        tvLvl.setText(""+appControl.currentUser.getLevel());
+        tvCoins.setText(" x " + appControl.currentUser.getCoins());
+        tvTickets.setText(" x " + appControl.currentUser.getTickets());
+        tvScore.setText("" + appControl.currentUser.getScore());
+        ImageView imgExp = (ImageView) view.findViewById(R.id.img_profile_progress_bar2);
+        mImageDrawable = (ClipDrawable) imgExp.getDrawable();
+        mImageDrawable.setLevel((int)appControl.currentUser.getExperience() * 100);
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

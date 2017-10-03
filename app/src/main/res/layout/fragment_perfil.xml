@@ -36,18 +36,15 @@
         android:orientation="horizontal"
         android:background="@drawable/background_transparent_with_stroke"
         >
-
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_weight="0.4"
             android:layout_width="0dp"
+            android:layout_weight="0.4"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/coinsLayout"
-
-            android:orientation="vertical">
-
+            android:orientation="vertical"
+            android:layout_gravity="right"
+            >
             <TextView
-                android:layout_gravity="center"
                 android:id="@+id/tv_exp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -55,11 +52,36 @@
                 android:text="@string/experience"
                 android:textSize="@dimen/tamanoletrasubtitulos"
                 android:textColor="@color/primary_text"/>
-
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_views"
+                android:text="@string/tickets"
+                android:textSize="@dimen/tamanoletrasubtitulos"
+                android:textColor="@color/primary_text"/>
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_views"
+                android:text="@string/coins"
+                android:textSize="@dimen/tamanoletrasubtitulos"
+                android:textColor="@color/primary_text"/>
+        </LinearLayout><!-- Lin 1-->
+        <LinearLayout
+            android:id="@+id/ticket"
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            >
             <FrameLayout
+                android:layout_gravity="center"
                 android:padding="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 >
 
                 <ImageView
@@ -79,6 +101,32 @@
                     android:src="@drawable/clip_source" />
 
             </FrameLayout>
+            <ImageView
+                android:layout_gravity="center"
+                android:id="@+id/imgTickets"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:padding="@dimen/padding_views"
+                android:src="@drawable/ticket"
+                android:layout_below="@+id/identicon" />
+            <ImageView
+                android:layout_gravity="center"
+                android:id="@+id/img_coins"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/identicon"
+                android:src="@drawable/coin"
+                android:padding="@dimen/padding_views"/>
+        </LinearLayout><!-- Lin 2-->
+        <LinearLayout
+            android:gravity="center"
+            android:id="@+id/coinsLayout"
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            >
             <TextView
                 android:layout_gravity="center"
                 android:id="@+id/tv_profile_percent"
@@ -88,32 +136,6 @@
                 android:padding="@dimen/padding_views"
                 android:textSize="@dimen/text_size"
                 android:text="30%" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ticket"
-            android:layout_weight="0.3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:weightSum="2">
-            <TextView
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_views"
-                android:text="@string/tickets"
-                android:textSize="@dimen/tamanoletrasubtitulos"
-                android:textColor="@color/primary_text"/>
-            <ImageView
-                android:layout_gravity="center"
-                android:id="@+id/imgTickets"
-                android:layout_width="80dp"
-                android:layout_height="50dp"
-                android:padding="@dimen/padding_views"
-                android:src="@drawable/ticket"
-                android:layout_below="@+id/identicon" />
-
             <TextView
                 android:layout_gravity="center"
                 android:id="@+id/tv_profile_ticket"
@@ -122,34 +144,7 @@
                 android:layout_alignTop="@+id/imageView"
                 android:padding="@dimen/padding_views"
                 android:textSize="@dimen/text_size"
-                android:text="x4" />
-        </LinearLayout>
-        <LinearLayout
-            android:gravity="center"
-            android:id="@+id/coinsLayout"
-            android:layout_weight="0.3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/ticket"
-            android:layout_marginBottom="0dp"
-            android:orientation="vertical"
-            android:weightSum="2">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_views"
-                android:text="@string/coins"
-                android:textSize="@dimen/tamanoletrasubtitulos"
-                android:textColor="@color/primary_text"/>
-            <ImageView
-                android:id="@+id/img_coins"
-                android:layout_width="80dp"
-                android:layout_height="50dp"
-                android:layout_below="@+id/identicon"
-                android:src="@drawable/coin"
-                android:padding="@dimen/padding_views"/>
-
-
+                android:text="x4"/>
             <TextView
                 android:id="@+id/tv_profile_coins"
                 android:layout_width="wrap_content"
@@ -158,9 +153,9 @@
                 android:padding="@dimen/padding_views"
                 android:textSize="@dimen/text_size"
                 />
-        </LinearLayout>
-    </LinearLayout>
+        </LinearLayout><!-- Lin 3-->
 
+    </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -221,8 +216,6 @@
             android:textColor="@color/greenSena"
             android:text="@string/level"/>
     </LinearLayout>
-
-
     <LinearLayout
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
