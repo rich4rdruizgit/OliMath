@@ -78,6 +78,24 @@ public class DialogHelper {
         mProgressDialog.show();
     }
 
+    public static void showCopyRightDialog(final Context context) {
+        mProgressDialog = new Dialog(context);
+        mProgressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        mProgressDialog.setContentView(R.layout.copyright_layout);
+        mProgressDialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme;
+
+
+        ((Button)mProgressDialog.getWindow().findViewById(R.id.btn_exit_tip)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mProgressDialog.dismiss();
+            }
+        });
+        mProgressDialog.setCancelable(true);
+        mProgressDialog.show();
+    }
+
     public static void showChallengeDialog(final Context context) {
         mProgressDialog = new Dialog(context);
         mProgressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
