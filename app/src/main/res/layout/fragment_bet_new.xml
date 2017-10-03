@@ -27,7 +27,7 @@
             android:layout_width="@dimen/tamanoiconmenuprincipal"
             android:layout_height="@dimen/tamanoiconmenuprincipal"
             android:layout_weight=".15"
-            android:src="@drawable/practica_icon"
+            android:src="@drawable/retoblanco"
             />
         <TextView
             android:id="@+id/txt_title_ranking"
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:paddingLeft="20dp"
-            android:text="@string/practice"
+            android:text="@string/challenge"
             android:textColor="#fff"
             />
     </LinearLayout>
@@ -47,19 +47,45 @@
         android:layout_marginTop="10dp"
         >
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:text="Al terminar puedes ganar hasta 30 monedas"
-            android:textSize="18dp"
-            android:textColor="@color/primary_text"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="Tienes"
+            android:textSize="18dp"
+            android:textColor="@color/primary_text"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/coin"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:id="@+id/tv_pool_coins"
+                android:layout_marginLeft="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="x 20"
+                android:textSize="18dp"
+                android:textColor="@color/primary_text"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:gravity="center"
             android:text="Puedes apostar  tus monedas para ganar más!!!"
             android:textSize="18dp"
@@ -90,7 +116,7 @@
         android:id="@+id/btn_bet_preview"
         android:layout_marginTop="15dp"
         android:layout_width="70dp"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_gravity="center"
 
         />
@@ -98,8 +124,9 @@
         android:text="continuar"
         android:id="@+id/btn_bet_start"
         android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="140dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
 
         />
 

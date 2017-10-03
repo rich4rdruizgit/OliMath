@@ -154,10 +154,12 @@ public class QuestionFragment extends Fragment {
                     Log.d(TAG, "Correct answer " + currentQuestion.getAnswerCorrect(idx));
                     if(currentQuestion.getAnswerCorrect(idx).equals("1")){
                         appControl.answers[appControl.currentQuestion] = 1;
+                        appControl.currentCoinsPool += appControl.currentBet;
 
                     }else
                     {
                         appControl.answers[appControl.currentQuestion] = 0;
+                        appControl.currentCoinsPool -= appControl.currentBet;
                         String myasnwer = "my answer";
                         String theanswer = "the answer";
                         String feedback = "feedback papu";
