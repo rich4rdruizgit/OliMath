@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import java.util.List;
 
 import io.realm.Realm;
 import olimpiadas.sena.com.olimpiadasmath.R;
+import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.result.ResultActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.fragments.challenge.BetFragment;
@@ -55,6 +57,11 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
             getFragmentManager().popBackStack();
             bet.enablePreview(false);
             mShowingBack = false;
+            if(appControl.currentCoinsPool == 0){
+                Toast.makeText(ChallengeActivity.this, "Te quedaste sin monedas, intenta nuevamente!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(ChallengeActivity.this,MainActivity.class));
+                finish();
+            }
             return;
         }
 

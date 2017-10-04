@@ -8,6 +8,7 @@
     <dimen name="padding_views">14dp</dimen>
     <dimen name="tamanoiconmenuprincipal">50dp</dimen>
     <dimen name="tamanoletrasubtitulos">15sp</dimen>
+    <dimen name="size_icon">15sp</dimen>
 
 </resources>
 

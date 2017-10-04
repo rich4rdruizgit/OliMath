@@ -105,7 +105,7 @@ public class ResultActivity extends AppCompatActivity {
         realm = Realm.getDefaultInstance();
 
         tvCorAns.setText(String.valueOf(correctAnswers));
-        tvTime.setText(String.valueOf(appControl.answers.length - correctAnswers));
+        tvTime.setText(String.valueOf(appControl.currentTime));
         Log.d(TAG,"Correct answers " + correctAnswers);
         Log.d(TAG,"total Questions " + appControl.answers.length);
 
@@ -183,11 +183,11 @@ public class ResultActivity extends AppCompatActivity {
 
         int winCoins = 0;
         if(bonusTable.getCoin()<0){
-            winCoins = - appControl.currentBet;
+            winCoins = - appControl.currentCoinsPool;
         }else if(bonusTable.getCoin()==0){
-            winCoins = appControl.currentBet;
+            winCoins = appControl.currentCoinsPool;
         }else{
-            winCoins = (int)( ( correctAnswers * bonusTable.getCoin() ) +  ( appControl.currentBet * bonusTable.getCoin() ) );
+            winCoins = (int)( ( correctAnswers * bonusTable.getCoin() ) +  ( appControl.currentCoinsPool * bonusTable.getCoin() ) );
         }
 
         //winCoins = (int)(correctAnswers * bonusTable.getCoin());

@@ -18,22 +18,32 @@ public class Achievements extends RealmObject {
 
     @PrimaryKey
     private String idAchievement;
-
+    // Quitar el nivel , descripcion
+    private String imageAchievement;
     private String nameAchievement;
-    private String levelAchievement;
-    private String descriptionAchievement;
+    //private String levelAchievement;
+    //private String descriptionAchievement;
     private String stateAchievement;
     private String rewardMoney;
     public Achievements() {
     }
 
-    public Achievements(String nameAchievement, String levelAchievement, String descriptionAchievement, String stateAchievement, String rewardMoney) {
+    public Achievements(String imageAchievement,String nameAchievement, String stateAchievement, String rewardMoney) {
+        this.imageAchievement = imageAchievement;
         this.rewardMoney = rewardMoney;
         this.idAchievement = UUID.randomUUID().toString();
         this.nameAchievement = nameAchievement;
-        this.levelAchievement = levelAchievement;
-        this.descriptionAchievement = descriptionAchievement;
+        //this.levelAchievement = levelAchievement;
+        //this.descriptionAchievement = descriptionAchievement;
         this.stateAchievement = stateAchievement;
+    }
+
+    public String getImageAchievement() {
+        return imageAchievement;
+    }
+
+    public void setImageAchievement(String imageAchievement) {
+        this.imageAchievement = imageAchievement;
     }
 
     public String getIdAchievement() {
@@ -51,7 +61,7 @@ public class Achievements extends RealmObject {
     public void setNameAchievement(String nameAchievement) {
         this.nameAchievement = nameAchievement;
     }
-
+    /*
     public String getLevelAchievement() {
         return levelAchievement;
     }
@@ -67,6 +77,7 @@ public class Achievements extends RealmObject {
     public void setDescriptionAchievement(String descriptionAchievement) {
         this.descriptionAchievement = descriptionAchievement;
     }
+    */
 
     public String getStateAchievement() {
         return stateAchievement;
