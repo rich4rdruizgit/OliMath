@@ -10,11 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.adapter.profile.ResultAdapter;
-import olimpiadas.sena.com.olimpiadasmath.model.User;
+import olimpiadas.sena.com.olimpiadasmath.model.Result;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,7 +35,7 @@ public class ProfileResultsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private List<User> users;
+    private List<Result> results;
     RecyclerView recyclerView;
     ResultAdapter resultAdapter;
 
@@ -84,14 +85,16 @@ public class ProfileResultsFragment extends Fragment {
         recyclerView.setLayoutManager(llm);
 
         recyclerView.setAdapter(resultAdapter);
-        //inicializarAdaptador();
+        llenarUsers();
+        inicializarAdaptador();
+
 
         return view;
     }
 
 
     private void inicializarAdaptador() {
-        resultAdapter = new ResultAdapter(users,getActivity());
+        resultAdapter = new ResultAdapter(results,getActivity());
         recyclerView.setAdapter(resultAdapter);
     }
 
@@ -132,5 +135,16 @@ public class ProfileResultsFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    private void llenarUsers() {
+        results = new ArrayList<>();
+
+        results.add(new Result("id","1","pregunta 5"," resp ok 3","resp not ok 2"," non resp 0","15 min","tiempo resp 2 min","70","monedas perdidas 0","monedas bet 20"));
+        results.add(new Result("id","2","pregunta 1"," resp ok 3","resp not ok 2"," non resp 0","20 min","tiempo resp 2 min","200","monedas perdidas 0","monedas bet 20"));
+        results.add(new Result("id","3","pregunta 5"," resp ok 3","resp not ok 2"," non resp 0","10 min","tiempo resp 2 min","20","monedas perdidas 0","monedas bet 20"));
+        results.add(new Result("id","4","pregunta 5"," resp ok 3","resp not ok 2"," non resp 0","30 min","tiempo resp 2 min","50","monedas perdidas 0","monedas bet 20"));
+        results.add(new Result("id","5","pregunta 5"," resp ok 3","resp not ok 1"," non resp 0","27 min","tiempo resp 2 min","100","monedas perdidas 0","monedas bet 20"));
+
     }
 }
