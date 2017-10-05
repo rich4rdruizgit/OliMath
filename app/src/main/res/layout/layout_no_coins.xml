@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_tittle"
+                android:textAlignment="center"
+                android:text="NO TIENES MONEDAS SUFICIENTES"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Tus monedas no son suficientes para estar en el reto"
+                />
+
+
+            <Button
+
+                android:id="@+id/btn_exit_no_coin"
+                android:layout_marginTop="30dp"
+                android:text="Cerrar"
+                android:layout_width="100dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                style="@style/ButtonStyle"
+
+                />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
