@@ -71,6 +71,8 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultView
             txtCoinsWin = (TextView) itemView.findViewById(R.id.txt_result_profile_win_coins_number);
             txtTime = (TextView) itemView.findViewById(R.id.txt_result_profile_time);
             btnPublish = (Button) itemView.findViewById(R.id.btn_publish_result_profile);
+
+            btnPublish.setVisibility(View.INVISIBLE);
         }
     }
 }
