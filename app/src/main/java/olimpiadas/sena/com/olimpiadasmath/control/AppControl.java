@@ -1,5 +1,6 @@
 package olimpiadas.sena.com.olimpiadasmath.control;
 
+import android.media.MediaPlayer;
 import android.util.Log;
 
 import io.realm.Realm;
@@ -39,6 +40,9 @@ public class AppControl {
     public int currentQuestion = 0;
     public long currentTime = 0;
     public int baseWinCoins = 10;
+
+    //sonidos efectos app
+    public MediaPlayer soundBackground;
 
 
     //ranking

@@ -43,15 +43,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Context context;
     pl.droidsonroids.gif.GifImageView getGifMenu;
     int cont = 0;
-    public static MediaPlayer sound;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        sound = MediaPlayer.create(this,R.raw.soundbackground);
-        sound.start();
         gifMenu = (GifImageView) findViewById(R.id.img_gif_menu); // Gif del menu principal
         gifMenu.setOnClickListener(this);
         getSupportActionBar().hide();
@@ -174,7 +171,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        sound.stop();
+        //sound.stop();
     }
 
     @Override

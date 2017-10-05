@@ -3,6 +3,7 @@ package olimpiadas.sena.com.olimpiadasmath.activities.splash;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PixelFormat;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
@@ -19,7 +20,6 @@ import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class SplashActivity extends AppCompatActivity implements AppControl.InitComplete {
-
 
     private AppControl appControl;
     private boolean loading = true;
@@ -38,6 +38,8 @@ public class SplashActivity extends AppCompatActivity implements AppControl.Init
         setContentView(R.layout.activity_splash);
         getSupportActionBar().hide();
         appControl = AppControl.getInstance();
+        appControl.soundBackground = MediaPlayer.create(getApplicationContext(),R.raw.soundbackground);
+        appControl.soundBackground.start();
         appControl.init(SplashActivity.this);
         startAnimations();
     }

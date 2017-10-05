@@ -45,7 +45,7 @@ public class AchievementAdapter extends RecyclerView.Adapter<AchievementAdapter.
         Achievements user = achievementses.get(position);
 
         holder.txtAchievement.setText(user.getNameAchievement()+"");
-
+        holder.txtRewardMoney.setText(user.getRewardMoney());
         int avatar = context.getResources().getIdentifier(user.getImageAchievement(),"drawable", context.getPackageName());
 
         holder.imgAchievement.setImageResource(avatar);
@@ -65,12 +65,15 @@ public class AchievementAdapter extends RecyclerView.Adapter<AchievementAdapter.
     public class AchievementViewHolder extends RecyclerView.ViewHolder {
         protected ImageView imgAchievement;
         protected TextView txtAchievement;
+        protected TextView txtRewardMoney;
+
 
 
         public AchievementViewHolder(View itemView) {
             super(itemView);
             imgAchievement = (ImageView) itemView.findViewById(R.id.img_achievement);
             txtAchievement = (TextView) itemView.findViewById(R.id.txt_achievement);
+            txtRewardMoney = (TextView) itemView.findViewById(R.id.txt_reward_money);
         }
     }
 }

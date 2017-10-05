@@ -36,7 +36,7 @@ public class ProfileActivity extends AppCompatActivity implements PerfilFragment
     ImageView imgExp, imgProfile;
     private ClipDrawable mImageDrawable;
     private String recurso= "drawable";
-    List<Achievements> achievementsList ;
+    List<Achievements> achievementsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

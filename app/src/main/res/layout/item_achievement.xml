@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/layout_achievement"
-    android:layout_width="120dp"
+    android:layout_width="match_parent"
     android:layout_height="120dp"
 
     android:layout_marginTop="10dp"
@@ -14,28 +14,60 @@
     >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.8"
+        android:layout_height="100sp"
         android:padding="5dp"
+        android:orientation="horizontal"
+        android:weightSum="1"
         >
 
         <ImageView
             android:id="@+id/img_achievement"
             android:src="@drawable/ic_photo_library"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_width="0dp"
+            android:layout_weight=".25"
+            android:layout_height="wrap_content"
+            />
+
+       <LinearLayout
+           android:layout_width="0dp"
+           android:layout_weight=".6"
+           android:layout_height="match_parent"
+           android:orientation="vertical"
+           android:gravity="center">
+
+           <TextView
+               android:layout_gravity="center"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Logro"/>
+           <TextView
+               android:id="@+id/txt_achievement"
+               android:layout_gravity="center"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Texto Logro"/>
+       </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight=".15"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="45sp"
+                android:layout_height="45sp"
+                android:src="@drawable/coin"/>
+            <TextView
+                android:id="@+id/txt_reward_money"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Monedas ganadas"/>
+        </LinearLayout>
+
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.2"
-        android:gravity="center"
-        >
-        <TextView
-            android:id="@+id/txt_achievement"
-            android:layout_gravity="center"
-            android:text="Mi primer reto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+
 </LinearLayout>
