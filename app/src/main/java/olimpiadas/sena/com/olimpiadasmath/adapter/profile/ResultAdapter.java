@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
-import olimpiadas.sena.com.olimpiadasmath.model.User;
+import olimpiadas.sena.com.olimpiadasmath.model.Result;
 
 /**
  * Created by didier on 26/09/2017.
@@ -20,10 +20,10 @@ import olimpiadas.sena.com.olimpiadasmath.model.User;
 
 public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultViewHolder> {
 
-    private List<User> results;
+    private List<Result> results;
     private Context context;
 
-    public ResultAdapter(List<User> results, Context context) {
+    public ResultAdapter(List<Result> results, Context context) {
         this.results = results;
         this.context = context;
     }
@@ -39,20 +39,20 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultView
     @Override
     public void onBindViewHolder(ResultViewHolder holder, int position) {
 
-        User user = results.get(position);
-        /* falta tabla para guardar respuestas
+        Result result = results.get(position);
 
-        holder.txtRightAnswer.setText();
-        holder.txtWrongAnswer.setText();
-        holder.txtCoinsWin.setText();
-        holder.txtTime.setText();
-        */
+
+        holder.txtRightAnswer.setText(result.getAnswerCorrectResult());
+        holder.txtWrongAnswer.setText(result.getAnswerIncorrectResult());
+        holder.txtCoinsWin.setText(result.getCoinsWinResult());
+        holder.txtTime.setText(result.getTimeGlobalResult());
+
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return results.size();
     }
 
     public class ResultViewHolder extends RecyclerView.ViewHolder{
@@ -71,6 +71,8 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultView
             txtCoinsWin = (TextView) itemView.findViewById(R.id.txt_result_profile_win_coins_number);
             txtTime = (TextView) itemView.findViewById(R.id.txt_result_profile_time);
             btnPublish = (Button) itemView.findViewById(R.id.btn_publish_result_profile);
+
+            btnPublish.setVisibility(View.INVISIBLE);
         }
     }
 }
