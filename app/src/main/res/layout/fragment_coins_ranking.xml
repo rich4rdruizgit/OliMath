@@ -82,7 +82,7 @@
                     android:layout_weight="0.25"
                     android:background="@drawable/golden_medal"
                     android:gravity="center"
-                    android:layout_marginLeft="60dp">
+                    android:layout_marginLeft="10dp">
 
                     <TextView
                         android:layout_width="50dp"
