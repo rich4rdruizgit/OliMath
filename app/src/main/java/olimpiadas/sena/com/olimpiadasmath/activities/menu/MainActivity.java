@@ -117,14 +117,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
 
             case R.id.btn_menu_practice:
-                Intent intPractice = new Intent(MainActivity.this, PracticeActivity.class);
-                startActivity(intPractice);
+//                Intent intPractice = new Intent(MainActivity.this, PracticeActivity.class);
+//                startActivity(intPractice);
+                MainActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        DialogHelper.showChallengePracticeDialog(MainActivity.this, 1);
+                    }
+                });
                 break;
             case R.id.btn_menu_challenge:
                 MainActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        DialogHelper.showChallengeDialog(MainActivity.this);
+                        DialogHelper.showChallengePracticeDialog(MainActivity.this, 2);
                     }
                 });
                 break;
@@ -184,4 +190,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onPause();
         //sound.pause();
     }
+
 }

@@ -58,7 +58,7 @@
 
                 <Button
 
-                    android:id="@+id/btn_show_more_tip"
+                    android:id="@+id/btn_dialog_continue"
                     android:layout_marginTop="30dp"
                     android:text="Salir"
                     android:layout_width="100dp"

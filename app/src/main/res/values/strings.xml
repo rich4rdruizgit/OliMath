@@ -49,9 +49,31 @@
     <string name="corrects_answers_challenge">Correctas:</string>
     <string name="time_challenge">Tiempo:</string>
     <string name="coins_challenge">Coins:</string>
+    <string name="btn_continue">CONTINUAR</string>
+    <string name="text_dialog_info_practice">Vas a ingresar a la parcatica, presiona continuar para iniciar</string>
+    <string name="text_dialog_info_challenge">Si aceptas el Challenge, gastaras 10 Coins</string>
+    <string name="title_dialog_challenge">Hola, ¿Quieres probar tus habilidades?</string>
+    <string name="title_dialog_practice">Hola, que bueno verte por aquí!</string>
 
     <string-array name="lenguages">
         <item>Español</item>
         <item>Ingles</item>
+    </string-array>
+
+    <string-array name="array_advices_challenge">
+        <item>Si gastas 2 Coins en el preview, veras la pregunta por 15s!</item>
+        <item>¡Apostar, un arma de doble filo! Necesitas conocimiento para usarla de la mejor manera.</item>
+        <item>¡Si tienes buenos resultados, puedes estar en el Ranking!</item>
+        <item>¡Tienes 3min para responder cada pregunta!</item>
+        <item>¡El preview resta 15s de los 3min que dura la pregunta!</item>
+        <item>¡Si obtienes un buen resultado, tienes la posibildad de estar en el Ranking!</item>
+    </string-array>
+    <string-array name="array_advices_practice">
+        <item>Recuerda: "La practica hace al maestro"</item>
+        <item>¡Ganarar coins por cada pregunta correcta!</item>
+        <item>¡Los Coins son necesarios para ingresar a Reto!</item>
+        <item>¡Guarda los coins, te serviran mas adelante para adquirir articulos!</item>
+        <item>¡Preparate para ser el mejor de todo los usuarios!</item>
+        <item>¡Obten mucbos coins y descresta a tus amigos!</item>
     </string-array>
 </resources>
