@@ -74,30 +74,9 @@
             android:shadowColor="@color/colorAccent"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="20dp">
 
-        <TextView
-            android:id="@+id/txt_efects"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size"
-            android:text="@string/effects"
-            android:textColor="@color/primary_text"/>
 
-        <Switch
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/swtEfects"
-            android:shadowColor="@color/colorAccent"/>
-
-    </LinearLayout>
-
-    <LinearLayout
+    <!--<LinearLayout
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -122,7 +101,7 @@
             android:textColor="@color/primary_text"/>
     </LinearLayout>
 
-        <Button
+        <!-<Button
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:id="@+id/btn_help"
@@ -130,7 +109,7 @@
             android:shadowColor="@color/colorAccent"
             android:layout_gravity="center"
             style="@style/ButtonStyle"/>
-
+-->
         <Button
             android:id="@+id/btn_credits"
             android:layout_width="100dp"

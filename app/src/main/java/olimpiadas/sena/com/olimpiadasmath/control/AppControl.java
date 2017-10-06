@@ -288,6 +288,14 @@ public class AppControl {
                     config = new Configuration("isLogged",false);
                     realm.copyToRealm(config);
                 }
+                Configuration configSound = realm.where(Configuration.class).equalTo("key","soundisplaying").findFirst();
+                if(configSound != null){
+                    //sound founded
+                    AppControl.this.isLogged = config.getValue();
+                }else{
+                    configSound = new Configuration("soundisplaying",false);//terminarrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+                    realm.copyToRealm(configSound);
+                }
 
 
             }
