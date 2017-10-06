@@ -17,6 +17,7 @@ import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.fragments.challenge.BetFragment;
 import olimpiadas.sena.com.olimpiadasmath.fragments.challenge.QuestionFragment;
 import olimpiadas.sena.com.olimpiadasmath.model.Question;
+import olimpiadas.sena.com.olimpiadasmath.util.DialogHelper;
 
 
 import static java.lang.Thread.sleep;
@@ -38,6 +39,7 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_challenge);
         getSupportActionBar().hide();
+        appControl.currentCoinsPool = 20;
         bet = BetFragment.newInstance();
 
         getFragmentManager()
@@ -144,5 +146,10 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
 
     public List<Question> getQuestions() {
         return questions;
+    }
+
+    @Override
+    public void onBackPressed() {
+        DialogHelper.ConfimrFinishTestDialog(this,"Seguro que quieres terminar el reto? \nPerderas los créditos que pagaste para ingresar y se contará como perdido");
     }
 }
