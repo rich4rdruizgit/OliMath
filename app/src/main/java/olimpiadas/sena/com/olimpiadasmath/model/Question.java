@@ -49,9 +49,9 @@ public class Question  extends RealmObject{
 
     public String getQuestionText(){
         try {
-            Log.d(TAG,"Se va a crear json");
+            //Log.d(TAG,"Se va a crear json");
             JSONObject question = new JSONObject(jsonObject);
-            Log.d(TAG,"Text key " + question.getString("text") );
+            //Log.d(TAG,"Text key " + question.getString("text") );
             return question.getString("text");
 
         } catch (JSONException e) {
@@ -74,13 +74,41 @@ public class Question  extends RealmObject{
     public String getAnswerCorrect(int i){
         try {
             JSONObject iscorrect = new JSONObject(jsonObject);
-            Log.d(TAG,"getAnswerCorrect i = " + i);
-            Log.d(TAG,"isCorrect toString =  " + iscorrect.toString());
+            //Log.d(TAG,"getAnswerCorrect i = " + i);
+            //Log.d(TAG,"isCorrect toString =  " + iscorrect.toString());
             return iscorrect.getJSONArray("answers").getJSONObject(i).getString("isCorrect");
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
         return "";
+    }
+    public String getCorrectAnswerText(){
+        try {
+            JSONObject iscorrect = new JSONObject(jsonObject);
+            String text = "";
+            for(int i = 0; i < iscorrect.getJSONArray("answers").length(); i ++){
+                if(iscorrect.getJSONArray("answers").getJSONObject(i).getString("isCorrect").equals("1")){
+                    text = iscorrect.getJSONArray("answers").getJSONObject(i).getString("text");
+                }
+            }
+            return text;
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    public String getFeedback(){
+
+        try {
+            JSONObject question = new JSONObject(jsonObject);
+            return "La respuesta correcta es esta por: "; // question.getString("feedback");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return "";
+
     }
 }

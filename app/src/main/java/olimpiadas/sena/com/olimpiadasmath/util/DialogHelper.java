@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -165,7 +166,8 @@ public class DialogHelper {
         ((Button)mProgressDialog.getWindow().findViewById(R.id.btn_show_more_tip)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((PracticeActivity)context).finish();
+                mProgressDialog.dismiss();
+                ((AppCompatActivity)context).finish();
                 context.startActivity(new Intent(context, MainActivity.class));
 
 
