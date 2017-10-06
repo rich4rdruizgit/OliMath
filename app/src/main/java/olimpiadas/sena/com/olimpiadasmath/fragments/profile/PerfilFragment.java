@@ -84,7 +84,7 @@ public class PerfilFragment extends Fragment {
         tvPercent.setText(""+appControl.currentUser.getExperience()+"%");
         tvLvl.setText(""+appControl.currentUser.getLevel());
         tvCoins.setText(" x " + appControl.currentUser.getCoins());
-        tvTickets.setText(" x " + appControl.currentUser.getTickets());
+        //tvTickets.setText(" x " + appControl.currentUser.getTickets());
         tvScore.setText("" + appControl.currentUser.getScore());
         ImageView imgExp = (ImageView) view.findViewById(R.id.img_profile_progress_bar2);
         mImageDrawable = (ClipDrawable) imgExp.getDrawable();
@@ -103,12 +103,6 @@ public class PerfilFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnQuestionFragmentListener");
-        }
     }
 
     @Override

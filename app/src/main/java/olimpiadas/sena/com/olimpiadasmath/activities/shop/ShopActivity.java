@@ -22,7 +22,8 @@ import olimpiadas.sena.com.olimpiadasmath.fragments.shop.ItemShopFragment;
 import olimpiadas.sena.com.olimpiadasmath.model.Product;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class ShopActivity extends AppCompatActivity implements AvatarShopFragment.OnFragmentInteractionListener, ItemShopFragment.OnFragmentInteractionListener{
+public class ShopActivity extends AppCompatActivity implements AvatarShopFragment.OnFragmentInteractionListener,
+        ItemShopFragment.OnFragmentInteractionListener{
 
     RecyclerView recyclerViewShop;
     ProductAdapter adapter;

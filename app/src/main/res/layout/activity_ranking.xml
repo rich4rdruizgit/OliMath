@@ -52,21 +52,21 @@
             />
     </LinearLayout>
 
-    <fragment
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:id="@+id/fragment2"
-        android:name="olimpiadas.sena.com.olimpiadasmath.fragments.ranking.RankingFragment"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vpPagerRanking"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <android.support.v7.widget.RecyclerView
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:id="@+id/recycler_ranking"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="10dp">
-    </android.support.v7.widget.RecyclerView>
-
+        android:layout_height="wrap_content">
+        <android.support.v4.view.PagerTabStrip
+            app:theme="@style/AppTheme"
+            android:backgroundTint="#ffffff"
+            android:id="@+id/pager_header_ranking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp"
+            android:animateLayoutChanges="false"
+            android:textAppearance="@style/PagerTabStripText"
+            />
+    </android.support.v4.view.ViewPager>
 </LinearLayout>

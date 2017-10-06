@@ -1,10 +1,12 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="olimpiadas.sena.com.olimpiadasmath.fragments.ranking.RankingFragment">
+    android:orientation="vertical"
+    tools:context="olimpiadas.sena.com.olimpiadasmath.fragments.ranking.CoinsRankingFragment">
 
     <LinearLayout
+        android:id="@+id/linear_myposition"
         android:layout_width="match_parent"
         android:weightSum="1"
         android:layout_height="90dp"
@@ -50,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="PTS:"
+                android:text="Monedas:"
                 android:textSize="16sp"
                 android:textColor="@color/primary_text"/>
             <LinearLayout
@@ -69,6 +71,11 @@
                     android:text="25.000"
                     android:textColor="#ffffff"
                     />
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/coin"
+                    />
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -86,10 +93,17 @@
                         android:layout_marginBottom="3dp"/>
                 </LinearLayout>
             </LinearLayout>
-
         </LinearLayout>
-
-
     </LinearLayout>
 
-</FrameLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/recycler_ranking_coins"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp">
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>
