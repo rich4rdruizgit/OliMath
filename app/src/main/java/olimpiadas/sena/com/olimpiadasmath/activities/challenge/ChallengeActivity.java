@@ -5,16 +5,19 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import java.util.List;
 
 import io.realm.Realm;
 import olimpiadas.sena.com.olimpiadasmath.R;
+import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.result.ResultActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.fragments.challenge.BetFragment;
 import olimpiadas.sena.com.olimpiadasmath.fragments.challenge.QuestionFragment;
 import olimpiadas.sena.com.olimpiadasmath.model.Question;
+import olimpiadas.sena.com.olimpiadasmath.util.DialogHelper;
 
 
 import static java.lang.Thread.sleep;
@@ -36,6 +39,7 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_challenge);
         getSupportActionBar().hide();
+        appControl.currentCoinsPool = 20;
         bet = BetFragment.newInstance();
 
         getFragmentManager()
@@ -55,6 +59,11 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
             getFragmentManager().popBackStack();
             bet.enablePreview(false);
             mShowingBack = false;
+            if(appControl.currentCoinsPool == 0){
+                Toast.makeText(ChallengeActivity.this, "Te quedaste sin monedas, intenta nuevamente!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(ChallengeActivity.this,MainActivity.class));
+                finish();
+            }
             return;
         }
 
@@ -137,5 +146,10 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
 
     public List<Question> getQuestions() {
         return questions;
+    }
+
+    @Override
+    public void onBackPressed() {
+        DialogHelper.ConfimrFinishTestDialog(this,"Seguro que quieres terminar el reto? \nPerderas los créditos que pagaste para ingresar y se contará como perdido");
     }
 }

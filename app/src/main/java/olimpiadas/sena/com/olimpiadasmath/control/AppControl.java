@@ -34,6 +34,7 @@ public class AppControl {
     public boolean onPractice = false;
 
     public User currentUser;
+    public int currentCoinsPool = 10;
     public int currentBet = 0;
     public int currentQuestion = 0;
     public long currentTime = 0;

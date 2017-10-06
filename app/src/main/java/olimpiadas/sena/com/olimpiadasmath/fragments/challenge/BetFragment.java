@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
@@ -33,6 +36,8 @@ public class BetFragment extends Fragment {
     private AppControl appControl = AppControl.getInstance();
 
     private OnBetFragmentListener mListener;
+    private SeekBar seekBar;
+    private TextView tvBet,tvPoolCoins;
 
     public BetFragment() {
         // Required empty public constructor
@@ -59,6 +64,12 @@ public class BetFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_bet_new, container, false);
 
+
+        seekBar = (SeekBar) view.findViewById(R.id.seekbar);
+        tvBet = (TextView) view.findViewById(R.id.tv_bet);
+        tvPoolCoins = (TextView) view.findViewById(R.id.tv_pool_coins);
+        tvPoolCoins.setText("x " + appControl.currentCoinsPool);
+
         previewQuestion = (Button) view.findViewById(R.id.btn_bet_preview);
         previewQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +88,28 @@ public class BetFragment extends Fragment {
                 onStartPressed();
             }
         });
+
+
+        seekBar.setMax(appControl.currentCoinsPool);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                appControl.currentBet = progress;
+                tvBet.setText(progress+"");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+
         Log.d(TAG,"FInish onCreateView");
         return view;
     }

@@ -183,11 +183,11 @@ public class ResultActivity extends AppCompatActivity {
 
         int winCoins = 0;
         if(bonusTable.getCoin()<0){
-            winCoins = - appControl.currentBet;
+            winCoins = - appControl.currentCoinsPool;
         }else if(bonusTable.getCoin()==0){
-            winCoins = appControl.currentBet;
+            winCoins = appControl.currentCoinsPool;
         }else{
-            winCoins = (int)( ( correctAnswers * bonusTable.getCoin() ) +  ( appControl.currentBet * bonusTable.getCoin() ) );
+            winCoins = (int)( ( correctAnswers * bonusTable.getCoin() ) +  ( appControl.currentCoinsPool * bonusTable.getCoin() ) );
         }
 
         //winCoins = (int)(correctAnswers * bonusTable.getCoin());
