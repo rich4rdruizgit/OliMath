@@ -15,6 +15,7 @@ import java.util.Random;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.challenge.ChallengeActivity;
+import olimpiadas.sena.com.olimpiadasmath.activities.library.LibraryActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.practice.PracticeActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.settings.SettingsActivity;
@@ -31,7 +32,6 @@ public class DialogHelper {
     public interface DialogHelperListener {
         public void dialogEnd(boolean result);
     }
-
     public static int BUY = 1;
     public static int NO_BUY = 2;
 
@@ -98,6 +98,30 @@ public class DialogHelper {
         mProgressDialog.setCancelable(true);
         mProgressDialog.show();
     }
+
+    public static void showNoCoins(final Context context) {
+        mProgressDialog = new Dialog(context);
+        mProgressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        mProgressDialog.setContentView(R.layout.layout_no_coins);
+        mProgressDialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme;
+
+
+        ((Button)mProgressDialog.getWindow().findViewById(R.id.btn_exit_no_coin)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mProgressDialog.dismiss();
+            }
+        });
+        mProgressDialog.setCancelable(true);
+        mProgressDialog.show();
+    }
+
+
+
+
+
+
 
     public static void showChallengePracticeDialog(final Context context, int type) {
         mProgressDialog = new Dialog(context);

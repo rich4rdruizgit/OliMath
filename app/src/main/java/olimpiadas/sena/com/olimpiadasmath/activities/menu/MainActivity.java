@@ -35,7 +35,8 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "MainActivity";
-
+    String arrayName[] = {"Practice", "Study", "Challenge"};
+    CircleMenu circleMenu;
     Button btnShop, btnRanking, btnSettings, btnPractice, btnChallenge, btnLibrary;
     GifImageView gifMenu;
     AppControl appControl;
@@ -55,10 +56,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getSupportActionBar().hide();
         appControl = AppControl.getInstance();
         Context context = this;
-
-
-        sound = MediaPlayer.create(this,R.raw.soundbackground);
-        sound.start();
 
         int id = context.getResources().getIdentifier("fondo_b.png", "drawable", context.getPackageName());
         int resID = getResources().getIdentifier("fondo_b", "drawable", getPackageName());
@@ -182,7 +179,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        sound.stop();
+        //sound.stop();
     }
 
     @Override
@@ -190,5 +187,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onPause();
         //sound.pause();
     }
-
 }

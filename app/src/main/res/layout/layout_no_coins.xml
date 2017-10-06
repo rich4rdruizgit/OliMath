@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="300sp"
-    android:layout_height="match_parent"
-    android:background="@android:color/white">
-
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -19,31 +17,19 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_tittle"
                 android:textAlignment="center"
-                android:text="Equipo de desarrollo"/>
+                android:text="NO TIENES MONEDAS SUFICIENTES"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:text="Harold Andrés Muñoz\nCarlos Andrés Chapid\nRichard Ruiz\nDidier Enrique Ramirez\nJefferson Andrés Muñoz\nJhon Yanguas"
+                android:text="Tus monedas no son suficientes para estar en el reto"
                 />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size_tittle"
-                android:textAlignment="center"
-                android:text="Equipo de Diseño y Multimedia"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="Erick Ortiz"/>
 
             <Button
 
-                android:id="@+id/btn_exit_tip"
+                android:id="@+id/btn_exit_no_coin"
                 android:layout_marginTop="30dp"
                 android:text="Cerrar"
                 android:layout_width="100dp"

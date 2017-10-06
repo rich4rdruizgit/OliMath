@@ -27,12 +27,16 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class ProfileActivity extends AppCompatActivity implements PerfilFragment.OnFragmentInteractionListener, LogroFragment.OnFragmentInteractionListener, ProfileResultsFragment.OnFragmentInteractionListener {
 
+
     AppControl appControl;
+
     ViewPager viewPager;
+
     TextView tvLvl,tvCoins,tvTickets,txtNameUser,tvScore;
     ImageView imgExp, imgProfile;
     private ClipDrawable mImageDrawable;
     private String recurso= "drawable";
+    List<Achievements> achievementsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

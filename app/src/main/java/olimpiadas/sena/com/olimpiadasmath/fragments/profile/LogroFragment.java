@@ -91,7 +91,7 @@ public class LogroFragment extends Fragment {
 
         View view =  inflater.inflate(R.layout.fragment_logro, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_achievement);
-        GridLayoutManager llm = new GridLayoutManager(getActivity(),3);
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
 
@@ -151,5 +151,6 @@ public class LogroFragment extends Fragment {
         logrosList.add(new Achievements("","Mi primer reto","ACTIVO","100"));
         logrosList.add(new Achievements("","Mi primer reto","ACTIVO","100"));
         logrosList.add(new Achievements("","Mi primer reto","ACTIVO","100"));
+
     }
 }

@@ -1,5 +1,6 @@
 package olimpiadas.sena.com.olimpiadasmath.control;
 
+import android.media.MediaPlayer;
 import android.util.Log;
 
 import io.realm.Realm;
@@ -39,6 +40,9 @@ public class AppControl {
     public int currentQuestion = 0;
     public long currentTime = 0;
     public int baseWinCoins = 10;
+
+    //sonidos efectos app
+    public MediaPlayer soundBackground;
 
 
     //ranking
@@ -283,6 +287,14 @@ public class AppControl {
                     Log.d(TAG,"Configuration isLogged not founded");
                     config = new Configuration("isLogged",false);
                     realm.copyToRealm(config);
+                }
+                Configuration configSound = realm.where(Configuration.class).equalTo("key","soundisplaying").findFirst();
+                if(configSound != null){
+                    //sound founded
+                    AppControl.this.isLogged = config.getValue();
+                }else{
+                    configSound = new Configuration("soundisplaying",false);//terminarrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+                    realm.copyToRealm(configSound);
                 }
 
 
