@@ -14,7 +14,6 @@ import java.util.Random;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.challenge.ChallengeActivity;
-import olimpiadas.sena.com.olimpiadasmath.activities.library.LibraryActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.practice.PracticeActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.settings.SettingsActivity;
