@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="vertical"
+    android:layout_height="match_parent"
     android:background="#434b5b"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/ll_question_status"
@@ -20,31 +19,30 @@
         android:id="@+id/tv_count_down"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="00:15"
-        android:layout_gravity="end"/>
+        android:layout_gravity="end"
+        android:text="00:15" />
 
-    <android.support.v7.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/cardView"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        app:cardUseCompatPadding="true"
-        >
-        <ScrollView
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/cardView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:cardUseCompatPadding="true">
+
+
             <FrameLayout
-                android:padding="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@drawable/shape_ranking"
-                >
+                android:padding="20dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="24dp">
@@ -52,50 +50,54 @@
                     <TextView
                         android:id="@+id/titleTextView"
                         style="@style/TextAppearance.AppCompat.Title"
-                        android:textColor="@color/secondary_text"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/secondary_text" />
 
                     <TextView
                         android:id="@+id/tv_question_content"
-                        android:textColor="@color/secondary_text"
-                        style="@style/TextAppearance.AppCompat.Body1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-                    <ImageView
-                        android:id="@+id/contentViewImage"
-                        android:src="@drawable/image_default"
-                        android:textColor="@color/secondary_text"
                         style="@style/TextAppearance.AppCompat.Body1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"/>
+                        android:textColor="@color/secondary_text" />
+
+                    <ImageView
+                        android:id="@+id/contentViewImage"
+                        style="@style/TextAppearance.AppCompat.Body1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/image_default"
+                        android:textColor="@color/secondary_text"
+                        android:visibility="gone" />
 
                     <LinearLayout
-                        android:layout_marginTop="30dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp">
+
                         <RadioGroup
                             android:id="@+id/rg_group_answer"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/secondary_text"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:textColor="@color/secondary_text">
 
                         </RadioGroup>
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:gravity="center"
                         android:orientation="horizontal">
 
                         <Button
                             android:id="@+id/btn_question_next"
                             style="@style/ButtonStyle"
-                            android:layout_width="0dp"
-                            android:layout_weight="0.5"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="24dp"
+                            android:layout_gravity="end"
                             android:text="@string/next" />
                     </LinearLayout>
                 </LinearLayout>
@@ -108,6 +110,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
                     android:src="@drawable/zoomscreen" />
+
                 <ImageView
                     android:id="@+id/img_test_image"
                     android:layout_width="30dp"
@@ -118,7 +121,7 @@
                     android:src="@drawable/ic_photo_library" />
 
             </FrameLayout>
-        </ScrollView>
-    </android.support.v7.widget.CardView>
+        </android.support.v7.widget.CardView>
+    </ScrollView>
 
 </LinearLayout>
