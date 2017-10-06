@@ -61,16 +61,6 @@ public class ProfileActivity extends AppCompatActivity implements PerfilFragment
         tvTickets = (TextView) findViewById(R.id.tv_profile_ticket);
         tvScore = (TextView) findViewById(R.id.tv_profile_score);
 
-
-//        tvLvl.setText(""+appControl.currentUser.getLevel());
-//        tvCoins.setText(" x " + appControl.currentUser.getCoins());
-//        tvTickets.setText(" x " + appControl.currentUser.getTickets());
-//        tvScore.setText("" + appControl.currentUser.getScore());
-//        ImageView imgExp = (ImageView) findViewById(R.id.img_profile_progress_bar2);
-//        mImageDrawable = (ClipDrawable) imgExp.getDrawable();
-
-//        mImageDrawable.setLevel((int)appControl.currentUser.getExperience() * 100);
-
         imgProfile.setImageResource(avatar);
         Picasso.with(imgProfile.getContext())
                 .load(avatar)
@@ -95,26 +85,5 @@ public class ProfileActivity extends AppCompatActivity implements PerfilFragment
 
     @Override
     public void onFragmentInteraction(Uri uri) {
-
     }
-
-    private void llenarUsers() {
-        achievementsList = new ArrayList<>();
-
-        achievementsList.add(new Achievements("marco18", "Mi primer logro", "ACTIVO", "marco18"));
-        achievementsList.add(new Achievements("marco18", "Mi primer logro", "ACTIVO", "marco18"));
-        achievementsList.add(new Achievements("marco18", "Mi primer logro", "ACTIVO", "marco18"));
-        achievementsList.add(new Achievements("marco18", "Mi primer logro", "ACTIVO", "marco18"));
-        achievementsList.add(new Achievements("marco18", "Mi primer logro", "ACTIVO", "marco18"));
-        achievementsList.add(new Achievements("marco18", "Mi primer logro", "ACTIVO", "marco18"));
-        achievementsList.add(new Achievements("marco18", "Mi primer logro", "ACTIVO", "marco18"));
-        achievementsList.add(new Achievements("marco18", "Mi primer logro", "ACTIVO", "marco18"));
-        achievementsList.add(new Achievements("marco18", "Mi primer logro", "ACTIVO", "marco18"));
-        achievementsList.add(new Achievements("marco18", "Mi primer logro", "ACTIVO", "marco18"));
-        achievementsList.add(new Achievements("marco18", "Mi primer logro", "ACTIVO", "marco18"));
-        achievementsList.add(new Achievements("marco18", "Mi primer logro", "ACTIVO", "marco18"));
-        achievementsList.add(new Achievements("marco18", "Mi primer logro", "ACTIVO", "marco18"));
-    }
-
-
 }

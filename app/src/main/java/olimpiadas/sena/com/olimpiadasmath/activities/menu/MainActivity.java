@@ -43,12 +43,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Context context;
     pl.droidsonroids.gif.GifImageView getGifMenu;
     int cont = 0;
+    public static MediaPlayer sound;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         gifMenu = (GifImageView) findViewById(R.id.img_gif_menu); // Gif del menu principal
         gifMenu.setOnClickListener(this);
         getSupportActionBar().hide();
@@ -112,14 +114,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
 
             case R.id.btn_menu_practice:
-                Intent intPractice = new Intent(MainActivity.this, PracticeActivity.class);
-                startActivity(intPractice);
+//                Intent intPractice = new Intent(MainActivity.this, PracticeActivity.class);
+//                startActivity(intPractice);
+                MainActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        DialogHelper.showChallengePracticeDialog(MainActivity.this, 1);
+                    }
+                });
                 break;
             case R.id.btn_menu_challenge:
                 MainActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        DialogHelper.showChallengeDialog(MainActivity.this);
+                        DialogHelper.showChallengePracticeDialog(MainActivity.this, 2);
                     }
                 });
                 break;

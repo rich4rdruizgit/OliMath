@@ -6,16 +6,21 @@ import android.os.Bundle;
 
 import android.os.CountDownTimer;
 import android.support.v7.widget.CardView;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+
+import java.util.ArrayList;
+import java.util.List;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.challenge.ChallengeActivity;
@@ -44,6 +49,8 @@ public class QuestionFragment extends Fragment {
     boolean isScaled = false;
     private Question currentQuestion;
     CountDownTimer currentTimer;
+    LinearLayout llQuestionStatus;
+    List<ImageView> questionsStatus;
 
 
     public QuestionFragment() {
@@ -86,6 +93,24 @@ public class QuestionFragment extends Fragment {
         tvTitle = (TextView) view.findViewById(R.id.titleTextView);
         tvQuestionContent = (TextView) view.findViewById(R.id.tv_question_content);
         tvTitle.setText(currentQuestion.getQuestionText());
+        llQuestionStatus = (LinearLayout) view.findViewById(R.id.ll_question_status);
+        questionsStatus = new ArrayList<ImageView>();
+        for(int i = 0; i < appControl.numberOfQuestions; i++){
+            ImageView temp = new ImageView(getActivity());
+            temp.setLayoutParams(new ViewGroup.LayoutParams(30,30));
+            if(i%2 == 0){
+                temp.setImageResource(R.drawable.ok);
+            }else{
+                temp.setImageResource(R.drawable.wrong);
+            }
+            if(i==4){
+                temp.setImageResource(R.drawable.question);
+            }
+
+            questionsStatus.add(temp);
+            llQuestionStatus.addView(temp);
+        }
+
 
         radioGroup = (RadioGroup) view.findViewById(R.id.rg_group_answer);
         for(int x = 0 ; x<4 ;x++){

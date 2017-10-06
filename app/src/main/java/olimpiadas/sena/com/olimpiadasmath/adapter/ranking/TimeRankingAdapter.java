@@ -18,28 +18,27 @@ import olimpiadas.sena.com.olimpiadasmath.model.User;
 import olimpiadas.sena.com.olimpiadasmath.util.CircleImage.CropCircleTransformation;
 
 /**
- * Created by andres on 19/06/2017.
+ * Created by rich4 on 5/10/2017.
  */
 
-public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingViewHolder> {
+public class TimeRankingAdapter extends RecyclerView.Adapter<TimeRankingAdapter.TimeRankingViewHolder> {
 
     private List<User> users;
     private Context context;
 
-    public RankingAdapter(List<User> users, Context context) {
+    public TimeRankingAdapter(List<User> users, Context context) {
         this.users = users;
         this.context = context;
     }
 
     @Override
-    public RankingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ranking, parent, false);
-
-        return new RankingViewHolder(view);
+    public TimeRankingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ranking_time,parent,false);
+        return new TimeRankingViewHolder(view);
     }
-    @Override
-    public void onBindViewHolder(RankingViewHolder holder, int position) {
 
+    @Override
+    public void onBindViewHolder(TimeRankingViewHolder holder, int position) {
         User user = users.get(position);
         holder.txtPosition.setText(user.getPosition()+"");
         holder.txtNickName.setText(user.getNickname()+"");
@@ -52,35 +51,28 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.RankingV
                 .load(avatar)
                 .transform(new CropCircleTransformation())
                 .into(holder.imgAvatarRanking);
-
-//        if(user.getNickname().equals(AppControl.getInstance().currentUser.getNickname())){
-//            holder.layout.setBackgroundResource(R.drawable.scall);
-//            holder.layout.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
-//            holder.txtPosition.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
-//            holder.txtNickName.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
-//            holder.txtPoints.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
-//        }
     }
+
     @Override
     public int getItemCount() {
         return users.size();
     }
 
 
-    public class RankingViewHolder extends RecyclerView.ViewHolder {
+    public class TimeRankingViewHolder extends RecyclerView.ViewHolder {
         protected TextView txtPosition;
         protected TextView txtNickName;
         protected TextView txtPoints;
         protected ImageView imgAvatarRanking;
         protected LinearLayout layout;
 
-        public RankingViewHolder(View itemView) {
+        public TimeRankingViewHolder(View itemView) {
             super(itemView);
-            txtPosition = (TextView) itemView.findViewById(R.id.txt_position_ranking);
-            txtNickName = (TextView) itemView.findViewById(R.id.txt_nickname_ranking);
-            txtPoints = (TextView) itemView.findViewById(R.id.txt_points_ranking);
-            imgAvatarRanking = (ImageView) itemView.findViewById(R.id.img_avatar_ranking);
-            layout = (LinearLayout) itemView.findViewById(R.id.layout_ranking);
+            txtPosition = (TextView) itemView.findViewById(R.id.txt_position_ranking_time);
+            txtNickName = (TextView) itemView.findViewById(R.id.txt_nickname_ranking_time);
+            txtPoints = (TextView) itemView.findViewById(R.id.txt_points_ranking_time);
+            imgAvatarRanking = (ImageView) itemView.findViewById(R.id.img_avatar_ranking_time);
+            layout = (LinearLayout) itemView.findViewById(R.id.layout_ranking_time);
         }
     }
 }

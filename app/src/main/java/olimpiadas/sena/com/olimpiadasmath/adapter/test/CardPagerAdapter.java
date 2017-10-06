@@ -175,9 +175,9 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
                     }else
                     {
                         appControl.answers[position] = 0;
-                        String myasnwer = "my answer";
-                        String theanswer = "the answer";
-                        String feedback = "feedback papu";
+                        String myasnwer = question.get(position).getAnswerText(position);
+                        String theanswer = question.get(position).getCorrectAnswerText();
+                        String feedback = question.get(position).getFeedback();
                         currentPosition= position;
                         DialogHelper.FeedbackDialog(context,myasnwer,theanswer,feedback,CardPagerAdapter.this);
                     }
