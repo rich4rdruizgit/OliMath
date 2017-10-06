@@ -48,14 +48,17 @@
                     android:layout_marginBottom="@dimen/inter_space"
                     android:background="#C8C9CB" />
                 <TextView
-                    android:text="Mi respuesta"
+                    android:text="Tu respuesta:"
+                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
                 <TextView
                     android:id="@+id/txt_myanswer_retro"
                     android:text="@string/text_1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:gravity="center"/>
                 <View
                     android:id="@+id/dividerdos"
                     android:layout_width="match_parent"
@@ -64,14 +67,16 @@
                     android:layout_marginBottom="@dimen/inter_space"
                     android:background="#C8C9CB" />
                 <TextView
-                    android:text="LA respuesta"
+                    android:text="La respuesta correcta:"
                     android:layout_width="match_parent"
+                    android:gravity="center"
                     android:layout_height="wrap_content" />
                 <TextView
                     android:id="@+id/txt_theanswer_retro"
                     android:text="@string/text_1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:gravity="center"/>
                 <View
                     android:id="@+id/dividertres"
                     android:layout_width="match_parent"
@@ -94,7 +99,7 @@
                 <Button
                     android:id="@+id/btn_retro_next"
                     android:layout_marginTop="30dp"
-                    android:text="Continuear"
+                    android:text="Continuar"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     style="@style/ButtonStyle"

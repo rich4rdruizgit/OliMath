@@ -17,6 +17,7 @@ import olimpiadas.sena.com.olimpiadasmath.activities.challenge.ChallengeActivity
 import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.practice.PracticeActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.settings.SettingsActivity;
+import olimpiadas.sena.com.olimpiadasmath.activities.test.TestActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 
 
@@ -198,7 +199,8 @@ public class DialogHelper {
         ((Button) mProgressDialog.getWindow().findViewById(R.id.btn_dialog_continue)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((PracticeActivity) context).finish();
+                mProgressDialog.dismiss();
+                ((AppCompatActivity)context).finish();
                 context.startActivity(new Intent(context, MainActivity.class));
 
 
