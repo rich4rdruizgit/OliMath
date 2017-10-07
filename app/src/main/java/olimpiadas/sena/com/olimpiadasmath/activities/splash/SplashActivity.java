@@ -38,10 +38,11 @@ public class SplashActivity extends AppCompatActivity implements AppControl.Init
         setContentView(R.layout.activity_splash);
         getSupportActionBar().hide();
         appControl = AppControl.getInstance();
-        appControl.soundBackground = MediaPlayer.create(getApplicationContext(),R.raw.soundbackground);
-        appControl.soundBackground.start();
+
+
         appControl.init(SplashActivity.this);
         startAnimations();
+
     }
 
     private void startAnimations() {

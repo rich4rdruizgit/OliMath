@@ -40,14 +40,18 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
     public enum OperationType {
         START_SESSION,
-
+        GET_QUESTIONS,
+        INSERT_QUESTION,
         LOGIN;
 
         public String getName() {
             switch (this) {
                 case START_SESSION:
                     return "start-session/";
-
+                case GET_QUESTIONS:
+                    return "mostrarPreguntas";
+                case INSERT_QUESTION:
+                    return "insertarPreguntas";
                 case LOGIN:
                     return "login/";
 
@@ -78,6 +82,9 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
         resp = resp.replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>","");
         resp = resp.replace("<string xmlns=\"http://tempuri.org/\">","");
         resp = resp.replace("</string>","");
+        resp = resp.replace("<boolean xmlns=\"http://tempuri.org/\">","");
+        resp = resp.replace("</boolean>","");
+
         Log.d(TAG,"webCon Response cambiado = " + resp);
 
         Response response = new Response(type,resp);
@@ -151,6 +158,25 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
     public void getRanking(String url){
         webConnection.executeAsyncGetRequest(url);
+    }
+
+    public void getQuestions(String url){
+        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        nameValuePairs.add(new BasicNameValuePair("idPregunta", "4"));
+        webConnection.executePostRequest(url, OperationType.GET_QUESTIONS.getName(), nameValuePairs);
+        //webConnection.executePostRequest("login url", OperationType.LOGIN.getName(), nameValuePairs);
+        //webConnection.executeAsyncGetRequest(url);
+    }
+
+    public void insertQuestion(String url){
+        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        nameValuePairs.add(new BasicNameValuePair("fktemid", "4"));
+        nameValuePairs.add(new BasicNameValuePair("predescrip", "prueba descr"));
+        nameValuePairs.add(new BasicNameValuePair("ruta", "ruta test"));
+        nameValuePairs.add(new BasicNameValuePair("puntaje", "10"));
+        webConnection.executePostRequest(url, OperationType.INSERT_QUESTION.getName(), nameValuePairs);
+        //webConnection.executePostRequest("login url", OperationType.LOGIN.getName(), nameValuePairs);
+        //webConnection.executeAsyncGetRequest(url);
     }
 
     public String getSyncConfig (String url){

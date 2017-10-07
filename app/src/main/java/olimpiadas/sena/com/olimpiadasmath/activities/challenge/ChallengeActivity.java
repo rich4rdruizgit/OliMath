@@ -60,9 +60,8 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
             bet.enablePreview(false);
             mShowingBack = false;
             if(appControl.currentCoinsPool == 0){
-                Toast.makeText(ChallengeActivity.this, "Te quedaste sin monedas, intenta nuevamente!", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(ChallengeActivity.this,MainActivity.class));
-                finish();
+                DialogHelper.showNoCoins(ChallengeActivity.this);
+
             }
             return;
         }

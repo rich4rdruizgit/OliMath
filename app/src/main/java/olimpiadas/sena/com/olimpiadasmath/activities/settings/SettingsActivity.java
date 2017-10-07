@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -23,6 +24,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class SettingsActivity extends AppCompatActivity {
 
+    private static final String TAG = "SettingsActivity";
     Button btn_credits,btn_help;
     Spinner spn_lenguage;
     TextView txt_lenguage,txt_music,txt_efects;
@@ -61,7 +63,11 @@ public class SettingsActivity extends AppCompatActivity {
 
             }
         });*/
-        //swtMusic.setChecked(true);
+
+        if(appControl.isBackgroundPlaying){
+            swtMusic.setChecked(true);
+        }
+        //
 
 
 
@@ -74,11 +80,20 @@ public class SettingsActivity extends AppCompatActivity {
                         appControl.soundBackground = MediaPlayer.create(getApplicationContext(),R.raw.soundbackground);
                         appControl.soundBackground.start();
                         //swtMusic.setChecked(true);
-                        realm.executeTransaction(new Realm.Transaction() {
+                        realm = Realm.getDefaultInstance();
+                        realm.executeTransactionAsync(new Realm.Transaction() {
                             @Override
                             public void execute(Realm realm) {
-                                Configuration configuration = realm.where(Configuration.class).equalTo("key","soundisplaying").findFirst();
+                                Log.d(TAG, "Se va a guardar como true");
+                                Configuration configuration = realm.where(Configuration.class).equalTo("key", "isBackgroundPlaying").findFirst();
+
                                 configuration.setValue(true);
+                                realm.insertOrUpdate(configuration);
+                            }
+                        }, new Realm.Transaction.OnError() {
+                            @Override
+                            public void onError(Throwable error) {
+                                Log.d(TAG,"error al guardar");
                             }
                         });
                     }
@@ -87,12 +102,19 @@ public class SettingsActivity extends AppCompatActivity {
                     if(appControl.soundBackground.isPlaying()){
                         //MainActivity.sound.start();
                         appControl.soundBackground.stop();
-
-                        realm.executeTransaction(new Realm.Transaction() {
+                        realm = Realm.getDefaultInstance();
+                        realm.executeTransactionAsync(new Realm.Transaction() {
                             @Override
                             public void execute(Realm realm) {
-                                Configuration configuration = realm.where(Configuration.class).equalTo("key","soundisplaying").findFirst();
+                                Configuration configuration = realm.where(Configuration.class).equalTo("key","isBackgroundPlaying").findFirst();
                                 configuration.setValue(false);
+                                realm.insertOrUpdate(configuration);
+
+                            }
+                        },new Realm.Transaction.OnError() {
+                            @Override
+                            public void onError(Throwable error) {
+                                Log.d(TAG,"error al guardar");
                             }
                         });
                     }

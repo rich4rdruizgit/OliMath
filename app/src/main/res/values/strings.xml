@@ -54,6 +54,8 @@
     <string name="text_dialog_info_challenge">Si aceptas el Challenge, gastaras 10 Coins</string>
     <string name="title_dialog_challenge">Hola, ¿Quieres probar tus habilidades?</string>
     <string name="title_dialog_practice">Hola, que bueno verte por aquí!</string>
+    <string name="whitout_coins">Te quedaste sin monedas!</string>
+    <string name="begin_again">Vuelve a comenzar!!!</string>
 
     <string-array name="lenguages">
         <item>Español</item>
@@ -70,7 +72,7 @@
     </string-array>
     <string-array name="array_advices_practice">
         <item>Recuerda: "La practica hace al maestro"</item>
-        <item>¡Ganarar coins por cada pregunta correcta!</item>
+        <item>¡Ganararás coins por cada pregunta correcta!</item>
         <item>¡Los Coins son necesarios para ingresar a Reto!</item>
         <item>¡Guarda los coins, te serviran mas adelante para adquirir articulos!</item>
         <item>¡Preparate para ser el mejor de todo los usuarios!</item>

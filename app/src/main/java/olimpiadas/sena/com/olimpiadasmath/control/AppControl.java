@@ -52,6 +52,7 @@ public class AppControl {
     private boolean init = false;
 
     public boolean isLogged = false;
+    public boolean isBackgroundPlaying = true;
     public boolean isPreview = false;
     public boolean previewUsed = false;
 
@@ -282,18 +283,20 @@ public class AppControl {
                 Configuration config = realm.where(Configuration.class).equalTo("key","isLogged").findFirst();
                 if(config != null){
                     Log.d(TAG,"Configuration isLogged  founded = " + config.getValue());
-                    AppControl.this.isLogged = config.getValue();
+                    isLogged = config.getValue();
                 }else{
                     Log.d(TAG,"Configuration isLogged not founded");
                     config = new Configuration("isLogged",false);
                     realm.copyToRealm(config);
                 }
-                Configuration configSound = realm.where(Configuration.class).equalTo("key","soundisplaying").findFirst();
+                Configuration configSound = realm.where(Configuration.class).equalTo("key","isBackgroundPlaying").findFirst();
                 if(configSound != null){
+                    Log.d(TAG,"Configuration isBackgroundPlaying founded " + configSound.getValue());
                     //sound founded
-                    AppControl.this.isLogged = config.getValue();
+                    isBackgroundPlaying = configSound.getValue();
                 }else{
-                    configSound = new Configuration("soundisplaying",false);//terminarrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+                    Log.d(TAG,"Configuration isBackgroundPlaying not founded");
+                    configSound = new Configuration("isBackgroundPlaying",true);//terminarrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
                     realm.copyToRealm(configSound);
                 }
 

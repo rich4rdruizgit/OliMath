@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background_dialog"
+    android:orientation="vertical"
+    android:layout_margin="20dp"
+    android:padding="@dimen/padding_views">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -9,36 +13,70 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="2">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size_tittle"
-                android:textAlignment="center"
-                android:text="NO TIENES MONEDAS SUFICIENTES"/>
+                android:gravity="center"
+                android:weightSum="1">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight=".5"
+                    android:layout_height="150dp"
+                    android:src="@drawable/tutorblanco" />
+            </LinearLayout>
+
 
             <TextView
+                android:id="@+id/txt_tittle_tip"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".25"
+                android:text="@string/whitout_coins"
+                android:textAlignment="center"
+                android:textColor="@color/primary_text"
+                android:textSize="20dp" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/crear_boton"
+                android:layout_marginBottom="@dimen/inter_space"
+                android:background="#C8C9CB" />
+
+
+            <TextView
+                android:id="@+id/txt_dialog_advices"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="Tus monedas no son suficientes para estar en el reto"
-                />
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/begin_again"
+                android:textColor="@color/primary_text" />
 
-
-            <Button
-
-                android:id="@+id/btn_exit_no_coin"
-                android:layout_marginTop="30dp"
-                android:text="Cerrar"
-                android:layout_width="100dp"
-                android:layout_gravity="center"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/ButtonStyle"
+                android:gravity="center"
+                android:orientation="horizontal">
 
+                <Button
+
+                    android:id="@+id/btn_exit_no_coin"
+                    android:layout_marginTop="30dp"
+                    android:text="Cerrar"
+                    android:layout_width="100dp"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    style="@style/ButtonStyle"
                 />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
 </LinearLayout>

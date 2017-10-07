@@ -110,7 +110,9 @@ public class DialogHelper {
         ((Button)mProgressDialog.getWindow().findViewById(R.id.btn_exit_no_coin)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mProgressDialog.dismiss();
+                Intent intent = new Intent(context, MainActivity.class);
+                context.startActivity(intent);
+                ((AppCompatActivity)context).finish();
             }
         });
         mProgressDialog.setCancelable(true);

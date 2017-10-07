@@ -29,6 +29,7 @@ import olimpiadas.sena.com.olimpiadasmath.activities.test.TestActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.librerias.CircleMenu;
 import olimpiadas.sena.com.olimpiadasmath.util.DialogHelper;
+import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnectionManager;
 import pl.droidsonroids.gif.GifImageView;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -56,6 +57,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getSupportActionBar().hide();
         appControl = AppControl.getInstance();
         Context context = this;
+        appControl.soundBackground = MediaPlayer.create(getApplicationContext(),R.raw.soundbackground);
+
+        if(appControl.isBackgroundPlaying){
+            appControl.soundBackground.start();
+        }
 
         int id = context.getResources().getIdentifier("fondo_b.png", "drawable", context.getPackageName());
         int resID = getResources().getIdentifier("fondo_b", "drawable", getPackageName());
@@ -63,11 +69,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         resID = getResources().getIdentifier("fondo_b", "drawable", getPackageName());
         Log.d(TAG, "el id del recurso es " + resID);
-        /* CONSULTA DE UN WEBSERVICES
+        // CONSULTA DE UN WEBSERVICES
         WebConnectionManager webConnectionManager = WebConnectionManager.getWebConnectionManager();
         Log.d(TAG,"Se va a consultar");
-        webConnectionManager.getRanking("http://192.168.43.54:8097/WebServiceRankings.asmx/mostrarRankings");
-        */
+        webConnectionManager.insertQuestion("http://192.168.43.124:8097/WSPreguntas.asmx/");
+        /**/
         btnShop = (Button) findViewById(R.id.btn_menu_shop);
         btnShop.setOnClickListener(this);
 
