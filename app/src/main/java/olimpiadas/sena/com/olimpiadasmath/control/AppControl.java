@@ -211,11 +211,11 @@ public class AppControl {
                     Question question3 = new Question(jsonText3);
                     Question question4 = new Question(jsonText4);
                     Question question5 = new Question(jsonText5);
-                    Question question6 = new Question(jsonText6);
-                    Question question7 = new Question(jsonText7);
-                    Question question8 = new Question(jsonText8);
-                    Question question9 = new Question(jsonText9);
-                    Question question10 = new Question(jsonText10);
+                    //Question question6 = new Question(jsonText6);
+                    //Question question7 = new Question(jsonText7);
+                    //Question question8 = new Question(jsonText8);
+                    //Question question9 = new Question(jsonText9);
+                    //Question question10 = new Question(jsonText10);
 
                     Log.d(TAG,"created BonusTables");
                     realm.copyToRealm(question1);
@@ -223,11 +223,11 @@ public class AppControl {
                     realm.copyToRealm(question3);
                     realm.copyToRealm(question4);
                     realm.copyToRealm(question5);
-                    realm.copyToRealm(question6);
-                    realm.copyToRealm(question7);
-                    realm.copyToRealm(question8);
-                    realm.copyToRealm(question9);
-                    realm.copyToRealm(question10);
+                    //realm.copyToRealm(question6);
+                    //realm.copyToRealm(question7);
+                    //realm.copyToRealm(question8);
+                    //realm.copyToRealm(question9);
+                    //realm.copyToRealm(question10);
 
                     Log.d(TAG,"saved Question Table");
                 }
@@ -262,10 +262,10 @@ public class AppControl {
                     Product pdt3 = new Product(R.drawable.marco2,"Dragon\nrojo",250,"10",Product.FOR_BUY,"marco2","avatar");
                     Product pdt5 = new Product(R.drawable.marco11,"Dragon\nnaranja",150,"10",Product.FOR_BUY,"marco11","avatar");
 
-                    Product pdt6 = new Product(R.drawable.marco11,"Pocion\nTime",150,"10",Product.FOR_BUY,"marco11","item");
-                    Product pdt7 = new Product(R.drawable.marco11,"Pocion\nMonedas",150,"10",Product.FOR_BUY,"marco11","item");
-                    Product pdt8 = new Product(R.drawable.marco11,"Pocion\nSalvavidas",150,"10",Product.FOR_BUY,"marco11","item");
-                    Product pdt9 = new Product(R.drawable.marco11,"Pocion\nVida",150,"10",Product.FOR_BUY,"marco11","item");
+                    Product pdt6 = new Product(R.drawable.pocionazul,"Pocion\nTime",150,"10",Product.FOR_BUY,"pocionazul","item");
+                    Product pdt7 = new Product(R.drawable.pociondragon,"Pocion\nMonedas",150,"10",Product.FOR_BUY,"pociondragon","item");
+                    Product pdt8 = new Product(R.drawable.pocionroja,"Pocion\nSalvavidas",150,"10",Product.FOR_BUY,"pocionroja","item");
+                    Product pdt9 = new Product(R.drawable.pocionverde,"Pocion\nVida",150,"10",Product.FOR_BUY,"pocionverde","item");
 
                     realm.copyToRealm(pdt1);
                     realm.copyToRealm(pdt2);
