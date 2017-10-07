@@ -22,7 +22,7 @@
 
         <ImageView
             android:id="@+id/img_achievement"
-            android:src="@drawable/ic_photo_library"
+            android:src="@drawable/starachivment"
             android:layout_width="0dp"
             android:layout_weight=".25"
             android:layout_height="wrap_content"

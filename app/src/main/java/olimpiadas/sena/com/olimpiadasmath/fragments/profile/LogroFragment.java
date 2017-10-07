@@ -143,14 +143,16 @@ public class LogroFragment extends Fragment {
     private void llenarUsers() {
         logrosList = new ArrayList<>();
 
-        logrosList.add(new Achievements("","Mi primer reto","ACTIVO","100"));
-        logrosList.add(new Achievements("","Mi primer reto","ACTIVO","100"));
-        logrosList.add(new Achievements("","Mi primer reto","ACTIVO","100"));
-        logrosList.add(new Achievements("","Mi primer reto","ACTIVO","100"));
-        logrosList.add(new Achievements("","Mi primer reto","ACTIVO","100"));
-        logrosList.add(new Achievements("","Mi primer reto","ACTIVO","100"));
-        logrosList.add(new Achievements("","Mi primer reto","ACTIVO","100"));
-        logrosList.add(new Achievements("","Mi primer reto","ACTIVO","100"));
+        logrosList.add(new Achievements("","Iniciar una Práctica","ACTIVO","100"));
+        logrosList.add(new Achievements("","Terminar una Práctica","ACTIVO","200"));
+        logrosList.add(new Achievements("","Terminar un reto","ACTIVO","100"));
+        logrosList.add(new Achievements("","Práctica perfecta","ACTIVO","150"));
+        logrosList.add(new Achievements("","Reto Perfecto","ACTIVO","200"));
+        logrosList.add(new Achievements("","Comprar un avatar","ACTIVO","150"));
+        logrosList.add(new Achievements("","Comprar una poción","ACTIVO","150"));
+        logrosList.add(new Achievements("","Eres nivel 10","ACTIVO","50"));
+        logrosList.add(new Achievements("","Eres nivel 20","ACTIVO","100"));
+        logrosList.add(new Achievements("","Eres nivel 30","ACTIVO","150"));
 
     }
 }
