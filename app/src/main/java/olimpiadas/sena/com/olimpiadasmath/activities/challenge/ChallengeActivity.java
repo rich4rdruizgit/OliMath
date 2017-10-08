@@ -1,10 +1,13 @@
 package olimpiadas.sena.com.olimpiadasmath.activities.challenge;
 
 
+import android.app.Fragment;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.util.List;
@@ -20,17 +23,20 @@ import olimpiadas.sena.com.olimpiadasmath.model.Question;
 import olimpiadas.sena.com.olimpiadasmath.util.DialogHelper;
 
 
+import static android.os.Build.VERSION.SDK;
 import static java.lang.Thread.sleep;
 
 
 public class ChallengeActivity extends AppCompatActivity implements BetFragment.OnBetFragmentListener, QuestionFragment.OnQuestionFragmentListener {
 
+    private static final String TAG = "ChallengeActivity";
     private boolean mShowingBack = false;
     private Handler mHandler = new Handler();
     BetFragment bet;
     QuestionFragment question;
     AppControl appControl = AppControl.getInstance();
     List<Question> questions;
+
 
 
     @Override
@@ -40,6 +46,8 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
         getSupportActionBar().hide();
         appControl.currentCoinsPool = 20;
         bet = BetFragment.newInstance();
+        bet.setmListener(this);
+        question = QuestionFragment.newInstance();
 
         getFragmentManager()
                 .beginTransaction()
@@ -48,17 +56,18 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
 
         Realm realm = Realm.getDefaultInstance();
         appControl.currentQuestion = 0;
-        questions = realm.where(Question.class).findAll().subList(0, appControl.numberOfQuestions);
-
+        questions = realm.where(Question.class).findAll().subList(0,appControl.numberOfQuestions);
+        question.setmListener(this);
         //getFragmentManager().addOnBackStackChangedListener(this);
     }
 
     private void flipCard() {
+        Log.d(TAG,"Sdk int = " + Build.VERSION.SDK_INT);
         if (mShowingBack) {
             getFragmentManager().popBackStack();
             bet.enablePreview(false);
             mShowingBack = false;
-            if (appControl.currentCoinsPool == 0) {
+            if(appControl.currentCoinsPool == 0){
                 DialogHelper.showNoCoins(ChallengeActivity.this);
 
             }
@@ -72,28 +81,45 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
         // Create and commit a new fragment transaction that adds the fragment for the back of
         // the card, uses custom animations, and is part of the fragment manager's back stack.
 
-        getFragmentManager()
-                .beginTransaction()
 
-                // Replace the default fragment animations with animator resources representing
-                // rotations when switching to the back of the card, as well as animator
-                // resources representing rotations when flipping back to the front (e.g. when
-                // the system Back button is pressed).
-                .setCustomAnimations(
-                        R.animator.card_flip_right_in, R.animator.card_flip_right_out,
-                        R.animator.card_flip_left_in, R.animator.card_flip_left_out)
+        if(Build.VERSION.SDK_INT > 4){
+            Log.d(TAG,"Sdk int > 23 ");
+            getFragmentManager()
+                    .beginTransaction()
 
-                // Replace any fragments currently in the container view with a fragment
-                // representing the next page (indicated by the just-incremented currentPage
-                // variable).
-                .replace(R.id.container, QuestionFragment.newInstance())
+                    // Replace the default fragment animations with animator resources representing
+                    // rotations when switching to the back of the card, as well as animator
+                    // resources representing rotations when flipping back to the front (e.g. when
+                    // the system Back button is pressed).
+                    .setCustomAnimations(
+                    R.animator.card_flip_right_in, R.animator.card_flip_right_out,
+                                  R.animator.card_flip_left_in, R.animator.card_flip_left_out)
 
-                // Add this transaction to the back stack, allowing users to press Back
-                // to get to the front of the card.
-                .addToBackStack(null)
+                    // Replace any fragments currently in the container view with a fragment
+                    // representing the next page (indicated by the just-incremented currentPage
 
-                // Commit the transaction.
-                .commit();
+                    .replace(R.id.container, question)
+
+                    // Add this transaction to the back stack, allowing users to press Back
+                    // to get to the front of the card.
+                    .addToBackStack(null)
+
+                    // Commit the transaction.
+                    .commit();
+        }else{
+            Log.d(TAG,"Entro aqui");
+            getFragmentManager()
+                    .beginTransaction().replace(R.id.container, question)
+
+                    // Add this transaction to the back stack, allowing users to press Back
+                    // to get to the front of the card.
+                    .addToBackStack(null)
+
+                    // Commit the transaction.
+                    .commit();
+        }
+
+
 
 
         // Defer an invalidation of the options menu (on modern devices, the action bar). This
@@ -111,11 +137,11 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
     @Override
     public void onBetFragmentListener(int type) {
 
-        if (type == BetFragment.PREVIEW) {
+        if(type == BetFragment.PREVIEW){
             appControl.previewUsed = true;
             appControl.isPreview = true;
             flipCard();
-        } else if (type == BetFragment.START) {
+        }else if(type == BetFragment.START){
             appControl.previewUsed = false;
             appControl.isPreview = false;
             flipCard();
@@ -131,9 +157,9 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
     @Override
     public void onQuestionEnd() {
         appControl.currentQuestion++;
-        if (appControl.currentQuestion == appControl.numberOfQuestions) {
+        if(appControl.currentQuestion == appControl.numberOfQuestions){
             startActivity(new Intent(ChallengeActivity.this, ResultActivity.class));
-        } else {
+        }else{
             flipCard();
         }
 

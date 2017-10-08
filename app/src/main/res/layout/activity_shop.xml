@@ -27,11 +27,10 @@
             android:id="@+id/btn_back_shop"
             android:layout_gravity="center"
             android:layout_width="1dp"
-            android:layout_height="12dp"
+            android:layout_height="10dp"
             android:layout_weight=".15"
             android:src="@android:drawable/arrow_down_float"
-            android:rotation="90"
-            android:visibility="gone" />
+            android:rotation="90" />
 
         <ImageView
             android:layout_width="50dp"

@@ -16,22 +16,22 @@ public class Result extends RealmObject {
     @PrimaryKey
     private String idResult;
     private String idUserResult;
-    private String numQuestionResult;
-    private String answerCorrectResult;
-    private String answerIncorrectResult;
-    private String answerNoneResult;
-    private String timeGlobalResult;
-    private String timeTestResult;
-    private String coinsWinResult;
-    private String coinsLoseResult;
-    private String coinsBetResult;
+    private int numQuestionResult;
+    private int answerCorrectResult;
+    private int answerIncorrectResult;
+    private int answerNoneResult;
+    private long timeGlobalResult;
+    private long timeTestResult;
+    private int coinsWinResult;
+    private int coinsLoseResult;
+    private int coinsBetResult;
 
 
 
     // numero de preguntas, num de resp correctas, num resp NR, num resp incorrectas, tiempo global, tiempo en test, monedas ganadas ,monedas apostadas, id user
 
 
-    public Result(String idResult, String idUserResult, String numQuestionResult, String answerCorrectResult, String answerIncorrectResult, String answerNoneResult, String timeGlobalResult, String timeTestResult, String coinsWinResult, String coinsLoseResult, String coinsBetResult) {
+    public Result(String idResult, String idUserResult, int numQuestionResult, int answerCorrectResult, int answerIncorrectResult, int answerNoneResult, long timeGlobalResult, long timeTestResult, int coinsWinResult, int coinsLoseResult, int coinsBetResult) {
         this.idResult = idResult;
         this.idUserResult = idUserResult;
         this.numQuestionResult = numQuestionResult;
@@ -64,75 +64,76 @@ public class Result extends RealmObject {
         this.idUserResult = idUserResult;
     }
 
-    public String getNumQuestionResult() {
+    public int getNumQuestionResult() {
         return numQuestionResult;
     }
 
-    public void setNumQuestionResult(String numQuestionResult) {
+    public void setNumQuestionResult(int numQuestionResult) {
         this.numQuestionResult = numQuestionResult;
     }
 
-    public String getAnswerCorrectResult() {
+    public int getAnswerCorrectResult() {
         return answerCorrectResult;
     }
 
-    public void setAnswerCorrectResult(String answerCorrectResult) {
+    public void setAnswerCorrectResult(int answerCorrectResult) {
         this.answerCorrectResult = answerCorrectResult;
     }
 
-    public String getAnswerIncorrectResult() {
+    public int getAnswerIncorrectResult() {
         return answerIncorrectResult;
     }
 
-    public void setAnswerIncorrectResult(String answerIncorrectResult) {
+    public void setAnswerIncorrectResult(int answerIncorrectResult) {
         this.answerIncorrectResult = answerIncorrectResult;
     }
 
-    public String getAnswerNoneResult() {
+    public int getAnswerNoneResult() {
         return answerNoneResult;
     }
 
-    public void setAnswerNoneResult(String answerNoneResult) {
+    public void setAnswerNoneResult(int answerNoneResult) {
         this.answerNoneResult = answerNoneResult;
     }
 
-    public String getTimeGlobalResult() {
+
+    public long getTimeGlobalResult() {
         return timeGlobalResult;
     }
 
-    public void setTimeGlobalResult(String timeGlobalResult) {
+    public void setTimeGlobalResult(long timeGlobalResult) {
         this.timeGlobalResult = timeGlobalResult;
     }
 
-    public String getTimeTestResult() {
+    public long getTimeTestResult() {
         return timeTestResult;
     }
 
-    public void setTimeTestResult(String timeTestResult) {
+    public void setTimeTestResult(long timeTestResult) {
         this.timeTestResult = timeTestResult;
     }
 
-    public String getCoinsWinResult() {
+    public int getCoinsWinResult() {
         return coinsWinResult;
     }
 
-    public void setCoinsWinResult(String coinsWinResult) {
+    public void setCoinsWinResult(int coinsWinResult) {
         this.coinsWinResult = coinsWinResult;
     }
 
-    public String getCoinsLoseResult() {
+    public int getCoinsLoseResult() {
         return coinsLoseResult;
     }
 
-    public void setCoinsLoseResult(String coinsLoseResult) {
+    public void setCoinsLoseResult(int coinsLoseResult) {
         this.coinsLoseResult = coinsLoseResult;
     }
 
-    public String getCoinsBetResult() {
+    public int getCoinsBetResult() {
         return coinsBetResult;
     }
 
-    public void setCoinsBetResult(String coinsBetResult) {
+    public void setCoinsBetResult(int coinsBetResult) {
         this.coinsBetResult = coinsBetResult;
     }
 }

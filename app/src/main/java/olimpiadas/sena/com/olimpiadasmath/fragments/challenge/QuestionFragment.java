@@ -2,6 +2,7 @@ package olimpiadas.sena.com.olimpiadasmath.fragments.challenge;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import android.os.CountDownTimer;
@@ -17,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import java.util.ArrayList;
@@ -157,6 +159,16 @@ public class QuestionFragment extends Fragment {
                 String v = String.format("%02d", millisUntilFinished/60000);
                 int va = (int)( (millisUntilFinished%60000)/1000);
                 tvCountDown.setText(v+":"+String.format("%02d",va));
+
+                if(va <= 5){
+
+                    if(va % 2 != 0){
+                        tvCountDown.setTextColor(Color.RED);
+
+                    }else{
+                        tvCountDown.setTextColor(Color.WHITE);
+                    }
+                }
                 appControl.currentTime += 1;
             }
 
@@ -251,6 +263,12 @@ public class QuestionFragment extends Fragment {
         }
         isScaled = !isScaled;
 
+    }
+
+    public void setmListener(OnQuestionFragmentListener mListener) {
+        this.mListener = mListener;
+        ChallengeActivity ca = (ChallengeActivity) mListener;
+        currentQuestion = ca.getQuestions().get(appControl.currentQuestion);
     }
 
     /**
