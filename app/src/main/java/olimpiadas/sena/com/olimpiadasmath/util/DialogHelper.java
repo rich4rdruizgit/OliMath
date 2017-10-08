@@ -278,18 +278,15 @@ public class DialogHelper {
                 mProgressDialog.dismiss();
             }
         });
-
         if (type == NO_BUY) {
             ok.setVisibility(View.GONE);
             cancel.setText("Aceptar");
         }
-
         mProgressDialog.setCancelable(true);
         mProgressDialog.show();
     }
 
     public static void FeedbackDialog(final Context context, String myanswer, String theanswer, String feedback, final FeedbackDialogListener listener) {
-
 
         mProgressDialog = new Dialog(context);
         mProgressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import io.realm.Realm;
+import io.realm.RealmResults;
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.model.Result;
 
@@ -20,11 +22,13 @@ import olimpiadas.sena.com.olimpiadasmath.model.Result;
 
 public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultViewHolder> {
 
-    private List<Result> results;
+    private RealmResults<Result> results;
     private Context context;
 
-    public ResultAdapter(List<Result> results, Context context) {
-        this.results = results;
+    public ResultAdapter(List<Result> resultsold , Context context) {
+        Realm realm = Realm.getDefaultInstance();
+        results = realm.where(Result.class).findAll();
+        //this.results = results;
         this.context = context;
     }
 
@@ -42,10 +46,10 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultView
         Result result = results.get(position);
 
 
-        holder.txtRightAnswer.setText(result.getAnswerCorrectResult());
-        holder.txtWrongAnswer.setText(result.getAnswerIncorrectResult());
-        holder.txtCoinsWin.setText(result.getCoinsWinResult());
-        holder.txtTime.setText(result.getTimeGlobalResult());
+        holder.txtRightAnswer.setText(""+result.getAnswerCorrectResult());
+        holder.txtWrongAnswer.setText(""+result.getAnswerIncorrectResult());
+        holder.txtCoinsWin.setText(""+result.getCoinsWinResult());
+        holder.txtTime.setText(""+result.getTimeGlobalResult());
 
 
     }

@@ -1,6 +1,7 @@
 package olimpiadas.sena.com.olimpiadasmath.adapter.test;
 
 import android.content.Context;
+import android.os.Vibrator;
 import android.support.v4.view.PagerAdapter;
 import android.support.v7.widget.CardView;
 import android.util.Log;
@@ -179,6 +180,8 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
                         String theanswer = question.get(position).getCorrectAnswerText();
                         String feedback = question.get(position).getFeedback();
                         currentPosition= position;
+                        Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+                        vibrator.vibrate(1000);
                         DialogHelper.FeedbackDialog(context,myasnwer,theanswer,feedback,CardPagerAdapter.this);
                     }
 
