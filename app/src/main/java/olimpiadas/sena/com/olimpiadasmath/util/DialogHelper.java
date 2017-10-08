@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import java.util.Random;
@@ -193,9 +194,14 @@ public class DialogHelper {
         mProgressDialog.setContentView(R.layout.dialog_confirm_exit);
         mProgressDialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme;
 
+
         ((Button) mProgressDialog.getWindow().findViewById(R.id.btn_dialog_continue)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AppControl appControl = AppControl.getInstance();
+                if(appControl.soundBackground.isPlaying()){
+                    appControl.soundBackground.stop();
+                }
                 ((MainActivity) context).finishAffinity();
                 ((MainActivity) context).finish();
 
@@ -206,6 +212,7 @@ public class DialogHelper {
         ((Button) mProgressDialog.getWindow().findViewById(R.id.btn_exit_tip)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 mProgressDialog.dismiss();
             }
         });
