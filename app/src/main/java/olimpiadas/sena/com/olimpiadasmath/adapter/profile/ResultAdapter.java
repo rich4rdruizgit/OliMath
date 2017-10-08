@@ -25,7 +25,7 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultView
     private RealmResults<Result> results;
     private Context context;
 
-    public ResultAdapter(List<Result> resultsold, Context context) {
+    public ResultAdapter(List<Result> resultsold , Context context) {
         Realm realm = Realm.getDefaultInstance();
         results = realm.where(Result.class).findAll();
         //this.results = results;
