@@ -6,25 +6,39 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/ll_question_status"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:orientation="horizontal">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
 
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".7">
+
+            <LinearLayout
+                android:id="@+id/ll_question_status"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+            </LinearLayout>
+        </ScrollView>
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/tv_count_down"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:layout_weight=".3"
+            android:text="00:15"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="@dimen/text_size_tittle"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
-
-    <TextView
-        android:id="@+id/tv_count_down"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="00:15"
-        android:textColor="@color/cardview_light_background"
-        android:textStyle="bold"
-        android:textSize="@dimen/text_size_tittle"
-        android:layout_gravity="end"/>
-        />
 
     <ScrollView
         android:layout_width="match_parent"

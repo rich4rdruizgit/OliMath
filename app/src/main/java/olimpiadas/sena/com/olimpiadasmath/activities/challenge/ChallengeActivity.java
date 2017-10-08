@@ -33,7 +33,6 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
     List<Question> questions;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +48,7 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
 
         Realm realm = Realm.getDefaultInstance();
         appControl.currentQuestion = 0;
-        questions = realm.where(Question.class).findAll().subList(0,appControl.numberOfQuestions);
+        questions = realm.where(Question.class).findAll().subList(0, appControl.numberOfQuestions);
 
         //getFragmentManager().addOnBackStackChangedListener(this);
     }
@@ -59,7 +58,7 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
             getFragmentManager().popBackStack();
             bet.enablePreview(false);
             mShowingBack = false;
-            if(appControl.currentCoinsPool == 0){
+            if (appControl.currentCoinsPool == 0) {
                 DialogHelper.showNoCoins(ChallengeActivity.this);
 
             }
@@ -97,7 +96,6 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
                 .commit();
 
 
-
         // Defer an invalidation of the options menu (on modern devices, the action bar). This
         // can't be done immediately because the transaction may not yet be committed. Commits
         // are asynchronous in that they are posted to the main thread's message loop.
@@ -113,11 +111,11 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
     @Override
     public void onBetFragmentListener(int type) {
 
-        if(type == BetFragment.PREVIEW){
+        if (type == BetFragment.PREVIEW) {
             appControl.previewUsed = true;
             appControl.isPreview = true;
             flipCard();
-        }else if(type == BetFragment.START){
+        } else if (type == BetFragment.START) {
             appControl.previewUsed = false;
             appControl.isPreview = false;
             flipCard();
@@ -133,9 +131,9 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
     @Override
     public void onQuestionEnd() {
         appControl.currentQuestion++;
-        if(appControl.currentQuestion == appControl.numberOfQuestions){
+        if (appControl.currentQuestion == appControl.numberOfQuestions) {
             startActivity(new Intent(ChallengeActivity.this, ResultActivity.class));
-        }else{
+        } else {
             flipCard();
         }
 
@@ -149,6 +147,7 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
 
     @Override
     public void onBackPressed() {
-        DialogHelper.ConfimrFinishTestDialog(this,"Seguro que quieres terminar el reto? \nPerderas los créditos que pagaste para ingresar y se contará como perdido");
+//        DialogHelper.ConfimrFinishTestDialog(this,"Seguro que quieres terminar el reto? \nPerderas los créditos que pagaste para ingresar y se contará como perdido");
+        DialogHelper.ConfimrFinishTestDialog(this, getResources().getString(R.string.text_dialog_exit_challenge));
     }
 }
