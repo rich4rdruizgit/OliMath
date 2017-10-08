@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // CONSULTA DE UN WEBSERVICES
         WebConnectionManager webConnectionManager = WebConnectionManager.getWebConnectionManager();
         Log.d(TAG,"Se va a consultar");
-        webConnectionManager.insertQuestion("http://192.168.43.124:8097/WSPreguntas.asmx/");
+        //webConnectionManager.insertQuestion("http://192.168.31.34:8097/WSPreguntas.asmx/");
         /**/
         btnShop = (Button) findViewById(R.id.btn_menu_shop);
         btnShop.setOnClickListener(this);
