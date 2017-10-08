@@ -95,17 +95,25 @@ public class QuestionFragment extends Fragment {
         tvTitle.setText(currentQuestion.getQuestionText());
         llQuestionStatus = (LinearLayout) view.findViewById(R.id.ll_question_status);
         questionsStatus = new ArrayList<ImageView>();
-        for(int i = 0; i < appControl.numberOfQuestions; i++){
+        for(int i = 0; i < appControl.currentQuestion; i++){
             ImageView temp = new ImageView(getActivity());
             temp.setLayoutParams(new ViewGroup.LayoutParams(30,30));
-            if(i%2 == 0){
+            if(appControl.answers[i] == 1){
                 temp.setImageResource(R.drawable.ok);
-            }else{
+            }else if(appControl.answers[i] == 0){
                 temp.setImageResource(R.drawable.wrong);
-            }
-            if(i==4){
+            }else{
                 temp.setImageResource(R.drawable.question);
             }
+            questionsStatus.add(temp);
+            llQuestionStatus.addView(temp);
+        }
+        for(int i = appControl.currentQuestion; i < appControl.numberOfQuestions; i++){
+            ImageView temp = new ImageView(getActivity());
+            temp.setLayoutParams(new ViewGroup.LayoutParams(30,30));
+
+            temp.setImageResource(R.drawable.question);
+
 
             questionsStatus.add(temp);
             llQuestionStatus.addView(temp);
