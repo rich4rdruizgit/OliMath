@@ -93,7 +93,7 @@ public class AvatarShopFragment extends Fragment {
     }
 
     private void inicializarAdaptador() {
-        String type ="avatar";
+        int type = Product.AVATAR;
         productAdapter = new ProductAdapter(lstProduct,getActivity(),type);
         recyclerView.setAdapter(productAdapter);
     }

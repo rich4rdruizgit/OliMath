@@ -1,13 +1,11 @@
 package olimpiadas.sena.com.olimpiadasmath.fragments.challenge;
 
-
 import android.app.Fragment;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import android.os.CountDownTimer;
-
 import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -101,7 +99,8 @@ public class QuestionFragment extends Fragment {
         questionsStatus = new ArrayList<ImageView>();
         for(int i = 0; i < appControl.currentQuestion; i++){
             ImageView temp = new ImageView(getActivity());
-            temp.setLayoutParams(new ViewGroup.LayoutParams(40,40));
+            temp.setPadding(10,10,10,10);
+            temp.setLayoutParams(new ViewGroup.LayoutParams(50,50));
 
             if(appControl.answers[i] == 1){
                 temp.setImageResource(R.drawable.ok);
@@ -115,7 +114,8 @@ public class QuestionFragment extends Fragment {
         }
         for(int i = appControl.currentQuestion; i < appControl.numberOfQuestions; i++){
             ImageView temp = new ImageView(getActivity());
-            temp.setLayoutParams(new ViewGroup.LayoutParams(30,30));
+            temp.setPadding(10,10,10,10);
+            temp.setLayoutParams(new ViewGroup.LayoutParams(50,50));
 
             temp.setImageResource(R.drawable.question);
 

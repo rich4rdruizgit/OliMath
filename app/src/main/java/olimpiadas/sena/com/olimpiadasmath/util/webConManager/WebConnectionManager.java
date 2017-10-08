@@ -115,7 +115,6 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
     public void startSession(){
 
-
         Log.d(TAG,"startSession " );
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
         nameValuePairs.add(new BasicNameValuePair("param1","val1"));
@@ -126,12 +125,7 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
         webConnection.executePostRequest(url, OperationType.START_SESSION.getName(), nameValuePairs);
     }
 
-
-
-
     public void login(String username, String pwd){
-
-
 
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
         nameValuePairs.add(new BasicNameValuePair("username", username));
@@ -205,14 +199,13 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
         }
 
-
         public Response(String type, String resp) {
 
             operationType = OperationType.fromString(type);
             JSONObject respJObject = null;
             try{
-                //respJObject = new JSONObject(resp);
-                JSONArray resparray = new JSONArray(resp);
+                respJObject = new JSONObject(resp);
+                //JSONArray resparray = new JSONArray(resp);
                 Log.d(TAG,"Array ok "  + resp.length());
             }catch (JSONException e){
 
@@ -247,16 +240,13 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                         validateError(respJObject.getString("errorMsg"));
                     }
 
-
                 }catch (JSONException e){
                     status = ERROR;
                     result = "";
                     code = "JO001";
-                    errMsg = "Respuesta no esta en formato Json";
+                    errMsg = "Respuesta login no esta en formato Json";
                     return;
-
                 }
-
             }
 
 

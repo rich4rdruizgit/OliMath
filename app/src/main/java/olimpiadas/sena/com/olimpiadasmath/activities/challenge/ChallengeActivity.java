@@ -136,7 +136,7 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
 
     @Override
     public void onBetFragmentListener(int type) {
-        Log.d(TAG,"Sdk int = " + Build.VERSION.SDK_INT);
+
         if(type == BetFragment.PREVIEW){
             appControl.previewUsed = true;
             appControl.isPreview = true;
@@ -174,6 +174,7 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
 
     @Override
     public void onBackPressed() {
-        DialogHelper.ConfimrFinishTestDialog(this,"Seguro que quieres terminar el reto? \nPerderas los créditos que pagaste para ingresar y se contará como perdido");
+//        DialogHelper.ConfimrFinishTestDialog(this,"Seguro que quieres terminar el reto? \nPerderas los créditos que pagaste para ingresar y se contará como perdido");
+        DialogHelper.ConfimrFinishTestDialog(this, getResources().getString(R.string.text_dialog_exit_challenge));
     }
 }

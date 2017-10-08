@@ -49,14 +49,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     int currentPosition = 0;
 
 
-    public ProductAdapter(List<Product> lstProduct, Context context, String type) {
+    public ProductAdapter(List<Product> lstProduct, Context context, int type) {
 
         realm = Realm.getDefaultInstance();
-        if(type.equals("avatar")){
-            lstProduct = realm.where(Product.class).equalTo("type","avatar").findAll();
+        if(type == Product.AVATAR){
+            lstProduct = realm.where(Product.class).equalTo("type",Product.AVATAR).findAll();
         }
-        if(type.equals("item")){
-            lstProduct = realm.where(Product.class).equalTo("type","item").findAll();
+        if(type == Product.POTION){
+            lstProduct = realm.where(Product.class).equalTo("type",Product.POTION).findAll();
         }
         this.lstProduct = (RealmResults<Product>) lstProduct;
         this.context = context;
@@ -116,7 +116,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             holder.btnBuy.setText(""+product.getPrice());
         }
         if(product.getState()==Product.BOUGTH){
-            holder.btnBuy.setText("Usar");
+            if(product.getType() == Product.POTION){
+                holder.btnBuy.setText("Comprado");
+            }else
+                holder.btnBuy.setText("Usar");
         }
         if(product.getState()==Product.USED){
             holder.btnBuy.setText("Usado");
@@ -132,52 +135,19 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
                     if(appControl.currentUser.getCoins()< lstProduct.get(position).getPrice()){
                         DialogHelper.ConfimrBuyDialog(context,context.getString(R.string.no_enought_coins),DialogHelper.NO_BUY,ProductAdapter.this);
-                        /*
-                        AlertDialog.Builder alert = new AlertDialog.Builder(context);
-                        alert.setMessage(R.string.no_enought_coins)
-                                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-
-                                    }
-                                })
-                        ;
-                        alert.create();
-                        alert.show();
-                        */
                         return;
                     }else {
                         DialogHelper.ConfimrBuyDialog(context,context.getString(R.string.alert_shop),DialogHelper.BUY,ProductAdapter.this);
-                        /*AlertDialog.Builder alert = new AlertDialog.Builder(context);
-                        alert.setMessage(R.string.alert_shop)
-                                .setPositiveButton("Si", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        appControl.currentUser.setCoins(appControl.currentUser.getCoins() - lstProduct.get(position).getPrice());
-                                        holder.btnBuy.setText("Usar");
-                                        ProductAdapter.this.updateProductState(position,Product.BOUGTH);
-                                        //product.setState(Product.BOUGTH);
-                                        ((ShopActivity)context).headerFragment.refreshInterface();
-                                        Toast.makeText(context, "Felicidades, has adquirido este nuevo item", Toast.LENGTH_SHORT).show();
-                                        //scontext.startActivity(new Intent(context, MainActivity.class));
-                                    }
-                                })
-                                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-
-                                    }
-                                });
-                        alert.create();
-                        alert.show();
-                        */
                     }
                 }
                 else if(product.getState() == Product.BOUGTH){
+                    if(product.getType() == Product.POTION){
+                        Toast.makeText(context, "Solo puedes comprar una pocion", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
 
                     if(currentAvatarButton != null ){
                         currentAvatarButton.setText("Usar");
-
                     }
                     currentAvatarButton = holder.btnBuy;
                     holder.btnBuy.setText("Usado");
@@ -187,8 +157,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                     ProductAdapter.this.updateProductState(position,Product.USED);
                     User.updateUser(appControl.currentUser);
                     ((ShopActivity)context).headerFragment.refreshInterface();
-                    //((ShopActivity)context).finish();
-                    //((ShopActivity)context).startActivity(((ShopActivity)context).getIntent());
                 }
                 if(product.getState() == Product.USED){
 
@@ -205,14 +173,21 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     @Override
     public void dialogEnd(boolean result) {
+
         if(result){
-            appControl.currentUser.setCoins(appControl.currentUser.getCoins() - lstProduct.get(currentPosition).getPrice());
-            currentBuyItem.setText("Usar");
-            ProductAdapter.this.updateProductState(currentPosition,Product.BOUGTH);
-            //product.setState(Product.BOUGTH);
-            ((ShopActivity)context).headerFragment.refreshInterface();
-            User.updateUser(appControl.currentUser);
-            Toast.makeText(context, "Felicidades, has adquirido este nuevo item", Toast.LENGTH_SHORT).show();
+                if(lstProduct.get(currentPosition).getType()== Product.AVATAR){
+                appControl.currentUser.setCoins(appControl.currentUser.getCoins() - lstProduct.get(currentPosition).getPrice());
+                currentBuyItem.setText("Usar");
+                ProductAdapter.this.updateProductState(currentPosition,Product.BOUGTH);
+                ((ShopActivity)context).headerFragment.refreshInterface();
+                User.updateUser(appControl.currentUser);
+                Toast.makeText(context, "Felicidades, has adquirido este nuevo item", Toast.LENGTH_SHORT).show();
+            }else{
+                    appControl.currentUser.setCoins(appControl.currentUser.getCoins() - lstProduct.get(currentPosition).getPrice());
+                    currentBuyItem.setText("Comprado");
+                    ProductAdapter.this.updateProductState(currentPosition,Product.BOUGTH);
+                    Toast.makeText(context,"Felicidades has adquirido una poción", Toast.LENGTH_SHORT).show();
+                }
         }
     }
 
