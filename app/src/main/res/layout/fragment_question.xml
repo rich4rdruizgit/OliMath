@@ -8,8 +8,9 @@
     <LinearLayout
         android:id="@+id/ll_question_status"
         android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:orientation="horizontal">
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        android:gravity="center">
 
 
     </LinearLayout>
