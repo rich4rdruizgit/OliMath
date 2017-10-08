@@ -142,7 +142,7 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
             appControl.isPreview = true;
             flipCard();
         }else if(type == BetFragment.START){
-            appControl.previewUsed = false;
+            //appControl.previewUsed = false;
             appControl.isPreview = false;
             flipCard();
 
@@ -156,6 +156,7 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
 
     @Override
     public void onQuestionEnd() {
+        appControl.previewUsed = false;
         appControl.currentQuestion++;
         if(appControl.currentQuestion == appControl.numberOfQuestions){
             startActivity(new Intent(ChallengeActivity.this, ResultActivity.class));
