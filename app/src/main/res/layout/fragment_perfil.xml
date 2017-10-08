@@ -11,6 +11,16 @@
         android:layout_height="wrap_content"
         android:weightSum="1">
 
+        <ImageButton
+            android:id="@+id/btn_back_profile"
+            android:layout_gravity="center"
+            android:layout_width="1dp"
+            android:layout_height="10dp"
+            android:layout_weight=".15"
+            android:src="@android:drawable/arrow_down_float"
+            android:rotation="90"
+            android:visibility="gone"/>
+
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="0dp"
