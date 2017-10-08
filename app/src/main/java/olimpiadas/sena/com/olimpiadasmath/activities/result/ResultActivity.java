@@ -17,6 +17,7 @@ import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.model.BonusTable;
+import olimpiadas.sena.com.olimpiadasmath.model.Result;
 import olimpiadas.sena.com.olimpiadasmath.model.User;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -139,6 +140,25 @@ public class ResultActivity extends AppCompatActivity {
         }
 
         User.updateUser(appControl.currentUser);
+
+      realm.executeTransaction(new Realm.Transaction() {
+          @Override
+          public void execute(Realm realm) {
+              int incorrectAnswers = appControl.numberOfQuestions - correctAnswers;
+              int numQuestions = appControl.numberOfQuestions;
+
+              Result result = new Result();
+              result.setAnswerCorrectResult(correctAnswers);
+              result.setAnswerIncorrectResult(incorrectAnswers);
+              result.setNumQuestionResult(numQuestions);
+              result.setAnswerNoneResult(noAnswered);
+              result.setTimeTestResult(appControl.currentTime);
+              result.setCoinsWinResult(appControl.currentCoinsPool);
+
+              realm.insert(result);
+
+          }
+      });
 
 
     }

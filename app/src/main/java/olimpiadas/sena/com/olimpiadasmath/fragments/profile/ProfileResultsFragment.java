@@ -140,11 +140,14 @@ public class ProfileResultsFragment extends Fragment {
     private void llenarUsers() {
         results = new ArrayList<>();
 
-        results.add(new Result("id","1","pregunta 5"," resp ok 3","resp not ok 2"," non resp 0","15 min","tiempo resp 2 min","70","monedas perdidas 0","monedas bet 20"));
-        results.add(new Result("id","2","pregunta 1"," resp ok 3","resp not ok 2"," non resp 0","20 min","tiempo resp 2 min","200","monedas perdidas 0","monedas bet 20"));
-        results.add(new Result("id","3","pregunta 5"," resp ok 3","resp not ok 2"," non resp 0","10 min","tiempo resp 2 min","20","monedas perdidas 0","monedas bet 20"));
-        results.add(new Result("id","4","pregunta 5"," resp ok 3","resp not ok 2"," non resp 0","30 min","tiempo resp 2 min","50","monedas perdidas 0","monedas bet 20"));
-        results.add(new Result("id","5","pregunta 5"," resp ok 3","resp not ok 1"," non resp 0","27 min","tiempo resp 2 min","100","monedas perdidas 0","monedas bet 20"));
+        results.add(new Result("id","1", 5, 3, 2, 0,15 ,2,70,0,20));
+        results.add(new Result("id","2", 5, 5, 0, 0,15 ,2,70,0,20));
+        results.add(new Result("id","3", 5, 3, 2, 0,15 ,2,70,0,20));
+        results.add(new Result("id","4", 5, 3, 2, 0,15 ,2,70,0,20));
+        results.add(new Result("id","5", 5, 3, 2, 0,15 ,2,70,0,20));
+
+
+        //results.add(new Result("id","5","pregunta 5"," resp ok 3","resp not ok 1"," non resp 0","27 min","tiempo resp 2 min","100","monedas perdidas 0","monedas bet 20"));
 
     }
 }
