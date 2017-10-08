@@ -1,8 +1,11 @@
 package olimpiadas.sena.com.olimpiadasmath.fragments.challenge;
 
+
 import android.app.Fragment;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
+
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -121,7 +124,9 @@ public class BetFragment extends Fragment {
         }
     }
     public void onStartPressed() {
+        Log.d(TAG,"On start pressed");
         if (mListener != null) {
+            Log.d(TAG,"Listener no null");
             mListener.onBetFragmentListener(START);
         }
     }
@@ -162,5 +167,10 @@ public class BetFragment extends Fragment {
         previewQuestion.setEnabled(enable);
         previewQuestion.setVisibility(View.GONE);
         Log.d(TAG,"FInish enablePreview");
+    }
+
+    public void setmListener(OnBetFragmentListener onBetFragmentListener){
+        mListener = onBetFragmentListener;
+
     }
 }
