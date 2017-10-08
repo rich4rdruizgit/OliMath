@@ -1,10 +1,12 @@
 package olimpiadas.sena.com.olimpiadasmath.fragments.challenge;
 
+
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 
 import android.os.CountDownTimer;
+
 import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -77,6 +79,7 @@ public class QuestionFragment extends Fragment {
         if (getArguments() != null) {
 
         }
+        //tvTitle.setText(currentQuestion.getQuestionText());
     }
 
     @Override
@@ -85,7 +88,7 @@ public class QuestionFragment extends Fragment {
 
 
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_question, container, false);
+        View view = inflater.inflate(R.layout.fragment_question, container, false);
         tvCountDown = (TextView) view.findViewById(R.id.tv_count_down);
         cardView = (CardView) view.findViewById(R.id.cardView);
         imgScale = (ImageView) view.findViewById(R.id.img_test_scale);
@@ -98,6 +101,7 @@ public class QuestionFragment extends Fragment {
         for(int i = 0; i < appControl.currentQuestion; i++){
             ImageView temp = new ImageView(getActivity());
             temp.setLayoutParams(new ViewGroup.LayoutParams(30,30));
+
             if(appControl.answers[i] == 1){
                 temp.setImageResource(R.drawable.ok);
             }else if(appControl.answers[i] == 0){
@@ -170,7 +174,7 @@ public class QuestionFragment extends Fragment {
         if(appControl.currentQuestion == appControl.numberOfQuestions-1){
             btnNext.setText("Terminar");
         }
-
+        final View myView = view;
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -182,7 +186,7 @@ public class QuestionFragment extends Fragment {
 
                     Log.d(TAG,"Respuesta es " + radioGroup.getCheckedRadioButtonId());
                     //Log.d(TAG,"Respuesta es " + ((RadioButton) view.findViewById(radioGroup.getCheckedRadioButtonId())).getText());
-                    int idx = radioGroup.indexOfChild(view.findViewById(radioGroup.getCheckedRadioButtonId()));
+                    int idx = radioGroup.indexOfChild(myView.findViewById(radioGroup.getCheckedRadioButtonId()));
                     Log.d(TAG, "EL indice es " + idx);
                     Log.d(TAG, "Correct answer " + currentQuestion.getAnswerCorrect(idx));
                     if(currentQuestion.getAnswerCorrect(idx).equals("1")){
@@ -248,6 +252,12 @@ public class QuestionFragment extends Fragment {
         }
         isScaled = !isScaled;
 
+    }
+
+    public void setmListener(OnQuestionFragmentListener mListener) {
+        this.mListener = mListener;
+        ChallengeActivity ca = (ChallengeActivity) mListener;
+        currentQuestion = ca.getQuestions().get(appControl.currentQuestion);
     }
 
     /**
