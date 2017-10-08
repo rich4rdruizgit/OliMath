@@ -50,7 +50,6 @@ public class AppControl {
     public int initBetCoins;
 
     private boolean init = false;
-
     public boolean isLogged = false;
     public boolean isBackgroundPlaying = true;
     public boolean isPreview = false;
@@ -257,16 +256,16 @@ public class AppControl {
 
                 if(realm.where(Product.class).findAll().isEmpty()){
 
-                    Product pdt1 = new Product(R.drawable.marco18,"Dragon\nblanco",80,"10",Product.FOR_BUY,"marco18","avatar");
-                    Product pdt4 = new Product(R.drawable.marco8,"Dragon\nverde",100,"10",Product.FOR_BUY,"marco8","avatar");
-                    Product pdt2 = new Product(R.drawable.marco,"Dragon\nazul",20,"10",Product.FOR_BUY,"marco","avatar");
-                    Product pdt3 = new Product(R.drawable.marco2,"Dragon\nrojo",250,"10",Product.FOR_BUY,"marco2","avatar");
-                    Product pdt5 = new Product(R.drawable.marco11,"Dragon\nnaranja",150,"10",Product.FOR_BUY,"marco11","avatar");
+                    Product pdt1 = new Product(R.drawable.marco18,"Dragon\nblanco",80,"10",Product.FOR_BUY,"marco18",1);
+                    Product pdt4 = new Product(R.drawable.marco8,"Dragon\nverde",100,"10",Product.FOR_BUY,"marco8",1);
+                    Product pdt2 = new Product(R.drawable.marco,"Dragon\nazul",20,"10",Product.FOR_BUY,"marco",1);
+                    Product pdt3 = new Product(R.drawable.marco2,"Dragon\nrojo",250,"10",Product.FOR_BUY,"marco2",1);
+                    Product pdt5 = new Product(R.drawable.marco11,"Dragon\nnaranja",150,"10",Product.FOR_BUY,"marco11",1);
 
-                    Product pdt6 = new Product(R.drawable.pocionazul,"Pocion\nTime",150,"10",Product.FOR_BUY,"pocionazul","item");
-                    Product pdt7 = new Product(R.drawable.pociondragon,"Pocion\nMonedas",150,"10",Product.FOR_BUY,"pociondragon","item");
-                    Product pdt8 = new Product(R.drawable.pocionroja,"Pocion\nSalvavidas",150,"10",Product.FOR_BUY,"pocionroja","item");
-                    Product pdt9 = new Product(R.drawable.pocionverde,"Pocion\nVida",150,"10",Product.FOR_BUY,"pocionverde","item");
+                    Product pdt6 = new Product(R.drawable.pocionazul,"Pocion\nTime",150,"10",Product.FOR_BUY,"pocionazul",2);
+                    Product pdt7 = new Product(R.drawable.pociondragon,"Pocion\nMonedas",150,"10",Product.FOR_BUY,"pociondragon",2);
+                    Product pdt8 = new Product(R.drawable.pocionroja,"Pocion\nSalvavidas",150,"10",Product.FOR_BUY,"pocionroja",2);
+                    Product pdt9 = new Product(R.drawable.pocionverde,"Pocion\nVida",150,"10",Product.FOR_BUY,"pocionverde",2);
 
                     realm.copyToRealm(pdt1);
                     realm.copyToRealm(pdt2);

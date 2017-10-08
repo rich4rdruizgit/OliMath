@@ -90,7 +90,7 @@ public class ItemShopFragment extends Fragment {
     }
 
     private void inicializarAdaptador() {
-        String type = "item";
+        int type = Product.POTION;
         productAdapter = new ProductAdapter(productList,getActivity(),type);
         recyclerView.setAdapter(productAdapter);
     }
