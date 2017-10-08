@@ -17,45 +17,46 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
+
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="3dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:weightSum="1">
+
         <ImageButton
             android:id="@+id/btn_back_ranking"
-            android:layout_gravity="center"
             android:layout_width="1dp"
-            android:layout_height="12dp"
+            android:layout_height="10dp"
+            android:layout_gravity="center"
             android:layout_weight=".15"
-            android:src="@android:drawable/arrow_down_float"
             android:rotation="90"
-            android:visibility="gone"/>
+            android:src="@android:drawable/arrow_down_float" />
 
         <ImageView
             android:layout_width="@dimen/tamanoiconmenuprincipal"
             android:layout_height="@dimen/tamanoiconmenuprincipal"
             android:layout_weight=".15"
-            android:src="@drawable/rankingblanco"
-            />
+            android:src="@drawable/rankingblanco" />
+
         <TextView
             android:id="@+id/txt_title_ranking"
             android:layout_width="0dp"
-            android:layout_weight=".7"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:layout_weight=".7"
             android:paddingLeft="20dp"
             android:text="@string/ranking"
             android:textColor="#fff"
-            />
+            android:textSize="20sp" />
     </LinearLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/vpPagerRanking"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <android.support.v4.view.PagerTabStrip
             app:theme="@style/AppTheme"
             android:backgroundTint="#ffffff"
@@ -66,7 +67,7 @@
             android:paddingBottom="4dp"
             android:paddingTop="4dp"
             android:animateLayoutChanges="false"
-            android:textAppearance="@style/PagerTabStripText"
-            />
+            android:textAppearance="@style/PagerTabStripText" />
+
     </android.support.v4.view.ViewPager>
 </LinearLayout>

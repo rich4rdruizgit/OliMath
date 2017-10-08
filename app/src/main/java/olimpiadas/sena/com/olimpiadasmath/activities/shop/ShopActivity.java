@@ -8,16 +8,17 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ImageButton;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.adapter.shop.ProductAdapter;
 import olimpiadas.sena.com.olimpiadasmath.adapter.shop.ViewPagerShopAdapter;
-import olimpiadas.sena.com.olimpiadasmath.fragments.shop.AvatarShopFragment;
 import olimpiadas.sena.com.olimpiadasmath.fragments.header.HeaderFragment;
+import olimpiadas.sena.com.olimpiadasmath.fragments.shop.AvatarShopFragment;
 import olimpiadas.sena.com.olimpiadasmath.fragments.shop.ItemShopFragment;
 import olimpiadas.sena.com.olimpiadasmath.model.Product;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -31,6 +32,7 @@ public class ShopActivity extends AppCompatActivity implements AvatarShopFragmen
     public HeaderFragment headerFragment;
 
     ViewPager viewPager;
+    ImageButton btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,15 @@ public class ShopActivity extends AppCompatActivity implements AvatarShopFragmen
 
         viewPager = (ViewPager) findViewById(R.id.vpPagerShop);
         viewPager.setAdapter(new ViewPagerShopAdapter(getSupportFragmentManager()));
+
+        btnBack = (ImageButton) findViewById(R.id.btn_back_shop);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goBack = new Intent(ShopActivity.this, MainActivity.class);
+                startActivity(goBack);
+            }
+        });
 
     }
 

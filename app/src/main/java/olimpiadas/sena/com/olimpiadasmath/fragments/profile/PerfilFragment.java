@@ -1,6 +1,7 @@
 package olimpiadas.sena.com.olimpiadasmath.fragments.profile;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ClipDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,10 +9,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
+import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 
 /**
@@ -34,6 +37,8 @@ public class PerfilFragment extends Fragment {
 
     AppControl appControl;
     TextView tvLvl,tvCoins,tvTickets,txtNameUser,tvScore, tvPercent;
+
+    ImageButton btnBack;
     private ClipDrawable mImageDrawable;
 
     private OnFragmentInteractionListener mListener;
@@ -80,6 +85,7 @@ public class PerfilFragment extends Fragment {
         tvCoins = (TextView) view.findViewById(R.id.tv_profile_coins);
         tvTickets = (TextView) view.findViewById(R.id.tv_profile_ticket);
         tvScore = (TextView) view.findViewById(R.id.tv_profile_score);
+        btnBack = (ImageButton) view.findViewById(R.id.btn_back_profile);
 
         tvPercent.setText(""+appControl.currentUser.getExperience()+"%");
         tvLvl.setText(""+appControl.currentUser.getLevel());
@@ -89,6 +95,14 @@ public class PerfilFragment extends Fragment {
         ImageView imgExp = (ImageView) view.findViewById(R.id.img_profile_progress_bar2);
         mImageDrawable = (ClipDrawable) imgExp.getDrawable();
         mImageDrawable.setLevel((int)appControl.currentUser.getExperience() * 100);
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goBack = new Intent(getActivity(), MainActivity.class);
+                startActivity(goBack);
+            }
+        });
 
         return view;
     }

@@ -185,7 +185,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        //sound.stop();
+        //appControl.soundBackground.stop();
     }
 
     @Override

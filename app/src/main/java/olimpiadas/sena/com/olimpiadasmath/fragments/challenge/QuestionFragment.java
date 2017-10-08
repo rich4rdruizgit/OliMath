@@ -3,6 +3,7 @@ package olimpiadas.sena.com.olimpiadasmath.fragments.challenge;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import android.os.CountDownTimer;
@@ -19,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import java.util.ArrayList;
@@ -79,7 +81,6 @@ public class QuestionFragment extends Fragment {
         if (getArguments() != null) {
 
         }
-        //tvTitle.setText(currentQuestion.getQuestionText());
     }
 
     @Override
@@ -88,7 +89,7 @@ public class QuestionFragment extends Fragment {
 
 
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_question, container, false);
+        final View view = inflater.inflate(R.layout.fragment_question, container, false);
         tvCountDown = (TextView) view.findViewById(R.id.tv_count_down);
         cardView = (CardView) view.findViewById(R.id.cardView);
         imgScale = (ImageView) view.findViewById(R.id.img_test_scale);
@@ -100,7 +101,7 @@ public class QuestionFragment extends Fragment {
         questionsStatus = new ArrayList<ImageView>();
         for(int i = 0; i < appControl.currentQuestion; i++){
             ImageView temp = new ImageView(getActivity());
-            temp.setLayoutParams(new ViewGroup.LayoutParams(30,30));
+            temp.setLayoutParams(new ViewGroup.LayoutParams(40,40));
 
             if(appControl.answers[i] == 1){
                 temp.setImageResource(R.drawable.ok);
@@ -158,6 +159,16 @@ public class QuestionFragment extends Fragment {
                 String v = String.format("%02d", millisUntilFinished/60000);
                 int va = (int)( (millisUntilFinished%60000)/1000);
                 tvCountDown.setText(v+":"+String.format("%02d",va));
+
+                if(va <= 5){
+
+                    if(va % 2 != 0){
+                        tvCountDown.setTextColor(Color.RED);
+
+                    }else{
+                        tvCountDown.setTextColor(Color.WHITE);
+                    }
+                }
                 appControl.currentTime += 1;
             }
 
@@ -174,7 +185,7 @@ public class QuestionFragment extends Fragment {
         if(appControl.currentQuestion == appControl.numberOfQuestions-1){
             btnNext.setText("Terminar");
         }
-        final View myView = view;
+
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -186,7 +197,7 @@ public class QuestionFragment extends Fragment {
 
                     Log.d(TAG,"Respuesta es " + radioGroup.getCheckedRadioButtonId());
                     //Log.d(TAG,"Respuesta es " + ((RadioButton) view.findViewById(radioGroup.getCheckedRadioButtonId())).getText());
-                    int idx = radioGroup.indexOfChild(myView.findViewById(radioGroup.getCheckedRadioButtonId()));
+                    int idx = radioGroup.indexOfChild(view.findViewById(radioGroup.getCheckedRadioButtonId()));
                     Log.d(TAG, "EL indice es " + idx);
                     Log.d(TAG, "Correct answer " + currentQuestion.getAnswerCorrect(idx));
                     if(currentQuestion.getAnswerCorrect(idx).equals("1")){
