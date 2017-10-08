@@ -201,6 +201,7 @@ public class DialogHelper {
                 AppControl appControl = AppControl.getInstance();
                 if(appControl.soundBackground.isPlaying()){
                     appControl.soundBackground.stop();
+
                 }
                 ((MainActivity) context).finishAffinity();
                 ((MainActivity) context).finish();
