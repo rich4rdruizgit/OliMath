@@ -219,6 +219,13 @@ public class QuestionFragment extends Fragment {
             }
         });
 
+        if(appControl.isPreview){
+            btnNext.setVisibility(View.GONE);
+        }else{
+            btnNext.setVisibility(View.VISIBLE);
+        }
+
+
         return view;
     }
 
