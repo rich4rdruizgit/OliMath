@@ -9,7 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.Button;
 
 import java.util.List;
 
@@ -32,7 +32,7 @@ public class ShopActivity extends AppCompatActivity implements AvatarShopFragmen
     public HeaderFragment headerFragment;
 
     ViewPager viewPager;
-    ImageButton btnBack;
+    Button btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class ShopActivity extends AppCompatActivity implements AvatarShopFragmen
         viewPager = (ViewPager) findViewById(R.id.vpPagerShop);
         viewPager.setAdapter(new ViewPagerShopAdapter(getSupportFragmentManager()));
 
-        btnBack = (ImageButton) findViewById(R.id.btn_back_shop);
+        btnBack = (Button) findViewById(R.id.btn_back_shop);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
