@@ -160,7 +160,7 @@ public class QuestionFragment extends Fragment {
                 int va = (int)( (millisUntilFinished%60000)/1000);
                 tvCountDown.setText(v+":"+String.format("%02d",va));
 
-                if(va <= 5){
+                if(va <= 5 && v.equalsIgnoreCase("00")){
 
                     if(va % 2 != 0){
                         tvCountDown.setTextColor(Color.RED);
