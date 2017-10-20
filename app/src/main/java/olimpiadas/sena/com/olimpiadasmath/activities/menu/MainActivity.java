@@ -142,6 +142,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intentShop);
                 break;
             case R.id.btn_menu_ranking:
+                appControl.currentTime = 0;
                 Intent intentRanking = new Intent(MainActivity.this, RankingActivity.class);
                 startActivity(intentRanking);
                 break;
