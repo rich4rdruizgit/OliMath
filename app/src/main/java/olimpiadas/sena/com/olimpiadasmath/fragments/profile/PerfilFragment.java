@@ -91,7 +91,7 @@ public class PerfilFragment extends Fragment {
         tvLvl.setText(""+appControl.currentUser.getLevel());
         tvCoins.setText(" x " + appControl.currentUser.getCoins());
         //tvTickets.setText(" x " + appControl.currentUser.getTickets());
-        tvScore.setText("" + appControl.currentUser.getScore());
+        //tvScore.setText("" + appControl.currentUser.getScore());
         ImageView imgExp = (ImageView) view.findViewById(R.id.img_profile_progress_bar2);
         mImageDrawable = (ClipDrawable) imgExp.getDrawable();
         mImageDrawable.setLevel((int)appControl.currentUser.getExperience() * 100);
