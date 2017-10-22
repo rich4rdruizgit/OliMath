@@ -66,6 +66,8 @@ public class ResultActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         appControl = AppControl.getInstance();
+        appControl.currentActivity = ResultActivity.class.getSimpleName();
+
 
 
         currentUser = appControl.currentUser;

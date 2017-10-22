@@ -31,8 +31,7 @@ public class HeaderFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private static final String TAG = HeaderFragment.class.toString() ;
-
+    private static final String TAG = HeaderFragment.class.toString();
 
 
     private String mParam1;
@@ -42,7 +41,7 @@ public class HeaderFragment extends Fragment {
     ImageView imgHeaderProfile, imgExp;
     private ClipDrawable mImageDrawable;
 
-    TextView tvCoins,tvExp,tvTickets, tvName;
+    TextView tvCoins, tvExp, tvTickets, tvName;
     ImageButton btnSettings;
 
     AppControl appControl;
@@ -83,21 +82,24 @@ public class HeaderFragment extends Fragment {
         btnSettings = (ImageButton) view.findViewById(R.id.btn_settings_header);
 
         mImageDrawable = (ClipDrawable) imgExp.getDrawable();
-        mImageDrawable.setLevel((int)appControl.currentUser.getExperience()*100);
+        mImageDrawable.setLevel((int) appControl.currentUser.getExperience() * 100);
 
         tvName.setText(appControl.currentUser.getNickname());
         tvCoins.setText(" x " + appControl.currentUser.getCoins());
-        tvExp.setText(" x " + ((int)appControl.currentUser.getExperience()));
-        Log.d(TAG,"Antes de recibir la imagen");
-        int avatar = getActivity().getBaseContext().getResources().getIdentifier(appControl.currentUser.getAvatar(),recurso, getActivity().getBaseContext().getPackageName());
-        Log.d(TAG,"id cargado " +avatar+ " __ "+ appControl.currentUser.getAvatar());
-        Log.d(TAG,"Antes de recibir la imagen");
+        tvExp.setText(" x " + ((int) appControl.currentUser.getExperience()));
+        Log.d(TAG, "Antes de recibir la imagen");
+        int avatar = getActivity().getBaseContext().getResources().getIdentifier(appControl.currentUser.getAvatar(), recurso, getActivity().getBaseContext().getPackageName());
+        Log.d(TAG, "id cargado " + avatar + " __ " + appControl.currentUser.getAvatar());
+        Log.d(TAG, "Antes de recibir la imagen");
 
         btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentSettings = new Intent(getActivity(), SettingsActivity.class);
-                startActivity(intentSettings);
+                Log.d("Header", SettingsActivity.class.getSimpleName());
+                if (!appControl.currentActivity.equals(SettingsActivity.class.getSimpleName())) {
+                    Intent intentSettings = new Intent(getActivity(), SettingsActivity.class);
+                    startActivity(intentSettings);
+                }
             }
         });
 
@@ -118,10 +120,10 @@ public class HeaderFragment extends Fragment {
 
     }
 
-    public void refreshInterface(){
+    public void refreshInterface() {
         tvCoins.setText(" x " + appControl.currentUser.getCoins());
-        tvExp.setText(" x " + ((int)appControl.currentUser.getExperience()));
-        int avatar = getActivity().getBaseContext().getResources().getIdentifier(appControl.currentUser.getAvatar(),recurso, getActivity().getBaseContext().getPackageName());
+        tvExp.setText(" x " + ((int) appControl.currentUser.getExperience()));
+        int avatar = getActivity().getBaseContext().getResources().getIdentifier(appControl.currentUser.getAvatar(), recurso, getActivity().getBaseContext().getPackageName());
         imgHeaderProfile.setImageResource(avatar);
     }
 

@@ -48,6 +48,7 @@ public class ProfileActivity extends AppCompatActivity implements PerfilFragment
         viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
 
         appControl = AppControl.getInstance();
+        appControl.currentActivity = ProfileActivity.class.getSimpleName();
 
         imgProfile = (ImageView) findViewById(R.id.img_profile_user);
         int avatar = getResources().getIdentifier(appControl.currentUser.getAvatar(),recurso, getPackageName());

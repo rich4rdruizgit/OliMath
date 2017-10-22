@@ -54,6 +54,7 @@ public class AppControl {
     public boolean isBackgroundPlaying = true;
     public boolean isPreview = false;
     public boolean previewUsed = false;
+    public String currentActivity = "currentActivity";
 
     public static AppControl getInstance() {
         return ourInstance;

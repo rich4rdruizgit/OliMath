@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.adapter.ranking.ViewPagerRankingAdapter;
+import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class RankingActivity extends AppCompatActivity {
@@ -23,6 +24,7 @@ public class RankingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ranking);
         getSupportActionBar().hide();
+        AppControl.getInstance().currentActivity = RankingActivity.class.getSimpleName();
 
         viewPager = (ViewPager) findViewById(R.id.vpPagerRanking);
         viewPager.setAdapter(new ViewPagerRankingAdapter(getSupportFragmentManager()));
