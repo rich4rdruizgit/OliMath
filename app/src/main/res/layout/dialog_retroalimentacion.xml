@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_base"
+    android:background="@drawable/background_dialog"
     >
     <ScrollView
         android:layout_width="match_parent"
@@ -14,6 +14,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txt_msg_dialog"

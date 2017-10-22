@@ -97,7 +97,10 @@ public class HeaderFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intentSettings = new Intent(getActivity(), SettingsActivity.class);
-                startActivity(intentSettings);
+                if(getActivity().equals(SettingsActivity.class)){
+
+                }else{
+                startActivity(intentSettings);}
             }
         });
 

@@ -72,8 +72,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // CONSULTA DE UN WEBSERVICES
        // WebConnectionManager webConnectionManager = WebConnectionManager.getWebConnectionManager();
         Log.d(TAG,"Se va a consultar");
-       // webConnectionManager.insertQuestion("http://192.168.43.124:8097/WSPreguntas.asmx/");
         /**/
+        // webConnectionManager.insertQuestion("http://192.168.43.124:8097/WSPreguntas.asmx/");
+
+        // webConnectionManager.insertQuestion("http://10.73.120.221:8097/WSPreguntas.asmx/");
         btnShop = (Button) findViewById(R.id.btn_menu_shop);
         btnShop.setOnClickListener(this);
 
@@ -191,6 +193,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onPause() {
         super.onPause();
-        //sound.pause();
     }
 }

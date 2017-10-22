@@ -17,9 +17,10 @@ import olimpiadas.sena.com.olimpiadasmath.fragments.ranking.TimeRankingFragment;
 
 public class ViewPagerRankingAdapter extends FragmentPagerAdapter {
 
-    final int PAGE_COUNT = 2;
+    final int PAGE_COUNT = 1;
 
-    private String tabtitles[] = new String[]{"Tiempo","Monedas"};
+    //private String tabtitles[] = new String[]{"Tiempo","Monedas"};
+    private String tabtitles[] = new String[]{"Tiempo"};
 
     public ViewPagerRankingAdapter(FragmentManager fm) {
         super(fm);
@@ -38,11 +39,11 @@ public class ViewPagerRankingAdapter extends FragmentPagerAdapter {
                 Log.d("Posicion Fragment", position+"");
                 return timeRankingFragment;
 
-            case 1:
+            /*case 1:
                 Fragment coinsRankingFragment = new CoinsRankingFragment();
                 Log.d("Posicion Fragment", position+"");
                 return coinsRankingFragment;
-            /*case 2:'
+            case 2:'
                 Fragment generalRankingFragment = new GeneralRankingFragment();
                 Log.d("Posicion Fragment", position+"");
                 return generalRankingFragment;*/

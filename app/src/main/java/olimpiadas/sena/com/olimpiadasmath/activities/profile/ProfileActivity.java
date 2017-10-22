@@ -58,8 +58,6 @@ public class ProfileActivity extends AppCompatActivity implements PerfilFragment
 
         tvLvl = (TextView) findViewById(R.id.tv_profile_level_number);
         tvCoins = (TextView) findViewById(R.id.tv_profile_coins);
-        tvTickets = (TextView) findViewById(R.id.tv_profile_ticket);
-        tvScore = (TextView) findViewById(R.id.tv_profile_score);
 
         imgProfile.setImageResource(avatar);
         Picasso.with(imgProfile.getContext())

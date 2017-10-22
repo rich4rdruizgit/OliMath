@@ -20,13 +20,13 @@ import cz.msebera.android.httpclient.message.BasicNameValuePair;
 public class WebConnectionManager implements WebConnection.WebConnectionListener{
 
     private String TAG = "WebConnectionManager";
-    private final String url = "URL DE CONSULTA";
+    private final String url = "http://192.168.0.22:8097/";
 
 
 
 
     public interface WebConnectionManagerListener {
-        void webRequestComplete(Response response);
+        void webRequestComplete(Response response) throws JSONException;
 
     }
 
@@ -42,7 +42,9 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
         START_SESSION,
         GET_QUESTIONS,
         INSERT_QUESTION,
-        LOGIN;
+        LOGIN,
+        RANKING,
+        SEND_CHALLENGE;
 
         public String getName() {
             switch (this) {
@@ -54,6 +56,10 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                     return "insertarPreguntas";
                 case LOGIN:
                     return "login/";
+                case RANKING:
+                    return "WSOlimath.asmx/mostrarRankings";
+                case SEND_CHALLENGE:
+                    return "sendChallenge/";
 
                 default:
                     return null;
@@ -68,6 +74,11 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                 case "login/":
                     return LOGIN;
 
+                case "WSOlimath.asmx/mostrarRankings":
+                    return RANKING;
+
+                case "sendChallenge/":
+                    return SEND_CHALLENGE;
                 default:
                     return null;
             }
@@ -77,7 +88,7 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
     @Override
     public void webConnectionComplete(String type, String resp) {
-        Log.d(TAG,"webCon Response = " + resp);
+        Log.d(TAG,"webCon type " + type + "  Response = " + resp);
 
         resp = resp.replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>","");
         resp = resp.replace("<string xmlns=\"http://tempuri.org/\">","");
@@ -90,7 +101,11 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
         Response response = new Response(type,resp);
         Log.d(TAG,"Response = " +  response.toString());
         if(webConnectionManagerListener!=null){
-            webConnectionManagerListener.webRequestComplete(response);
+            try {
+                webConnectionManagerListener.webRequestComplete(response);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
 
     }
@@ -137,7 +152,11 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
         Log.d(TAG,"Response = " +  response.toString());
         if(webConnectionManagerListener!=null){
-            webConnectionManagerListener.webRequestComplete(response);
+            try {
+                webConnectionManagerListener.webRequestComplete(response);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
         //webConnection.executePostRequest("login url", OperationType.LOGIN.getName(), nameValuePairs);
     }
@@ -148,6 +167,11 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
         webConnection.executeAsyncGetRequest(url);
 
+    }
+
+
+    public void mostrarRankings(){
+        webConnection.executeAsyncGetRequest(url + OperationType.RANKING.getName(),OperationType.RANKING.getName());
     }
 
     public void getRanking(String url){
@@ -191,6 +215,9 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
         //Result values
         public static final String LOGGED = "logged";
         public static final String NOT_LOGGED = "not_logged";
+        public static final String RANKING = "ranking";
+        private static final String OK = "ok";
+
 
         OperationType operationType;
         String status,result,code,data,errMsg;
@@ -203,7 +230,7 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
             operationType = OperationType.fromString(type);
             JSONObject respJObject = null;
-            try{
+            /*try{
                 respJObject = new JSONObject(resp);
                 //JSONArray resparray = new JSONArray(resp);
                 Log.d(TAG,"Array ok "  + resp.length());
@@ -215,9 +242,70 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                 errMsg = "Respuesta no esta en formato Json";
                 return;
             }
+            */
+            if(operationType == OperationType.RANKING){
+                try{
+                    Log.d(TAG,"Operation type = Ranking");
+                    JSONArray rankinsg = new JSONArray(resp);
+                    if(rankinsg.length()>0){
+                        status = SUCCESS;
+                        result = OK;
+                        data = resp;
+                        return;
+                    }else{
+                        status = SUCCESS;
+                        result = OK;
+                        data = resp;
+                        return;
+                    }
+
+
+                }catch (JSONException e){
+                    status = ERROR;
+                    result = "";
+                    code = "JO001";
+                    errMsg = "Respuesta login no esta en formato Json";
+                    return;
+                }
+            }
+
+            if(operationType == OperationType.SEND_CHALLENGE){
+                try{
+                    respJObject = new JSONObject(resp);
+                    if(respJObject.getString("status").equals("SUCCESS")){
+                        status = SUCCESS;
+                        if(respJObject.getString("result").equals("true")){
+                            result = LOGGED;
+                        }else if (respJObject.getString("result").equals("false")){
+                            result = NOT_LOGGED;
+                            code = respJObject.getString("code");
+                            errMsg = respJObject.getString("errMsg");
+                        }else{
+                            result = UNKNOW;
+                            code = "E001";
+                            errMsg = "outcome con valor desconocido";
+                        }
+
+                    }else if(respJObject.getString("status").equals("FAIL")){
+                        status= FAIL;
+                        code = "E002";
+                        errMsg = "Error al tratar de enrolar";
+
+                        validateError(respJObject.getString("errorMsg"));
+                    }
+
+                }catch (JSONException e){
+                    status = ERROR;
+                    result = "";
+                    code = "JO001";
+                    errMsg = "Respuesta login no esta en formato Json";
+                    return;
+                }
+            }
 
             if(operationType == OperationType.LOGIN){
                 try{
+                    respJObject = new JSONObject(resp);
                     if(respJObject.getString("status").equals("SUCCESS")){
                         status = SUCCESS;
                         if(respJObject.getString("result").equals("true")){
