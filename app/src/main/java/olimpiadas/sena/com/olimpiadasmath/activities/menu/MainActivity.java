@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         gifMenu.setOnClickListener(this);
         getSupportActionBar().hide();
         appControl = AppControl.getInstance();
+        appControl.currentActivity = MainActivity.class.getSimpleName();
         Context context = this;
         appControl.soundBackground = MediaPlayer.create(getApplicationContext(),R.raw.soundbackground);
 

@@ -24,17 +24,44 @@
         android:layout_height="0dp"
         android:layout_gravity="center"
         android:layout_weight="0.5"
-        android:orientation="vertical">
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="10dp">
+
+           <!-- <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/store"
+                android:textColor="@color/primary_text" /> -->
+
+            <Button
+                android:id="@+id/btn_menu_shop"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:background="@drawable/tiendablanco"
+                android:elevation="10dp"
+                android:gravity="center" />
+        </LinearLayout>
 
         <pl.droidsonroids.gif.GifImageView
             android:id="@+id/img_gif_menu"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.10"
             android:layout_gravity="center"
+            android:layout_marginRight="15dp"
             android:src="@drawable/alberteuno" />
     </LinearLayout>
 
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="center"
@@ -42,103 +69,18 @@
         android:layout_marginRight="20dp"
         android:layout_weight="0.4"
         android:gravity="center"
-        android:orientation="vertical"
-        >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_weight="0.3"
-                android:background="@drawable/background_transparent_with_stroke"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/practice"
-                    android:textColor="@color/primary_text" />
-
-                <Button
-                    android:id="@+id/btn_menu_practice"
-                    android:layout_width="@dimen/tamanoiconmenuprincipal"
-                    android:layout_height="@dimen/tamanoiconmenuprincipal"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/practica_icon"
-                    android:elevation="10dp"
-                    android:gravity="center" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.3"
-                android:background="@drawable/background_transparent_with_stroke"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/challenge"
-                    android:textColor="@color/primary_text" />
-
-                <Button
-                    android:id="@+id/btn_menu_challenge"
-                    android:layout_width="@dimen/tamanoiconmenuprincipal"
-                    android:layout_height="@dimen/tamanoiconmenuprincipal"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/retoblanco"
-                    android:elevation="10dp"
-                    android:gravity="center" />
-            </LinearLayout>
+        android:orientation="vertical">-->
 
 
 
-            <!--<LinearLayout-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="0.3"-->
-                <!--android:background="@drawable/background_transparent_with_stroke"-->
-                <!--android:orientation="vertical">-->
-
-                <!--<TextView-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="center"-->
-                    <!--android:text="@string/library"-->
-                    <!--android:textColor="@color/primary_text" />-->
-
-                <!--<Button-->
-                    <!--android:id="@+id/btn_menu_tutor"-->
-                    <!--android:layout_width="@dimen/tamanoiconmenuprincipal"-->
-                    <!--android:layout_height="@dimen/tamanoiconmenuprincipal"-->
-                    <!--android:layout_gravity="center"-->
-                    <!--android:layout_margin="5dp"-->
-                    <!--android:background="@drawable/tutorblanco"-->
-                    <!--android:elevation="10dp"-->
-                    <!--android:gravity="center" />-->
-            <!--</LinearLayout>-->
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:gravity="center"
-            android:orientation="horizontal">
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="80dp"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="horizontal">-->
 
 
-            <!--<LinearLayout-->
+            <!--<LinearLayout-->-->
                 <!--android:layout_width="0dp"-->
                 <!--android:layout_height="wrap_content"-->
                 <!--android:layout_weight="0.3"-->
@@ -161,59 +103,96 @@
                     <!--android:layout_margin="5dp"-->
                     <!--android:background="@drawable/settingsblanco"-->
                     <!--android:elevation="10dp"-->
-                    <!--android:gravity="center" />-->
-            <!--</LinearLayout>-->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.3"
-                android:background="@drawable/background_transparent_with_stroke"
-                android:orientation="vertical">
+                    <!--android:gravity="center" />
+            </LinearLayout>-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/ranking"
-                    android:textColor="@color/primary_text"
+        <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
 
-                    />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="25dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/btn_menu_ranking"
-                    android:layout_width="@dimen/tamanoiconmenuprincipal"
-                    android:layout_height="@dimen/tamanoiconmenuprincipal"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/rankingblanco"
-                    android:elevation="10dp"
-                    android:gravity="center" />
-            </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="0.3"
+            android:background="@drawable/background_transparent_with_stroke"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.3"
-                android:background="@drawable/background_transparent_with_stroke"
-                android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/practice"
+                android:textColor="@color/primary_text" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/store"
-                    android:textColor="@color/primary_text" />
+            <Button
+                android:id="@+id/btn_menu_practice"
+                android:layout_width="@dimen/tamanoiconmenuprincipal"
+                android:layout_height="@dimen/tamanoiconmenuprincipal"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="@drawable/practica_icon"
+                android:elevation="10dp"
+                android:gravity="center" />
+        </LinearLayout>
 
-                <Button
-                    android:id="@+id/btn_menu_shop"
-                    android:layout_width="@dimen/tamanoiconmenuprincipal"
-                    android:layout_height="@dimen/tamanoiconmenuprincipal"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/tiendablanco"
-                    android:elevation="10dp"
-                    android:gravity="center" />
-            </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:background="@drawable/background_transparent_with_stroke"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/ranking"
+                android:textColor="@color/primary_text" />
+
+            <Button
+                android:id="@+id/btn_menu_ranking"
+                android:layout_width="@dimen/tamanoiconmenuprincipal"
+                android:layout_height="@dimen/tamanoiconmenuprincipal"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="@drawable/rankingblanco"
+                android:elevation="10dp"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:background="@drawable/background_transparent_with_stroke"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/challenge"
+                android:textColor="@color/primary_text" />
+
+            <Button
+                android:id="@+id/btn_menu_challenge"
+                android:layout_width="@dimen/tamanoiconmenuprincipal"
+                android:layout_height="@dimen/tamanoiconmenuprincipal"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="@drawable/retoblanco"
+                android:elevation="10dp"
+                android:gravity="center" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -38,7 +38,7 @@ public class SplashActivity extends AppCompatActivity implements AppControl.Init
         setContentView(R.layout.activity_splash);
         getSupportActionBar().hide();
         appControl = AppControl.getInstance();
-
+        appControl.currentActivity = SplashActivity.class.getSimpleName();
 
         appControl.init(SplashActivity.this);
         startAnimations();

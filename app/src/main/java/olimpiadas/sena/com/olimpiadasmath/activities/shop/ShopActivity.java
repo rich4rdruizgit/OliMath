@@ -17,6 +17,7 @@ import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.adapter.shop.ProductAdapter;
 import olimpiadas.sena.com.olimpiadasmath.adapter.shop.ViewPagerShopAdapter;
+import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.fragments.header.HeaderFragment;
 import olimpiadas.sena.com.olimpiadasmath.fragments.shop.AvatarShopFragment;
 import olimpiadas.sena.com.olimpiadasmath.fragments.shop.ItemShopFragment;
@@ -40,6 +41,7 @@ public class ShopActivity extends AppCompatActivity implements AvatarShopFragmen
         setContentView(R.layout.activity_shop);
         getSupportActionBar().hide();
 
+        AppControl.getInstance().currentActivity = ShopActivity.class.getSimpleName();
 
         headerFragment = (HeaderFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_shop_header);
 

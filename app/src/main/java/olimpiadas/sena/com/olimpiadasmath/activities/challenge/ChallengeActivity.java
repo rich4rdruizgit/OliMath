@@ -45,6 +45,7 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
         setContentView(R.layout.activity_challenge);
         getSupportActionBar().hide();
         appControl.currentCoinsPool = 20;
+        appControl.currentActivity = ChallengeActivity.class.getSimpleName();
         bet = BetFragment.newInstance();
         bet.setmListener(this);
         question = QuestionFragment.newInstance();

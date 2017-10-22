@@ -33,6 +33,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_login);
+        AppControl.getInstance().currentActivity = LoginActivity.class.getSimpleName();
+
 
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnLosePass = (Button) findViewById(R.id.btn_lose_pass);

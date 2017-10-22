@@ -68,7 +68,7 @@ public class PracticeActivity extends AppCompatActivity implements CardPagerAdap
         getSupportActionBar().hide(); // Quitando la barra superior de la app
         // Control de la app
         appControl = AppControl.getInstance();
-
+        appControl.currentActivity = PracticeActivity.class.getSimpleName();
         appControl.onPractice =  true;
         //init true
         initTest = true;

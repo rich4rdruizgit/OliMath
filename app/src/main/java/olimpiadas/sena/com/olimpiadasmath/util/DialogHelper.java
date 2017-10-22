@@ -199,10 +199,12 @@ public class DialogHelper {
             @Override
             public void onClick(View v) {
                 AppControl appControl = AppControl.getInstance();
-                if(appControl.soundBackground.isPlaying()){
-                    appControl.soundBackground.stop();
+                appControl.soundBackground.stop();
 
-                }
+//                if(appControl.soundBackground.isPlaying()){
+//                    appControl.soundBackground.stop();
+//
+//                }
                 ((MainActivity) context).finishAffinity();
                 ((MainActivity) context).finish();
 

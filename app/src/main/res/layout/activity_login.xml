@@ -54,13 +54,12 @@
                         android:layout_height="wrap_content"
                         android:maxLines="1"
                         android:inputType="text"
+                        android:text="user"
+                        android:drawableLeft="@drawable/ic_person"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="40dp"
                         />
-                    <ImageView
-                        android:layout_marginTop="3dp"
-                        android:layout_marginLeft="10dp"
-                        android:src="@drawable/user"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp" />
+
                 </RelativeLayout>
 
                 <EditText
@@ -70,7 +69,12 @@
                     android:hint="@string/password"
                     android:inputType="textPassword"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:text="123"
+                    android:drawableLeft="@drawable/ic_lock"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="40dp"
+                    />
             </LinearLayout>
 
             <LinearLayout

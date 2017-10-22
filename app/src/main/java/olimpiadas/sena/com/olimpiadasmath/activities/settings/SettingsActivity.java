@@ -38,6 +38,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_settings);
+        appControl.currentActivity = SettingsActivity.class.getSimpleName();
 
 
         //btn_help = (Button) findViewById(R.id.btn_help);
@@ -75,7 +76,6 @@ public class SettingsActivity extends AppCompatActivity {
             swtMusic.setChecked(true);
         }
         //
-
 
 
         swtMusic.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
