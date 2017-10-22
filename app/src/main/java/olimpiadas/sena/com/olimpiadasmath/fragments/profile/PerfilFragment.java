@@ -83,8 +83,8 @@ public class PerfilFragment extends Fragment {
         tvPercent = (TextView) view.findViewById(R.id.tv_profile_percent);
         tvLvl = (TextView) view.findViewById(R.id.tv_profile_level_number);
         tvCoins = (TextView) view.findViewById(R.id.tv_profile_coins);
-        tvTickets = (TextView) view.findViewById(R.id.tv_profile_ticket);
-        tvScore = (TextView) view.findViewById(R.id.tv_profile_score);
+        //tvTickets = (TextView) view.findViewById(R.id.tv_profile_ticket);
+        //tvScore = (TextView) view.findViewById(R.id.tv_profile_score);
         btnBack = (Button) view.findViewById(R.id.btn_back_profile);
 
         tvPercent.setText(""+appControl.currentUser.getExperience()+"%");
