@@ -65,7 +65,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
+                        android:layout_margin="5dp"
                         android:orientation="vertical">
 
                         <TextView
@@ -105,22 +105,15 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"
                         android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/txt_header_coin"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Monedas"
-                            android:textColor="@color/primary_text"/>
 
                         <ImageView
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
-
                             android:src="@drawable/coin" />
 
                         <TextView
@@ -128,7 +121,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text=" x 20"
+                            android:text=" x 200000"
                             android:textColor="@color/primary_text"/>
                     </LinearLayout>
 
@@ -136,7 +129,7 @@
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:background="@drawable/golden_medal"
-                        android:layout_marginLeft="10dp">
+                        android:layout_margin="5dp">
 
                         <TextView
                             android:layout_width="50dp"
@@ -160,9 +153,10 @@
 
                     <ImageButton
                         android:id="@+id/btn_settings_header"
-                        android:layout_width="@dimen/tamanoiconmenuprincipal"
-                        android:layout_height="@dimen/tamanoiconmenuprincipal"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_weight=".15"
+                        android:layout_marginRight="5dp"
                         android:background="@drawable/settingsblanco"
                         android:src="@drawable/settingsblanco"/>
 
