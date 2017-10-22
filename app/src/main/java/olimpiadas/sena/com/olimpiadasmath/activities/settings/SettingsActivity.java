@@ -1,10 +1,10 @@
 package olimpiadas.sena.com.olimpiadasmath.activities.settings;
 
 import android.content.Context;
-import android.graphics.Typeface;
+import android.content.Intent;
 import android.media.MediaPlayer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +12,6 @@ import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import io.realm.Realm;
 import olimpiadas.sena.com.olimpiadasmath.R;
@@ -25,7 +24,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class SettingsActivity extends AppCompatActivity {
 
     private static final String TAG = "SettingsActivity";
-    Button btn_credits,btn_help;
+    Button btn_credits,btn_help,btnBack;
     Spinner spn_lenguage;
     TextView txt_lenguage,txt_music,txt_efects;
     Switch swtMusic;
@@ -44,6 +43,7 @@ public class SettingsActivity extends AppCompatActivity {
         //btn_help = (Button) findViewById(R.id.btn_help);
         btn_credits = (Button) findViewById(R.id.btn_credits);
         swtMusic = (Switch) findViewById(R.id.swtMusic);
+        btnBack = (Button) findViewById(R.id.btn_back_settings);
         //txt_efects = (TextView) findViewById(R.id.txt_efects);
         //txt_lenguage = (TextView) findViewById(R.id.txt_lenguage);
         //txt_music = (TextView) findViewById(R.id.txt_music);
@@ -53,6 +53,13 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //Toast.makeText(SettingsActivity.this, "Presionó botón Creditos", Toast.LENGTH_SHORT).show();
                 DialogHelper.showCopyRightDialog(v.getContext());
+            }
+        });
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goBack = new Intent(SettingsActivity.this, MainActivity.class);
+                startActivity(goBack);
             }
         });
 

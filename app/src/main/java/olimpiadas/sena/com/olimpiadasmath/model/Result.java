@@ -1,5 +1,7 @@
 package olimpiadas.sena.com.olimpiadasmath.model;
 
+import java.util.UUID;
+
 import io.realm.RealmObject;
 import io.realm.annotations.Ignore;
 import io.realm.annotations.PrimaryKey;
@@ -32,7 +34,12 @@ public class Result extends RealmObject {
 
 
     public Result(String idResult, String idUserResult, int numQuestionResult, int answerCorrectResult, int answerIncorrectResult, int answerNoneResult, long timeGlobalResult, long timeTestResult, int coinsWinResult, int coinsLoseResult, int coinsBetResult) {
-        this.idResult = idResult;
+        if (idResult == null) {
+            this.idResult = UUID.randomUUID().toString();
+        }else{
+            this.idResult = idResult;
+        }
+
         this.idUserResult = idUserResult;
         this.numQuestionResult = numQuestionResult;
         this.answerCorrectResult = answerCorrectResult;
@@ -46,6 +53,7 @@ public class Result extends RealmObject {
     }
 
     public Result() {
+        this.idResult = UUID.randomUUID().toString();
     }
 
     public String getIdResult() {

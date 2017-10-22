@@ -49,7 +49,7 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultView
         holder.txtRightAnswer.setText(""+result.getAnswerCorrectResult());
         holder.txtWrongAnswer.setText(""+result.getAnswerIncorrectResult());
         holder.txtCoinsWin.setText(""+result.getCoinsWinResult());
-        holder.txtTime.setText(""+result.getTimeGlobalResult());
+        holder.txtTime.setText(""+result.getTimeTestResult());
 
 
     }

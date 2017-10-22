@@ -53,8 +53,6 @@ public class ViewPagerRankingAdapter extends FragmentPagerAdapter {
     }
 
     public CharSequence getPageTitle(int position){
-
         return tabtitles[position];
-
     }
 }
