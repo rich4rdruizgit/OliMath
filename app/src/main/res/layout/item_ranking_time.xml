@@ -32,56 +32,98 @@
         android:layout_height="match_parent"
         android:layout_weight="0.55"
         android:orientation="vertical"
-        android:padding="2dp"
-        android:weightSum="4">
+        android:padding="3dp"
+        android:weightSum="3">
 
         <TextView
+            android:layout_margin="3dp"
             android:id="@+id/txt_nickname_ranking_time"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:text="Juanito Alimaña"
             android:textColor="#ffffff"
-            android:textSize="18sp" />
+            android:textSize="20sp"
+            android:gravity="center"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="Tiempo:"
-            android:textColor="#ffffff"
-            android:textSize="16sp" />
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="Tiempo:"-->
+            <!--android:textColor="#ffffff"-->
+            <!--android:textSize="16sp" />-->
 
         <LinearLayout
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
             android:orientation="horizontal"
             android:weightSum="1">
 
-            <TextView
-                android:id="@+id/txt_points_ranking_time"
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
                 android:layout_weight="0.7"
-                android:gravity="center_vertical"
-                android:text="25.000"
-                android:textColor="#ffffff"
-                android:textSize="25sp" />
-            <ImageView
-                android:src="@drawable/ic_timer"
-                android:layout_width="40dp"
-                android:layout_height="40dp" />
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="2">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/txt_points_ranking_time"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:gravity="center_vertical"
+                        android:text="25.000"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:src="@drawable/ic_timer" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/txt_points_ranking_answer"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:gravity="center_vertical"
+                        android:text="25.000"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:padding="3dp"
+                        android:src="@drawable/coin" />
+                </LinearLayout>
+            </LinearLayout>
+
+
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.25"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
                 android:background="@drawable/golden_medal"
                 android:gravity="center"
                 android:layout_marginLeft="10dp">
 
                 <TextView
+                    android:id="@+id/tv_level_player"
                     android:layout_width="50dp"
                     android:layout_height="45dp"
                     android:textColor="@color/primary_text"

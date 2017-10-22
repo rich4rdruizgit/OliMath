@@ -68,7 +68,8 @@ public class ResultActivity extends AppCompatActivity {
         appControl = AppControl.getInstance();
         appControl.currentActivity = ResultActivity.class.getSimpleName();
 
-
+        Button btnShare = (Button) findViewById(R.id.btn_result_share);
+        btnShare.setVisibility(View.GONE);
 
         currentUser = appControl.currentUser;
 

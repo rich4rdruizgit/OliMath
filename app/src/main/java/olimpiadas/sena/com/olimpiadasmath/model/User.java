@@ -28,6 +28,7 @@ public class User  extends RealmObject {
     private double experience;
     private int level;
     private String avatar;
+    private String answers;
 
     public User() {
     }
@@ -53,7 +54,7 @@ public class User  extends RealmObject {
         this.position = position;
     }
 
-    public User(String nickname, int score, int position, int coins, int tickets, int level, double experience, String avatar) {
+    public User(String nickname, int score, int position, int coins, int tickets, int level, double experience, String avatar, String answers) {
         this.idUser = UUID.randomUUID().toString();
         this.nickname = nickname;
         this.score = score;
@@ -63,6 +64,7 @@ public class User  extends RealmObject {
         this.level = level;
         this.experience = experience;
         this.avatar = avatar;
+        this.answers = answers;
     }
     public String getIdUser() {
         return idUser;
@@ -137,6 +139,14 @@ public class User  extends RealmObject {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public void setAnswers(String answers) {
+        this.answers = answers;
+    }
+
+    public String getAnswers() {
+        return answers;
     }
 
     public String getPassword() {

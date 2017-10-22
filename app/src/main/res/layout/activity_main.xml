@@ -155,32 +155,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/ranking"
-                android:textColor="@color/primary_text" />
-
-            <Button
-                android:id="@+id/btn_menu_ranking"
-                android:layout_width="@dimen/tamanoiconmenuprincipal"
-                android:layout_height="@dimen/tamanoiconmenuprincipal"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:background="@drawable/rankingblanco"
-                android:elevation="10dp"
-                android:gravity="center" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3"
-            android:background="@drawable/background_transparent_with_stroke"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:text="@string/challenge"
                 android:textColor="@color/primary_text" />
 
@@ -191,6 +165,29 @@
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:background="@drawable/retoblanco"
+                android:elevation="10dp"
+                android:gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:background="@drawable/background_transparent_with_stroke"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/ranking"
+                android:textColor="@color/primary_text" />
+            <Button
+                android:id="@+id/btn_menu_ranking"
+                android:layout_width="@dimen/tamanoiconmenuprincipal"
+                android:layout_height="@dimen/tamanoiconmenuprincipal"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="@drawable/rankingblanco"
                 android:elevation="10dp"
                 android:gravity="center" />
         </LinearLayout>

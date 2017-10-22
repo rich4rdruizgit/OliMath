@@ -76,6 +76,7 @@ public class TimeRankingAdapter extends RecyclerView.Adapter<TimeRankingAdapter.
         holder.txtPosition.setText(user.getPosition()+"");
         holder.txtNickName.setText(user.getNickname()+"");
         holder.txtPoints.setText(user.getScore()+"");
+        holder.txtAnswers.setText(user.getAnswers());
 
         int avatar = context.getResources().getIdentifier(user.getAvatar(),"drawable", context.getPackageName());
 
@@ -128,12 +129,14 @@ public class TimeRankingAdapter extends RecyclerView.Adapter<TimeRankingAdapter.
         protected TextView txtPoints;
         protected ImageView imgAvatarRanking;
         protected LinearLayout layout;
+        protected TextView txtAnswers;
 
         public TimeRankingViewHolder(View itemView) {
             super(itemView);
             txtPosition = (TextView) itemView.findViewById(R.id.txt_position_ranking_time);
             txtNickName = (TextView) itemView.findViewById(R.id.txt_nickname_ranking_time);
             txtPoints = (TextView) itemView.findViewById(R.id.txt_points_ranking_time);
+            txtAnswers = (TextView) itemView.findViewById(R.id.txt_points_ranking_answer);
             imgAvatarRanking = (ImageView) itemView.findViewById(R.id.img_avatar_ranking_time);
             layout = (LinearLayout) itemView.findViewById(R.id.layout_ranking_time);
         }
