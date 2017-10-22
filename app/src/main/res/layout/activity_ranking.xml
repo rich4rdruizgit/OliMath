@@ -26,14 +26,14 @@
         android:layout_marginTop="3dp"
         android:weightSum="1">
 
-        <ImageButton
+        <Button
             android:id="@+id/btn_back_ranking"
-            android:layout_width="1dp"
-            android:layout_height="10dp"
+            android:layout_width="2dp"
+            android:layout_height="18dp"
+            android:layout_weight=".1"
+            android:background="@android:drawable/arrow_down_float"
             android:layout_gravity="center"
-            android:layout_weight=".15"
-            android:rotation="90"
-            android:src="@android:drawable/arrow_down_float" />
+            android:rotation="90" />
 
         <ImageView
             android:layout_width="@dimen/tamanoiconmenuprincipal"

@@ -81,7 +81,8 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
 
         // Create and commit a new fragment transaction that adds the fragment for the back of
         // the card, uses custom animations, and is part of the fragment manager's back stack.
-
+        question = QuestionFragment.newInstance();
+        question.setmListener(ChallengeActivity.this);
 
         if(Build.VERSION.SDK_INT > 4){
             Log.d(TAG,"Sdk int > 23 ");

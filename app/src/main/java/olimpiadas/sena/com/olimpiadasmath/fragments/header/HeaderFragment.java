@@ -34,6 +34,7 @@ public class HeaderFragment extends Fragment {
     private static final String TAG = HeaderFragment.class.toString();
 
 
+
     private String mParam1;
     private String mParam2;
     private String recurso = "drawable";

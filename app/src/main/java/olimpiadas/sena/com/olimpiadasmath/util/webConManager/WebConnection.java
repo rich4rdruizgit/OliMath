@@ -118,6 +118,13 @@ public class WebConnection {
         ExecuteHttpClientGetRequest executeRequest = new ExecuteHttpClientGetRequest();
         executeRequest.execute(url);
     }
+    public void executeAsyncGetRequest(String url, String type){
+
+
+        Log.d(TAG,"Url getRequest " + url);
+        ExecuteHttpClientGetRequest executeRequest = new ExecuteHttpClientGetRequest();
+        executeRequest.execute(url,type);
+    }
 
     public String executeSyncPostRequest(String url, String operation, List<NameValuePair> nameValuePairs){
 
@@ -209,7 +216,9 @@ public class WebConnection {
         protected Boolean doInBackground(Object... params) {
             try {
                 wsResp = httpClientGetRequest((String) params[0]);
-               method = (String) params[0];
+                method = (String) params[1];
+                Log.d(TAG,"Aqui deberia ir ranking = " + method );
+                //currentMethod = (String) params [1];
 
 
             } catch (Exception ex) {

@@ -12,6 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +24,7 @@ import olimpiadas.sena.com.olimpiadasmath.adapter.ranking.RankingAdapter;
 import olimpiadas.sena.com.olimpiadasmath.adapter.ranking.TimeRankingAdapter;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.model.User;
+import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnectionManager;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,7 +34,7 @@ import olimpiadas.sena.com.olimpiadasmath.model.User;
  * Use the {@link TimeRankingFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TimeRankingFragment extends Fragment {
+public class TimeRankingFragment extends Fragment implements WebConnectionManager.WebConnectionManagerListener {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -38,6 +43,8 @@ public class TimeRankingFragment extends Fragment {
 
     private String mParam1;
     private String mParam2;
+
+    WebConnectionManager webConnectionManager;
 
     RecyclerView recyclerView;
     private List<User> users;
@@ -85,8 +92,13 @@ public class TimeRankingFragment extends Fragment {
         }
         linearMyPos.setVisibility(View.VISIBLE);
         llenarUsers();
-        adapter = new TimeRankingAdapter(users,getActivity());
-        recyclerView.setAdapter(adapter);
+
+
+        webConnectionManager = WebConnectionManager.getWebConnectionManager();
+        webConnectionManager.setWebConnectionManagerListener(this);
+        webConnectionManager.mostrarRankings();
+
+        //recyclerView.setAdapter(adapter);
         return view;
     }
 
@@ -121,6 +133,37 @@ public class TimeRankingFragment extends Fragment {
         users.add(new User("Harold","1234",1500,3,49,12,10,2,"marco11"));
         users.add(new User("Rich4rd","1234",1322,4,47,12,10,2,"jhonny"));
         users.add(new User("Jefferson","1234",1300,5,47,12,10,2,"marco"));
+
+    }
+
+    @Override
+    public void webRequestComplete(WebConnectionManager.Response response) throws JSONException {
+
+        //Log.d("ANTES TIO",response.toString());
+        //String orale ="[{\"posicion\":1,\"ide\":1,\"nickname\":\"LUCHO\",\"avatarActivo\":\"1\",\"marcoActivo\":\"1\",\"fondoActivo\":\"1\",\"puntaje\":82,\"numResCorrecta\":8,\"tiempo\":\" 00:42:00\"},{\"posicion\":2,\"ide\":3,\"nickname\":\"CARLOSM\",\"avatarActivo\":\"1\",\"marcoActivo\":\"1\",\"fondoActivo\":\"1\",\"puntaje\":80,\"numResCorrecta\":8,\"tiempo\":\" 01:01:00\"},{\"posicion\":3,\"ide\":5,\"nickname\":\"DANIELA\",\"avatarActivo\":\"1\",\"marcoActivo\":\"1\",\"fondoActivo\":\"1\",\"puntaje\":60,\"numResCorrecta\":6,\"tiempo\":\" 02:00:00\"},{\"posicion\":4,\"ide\":6,\"nickname\":\"JEFERSON\",\"avatarActivo\":\"1\",\"marcoActivo\":\"1\",\"fondoActivo\":\"1\",\"puntaje\":60,\"numResCorrecta\":6,\"tiempo\":\" 02:00:17\"},{\"posicion\":5,\"ide\":2,\"nickname\":\"LUIZ\",\"avatarActivo\":\"1\",\"marcoActivo\":\"1\",\"fondoActivo\":\"1\",\"puntaje\":45,\"numResCorrecta\":5,\"tiempo\":\" 02:04:00\"},{\"posicion\":6,\"ide\":4,\"nickname\":\"CORAL\",\"avatarActivo\":\"1\",\"marcoActivo\":\"1\",\"fondoActivo\":\"1\",\"puntaje\":35,\"numResCorrecta\":3,\"tiempo\":\" 01:02:00\"}]";
+        //Log.d("ANTES TIO",response.getData());
+        try{
+            JSONArray jsonArray = new JSONArray(response.getData());
+
+            List<User> userList = new ArrayList<>();
+            for(int  i = 0 ; i < jsonArray.length(); i++){
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                User user =  new User();
+                user.setNickname(jsonObject.getString("nickname"));
+                user.setScore(Integer.parseInt(jsonObject.getString("puntaje")));
+                user.setPosition(Integer.parseInt(jsonObject.getString("posicion")));
+                user.setAvatar("marco18");
+                userList.add(user);
+            }
+            users = userList;
+            adapter = new TimeRankingAdapter(userList,getActivity());
+            recyclerView.setAdapter(adapter);
+
+
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+
 
     }
 }
