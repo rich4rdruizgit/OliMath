@@ -1,27 +1,29 @@
 package olimpiadas.sena.com.olimpiadasmath.activities.profile;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ClipDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
+import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.adapter.profile.ViewPagerAdapter;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.fragments.profile.LogroFragment;
 import olimpiadas.sena.com.olimpiadasmath.fragments.profile.PerfilFragment;
 import olimpiadas.sena.com.olimpiadasmath.fragments.profile.ProfileResultsFragment;
 import olimpiadas.sena.com.olimpiadasmath.model.Achievements;
-import olimpiadas.sena.com.olimpiadasmath.model.User;
 import olimpiadas.sena.com.olimpiadasmath.util.CircleImage.CropCircleTransformation;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -37,6 +39,7 @@ public class ProfileActivity extends AppCompatActivity implements PerfilFragment
     private ClipDrawable mImageDrawable;
     private String recurso= "drawable";
     List<Achievements> achievementsList;
+    Button btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,8 @@ public class ProfileActivity extends AppCompatActivity implements PerfilFragment
 
         viewPager = (ViewPager) findViewById(R.id.vpPager);
         viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+
+        btnBack = (Button) findViewById(R.id.btn_back_profile);
 
         appControl = AppControl.getInstance();
         appControl.currentActivity = ProfileActivity.class.getSimpleName();
@@ -65,6 +70,14 @@ public class ProfileActivity extends AppCompatActivity implements PerfilFragment
                 .load(avatar)
                 .transform(new CropCircleTransformation())
                 .into(imgProfile);
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goBack = new Intent(ProfileActivity.this, MainActivity.class);
+                startActivity(goBack);
+            }
+        });
 
 
     }
