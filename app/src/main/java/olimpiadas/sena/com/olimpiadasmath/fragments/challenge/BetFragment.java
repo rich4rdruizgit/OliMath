@@ -91,14 +91,22 @@ public class BetFragment extends Fragment {
                 onStartPressed();
             }
         });
-
+        tvBet.setText("2");
 
         seekBar.setMax(appControl.currentCoinsPool);
+        seekBar.setProgress(2);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                appControl.currentBet = progress;
-                tvBet.setText(progress+"");
+                if(progress<2){
+                    tvBet.setText("2");
+                    seekBar.setProgress(2);
+                }else{
+                    appControl.currentBet = progress;
+                    tvBet.setText(progress+"");
+                }
+
+
             }
 
             @Override
@@ -120,6 +128,7 @@ public class BetFragment extends Fragment {
 
     public void onPreviewPressed() {
         if (mListener != null) {
+            appControl.currentCoinsPool -= 2;
             mListener.onBetFragmentListener(PREVIEW);
         }
     }
