@@ -3,6 +3,7 @@ package olimpiadas.sena.com.olimpiadasmath.activities.profile;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ClipDrawable;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -51,6 +52,8 @@ public class ProfileActivity extends AppCompatActivity implements PerfilFragment
         viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
 
         btnBack = (Button) findViewById(R.id.btn_back_profile);
+        appControl = AppControl.getInstance();
+
 
         appControl = AppControl.getInstance();
         appControl.currentActivity = ProfileActivity.class.getSimpleName();
@@ -74,6 +77,8 @@ public class ProfileActivity extends AppCompatActivity implements PerfilFragment
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                appControl.soundButton = MediaPlayer.create(getApplicationContext(),appControl.soundButtonEfect);
+                appControl.soundButton.start();
                 Intent goBack = new Intent(ProfileActivity.this, MainActivity.class);
                 startActivity(goBack);
             }

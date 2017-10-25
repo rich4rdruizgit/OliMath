@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
@@ -35,7 +36,7 @@ public class DialogHelper {
     }
     public static int BUY = 1;
     public static int NO_BUY = 2;
-
+    public AppControl appControl;
     static Dialog mProgressDialog;
 
     public static void showBusyDialog(Context context, String message) {
@@ -63,10 +64,12 @@ public class DialogHelper {
         mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         mProgressDialog.setContentView(R.layout.tip_view);
         mProgressDialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme;
-
+        final AppControl appControl = AppControl.getInstance();
         ((Button) mProgressDialog.getWindow().findViewById(R.id.btn_dialog_continue)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
+                appControl.soundButton.start();
                 Intent intent = new Intent(context.getApplicationContext(), SettingsActivity.class);
                 context.startActivity(intent);
             }
@@ -75,6 +78,8 @@ public class DialogHelper {
         ((Button) mProgressDialog.getWindow().findViewById(R.id.btn_exit_tip)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
+                appControl.soundButton.start();
                 mProgressDialog.dismiss();
             }
         });
@@ -88,11 +93,13 @@ public class DialogHelper {
         mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         mProgressDialog.setContentView(R.layout.copyright_layout);
         mProgressDialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme;
-
+        final AppControl appControl = AppControl.getInstance();
 
         ((Button) mProgressDialog.getWindow().findViewById(R.id.btn_exit_tip)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
+                appControl.soundButton.start();
                 mProgressDialog.dismiss();
             }
         });
@@ -109,8 +116,11 @@ public class DialogHelper {
 
 
         ((Button)mProgressDialog.getWindow().findViewById(R.id.btn_exit_no_coin)).setOnClickListener(new View.OnClickListener() {
+            AppControl appControl = AppControl.getInstance();
             @Override
             public void onClick(View v) {
+                appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
+                appControl.soundButton.start();
                 Intent intent = new Intent(context, MainActivity.class);
                 context.startActivity(intent);
                 ((AppCompatActivity)context).finish();
@@ -144,6 +154,9 @@ public class DialogHelper {
             ((Button) mProgressDialog.getWindow().findViewById(R.id.btn_dialog_continue)).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    AppControl appControl = AppControl.getInstance();
+                    appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
+                    appControl.soundButton.start();
                     mProgressDialog.dismiss();
                     Intent intChallenge = new Intent(context.getApplicationContext(), ChallengeActivity.class);
                     intChallenge.putExtra("type", 2);
@@ -168,6 +181,9 @@ public class DialogHelper {
                 ((Button) mProgressDialog.getWindow().findViewById(R.id.btn_dialog_continue)).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        AppControl appControl = AppControl.getInstance();
+                        appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
+                        appControl.soundButton.start();
                         mProgressDialog.dismiss();
                         Intent intChallenge = new Intent(context.getApplicationContext(), PracticeActivity.class);
                         context.startActivity(intChallenge);
@@ -180,6 +196,9 @@ public class DialogHelper {
         ((Button) mProgressDialog.getWindow().findViewById(R.id.btn_exit_tip)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AppControl appControl = AppControl.getInstance();
+                appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
+                appControl.soundButton.start();
                 mProgressDialog.dismiss();
             }
         });
@@ -199,6 +218,8 @@ public class DialogHelper {
             @Override
             public void onClick(View v) {
                 AppControl appControl = AppControl.getInstance();
+                appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
+                appControl.soundButton.start();
                 appControl.soundBackground.stop();
 
 //                if(appControl.soundBackground.isPlaying()){
@@ -215,7 +236,9 @@ public class DialogHelper {
         ((Button) mProgressDialog.getWindow().findViewById(R.id.btn_exit_tip)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                AppControl appControl = AppControl.getInstance();
+                appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
+                appControl.soundButton.start();
                 mProgressDialog.dismiss();
             }
         });
@@ -236,6 +259,9 @@ public class DialogHelper {
         ((Button) mProgressDialog.getWindow().findViewById(R.id.btn_dialog_continue)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AppControl appControl = AppControl.getInstance();
+                appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
+                appControl.soundButton.start();
                 mProgressDialog.dismiss();
                 ((AppCompatActivity)context).finish();
                 context.startActivity(new Intent(context, MainActivity.class));
@@ -247,6 +273,9 @@ public class DialogHelper {
         ((Button) mProgressDialog.getWindow().findViewById(R.id.btn_exit_tip)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AppControl appControl = AppControl.getInstance();
+                appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
+                appControl.soundButton.start();
                 mProgressDialog.dismiss();
             }
         });
@@ -269,7 +298,9 @@ public class DialogHelper {
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                AppControl appControl = AppControl.getInstance();
+                appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
+                appControl.soundButton.start();
                 dialogHelperListener.dialogEnd(true);
                 mProgressDialog.dismiss();
             }
@@ -277,6 +308,9 @@ public class DialogHelper {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AppControl appControl = AppControl.getInstance();
+                appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
+                appControl.soundButton.start();
                 mProgressDialog.dismiss();
             }
         });
@@ -304,6 +338,9 @@ public class DialogHelper {
         ((Button) mProgressDialog.getWindow().findViewById(R.id.btn_retro_next)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AppControl appControl = AppControl.getInstance();
+                appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
+                appControl.soundButton.start();
                 mProgressDialog.dismiss();
                 listener.closeFeedBackDialog();
             }

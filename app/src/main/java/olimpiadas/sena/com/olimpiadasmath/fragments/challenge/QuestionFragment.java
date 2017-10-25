@@ -3,6 +3,7 @@ package olimpiadas.sena.com.olimpiadasmath.fragments.challenge;
 import android.app.Fragment;
 import android.content.Context;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import android.os.CountDownTimer;
@@ -149,6 +150,8 @@ public class QuestionFragment extends Fragment {
         imgScale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                appControl.soundButton = MediaPlayer.create(view.getContext(),R.raw.puzzlefastwet);
+                appControl.soundButton.start();
                 enableScaling(isScaled);
             }
         });
@@ -189,8 +192,12 @@ public class QuestionFragment extends Fragment {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                appControl.soundButton = MediaPlayer.create(view.getContext(),appControl.soundButtonEfect);
+                appControl.soundButton.start();
                 int selectedId = radioGroup.getCheckedRadioButtonId();
                 Log.d(TAG, "EL selectedId es " + selectedId);
+                //sonido boton
+                ///////////////////////////////////////////////////////////////////////////////////////////////////////////
                 if(selectedId == -1){
                     appControl.answers[appControl.currentQuestion] = -1;
                 }else{

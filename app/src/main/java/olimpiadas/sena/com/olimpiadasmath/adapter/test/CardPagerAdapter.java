@@ -1,6 +1,7 @@
 package olimpiadas.sena.com.olimpiadasmath.adapter.test;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.os.Vibrator;
 import android.support.v4.view.PagerAdapter;
 import android.support.v7.widget.CardView;
@@ -115,9 +116,12 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
         final ImageView imgViewTest = (ImageView) view.findViewById(R.id.contentViewImage);
         imgViewTest.setVisibility(View.GONE);
 
+
         imgScaleView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                appControl.soundButton = MediaPlayer.create(v.getContext(),appControl.soundButtonEfect);
+                appControl.soundButton.start();
                 imageScaled = !imageScaled;
                 if(imageScaled){
                     Log.d(TAG,"img_test_image pressed");
@@ -154,7 +158,8 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                appControl.soundButton = MediaPlayer.create(v.getContext(),appControl.soundButtonEfect);
+                appControl.soundButton.start();
                 int selectedId = radioGroup.getCheckedRadioButtonId();
 
                 if(selectedId == -1){

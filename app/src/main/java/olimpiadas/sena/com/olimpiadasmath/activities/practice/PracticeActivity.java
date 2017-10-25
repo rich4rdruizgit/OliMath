@@ -72,6 +72,8 @@ public class PracticeActivity extends AppCompatActivity implements CardPagerAdap
         appControl.onPractice =  true;
         //init true
         initTest = true;
+        appControl = AppControl.getInstance();
+
 
         //Fragment Header
         fragHeader = findViewById(R.id.fragment_test_header);
@@ -116,7 +118,7 @@ public class PracticeActivity extends AppCompatActivity implements CardPagerAdap
 
         totalPage=  mCardAdapter.getCount();
         tvTetTipNumQuet.setText(countPage+"/"+mCardAdapter.getCount());
-        btnBackChallenge = (Button) findViewById(R.id.btn_test_back);
+        btnBackChallenge = (Button) findViewById(R.id.btn_test_back);//ponerle efecto de sonido
 
 
     }

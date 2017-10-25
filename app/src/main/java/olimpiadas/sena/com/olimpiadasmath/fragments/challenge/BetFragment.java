@@ -3,6 +3,7 @@ package olimpiadas.sena.com.olimpiadasmath.fragments.challenge;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -74,9 +75,11 @@ public class BetFragment extends Fragment {
         tvPoolCoins.setText("x " + appControl.currentCoinsPool);
 
         previewQuestion = (Button) view.findViewById(R.id.btn_bet_preview);
+        appControl.soundButton = MediaPlayer.create(view.getContext(),appControl.soundButtonEfect);
         previewQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                appControl.soundButton.start();
                 onPreviewPressed();
             }
         });
@@ -88,6 +91,7 @@ public class BetFragment extends Fragment {
         startQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                appControl.soundButton.start();
                 onStartPressed();
             }
         });
