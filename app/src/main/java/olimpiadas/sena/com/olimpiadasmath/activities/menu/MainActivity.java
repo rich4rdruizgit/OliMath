@@ -61,8 +61,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         appControl.soundBackground = MediaPlayer.create(getApplicationContext(),R.raw.theartloop);
 
         if(appControl.isBackgroundPlaying){
-            appControl.soundBackground.start();
-            appControl.soundBackground.setLooping(true);
+
+            if(!appControl.soundBackground.isPlaying()){
+                appControl.soundBackground.start();
+                appControl.soundBackground.setLooping(true);
+            }
+
         }
 
         int id = context.getResources().getIdentifier("fondo_b.png", "drawable", context.getPackageName());
@@ -131,7 +135,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void run() {
 
-                        appControl.soundButton.start();
+                        if(appControl.isBackgroundPlaying)
+                            appControl.soundButton.start();
                         DialogHelper.showChallengePracticeDialog(MainActivity.this, 1);
                     }
                 });
@@ -141,19 +146,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void run() {
                         DialogHelper.showChallengePracticeDialog(MainActivity.this, 2);
-                        appControl.soundButton.start();
+                        if(appControl.isBackgroundPlaying)
+                            appControl.soundButton.start();
                     }
                 });
                 break;
             case R.id.btn_menu_shop:
                 Intent intentShop = new Intent(MainActivity.this, ShopActivity.class);
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 startActivity(intentShop);
                 break;
             case R.id.btn_menu_ranking:
                 appControl.currentTime = 0;
                 Intent intentRanking = new Intent(MainActivity.this, RankingActivity.class);
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 startActivity(intentRanking);
                 break;
 //            case R.id.btn_settings:
@@ -196,11 +204,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        //appControl.soundBackground.stop();
+        if(appControl.soundBackground.isPlaying())
+            appControl.soundBackground.stop();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        if(appControl.soundBackground.isPlaying())
+            appControl.soundBackground.stop();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        appControl.soundBackground.start();
     }
 }
