@@ -48,17 +48,18 @@ public class SettingsActivity extends AppCompatActivity {
         //txt_efects = (TextView) findViewById(R.id.txt_efects);
         //txt_lenguage = (TextView) findViewById(R.id.txt_lenguage);
         //txt_music = (TextView) findViewById(R.id.txt_music);
-
+        appControl.soundButton = MediaPlayer.create(getApplicationContext(),appControl.soundButtonEfect);
         btn_credits.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(SettingsActivity.this, "Presionó botón Creditos", Toast.LENGTH_SHORT).show();
+                appControl.soundButton.start();
                 DialogHelper.showCopyRightDialog(v.getContext());
             }
         });
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                appControl.soundButton.start();
                 Intent goBack = new Intent(SettingsActivity.this, MainActivity.class);
                 startActivity(goBack);
             }
@@ -84,8 +85,9 @@ public class SettingsActivity extends AppCompatActivity {
                 if(isChecked){
 
                     if(!appControl.soundBackground.isPlaying()){
-                        appControl.soundBackground = MediaPlayer.create(getApplicationContext(),R.raw.soundbackground);
-                        appControl.soundBackground.start();
+                        appControl.soundBackground = MediaPlayer.create(getApplicationContext(),R.raw.theartloop);
+                        //appControl.soundBackground.start();
+                        appControl.soundBackground.setLooping(true);
                         //swtMusic.setChecked(true);
                         realm = Realm.getDefaultInstance();
                         realm.executeTransactionAsync(new Realm.Transaction() {

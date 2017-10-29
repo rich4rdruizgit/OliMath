@@ -3,6 +3,7 @@ package olimpiadas.sena.com.olimpiadasmath.activities.shop;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -34,14 +35,16 @@ public class ShopActivity extends AppCompatActivity implements AvatarShopFragmen
 
     ViewPager viewPager;
     Button btnBack;
+    AppControl appControl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
         getSupportActionBar().hide();
+        appControl = AppControl.getInstance();
 
-        AppControl.getInstance().currentActivity = ShopActivity.class.getSimpleName();
+        appControl.currentActivity = ShopActivity.class.getSimpleName();
 
         headerFragment = (HeaderFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_shop_header);
 
@@ -49,9 +52,11 @@ public class ShopActivity extends AppCompatActivity implements AvatarShopFragmen
         viewPager.setAdapter(new ViewPagerShopAdapter(getSupportFragmentManager()));
 
         btnBack = (Button) findViewById(R.id.btn_back_shop);
+        appControl.soundButton = MediaPlayer.create(getApplicationContext(),appControl.soundButtonEfect);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                appControl.soundButton.start();
                 Intent goBack = new Intent(ShopActivity.this, MainActivity.class);
                 startActivity(goBack);
             }

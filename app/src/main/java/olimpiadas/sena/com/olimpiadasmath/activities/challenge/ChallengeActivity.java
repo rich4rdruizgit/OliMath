@@ -45,6 +45,7 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
         setContentView(R.layout.activity_challenge);
         getSupportActionBar().hide();
         appControl.currentCoinsPool = 20;
+        appControl.currentTime = 0;
         appControl.currentActivity = ChallengeActivity.class.getSimpleName();
         bet = BetFragment.newInstance();
         bet.setmListener(this);
@@ -68,7 +69,7 @@ public class ChallengeActivity extends AppCompatActivity implements BetFragment.
             getFragmentManager().popBackStack();
             bet.enablePreview(false);
             mShowingBack = false;
-            if(appControl.currentCoinsPool == 0){
+            if(appControl.currentCoinsPool < 2){
                 DialogHelper.showNoCoins(ChallengeActivity.this);
 
             }

@@ -2,11 +2,14 @@ package olimpiadas.sena.com.olimpiadasmath.activities.ranking;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -23,8 +26,9 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class RankingActivity extends AppCompatActivity{
 
     ViewPager viewPager;
-    ImageButton btnBack;
+    Button btnBack;
     WebConnectionManager webConnectionManager;
+    AppControl appControl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,14 +39,19 @@ public class RankingActivity extends AppCompatActivity{
         viewPager = (ViewPager) findViewById(R.id.vpPagerRanking);
         viewPager.setAdapter(new ViewPagerRankingAdapter(getSupportFragmentManager()));
 
-        btnBack = (ImageButton) findViewById(R.id.btn_back_ranking);
+        appControl = AppControl.getInstance();
+
+        btnBack = (Button) findViewById(R.id.btn_back_ranking);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                appControl.soundButton = MediaPlayer.create(getApplicationContext(),appControl.soundButtonEfect);
+                appControl.soundButton.start();
                 Intent goBack = new Intent(RankingActivity.this, MainActivity.class);
                 startActivity(goBack);
             }
         });
+
     }
 
     @Override

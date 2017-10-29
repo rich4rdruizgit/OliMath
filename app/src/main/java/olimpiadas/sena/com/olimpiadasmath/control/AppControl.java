@@ -42,7 +42,10 @@ public class AppControl {
     public int baseWinCoins = 10;
 
     //sonidos efectos app
-    public MediaPlayer soundBackground;
+    public MediaPlayer soundBackground,soundPositive,soundNegative,soundButton;
+    public int soundButtonEfect = R.raw.puzzlefastwet;
+    public int soundButtonPositive = R.raw.efectposit;
+    public int soundButtonNegative = R.raw.efectneg;
 
 
     //ranking
@@ -75,7 +78,7 @@ public class AppControl {
             public void execute(Realm realm) {
 
                 if(realm.where(User.class).findAll().isEmpty()){
-                    User user = new User("Juanito",305,30,150,8,1,30.0,"jhonny");
+                    User user = new User("Juanito",305,30,150,8,1,30.0,"jhonny","");
                     realm.copyToRealm(user);
                     currentUser = user;
                 }else{

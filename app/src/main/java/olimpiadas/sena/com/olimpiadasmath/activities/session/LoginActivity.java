@@ -2,6 +2,7 @@ package olimpiadas.sena.com.olimpiadasmath.activities.session;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,6 +28,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     Button btnLogin,btnLosePass;
     EditText tvUser,tvPwd;
     WebConnectionManager webConnectionManager;
+    AppControl appControl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnLosePass = (Button) findViewById(R.id.btn_lose_pass);
         tvUser = (EditText) findViewById(R.id.etv_login_user);
         tvPwd = (EditText) findViewById(R.id.etv_login_pass);
+        appControl = AppControl.getInstance();
+
 
         btnLogin.setOnClickListener(this);
         btnLosePass.setOnClickListener(this);
@@ -52,8 +56,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
+        appControl.soundButton = MediaPlayer.create(getApplicationContext(),appControl.soundButtonEfect);
         switch (v.getId()){
             case R.id.btn_login:
+                appControl.soundButton.start();
                 if(tvUser.getText().length() == 0){
                     tvUser.setError(getString(R.string.fiel_required));
                     return;
@@ -72,6 +78,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 webConnectionManager.login(tvUser.getText().toString(), tvPwd.getText().toString());
                 break;
             case R.id.btn_lose_pass:
+                appControl.soundButton.start();
                 break;
         }
     }

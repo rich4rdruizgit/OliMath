@@ -3,6 +3,7 @@ package olimpiadas.sena.com.olimpiadasmath.fragments.header;
 
 import android.content.Intent;
 import android.graphics.drawable.ClipDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -96,6 +97,8 @@ public class HeaderFragment extends Fragment {
         btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                appControl.soundButton = MediaPlayer.create(v.getContext(),appControl.soundButtonEfect);
+                appControl.soundButton.start();
                 Log.d("Header", SettingsActivity.class.getSimpleName());
                 if (!appControl.currentActivity.equals(SettingsActivity.class.getSimpleName())) {
                     Intent intentSettings = new Intent(getActivity(), SettingsActivity.class);
@@ -113,6 +116,8 @@ public class HeaderFragment extends Fragment {
         imgHeaderProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                appControl.soundButton = MediaPlayer.create(v.getContext(),appControl.soundButtonEfect);
+                appControl.soundButton.start();
                 Intent intent = new Intent(getActivity(), ProfileActivity.class);
                 startActivity(intent);
             }

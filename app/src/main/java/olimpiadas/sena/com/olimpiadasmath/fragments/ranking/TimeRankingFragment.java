@@ -82,6 +82,7 @@ public class TimeRankingFragment extends Fragment implements WebConnectionManage
         User user = AppControl.getInstance().currentUser;
         View view = inflater.inflate(R.layout.fragment_time_ranking, container, false);
         Log.d(TAG,"OnCreateView created");
+
         linearMyPos = (LinearLayout) view.findViewById(R.id.linear_myposition);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_ranking_time);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
@@ -90,7 +91,8 @@ public class TimeRankingFragment extends Fragment implements WebConnectionManage
         if (user.getPosition() < 20) {
             linearMyPos.setVisibility(View.GONE);
         }
-        linearMyPos.setVisibility(View.VISIBLE);
+        // Desactivado mientras consumimos nuestra posicion
+        linearMyPos.setVisibility(View.GONE);
         llenarUsers();
 
 
@@ -153,6 +155,7 @@ public class TimeRankingFragment extends Fragment implements WebConnectionManage
                 user.setScore(Integer.parseInt(jsonObject.getString("puntaje")));
                 user.setPosition(Integer.parseInt(jsonObject.getString("posicion")));
                 user.setAvatar("marco18");
+                user.setAnswers(jsonObject.getString(("numResCorrecta")));
                 userList.add(user);
             }
             users = userList;
