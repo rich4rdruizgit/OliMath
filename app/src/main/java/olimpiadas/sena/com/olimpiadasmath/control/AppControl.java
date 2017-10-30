@@ -42,7 +42,10 @@ public class AppControl {
     public int baseWinCoins = 10;
 
     //sonidos efectos app
-    public MediaPlayer soundBackground;
+    public MediaPlayer soundBackground,soundPositive,soundNegative,soundButton;
+    public int soundButtonEfect = R.raw.puzzlefastwet;
+    public int soundButtonPositive = R.raw.efectposit;
+    public int soundButtonNegative = R.raw.efectneg;
 
 
     //ranking

@@ -3,6 +3,7 @@ package olimpiadas.sena.com.olimpiadasmath.activities.test;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.support.v4.app.Fragment;
@@ -199,8 +200,10 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
+        appControl.soundButton = MediaPlayer.create(getApplicationContext(),appControl.soundButtonEfect);
         switch (view.getId()){
             case R.id.img_test_tip_einstein:
+                appControl.soundButton.start();
                 DialogHelper.showTipDialog(view.getContext());
                 break;
         }

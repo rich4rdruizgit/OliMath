@@ -3,6 +3,7 @@ package olimpiadas.sena.com.olimpiadasmath.activities.result;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ClipDrawable;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -66,6 +67,9 @@ public class ResultActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         appControl = AppControl.getInstance();
+
+
+        appControl = AppControl.getInstance();
         appControl.currentActivity = ResultActivity.class.getSimpleName();
 
         Button btnShare = (Button) findViewById(R.id.btn_result_share);
@@ -91,6 +95,8 @@ public class ResultActivity extends AppCompatActivity {
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                appControl.soundButton = MediaPlayer.create(getApplicationContext(),appControl.soundButtonEfect);
+                appControl.soundButton.start();
                 startActivity(new Intent(ResultActivity.this, MainActivity.class));
                 finish();
             }
