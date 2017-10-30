@@ -16,6 +16,7 @@ import android.widget.TextView;
 import io.realm.Realm;
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
+import olimpiadas.sena.com.olimpiadasmath.activities.session.LoginActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.model.Configuration;
 import olimpiadas.sena.com.olimpiadasmath.util.DialogHelper;
@@ -24,7 +25,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class SettingsActivity extends AppCompatActivity {
 
     private static final String TAG = "SettingsActivity";
-    Button btn_credits,btn_help,btnBack;
+    Button btn_credits,btn_help,btnBack, btnLogout;
     Spinner spn_lenguage;
     TextView txt_lenguage,txt_music,txt_efects;
     Switch swtMusic;
@@ -43,6 +44,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         //btn_help = (Button) findViewById(R.id.btn_help);
         btn_credits = (Button) findViewById(R.id.btn_credits);
+        btnLogout = (Button) findViewById(R.id.btn_logout);
         swtMusic = (Switch) findViewById(R.id.swtMusic);
         btnBack = (Button) findViewById(R.id.btn_back_settings);
         //txt_efects = (TextView) findViewById(R.id.txt_efects);
@@ -64,6 +66,16 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                appControl.isLogged = false;
+                appControl = null;
+                Intent logout = new Intent(SettingsActivity.this, LoginActivity.class);
+                startActivity(logout);
+                finish();
+            }
+        });
         /*btn_help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

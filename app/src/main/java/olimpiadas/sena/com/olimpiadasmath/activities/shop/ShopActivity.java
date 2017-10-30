@@ -27,9 +27,6 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class ShopActivity extends AppCompatActivity implements AvatarShopFragment.OnFragmentInteractionListener,
         ItemShopFragment.OnFragmentInteractionListener{
 
-    RecyclerView recyclerViewShop;
-    ProductAdapter adapter;
-    List<Product> list;
     public HeaderFragment headerFragment;
 
     ViewPager viewPager;

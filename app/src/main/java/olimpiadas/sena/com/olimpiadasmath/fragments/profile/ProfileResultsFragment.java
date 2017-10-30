@@ -85,6 +85,7 @@ public class ProfileResultsFragment extends Fragment {
         recyclerView.setLayoutManager(llm);
 
         recyclerView.setAdapter(resultAdapter);
+
         llenarUsers();
         inicializarAdaptador();
 
