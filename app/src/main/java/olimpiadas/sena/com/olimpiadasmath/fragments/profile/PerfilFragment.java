@@ -96,14 +96,6 @@ public class PerfilFragment extends Fragment {
         mImageDrawable = (ClipDrawable) imgExp.getDrawable();
         mImageDrawable.setLevel((int)appControl.currentUser.getExperience() * 100);
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent goBack = new Intent(getActivity(), MainActivity.class);
-                startActivity(goBack);
-            }
-        });
-
         return view;
     }
 
