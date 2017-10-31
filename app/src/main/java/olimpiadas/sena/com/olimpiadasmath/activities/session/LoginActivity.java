@@ -59,7 +59,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         appControl.soundButton = MediaPlayer.create(getApplicationContext(),appControl.soundButtonEfect);
         switch (v.getId()){
             case R.id.btn_login:
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 if(tvUser.getText().length() == 0){
                     tvUser.setError(getString(R.string.fiel_required));
                     return;
