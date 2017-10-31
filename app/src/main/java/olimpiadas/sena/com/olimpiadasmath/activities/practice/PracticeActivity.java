@@ -139,7 +139,7 @@ public class PracticeActivity extends AppCompatActivity implements CardPagerAdap
 
     @Override
     public void finished() {
-        appControl.currentTime = (SystemClock.elapsedRealtime() -  chronometer.getBase())/1000;
+        appControl.currentTime = ( SystemClock.elapsedRealtime() -  chronometer.getBase())/1000;
         startActivity(new Intent(this, ResultActivity.class));
     }
 
