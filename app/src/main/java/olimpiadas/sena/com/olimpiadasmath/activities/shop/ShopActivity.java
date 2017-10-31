@@ -56,7 +56,8 @@ public class ShopActivity extends AppCompatActivity implements AvatarShopFragmen
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 Intent goBack = new Intent(ShopActivity.this, MainActivity.class);
                 startActivity(goBack);
             }

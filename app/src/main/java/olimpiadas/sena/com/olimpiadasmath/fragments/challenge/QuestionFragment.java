@@ -151,7 +151,8 @@ public class QuestionFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 appControl.soundButton = MediaPlayer.create(view.getContext(),R.raw.puzzlefastwet);
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 enableScaling(isScaled);
             }
         });
@@ -193,7 +194,8 @@ public class QuestionFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 appControl.soundButton = MediaPlayer.create(view.getContext(),appControl.soundButtonEfect);
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 int selectedId = radioGroup.getCheckedRadioButtonId();
                 Log.d(TAG, "EL selectedId es " + selectedId);
                 //sonido boton

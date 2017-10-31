@@ -14,6 +14,7 @@ import android.widget.Button;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.test.Communication;
+import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +25,7 @@ public class BetFragment extends Fragment implements View.OnClickListener {
     Communication communication;
     Button btnBetAcept;
     int bet =0;
+    AppControl appControl = AppControl.getInstance();
     public BetFragment() {
         // Required empty public constructor
     }
@@ -44,6 +46,8 @@ public class BetFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_bet_acept:
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 bet = 1;
                 communication.sendBet(bet);
                 break;

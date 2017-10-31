@@ -253,9 +253,13 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.img_test_scale:
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 if(communicationTest!=null){communicationTest.changeScale();}
                 break;
             case R.id.img_test_image:
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 Log.d(TAG,"img_test_image pressed");
 
                 break;
