@@ -56,12 +56,14 @@ public class LibraryActivity extends AppCompatActivity implements View.OnClickLi
         appControl.soundButton = MediaPlayer.create(getApplicationContext(),appControl.soundButtonEfect);
         switch (v.getId()){
             case R.id.btn_back_tutor:
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 Intent intentBack = new Intent(LibraryActivity.this, MainActivity.class);
                 startActivity(intentBack);
                 break;
             case R.id.btn_equations_library:
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 Intent intentGoEquetions = new Intent(LibraryActivity.this, EquationsActivity.class);
                 startActivity(intentGoEquetions);
 

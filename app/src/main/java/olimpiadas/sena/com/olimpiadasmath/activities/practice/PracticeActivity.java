@@ -2,9 +2,8 @@ package olimpiadas.sena.com.olimpiadasmath.activities.practice;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.CountDownTimer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -19,7 +18,6 @@ import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.result.ResultActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.test.CardItem;
 import olimpiadas.sena.com.olimpiadasmath.activities.test.ShadowTransformer;
-import olimpiadas.sena.com.olimpiadasmath.activities.test.TestActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.test.ViewPagerPersonalizado;
 import olimpiadas.sena.com.olimpiadasmath.adapter.test.CardFragmentPagerAdapter;
 import olimpiadas.sena.com.olimpiadasmath.adapter.test.CardPagerAdapter;
@@ -140,6 +138,7 @@ public class PracticeActivity extends AppCompatActivity implements CardPagerAdap
 
     @Override
     public void finished() {
+        appControl.currentTime = chronometer.getDrawingTime();
         startActivity(new Intent(this, ResultActivity.class));
     }
 

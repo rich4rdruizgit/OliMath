@@ -52,14 +52,16 @@ public class SettingsActivity extends AppCompatActivity {
         btn_credits.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 DialogHelper.showCopyRightDialog(v.getContext());
             }
         });
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 Intent goBack = new Intent(SettingsActivity.this, MainActivity.class);
                 startActivity(goBack);
             }
@@ -86,8 +88,9 @@ public class SettingsActivity extends AppCompatActivity {
 
                     if(!appControl.soundBackground.isPlaying()){
                         appControl.soundBackground = MediaPlayer.create(getApplicationContext(),R.raw.theartloop);
-                        //appControl.soundBackground.start();
+                        appControl.soundBackground.start();
                         appControl.soundBackground.setLooping(true);
+                        appControl.isBackgroundPlaying = true;
                         //swtMusic.setChecked(true);
                         realm = Realm.getDefaultInstance();
                         realm.executeTransactionAsync(new Realm.Transaction() {
@@ -102,6 +105,7 @@ public class SettingsActivity extends AppCompatActivity {
                         }, new Realm.Transaction.OnError() {
                             @Override
                             public void onError(Throwable error) {
+                                error.printStackTrace();
                                 Log.d(TAG,"error al guardar");
                             }
                         });
@@ -111,6 +115,7 @@ public class SettingsActivity extends AppCompatActivity {
                     if(appControl.soundBackground.isPlaying()){
                         //MainActivity.sound.start();
                         appControl.soundBackground.stop();
+                        appControl.isBackgroundPlaying = false;
                         realm = Realm.getDefaultInstance();
                         realm.executeTransactionAsync(new Realm.Transaction() {
                             @Override
@@ -123,6 +128,8 @@ public class SettingsActivity extends AppCompatActivity {
                         },new Realm.Transaction.OnError() {
                             @Override
                             public void onError(Throwable error) {
+                                error.printStackTrace();
+                                Log.d(TAG,"error al guardar");
                                 Log.d(TAG,"error al guardar");
                             }
                         });
@@ -136,6 +143,12 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this,MainActivity.class));
+        finish();
     }
 
 }

@@ -98,7 +98,8 @@ public class HeaderFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 appControl.soundButton = MediaPlayer.create(v.getContext(),appControl.soundButtonEfect);
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 Log.d("Header", SettingsActivity.class.getSimpleName());
                 if (!appControl.currentActivity.equals(SettingsActivity.class.getSimpleName())) {
                     Intent intentSettings = new Intent(getActivity(), SettingsActivity.class);
@@ -117,7 +118,8 @@ public class HeaderFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 appControl.soundButton = MediaPlayer.create(v.getContext(),appControl.soundButtonEfect);
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 Intent intent = new Intent(getActivity(), ProfileActivity.class);
                 startActivity(intent);
             }
