@@ -78,7 +78,8 @@ public class ProfileActivity extends AppCompatActivity implements PerfilFragment
             @Override
             public void onClick(View v) {
                 appControl.soundButton = MediaPlayer.create(getApplicationContext(),appControl.soundButtonEfect);
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 Intent goBack = new Intent(ProfileActivity.this, MainActivity.class);
                 startActivity(goBack);
             }

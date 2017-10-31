@@ -46,7 +46,8 @@ public class RankingActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 appControl.soundButton = MediaPlayer.create(getApplicationContext(),appControl.soundButtonEfect);
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 Intent goBack = new Intent(RankingActivity.this, MainActivity.class);
                 startActivity(goBack);
             }
