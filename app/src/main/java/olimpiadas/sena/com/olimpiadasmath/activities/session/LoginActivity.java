@@ -2,6 +2,9 @@ package olimpiadas.sena.com.olimpiadasmath.activities.session;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.wifi.WifiManager;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +20,7 @@ import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.model.Configuration;
+import olimpiadas.sena.com.olimpiadasmath.util.DialogHelper;
 import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnection;
 import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnectionManager;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -28,6 +32,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     Button btnLogin,btnLosePass;
     EditText tvUser,tvPwd;
     WebConnectionManager webConnectionManager;
+    boolean stateNet = false;
     AppControl appControl;
 
     @Override
@@ -37,6 +42,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         AppControl.getInstance().currentActivity = LoginActivity.class.getSimpleName();
 
+        WifiManager wifiManager = (WifiManager) this.getSystemService(Context.WIFI_SERVICE);
+
+        if(!wifiManager.isWifiEnabled()) {
+            // Mostrar un dialog
+            DialogHelper.showWifiState(LoginActivity.this);
+        }
 
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnLosePass = (Button) findViewById(R.id.btn_lose_pass);
@@ -70,13 +81,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     tvPwd.setError(getString(R.string.fiel_required));
                     return;
                 }
-                /*if(!tvUser.getText().toString().equals("user") || !tvPwd.getText().toString().equals("123")){
-                    tvUser.setError(getString(R.string.user_not_found));
-                    return;
-                }*/
                 webConnectionManager = WebConnectionManager.getWebConnectionManager();
                 webConnectionManager.setWebConnectionManagerListener(this);
-                webConnectionManager.login(tvUser.getText().toString(), tvPwd.getText().toString());
+                stateNet = verificarConexion(this);
+                Log.d("ESTADO NET", stateNet+"");
+                if(stateNet){
+                    webConnectionManager.login(tvUser.getText().toString(), tvPwd.getText().toString());
+                }else {
+                    Toast.makeText(this, "Debes estar conectado a Intenet para iniciar sesión", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.btn_lose_pass:
                 appControl.soundButton.start();
@@ -91,7 +104,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void webRequestComplete(WebConnectionManager.Response response) {
-        //TODO : configurar la sesion local con realm
+
         Log.d("RESPONSE OBJECT", response.toString());
         if( (response.getStatus().equals(WebConnectionManager.Response.SUCCESS))&&
                 (response.getResult().equals(WebConnectionManager.Response.LOGGED))){
@@ -111,5 +124,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }else{
             Toast.makeText(this, "Paila", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public static boolean verificarConexion(Context context) {
+        boolean bConectado = false;
+        ConnectivityManager connec = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo[] redes = connec.getAllNetworkInfo();
+        for (int i = 0; i < 2; i++) {
+            if (redes[i].getState() == NetworkInfo.State.CONNECTED) {
+                bConectado = true;
+            }
+        }
+        return bConectado;
     }
 }

@@ -28,8 +28,8 @@ import olimpiadas.sena.com.olimpiadasmath.util.CircleImage.CropCircleTransformat
  * create an instance of this fragment.
  */
 public class HeaderFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private static final String TAG = HeaderFragment.class.toString();
@@ -43,7 +43,7 @@ public class HeaderFragment extends Fragment {
     ImageView imgHeaderProfile, imgExp;
     private ClipDrawable mImageDrawable;
 
-    TextView tvCoins, tvExp, tvTickets, tvName;
+    TextView tvCoins, tvExp, tvLvl, tvName;
     ImageButton btnSettings;
 
     AppControl appControl;
@@ -83,9 +83,11 @@ public class HeaderFragment extends Fragment {
         tvExp = (TextView) view.findViewById(R.id.tv_header_exp);
         btnSettings = (ImageButton) view.findViewById(R.id.btn_settings_header);
 
+        tvLvl = (TextView) view.findViewById(R.id.txt_frag_header_lvl);
+
         mImageDrawable = (ClipDrawable) imgExp.getDrawable();
         mImageDrawable.setLevel((int) appControl.currentUser.getExperience() * 100);
-
+        tvLvl.setText(appControl.currentUser.getLevel()+"");
         tvName.setText(appControl.currentUser.getNickname());
         tvCoins.setText(" x " + appControl.currentUser.getCoins());
         tvExp.setText(" x " + ((int) appControl.currentUser.getExperience()));
