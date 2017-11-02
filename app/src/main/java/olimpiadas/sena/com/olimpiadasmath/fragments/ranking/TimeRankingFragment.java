@@ -113,7 +113,6 @@ public class TimeRankingFragment extends Fragment implements WebConnectionManage
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
     }
 
     @Override
