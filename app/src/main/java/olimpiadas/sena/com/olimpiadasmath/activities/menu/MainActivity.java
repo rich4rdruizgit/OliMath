@@ -211,13 +211,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onPause() {
         super.onPause();
-        if(appControl.soundBackground.isPlaying())
-            appControl.soundBackground.stop();
+        //if(appControl.soundBackground.isPlaying())
+            //appControl.soundBackground.stop();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        appControl.soundBackground.start();
+        if(appControl.soundBackground.isPlaying())
+            appControl.soundBackground.stop();
     }
 }

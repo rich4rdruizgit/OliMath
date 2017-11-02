@@ -96,7 +96,8 @@ public class ResultActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 appControl.soundButton = MediaPlayer.create(getApplicationContext(),appControl.soundButtonEfect);
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 startActivity(new Intent(ResultActivity.this, MainActivity.class));
                 finish();
             }

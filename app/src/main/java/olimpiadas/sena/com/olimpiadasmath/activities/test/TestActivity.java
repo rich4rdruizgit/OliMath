@@ -203,7 +203,8 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         appControl.soundButton = MediaPlayer.create(getApplicationContext(),appControl.soundButtonEfect);
         switch (view.getId()){
             case R.id.img_test_tip_einstein:
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 DialogHelper.showTipDialog(view.getContext());
                 break;
         }

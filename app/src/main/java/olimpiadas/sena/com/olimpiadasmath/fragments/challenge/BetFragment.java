@@ -91,7 +91,8 @@ public class BetFragment extends Fragment {
         startQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 onStartPressed();
             }
         });
