@@ -50,13 +50,13 @@
     <string name="time_challenge">Tiempo:</string>
     <string name="coins_challenge">Monedas:</string>
     <string name="btn_continue">CONTINUAR</string>
-    <string name="text_dialog_info_practice">Vas a ingresar a la parcatica, presiona continuar para iniciar</string>
-    <string name="text_dialog_info_challenge">Si aceptas el Challenge, gastaras 20 Monedas</string>
+    <string name="text_dialog_info_practice">Vas a ingresar a la practica, presiona continuar para iniciar</string>
+    <string name="text_dialog_info_challenge">Si aceptas el Challenge, apostaras 20 Monedas \n¡Aunque podras ganar mucho mas de lo apostado! </string>
     <string name="title_dialog_challenge">Hola, ¿Quieres probar tus habilidades?</string>
     <string name="title_dialog_practice">Hola, que bueno verte por aquí!</string>
     <string name="whitout_coins">Te quedaste sin monedas!</string>
     <string name="begin_again">Vuelve a comenzar!!!</string>
-    <string name="text_dialog_exit_challenge" >Seguro que quieres terminar el reto? \nPerderas los créditos que pagaste para ingresar y se contará como perdido</string>
+    <string name="text_dialog_exit_challenge" >¿Seguro que quieres terminar el reto? \nPerderas los créditos que pagaste para ingresar y se contará como perdido</string>
 
     <string-array name="lenguages">
         <item>Español</item>
