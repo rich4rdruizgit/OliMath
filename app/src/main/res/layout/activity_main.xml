@@ -26,30 +26,7 @@
         android:layout_weight="0.5"
         android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.2"
-            android:orientation="vertical"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="10dp">
 
-           <!-- <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/store"
-                android:textColor="@color/primary_text" /> -->
-
-            <Button
-                android:id="@+id/btn_menu_shop"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:background="@drawable/tiendablanco"
-                android:elevation="10dp"
-                android:gravity="center" />
-        </LinearLayout>
 
         <pl.droidsonroids.gif.GifImageView
             android:id="@+id/img_gif_menu"
@@ -118,12 +95,13 @@
         android:gravity="center"
         android:orientation="horizontal">
 
+
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_weight="0.3"
-            android:background="@drawable/background_transparent_with_stroke"
+            android:layout_weight="0.25"
             android:orientation="vertical">
 
             <TextView
@@ -147,8 +125,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.3"
-            android:background="@drawable/background_transparent_with_stroke"
+            android:layout_weight="0.25"
             android:orientation="vertical">
 
             <TextView
@@ -169,11 +146,11 @@
                 android:gravity="center" />
         </LinearLayout>
 
+            <!--android:background="@drawable/background_transparent_with_stroke"-->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.3"
-            android:background="@drawable/background_transparent_with_stroke"
+            android:layout_weight="0.25"
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
@@ -188,6 +165,30 @@
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:background="@drawable/rankingblanco"
+                android:elevation="10dp"
+                android:gravity="center" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="0.25"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/store"
+                android:textColor="@color/primary_text" />
+
+            <Button
+                android:id="@+id/btn_menu_shop"
+                android:layout_width="@dimen/tamanoiconmenuprincipal"
+                android:layout_height="@dimen/tamanoiconmenuprincipal"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="@drawable/tiendablanco"
                 android:elevation="10dp"
                 android:gravity="center" />
         </LinearLayout>
