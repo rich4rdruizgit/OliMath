@@ -132,6 +132,7 @@
                         android:layout_margin="5dp">
 
                         <TextView
+                            android:id="@+id/txt_frag_header_lvl"
                             android:layout_width="50dp"
                             android:layout_height="45dp"
                             android:textColor="@color/primary_text"

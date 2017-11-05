@@ -260,11 +260,11 @@ public class AppControl {
 
                 if(realm.where(Product.class).findAll().isEmpty()){
 
-                    Product pdt1 = new Product(R.drawable.marco18,"Dragon\nblanco",80,"10",Product.FOR_BUY,"marco18",1);
-                    Product pdt4 = new Product(R.drawable.marco8,"Dragon\nverde",100,"10",Product.FOR_BUY,"marco8",1);
-                    Product pdt2 = new Product(R.drawable.marco,"Dragon\nazul",20,"10",Product.FOR_BUY,"marco",1);
-                    Product pdt3 = new Product(R.drawable.marco2,"Dragon\nrojo",250,"10",Product.FOR_BUY,"marco2",1);
-                    Product pdt5 = new Product(R.drawable.marco11,"Dragon\nnaranja",150,"10",Product.FOR_BUY,"marco11",1);
+                    Product pdt1 = new Product(R.drawable.marco18,"Dragon\nblanco",80,"1",Product.FOR_BUY,"marco18",1);
+                    Product pdt4 = new Product(R.drawable.marco8,"Dragon\nverde",100,"0",Product.FOR_BUY,"marco8",1);
+                    Product pdt2 = new Product(R.drawable.marco,"Dragon\nazul",20,"20",Product.FOR_BUY,"marco",1);
+                    Product pdt3 = new Product(R.drawable.marco2,"Dragon\nrojo",250,"30",Product.FOR_BUY,"marco2",1);
+                    Product pdt5 = new Product(R.drawable.marco11,"Dragon\nnaranja",150,"25",Product.FOR_BUY,"marco11",1);
 
                     Product pdt6 = new Product(R.drawable.pocionazul,"Pocion\nTime",150,"10",Product.FOR_BUY,"pocionazul",2);
                     Product pdt7 = new Product(R.drawable.pociondragon,"Pocion\nMonedas",150,"10",Product.FOR_BUY,"pociondragon",2);

@@ -117,5 +117,12 @@
             android:text="@string/copyright"
             android:layout_gravity="center"
             style="@style/ButtonStyle"/>
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Cerrar Sesión"
+        android:layout_gravity="center"
+        style="@style/ButtonStyle"/>
 
 </LinearLayout>

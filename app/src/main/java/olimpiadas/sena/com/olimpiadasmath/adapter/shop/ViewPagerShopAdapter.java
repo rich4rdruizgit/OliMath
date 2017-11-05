@@ -14,9 +14,10 @@ import olimpiadas.sena.com.olimpiadasmath.fragments.shop.ItemShopFragment;
 
 public class ViewPagerShopAdapter extends FragmentPagerAdapter {
 
-    final int PAGE_COUNT = 2;
+    final int PAGE_COUNT = 1;
 
-    private String tabtitles[] = new String[]{"Avatars","Items"};
+    //private String tabtitles[] = new String[]{"Avatars","Items"};
+    private String tabtitles[] = new String[]{"Avatars"};
     Context context;
 
     public ViewPagerShopAdapter(FragmentManager fm) {
@@ -31,9 +32,9 @@ public class ViewPagerShopAdapter extends FragmentPagerAdapter {
             case 0:
                 Fragment fragmentAvatarShop = new AvatarShopFragment();
                 return fragmentAvatarShop;
-            case 1:
+            /*case 1:
                 Fragment fragmentItemShop = new ItemShopFragment();
-                return fragmentItemShop;
+                return fragmentItemShop;*/
         }
         return null;
     }

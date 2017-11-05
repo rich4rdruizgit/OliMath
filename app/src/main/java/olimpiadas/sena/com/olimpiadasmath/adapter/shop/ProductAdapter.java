@@ -1,8 +1,6 @@
 package olimpiadas.sena.com.olimpiadasmath.adapter.shop;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -129,37 +127,42 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(product.getState() == Product.FOR_BUY){ // para comprar
-                    currentBuyItem = holder.btnBuy;
-                    currentPosition = position;
 
-                    if(appControl.currentUser.getCoins()< lstProduct.get(position).getPrice()){
-                        DialogHelper.ConfimrBuyDialog(context,context.getString(R.string.no_enought_coins),DialogHelper.NO_BUY,ProductAdapter.this);
-                        return;
-                    }else {
-                        DialogHelper.ConfimrBuyDialog(context,context.getString(R.string.alert_shop),DialogHelper.BUY,ProductAdapter.this);
-                    }
-                }
-                else if(product.getState() == Product.BOUGTH){
-                    if(product.getType() == Product.POTION){
-                        Toast.makeText(context, "Solo puedes comprar una pocion", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
+                if(Integer.parseInt(product.getConstraint()) <= appControl.currentUser.getLevel()){
+                    if(product.getState() == Product.FOR_BUY){ // para comprar
+                        currentBuyItem = holder.btnBuy;
+                        currentPosition = position;
 
-                    if(currentAvatarButton != null ){
-                        currentAvatarButton.setText("Usar");
+                        if(appControl.currentUser.getCoins()< lstProduct.get(position).getPrice()){
+                            DialogHelper.ConfimrBuyDialog(context,context.getString(R.string.no_enought_coins),DialogHelper.NO_BUY,ProductAdapter.this);
+                            return;
+                        }else {
+                            DialogHelper.ConfimrBuyDialog(context,context.getString(R.string.alert_shop),DialogHelper.BUY,ProductAdapter.this);
+                        }
                     }
-                    currentAvatarButton = holder.btnBuy;
-                    holder.btnBuy.setText("Usado");
-                    currentAvatar = position;
-                    updateState();
-                    appControl.currentUser.setAvatar(product.getSourceName());
-                    ProductAdapter.this.updateProductState(position,Product.USED);
-                    User.updateUser(appControl.currentUser);
-                    ((ShopActivity)context).headerFragment.refreshInterface();
-                }
-                if(product.getState() == Product.USED){
+                    else if(product.getState() == Product.BOUGTH){
+                        if(product.getType() == Product.POTION){
+                            Toast.makeText(context, "Solo puedes comprar una pocion", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
 
+                        if(currentAvatarButton != null ){
+                            currentAvatarButton.setText("Usar");
+                        }
+                        currentAvatarButton = holder.btnBuy;
+                        holder.btnBuy.setText("Usado");
+                        currentAvatar = position;
+                        updateState();
+                        appControl.currentUser.setAvatar(product.getSourceName());
+                        ProductAdapter.this.updateProductState(position,Product.USED);
+                        User.updateUser(appControl.currentUser);
+                        ((ShopActivity)context).headerFragment.refreshInterface();
+                    }
+                    if(product.getState() == Product.USED){
+
+                    }
+                }else{
+                    Toast.makeText(context, "Debes subir de nivel para comprar este avatar", Toast.LENGTH_SHORT).show();
                 }
             }
         });

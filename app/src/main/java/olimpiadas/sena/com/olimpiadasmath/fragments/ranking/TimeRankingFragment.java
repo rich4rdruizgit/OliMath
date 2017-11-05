@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -112,7 +113,6 @@ public class TimeRankingFragment extends Fragment implements WebConnectionManage
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
     }
 
     @Override
@@ -142,10 +142,11 @@ public class TimeRankingFragment extends Fragment implements WebConnectionManage
 
         //Log.d("ANTES TIO",response.toString());
         //String orale ="[{\"posicion\":1,\"ide\":1,\"nickname\":\"LUCHO\",\"avatarActivo\":\"1\",\"marcoActivo\":\"1\",\"fondoActivo\":\"1\",\"puntaje\":82,\"numResCorrecta\":8,\"tiempo\":\" 00:42:00\"},{\"posicion\":2,\"ide\":3,\"nickname\":\"CARLOSM\",\"avatarActivo\":\"1\",\"marcoActivo\":\"1\",\"fondoActivo\":\"1\",\"puntaje\":80,\"numResCorrecta\":8,\"tiempo\":\" 01:01:00\"},{\"posicion\":3,\"ide\":5,\"nickname\":\"DANIELA\",\"avatarActivo\":\"1\",\"marcoActivo\":\"1\",\"fondoActivo\":\"1\",\"puntaje\":60,\"numResCorrecta\":6,\"tiempo\":\" 02:00:00\"},{\"posicion\":4,\"ide\":6,\"nickname\":\"JEFERSON\",\"avatarActivo\":\"1\",\"marcoActivo\":\"1\",\"fondoActivo\":\"1\",\"puntaje\":60,\"numResCorrecta\":6,\"tiempo\":\" 02:00:17\"},{\"posicion\":5,\"ide\":2,\"nickname\":\"LUIZ\",\"avatarActivo\":\"1\",\"marcoActivo\":\"1\",\"fondoActivo\":\"1\",\"puntaje\":45,\"numResCorrecta\":5,\"tiempo\":\" 02:04:00\"},{\"posicion\":6,\"ide\":4,\"nickname\":\"CORAL\",\"avatarActivo\":\"1\",\"marcoActivo\":\"1\",\"fondoActivo\":\"1\",\"puntaje\":35,\"numResCorrecta\":3,\"tiempo\":\" 01:02:00\"}]";
-        //Log.d("ANTES TIO",response.getData());
+        Log.d("ANTES TIO",response.getStatus());
         try{
-            if(response == null){
-                return;
+            if (response.getStatus() == WebConnectionManager.Response.ERROR)
+            {
+                Toast.makeText(getActivity(), "No se pudo cargar el ranking", Toast.LENGTH_SHORT).show();
             }
             JSONArray jsonArray = new JSONArray(response.getData());
 

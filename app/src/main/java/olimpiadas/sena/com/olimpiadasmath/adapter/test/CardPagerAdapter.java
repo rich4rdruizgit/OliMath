@@ -115,8 +115,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
         ImageView imgScaleView = (ImageView) view.findViewById(R.id.img_test_image);
         final ImageView imgViewTest = (ImageView) view.findViewById(R.id.contentViewImage);
         imgViewTest.setVisibility(View.GONE);
-
-
+        imgScaleView.setVisibility(View.GONE);
         imgScaleView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

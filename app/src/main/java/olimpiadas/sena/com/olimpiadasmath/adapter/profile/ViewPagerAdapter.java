@@ -15,9 +15,10 @@ import olimpiadas.sena.com.olimpiadasmath.fragments.profile.ProfileResultsFragme
 
 public class ViewPagerAdapter extends FragmentPagerAdapter{
 
-    final int PAGE_COUNT = 3;
+    final int PAGE_COUNT = 2;
 
-    private String tabtitles[] = new String[]{"Perfil","Logros","Resultados" };
+    //private String tabtitles[] = new String[]{"Perfil","Logros","Resultados" };
+    private String tabtitles[] = new String[]{"Perfil","Resultados" };
     Context context;
 
 
@@ -37,10 +38,10 @@ public class ViewPagerAdapter extends FragmentPagerAdapter{
             case 0:
                 Fragment fragmentPerfil = new PerfilFragment();
                 return fragmentPerfil;
-            case 1:
+            /*case 1:
                 Fragment fragmentLogro = new LogroFragment();
-                return fragmentLogro;
-            case 2:
+                return fragmentLogro;*/
+            case 1:
                 Fragment fragmentResultado = new ProfileResultsFragment();
                 return fragmentResultado;
         }
