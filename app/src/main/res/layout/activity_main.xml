@@ -46,7 +46,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:background="@drawable/tiendablanco"
+                android:background="@drawable/shopdes"
                 android:elevation="10dp"
                 android:gravity="center" />
         </LinearLayout>
@@ -139,7 +139,7 @@
                 android:layout_height="@dimen/tamanoiconmenuprincipal"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
-                android:background="@drawable/practica_icon"
+                android:background="@drawable/pracdes"
                 android:elevation="10dp"
                 android:gravity="center" />
         </LinearLayout>
@@ -164,7 +164,7 @@
                 android:layout_height="@dimen/tamanoiconmenuprincipal"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
-                android:background="@drawable/retoblanco"
+                android:background="@drawable/chandes"
                 android:elevation="10dp"
                 android:gravity="center" />
         </LinearLayout>
@@ -187,7 +187,7 @@
                 android:layout_height="@dimen/tamanoiconmenuprincipal"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
-                android:background="@drawable/rankingblanco"
+                android:background="@drawable/rankdes"
                 android:elevation="10dp"
                 android:gravity="center" />
         </LinearLayout>
