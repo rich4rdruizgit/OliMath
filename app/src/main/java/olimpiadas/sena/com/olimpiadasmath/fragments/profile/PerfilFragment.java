@@ -1,13 +1,18 @@
 package olimpiadas.sena.com.olimpiadasmath.fragments.profile;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ClipDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,6 +38,8 @@ public class PerfilFragment extends Fragment {
     private String mParam2;
 
     AppControl appControl;
+    //Button btnTakePic,btnSavePic,btnOpenGal;
+    ImageView imgPic;
     TextView tvLvl,tvCoins,tvTickets,txtNameUser,tvScore, tvPercent;
 
     private ClipDrawable mImageDrawable;
@@ -79,6 +86,9 @@ public class PerfilFragment extends Fragment {
         tvPercent = (TextView) view.findViewById(R.id.tv_profile_percent);
         tvLvl = (TextView) view.findViewById(R.id.tv_profile_level_number);
         tvCoins = (TextView) view.findViewById(R.id.tv_profile_coins);
+        /*btnOpenGal = (Button) view.findViewById(R.id.btnOpenGal);
+        btnSavePic = (Button) view.findViewById(R.id.btnSavePic);
+        btnTakePic = (Button) view.findViewById(R.id.btnTakePic);*/
         //tvTickets = (TextView) view.findViewById(R.id.tv_profile_ticket);
         //tvScore = (TextView) view.findViewById(R.id.tv_profile_score);
 
@@ -89,8 +99,18 @@ public class PerfilFragment extends Fragment {
         //tvTickets.setText(" x " + appControl.currentUser.getTickets());
         //tvScore.setText("" + appControl.currentUser.getScore());
         ImageView imgExp = (ImageView) view.findViewById(R.id.img_profile_progress_bar2);
+        //imgPic = (ImageView) view.findViewById(R.id.imgPic);
         mImageDrawable = (ClipDrawable) imgExp.getDrawable();
         mImageDrawable.setLevel((int)appControl.currentUser.getExperience() * 100);
+
+        /*btnTakePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent,1,null);
+                Bitmap bitmap = ((BitmapDrawable)imgPic.getDrawable()).getBitmap();
+            }
+        });*/
 
 
         return view;
@@ -102,6 +122,14 @@ public class PerfilFragment extends Fragment {
             mListener.onFragmentInteraction(uri);
         }
     }
+
+    /*@Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+        imgPic.setImageBitmap(bitmap);
+    }*/
 
     @Override
     public void onAttach(Context context) {

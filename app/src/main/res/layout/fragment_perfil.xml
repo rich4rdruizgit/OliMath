@@ -5,12 +5,45 @@
     android:orientation="vertical"
     tools:context="olimpiadas.sena.com.olimpiadasmath.fragments.profile.PerfilFragment">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <!--<LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center">
 
-    </LinearLayout>
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:id="@+id/imgPic"
+            android:src="@mipmap/ic_launcher_round"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/btnTakePic"
+                android:background="@mipmap/ic_camera"/>
+
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/btnOpenGal"
+                android:background="@mipmap/ic_folder"
+                />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/btnSavePic"
+            android:background="@mipmap/ic_save"/>
+
+
+    </LinearLayout>-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
