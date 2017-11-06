@@ -3,6 +3,7 @@ package olimpiadas.sena.com.olimpiadasmath.activities.practice;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -138,7 +139,7 @@ public class PracticeActivity extends AppCompatActivity implements CardPagerAdap
 
     @Override
     public void finished() {
-        appControl.currentTime = chronometer.getDrawingTime();
+        appControl.currentTime = ( SystemClock.elapsedRealtime() -  chronometer.getBase())/1000;
         startActivity(new Intent(this, ResultActivity.class));
     }
 

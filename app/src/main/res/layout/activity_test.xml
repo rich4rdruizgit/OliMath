@@ -36,7 +36,7 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_margin="5dp"
-                    android:src="@drawable/practica_icon" />
+                    android:src="@drawable/pracdes" />
 
                 <TextView
                     android:id="@+id/tv_test_numquest"
@@ -79,7 +79,7 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_margin="5dp"
-                    android:src="@drawable/practica_icon" />
+                    android:src="@drawable/pracdes" />
 
                 <TextView
                     android:id="@+id/tv_test_tip_numberofquestion"

@@ -7,9 +7,14 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,22 +25,13 @@ import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.adapter.shop.ProductAdapter;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.model.Product;
+import olimpiadas.sena.com.olimpiadasmath.model.User;
+import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnectionManager;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link AvatarShopFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link AvatarShopFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class AvatarShopFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+public class AvatarShopFragment extends Fragment implements WebConnectionManager.WebConnectionManagerListener{
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -43,6 +39,8 @@ public class AvatarShopFragment extends Fragment {
     ProductAdapter productAdapter;
     public RealmResults<Product> lstProduct;
 
+    WebConnectionManager webConnectionManager;
+    private List<Product> products;
 
     private OnFragmentInteractionListener mListener;
 
@@ -50,15 +48,6 @@ public class AvatarShopFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AvatarShopFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static AvatarShopFragment newInstance(String param1, String param2) {
         AvatarShopFragment fragment = new AvatarShopFragment();
         Bundle args = new Bundle();
@@ -88,6 +77,9 @@ public class AvatarShopFragment extends Fragment {
         recyclerView.setLayoutManager(llm);
 
         inicializarAdaptador();
+        webConnectionManager = WebConnectionManager.getWebConnectionManager();
+        webConnectionManager.setWebConnectionManagerListener(this);
+        webConnectionManager.mostrarTienda();
 
         return view;
     }
@@ -98,8 +90,6 @@ public class AvatarShopFragment extends Fragment {
         recyclerView.setAdapter(productAdapter);
     }
 
-
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -121,6 +111,45 @@ public class AvatarShopFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void webRequestComplete(WebConnectionManager.Response response) throws JSONException {
+        try{
+            JSONArray jsonArray = new JSONArray(response.getData());
+            List<Product> productList = new ArrayList<>();
+            for(int  i = 0 ; i < jsonArray.length(); i++){
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                Product product= new Product();
+                //int urlImg, String name, int price, String constraint, int state, String sourceName, int type
+                product.setUrlImg(R.drawable.marco18);
+                product.setName(jsonObject.getString("codigo"));
+                product.setPrice(Integer.parseInt(jsonObject.getString("nombre")));
+                product.setConstraint("10");
+                product.setState(Integer.parseInt(jsonObject.getString("precio")));
+                product.setSourceName(jsonObject.getString("tipo"));
+                if(jsonObject.getString("tipo").equals("Diseño")){
+                    product.setType(1);
+                }else{
+                    product.setType(2);
+                }
+
+                productList.add(product);
+            }
+
+            for (Product p: productList){
+                Log.d("PRODUCTO JSON    ", p.getName());
+            }
+            products = productList;
+            productAdapter = new ProductAdapter(productList,getActivity(), Product.AVATAR);
+            recyclerView.setAdapter(productAdapter);
+
+
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+
+
     }
 
     public interface OnFragmentInteractionListener {
