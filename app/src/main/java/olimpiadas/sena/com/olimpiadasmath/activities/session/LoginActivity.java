@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         AppControl.getInstance().currentActivity = LoginActivity.class.getSimpleName();
 
-        WifiManager wifiManager = (WifiManager) this.getSystemService(Context.WIFI_SERVICE);
+        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
         if(!wifiManager.isWifiEnabled()) {
             // Mostrar un dialog

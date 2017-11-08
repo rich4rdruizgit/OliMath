@@ -163,7 +163,7 @@
                 android:layout_height="@dimen/tamanoiconmenuprincipal"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
-                android:background="@drawable/rankingblanco"
+                android:background="@drawable/rankdes"
                 android:elevation="10dp"
                 android:gravity="center" />
         </LinearLayout>
