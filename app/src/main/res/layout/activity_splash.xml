@@ -8,7 +8,7 @@
     android:layout_gravity="center"
     android:id="@+id/lin_lay"
     android:gravity="center"
-    android:background="@drawable/shape_ranking"
+    android:background=""
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.splash.SplashActivity">
 
     <LinearLayout
