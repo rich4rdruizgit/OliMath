@@ -17,9 +17,14 @@ import cz.msebera.android.httpclient.message.BasicNameValuePair;
  * Created by defytek on 3/1/17.
  */
 
-public class WebConnectionManager implements WebConnection.WebConnectionListener {
+public class WebConnectionManager implements WebConnection.WebConnectionListener{
 
     private String TAG = "WebConnectionManager";
+    private final String url = "http://192.168.0.15:8097/";
+//    private final String url = "http://10.73.70.29:8097/";
+
+
+
     //private final String url = "http://10.73.70.29:8097/";
     //private final String url = "http://10.73.70.39:8097/";
     private final String url = "http://10.73.120.156:8097/";
@@ -66,7 +71,7 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
             }
         }
 
-        public static OperationType fromString(String type) {
+        public static OperationType fromString(String type){
             switch (type) {
                 case "start-session/":
                     return START_SESSION;

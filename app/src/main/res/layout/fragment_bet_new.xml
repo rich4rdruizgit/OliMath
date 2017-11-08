@@ -8,26 +8,36 @@
     android:background="#434b5b"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="olimpiadas.sena.com.olimpiadasmath.fragments.test.BetFragment">
-    <LinearLayout
-        android:layout_marginTop="3dp"
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1">
-        <ImageButton
-            android:id="@+id/btn_back_practice"
-            android:layout_gravity="center"
-            android:layout_width="1dp"
-            android:layout_height="12dp"
-            android:layout_weight=".15"
-            android:src="@android:drawable/arrow_down_float"
-            android:rotation="90"
-            android:visibility="gone"/>
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_marginTop="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+                <ImageButton
+                    android:id="@+id/btn_back_practice"
+                    android:layout_gravity="center"
+                    android:layout_width="1dp"
+                    android:layout_height="12dp"
+                    android:layout_weight=".15"
+                    android:src="@android:drawable/arrow_down_float"
+                    android:rotation="90"
+                    android:visibility="gone"/>
 
         <ImageView
             android:layout_width="@dimen/tamanoiconmenuprincipal"
             android:layout_height="@dimen/tamanoiconmenuprincipal"
             android:layout_weight=".15"
-            android:src="@drawable/retoblanco"
+            android:src="@drawable/chandes"
             />
         <TextView
             android:id="@+id/txt_title_ranking"
@@ -48,87 +58,94 @@
         >
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:gravity="center"
-            android:text="Tienes"
-            android:textSize="18dp"
-            android:textColor="@color/primary_text"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:text="Tienes"
+                    android:textSize="18dp"
+                    android:textColor="@color/primary_text"/>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp">
 
-            <ImageView
-                android:layout_width="30dp"
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/coin"
+                        android:layout_gravity="center"
+                        />
+                    <TextView
+                        android:id="@+id/tv_pool_coins"
+                        android:layout_marginLeft="15dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:text="x 20"
+                        android:textSize="18dp"
+                        android:textColor="@color/primary_text"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:text="Puedes apostar  tus monedas para ganar más!!!"
+                    android:textSize="18dp"
+                    android:textColor="@color/primary_text"/>
+                <TextView
+                    android:layout_marginTop="40dp"
+                    android:id="@+id/tv_bet"
+                    android:gravity="center"
+                    android:textSize="40dp"
+                    android:text="0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/primary_text"/>
+
+                <LinearLayout
+                    android:layout_marginTop="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <SeekBar
+                        android:id="@+id/seekbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:text="Preview"
+                android:id="@+id/btn_bet_preview"
+                android:layout_marginTop="15dp"
+                android:layout_width="70dp"
                 android:layout_height="30dp"
-                android:src="@drawable/coin"
                 android:layout_gravity="center"
+
                 />
-            <TextView
-                android:id="@+id/tv_pool_coins"
-                android:layout_marginLeft="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
+            <Button
+                android:text="continuar"
+                android:id="@+id/btn_bet_start"
+                android:layout_marginTop="30dp"
+                android:layout_width="140dp"
+                android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:text="x 20"
-                android:textSize="18dp"
-                android:textColor="@color/primary_text"/>
+
+                />
+
+
+
         </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:gravity="center"
-            android:text="Puedes apostar  tus monedas para ganar más!!!"
-            android:textSize="18dp"
-            android:textColor="@color/primary_text"/>
-        <TextView
-            android:layout_marginTop="40dp"
-            android:id="@+id/tv_bet"
-            android:gravity="center"
-            android:textSize="40dp"
-            android:text="0"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/primary_text"/>
+    </ScrollView>
 
-        <LinearLayout
-            android:layout_marginTop="40dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <SeekBar
-                android:id="@+id/seekbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <Button
-        android:text="Preview"
-        android:id="@+id/btn_bet_preview"
-        android:layout_marginTop="15dp"
-        android:layout_width="70dp"
-        android:layout_height="30dp"
-        android:layout_gravity="center"
-
-        />
-    <Button
-        android:text="continuar"
-        android:id="@+id/btn_bet_start"
-        android:layout_marginTop="30dp"
-        android:layout_width="140dp"
-        android:layout_height="30dp"
-        android:layout_gravity="center"
-
-        />
 
 
 

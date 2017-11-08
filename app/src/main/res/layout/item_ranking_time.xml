@@ -108,7 +108,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.25"
                         android:padding="3dp"
-                        android:src="@drawable/coin" />
+                        android:src="@drawable/ok" />
                 </LinearLayout>
             </LinearLayout>
 

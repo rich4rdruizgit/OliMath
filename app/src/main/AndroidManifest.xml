@@ -58,11 +58,11 @@
         <activity
             android:name=".activities.library.EquationsActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activities.practice.PracticeActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activities.challenge.ChallengeActivity"></activity>
+        <activity android:name=".activities.challenge.ChallengeActivity" />
+        <activity android:name=".activities.profile.CreateProfileActivity"></activity>
     </application>
 
 </manifest>

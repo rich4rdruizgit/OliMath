@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:background="#434b5b"
     >
     <LinearLayout
         android:id="@+id/lnFragmentPractice"
