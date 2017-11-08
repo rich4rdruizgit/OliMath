@@ -26,7 +26,8 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
 
     //private final String url = "http://10.73.70.29:8097/";
-    private final String url = "http://10.73.70.39:8097/";
+    //private final String url = "http://10.73.70.39:8097/";
+    private final String url = "http://10.73.120.156:8097/";
     //private final String url = "http://192.168.137.1:8097/";
 
     public interface WebConnectionManagerListener {
@@ -54,7 +55,7 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                 case START_SESSION:
                     return "start-session/";
                 case GET_QUESTIONS:
-                    return "mostrarPreguntas";
+                    return "mostrarPreguntasAleatoriasNuevo";
                 case INSERT_QUESTION:
                     return "insertarPreguntas";
                 case LOGIN:
@@ -86,6 +87,9 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
                 case "mostrarTienda":
                     return SHOW_SHOP;
+
+                case "mostrarPreguntasAleatoriasNuevo":
+                    return GET_QUESTIONS;
                 default:
                     return null;
             }
@@ -286,6 +290,32 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                     Log.d(TAG, "Operation type = Ranking");
                     JSONArray shop = new JSONArray(resp);
                     if (shop.length() > 0) {
+                        status = SUCCESS;
+                        result = OK;
+                        data = resp;
+                        return;
+                    } else {
+                        status = SUCCESS;
+                        result = OK;
+                        data = resp;
+                        return;
+                    }
+
+
+                } catch (JSONException e) {
+                    status = ERROR;
+                    result = "";
+                    code = "JO001";
+                    errMsg = "Respuesta login no esta en formato Json";
+                    return;
+                }
+            }
+
+            if (operationType == OperationType.GET_QUESTIONS) {
+                try {
+                    Log.d(TAG, "Operation type = GET_QUESTIONS");
+                    JSONArray getQuestions = new JSONArray(resp);
+                    if (getQuestions.length() > 0) {
                         status = SUCCESS;
                         result = OK;
                         data = resp;
