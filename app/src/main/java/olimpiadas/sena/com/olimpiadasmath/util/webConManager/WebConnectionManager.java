@@ -20,13 +20,9 @@ import cz.msebera.android.httpclient.message.BasicNameValuePair;
 public class WebConnectionManager implements WebConnection.WebConnectionListener{
 
     private String TAG = "WebConnectionManager";
-    private final String url = "http://192.168.0.15:8097/";
+    private final String url = "http://192.168.0.15:8097/WSOlimath.asmx/";
 //    private final String url = "http://10.73.70.29:8097/";
-
-
-
-    //private final String url = "http://10.73.70.29:8097/";
-    private final String url = "http://10.73.70.39:8097/";
+//    private final String url = "http://10.73.70.39:8097/";
     //private final String url = "http://192.168.137.1:8097/";
 
     public interface WebConnectionManagerListener {
@@ -60,7 +56,7 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                 case LOGIN:
                     return "login/";
                 case RANKING:
-                    return "WSOlimath.asmx/mostrarRankings";
+                    return "mostrarRankings";
                 case SEND_CHALLENGE:
                     return "sendChallenge/";
                 case SHOW_SHOP:
