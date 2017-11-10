@@ -20,9 +20,11 @@ import cz.msebera.android.httpclient.message.BasicNameValuePair;
 public class WebConnectionManager implements WebConnection.WebConnectionListener{
 
     private String TAG = "WebConnectionManager";
-    private final String url = "http://192.168.0.15:8097/WSOlimath.asmx/";
+    //private final String url = "http://192.168.0.15:8097/";
 //    private final String url = "http://10.73.70.29:8097/";
-//    private final String url = "http://10.73.70.39:8097/";
+    //private final String url = "http://10.73.70.29:8097/";
+    //private final String url = "http://10.73.70.39:8097/";
+    private final String url = "http://10.73.120.156:8097/";
     //private final String url = "http://192.168.137.1:8097/";
 
     public interface WebConnectionManagerListener {
@@ -50,13 +52,13 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                 case START_SESSION:
                     return "start-session/";
                 case GET_QUESTIONS:
-                    return "mostrarPreguntas";
+                    return "mostrarPreguntasAleatoriasNuevo";
                 case INSERT_QUESTION:
                     return "insertarPreguntas";
                 case LOGIN:
-                    return "login/";
+                    return "WSOlimath.asmx/mostrarPerfilPass";
                 case RANKING:
-                    return "mostrarRankings";
+                    return "WSOlimath.asmx/mostrarRankings";
                 case SEND_CHALLENGE:
                     return "sendChallenge/";
                 case SHOW_SHOP:
@@ -71,7 +73,7 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                 case "start-session/":
                     return START_SESSION;
 
-                case "login/":
+                case "WSOlimath.asmx/mostrarPerfilPass":
                     return LOGIN;
 
                 case "WSOlimath.asmx/mostrarRankings":
@@ -82,6 +84,9 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
                 case "mostrarTienda":
                     return SHOW_SHOP;
+
+                case "mostrarPreguntasAleatoriasNuevo":
+                    return GET_QUESTIONS;
                 default:
                     return null;
             }
@@ -145,10 +150,11 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
     public void login(String username, String pwd) {
 
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-        nameValuePairs.add(new BasicNameValuePair("username", username));
+        nameValuePairs.add(new BasicNameValuePair("identificacion", username));
         nameValuePairs.add(new BasicNameValuePair("password", pwd));
 
-
+        webConnection.executePostRequest(url, OperationType.LOGIN.getName(), nameValuePairs);
+        /*
         String resp = "{\"status\":\"SUCCESS\",\"result\":\"true\",\"idbiometrico\":\"1022363404\"}";
         Response response = new Response(OperationType.LOGIN.getName(), resp);
 
@@ -161,6 +167,7 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
             }
         }
         //webConnection.executePostRequest("login url", OperationType.LOGIN.getName(), nameValuePairs);
+        */
     }
 
 
@@ -235,6 +242,7 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
             operationType = OperationType.fromString(type);
             JSONObject respJObject = null;
+            JSONArray resparray = null;
             /*try{
                 respJObject = new JSONObject(resp);
                 //JSONArray resparray = new JSONArray(resp);
@@ -300,6 +308,32 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                 }
             }
 
+            if (operationType == OperationType.GET_QUESTIONS) {
+                try {
+                    Log.d(TAG, "Operation type = GET_QUESTIONS");
+                    JSONArray getQuestions = new JSONArray(resp);
+                    if (getQuestions.length() > 0) {
+                        status = SUCCESS;
+                        result = OK;
+                        data = resp;
+                        return;
+                    } else {
+                        status = SUCCESS;
+                        result = OK;
+                        data = resp;
+                        return;
+                    }
+
+
+                } catch (JSONException e) {
+                    status = ERROR;
+                    result = "";
+                    code = "JO001";
+                    errMsg = "Respuesta login no esta en formato Json";
+                    return;
+                }
+            }
+
             if (operationType == OperationType.SEND_CHALLENGE) {
                 try {
                     respJObject = new JSONObject(resp);
@@ -335,8 +369,29 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
             }
 
             if (operationType == OperationType.LOGIN) {
+                Log.d(TAG,"Respuesta de login " + resp);
                 try {
-                    respJObject = new JSONObject(resp);
+
+
+                    resparray = new JSONArray(resp);
+
+                    if(resparray !=null){
+                        Log.d(TAG,"Esto es nulo");
+                        status = ERROR;
+                    }
+
+                    if(resparray.length() == 0){
+                        Log.d(TAG,"Esto es nulo");
+                        status = SUCCESS;
+                        result = NOT_LOGGED;
+                        return;
+                    }
+
+                    status = SUCCESS;
+                    result = LOGGED;
+                    data = resparray.toString();
+
+                    /*
                     if (respJObject.getString("status").equals("SUCCESS")) {
                         status = SUCCESS;
                         if (respJObject.getString("result").equals("true")) {
@@ -358,6 +413,7 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
                         validateError(respJObject.getString("errorMsg"));
                     }
+                    */
 
                 } catch (JSONException e) {
                     status = ERROR;
@@ -366,6 +422,7 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                     errMsg = "Respuesta login no esta en formato Json";
                     return;
                 }
+
             }
 
 
