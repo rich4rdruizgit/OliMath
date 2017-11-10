@@ -3,7 +3,6 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="#434b5b"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
         <android.support.v7.widget.CardView
@@ -20,7 +19,7 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/shape_ranking">
+                android:background="@drawable/backgroundpractice">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -32,7 +31,6 @@
                     <TextView
                         android:id="@+id/titleTextView"
                         style="@style/TextAppearance.AppCompat.Title"
-                        android:textColor="@color/secondary_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
@@ -93,7 +91,7 @@
                     android:layout_gravity="top|end"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
-                    android:src="@drawable/zoomscreen" />
+                    android:src="@drawable/scalscreenpract" />
                 <ImageView
                     android:id="@+id/img_test_image"
                     android:layout_width="30dp"
@@ -101,7 +99,7 @@
                     android:layout_gravity="top|left"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
-                    android:src="@drawable/ic_photo_library" />
+                    android:src="@drawable/showimagpract" />
 
             </FrameLayout>
             </ScrollView>

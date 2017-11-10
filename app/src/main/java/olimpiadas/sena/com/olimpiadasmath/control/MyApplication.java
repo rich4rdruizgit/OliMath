@@ -21,7 +21,7 @@ public class MyApplication extends Application {
         Realm.init(this);
 
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("grobold.ttf")
+                //.setDefaultFontPath("grobold.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );

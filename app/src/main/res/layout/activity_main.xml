@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4b5465"
+    android:background="@drawable/backgroundmain"
     android:orientation="vertical"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity">
 
@@ -139,7 +139,7 @@
                 android:layout_height="@dimen/tamanoiconmenuprincipal"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
-                android:background="@drawable/chandes"
+                android:background="@drawable/changact"
                 android:elevation="10dp"
                 android:gravity="center" />
         </LinearLayout>
@@ -149,7 +149,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
-            android:background="@drawable/background_transparent_with_stroke"
+
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
@@ -163,7 +163,7 @@
                 android:layout_height="@dimen/tamanoiconmenuprincipal"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
-                android:background="@drawable/rankingblanco"
+                android:background="@drawable/rankdes"
                 android:elevation="10dp"
                 android:gravity="center" />
         </LinearLayout>
@@ -187,7 +187,7 @@
                 android:layout_height="@dimen/tamanoiconmenuprincipal"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
-                android:background="@drawable/rankdes"
+                android:background="@drawable/shopdes"
                 android:elevation="10dp"
                 android:gravity="center" />
         </LinearLayout>

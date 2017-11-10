@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#434b5b"
     tools:context="olimpiadas.sena.com.olimpiadasmath.fragments.shop.AvatarShopFragment">
 
     <android.support.v7.widget.RecyclerView

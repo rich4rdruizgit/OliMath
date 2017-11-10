@@ -183,7 +183,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         } else {
             gifMenu.setVisibility(View.GONE);
-
         }
 
     }
