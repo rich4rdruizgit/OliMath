@@ -15,11 +15,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import io.realm.Realm;
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.model.Configuration;
+import olimpiadas.sena.com.olimpiadasmath.model.User;
 import olimpiadas.sena.com.olimpiadasmath.util.DialogHelper;
 import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnection;
 import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnectionManager;
@@ -117,6 +121,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     config.setValue(true);
                 }
             });
+
+            User currentuser = new User();
+
+            try {
+                JSONArray user = new JSONArray(response.getData());
+            } catch (JSONException e) {
+
+
+                e.printStackTrace();
+            }
+
 
             Intent intentMenu = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intentMenu);
