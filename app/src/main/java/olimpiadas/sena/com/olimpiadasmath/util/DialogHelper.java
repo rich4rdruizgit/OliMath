@@ -24,6 +24,7 @@ import olimpiadas.sena.com.olimpiadasmath.activities.practice.PracticeActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.settings.SettingsActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.test.TestActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
 /**
@@ -70,7 +71,8 @@ public class DialogHelper {
             @Override
             public void onClick(View v) {
                 appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 Intent intent = new Intent(context.getApplicationContext(), SettingsActivity.class);
                 context.startActivity(intent);
             }
@@ -79,6 +81,8 @@ public class DialogHelper {
         ((Button) mProgressDialog.getWindow().findViewById(R.id.btn_exit_tip)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 mProgressDialog.dismiss();
             }
         });
@@ -92,10 +96,13 @@ public class DialogHelper {
         mProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         mProgressDialog.setContentView(R.layout.item_wifi_state);
         mProgressDialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme;
-
+        final AppControl appControl = AppControl.getInstance();
         ((Button) mProgressDialog.getWindow().findViewById(R.id.btn_dialog_activate)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
                 wifiManager.setWifiEnabled(true);
                 while(!wifiManager.isWifiEnabled()){
@@ -109,7 +116,8 @@ public class DialogHelper {
             public void onClick(View v) {
                 AppControl myappControl = AppControl.getInstance();
                 myappControl.soundButton = MediaPlayer.create(context.getApplicationContext(),myappControl.soundButtonEfect);
-                myappControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 mProgressDialog.dismiss();
             }
         });
@@ -129,7 +137,8 @@ public class DialogHelper {
             @Override
             public void onClick(View v) {
                 appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 mProgressDialog.dismiss();
             }
         });
@@ -150,7 +159,8 @@ public class DialogHelper {
             @Override
             public void onClick(View v) {
                 appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 Intent intent = new Intent(context, MainActivity.class);
                 context.startActivity(intent);
                 ((AppCompatActivity)context).finish();
@@ -186,7 +196,8 @@ public class DialogHelper {
                 public void onClick(View v) {
                     AppControl appControl = AppControl.getInstance();
                     appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
-                    appControl.soundButton.start();
+                    if(appControl.isBackgroundPlaying)
+                        appControl.soundButton.start();
                     mProgressDialog.dismiss();
                     Intent intChallenge = new Intent(context.getApplicationContext(), ChallengeActivity.class);
                     intChallenge.putExtra("type", 2);
@@ -213,7 +224,8 @@ public class DialogHelper {
                     public void onClick(View v) {
                         AppControl appControl = AppControl.getInstance();
                         appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
-                        appControl.soundButton.start();
+                        if(appControl.isBackgroundPlaying)
+                            appControl.soundButton.start();
                         mProgressDialog.dismiss();
                         Intent intChallenge = new Intent(context.getApplicationContext(), PracticeActivity.class);
                         context.startActivity(intChallenge);
@@ -228,7 +240,8 @@ public class DialogHelper {
             public void onClick(View v) {
                 AppControl appControl = AppControl.getInstance();
                 appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 mProgressDialog.dismiss();
             }
         });
@@ -249,7 +262,8 @@ public class DialogHelper {
             public void onClick(View v) {
                 AppControl appControl = AppControl.getInstance();
                 appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 appControl.soundBackground.stop();
 
 //                if(appControl.soundBackground.isPlaying()){
@@ -268,7 +282,8 @@ public class DialogHelper {
             public void onClick(View v) {
                 AppControl appControl = AppControl.getInstance();
                 appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 mProgressDialog.dismiss();
             }
         });
@@ -291,7 +306,8 @@ public class DialogHelper {
             public void onClick(View v) {
                 AppControl appControl = AppControl.getInstance();
                 appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 mProgressDialog.dismiss();
                 ((AppCompatActivity)context).finish();
                 context.startActivity(new Intent(context, MainActivity.class));
@@ -305,7 +321,8 @@ public class DialogHelper {
             public void onClick(View v) {
                 AppControl appControl = AppControl.getInstance();
                 appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 mProgressDialog.dismiss();
             }
         });
@@ -330,7 +347,8 @@ public class DialogHelper {
             public void onClick(View v) {
                 AppControl appControl = AppControl.getInstance();
                 appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 dialogHelperListener.dialogEnd(true);
                 mProgressDialog.dismiss();
             }
@@ -340,7 +358,8 @@ public class DialogHelper {
             public void onClick(View v) {
                 AppControl appControl = AppControl.getInstance();
                 appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 mProgressDialog.dismiss();
             }
         });
@@ -370,7 +389,10 @@ public class DialogHelper {
             public void onClick(View v) {
                 AppControl appControl = AppControl.getInstance();
                 appControl.soundButton = MediaPlayer.create(context.getApplicationContext(),appControl.soundButtonEfect);
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    if(appControl.isBackgroundPlaying)
+                        appControl.soundButton.start();
+
                 mProgressDialog.dismiss();
                 listener.closeFeedBackDialog();
             }
@@ -383,5 +405,6 @@ public class DialogHelper {
     public interface FeedbackDialogListener {
         void closeFeedBackDialog();
     }
+
 }
 

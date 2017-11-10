@@ -99,6 +99,7 @@ public class SettingsActivity extends AppCompatActivity {
                 if(isChecked){
 
                     if(!appControl.soundBackground.isPlaying()){
+                        appControl.soundBackground.stop();
                         appControl.soundBackground = MediaPlayer.create(getApplicationContext(),R.raw.theartloop);
                         appControl.soundBackground.start();
                         appControl.soundBackground.setLooping(true);

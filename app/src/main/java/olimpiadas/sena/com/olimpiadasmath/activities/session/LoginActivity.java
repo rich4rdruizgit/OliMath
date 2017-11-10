@@ -75,7 +75,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()){
             case R.id.btn_login:
                 if(appControl.isBackgroundPlaying)
-                    appControl.soundButton.start();
+                    if(appControl.isBackgroundPlaying)
+                        appControl.soundButton.start();
                 if(tvUser.getText().length() == 0){
                     tvUser.setError(getString(R.string.fiel_required));
                     return;
@@ -96,7 +97,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
                 break;
             case R.id.btn_lose_pass:
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 break;
         }
     }

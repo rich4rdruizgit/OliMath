@@ -4,7 +4,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4b5465"
+    android:background="@drawable/backgroundmain"
     android:orientation="vertical"
     tools:context=".activities.library.LibraryActivity">
 

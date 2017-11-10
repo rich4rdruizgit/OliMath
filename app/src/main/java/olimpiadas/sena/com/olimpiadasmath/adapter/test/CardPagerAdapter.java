@@ -1,6 +1,7 @@
 package olimpiadas.sena.com.olimpiadasmath.adapter.test;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Vibrator;
 import android.support.v4.view.PagerAdapter;
@@ -158,7 +159,8 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
             @Override
             public void onClick(View v) {
                 appControl.soundButton = MediaPlayer.create(v.getContext(),appControl.soundButtonEfect);
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 int selectedId = radioGroup.getCheckedRadioButtonId();
 
                 if(selectedId == -1){
