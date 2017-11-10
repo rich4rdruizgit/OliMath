@@ -27,7 +27,7 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
     //private final String url = "http://10.73.70.29:8097/";
     //private final String url = "http://10.73.70.39:8097/";
-    private final String url = "http://10.73.120.156:8097/";
+    private final String url = "http://192.168.43.14:8097/";
     //private final String url = "http://192.168.137.1:8097/";
 
     public interface WebConnectionManagerListener {
@@ -63,7 +63,7 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                 case RANKING:
                     return "WSOlimath.asmx/mostrarRankings";
                 case SEND_CHALLENGE:
-                    return "sendChallenge/";
+                    return "WSOlimath.asmx/insertarCompetencia";
                 case SHOW_SHOP:
                     return "mostrarTienda";
                 default:
@@ -82,7 +82,7 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                 case "WSOlimath.asmx/mostrarRankings":
                     return RANKING;
 
-                case "sendChallenge/":
+                case "WSOlimath.asmx/insertarCompetencia":
                     return SEND_CHALLENGE;
 
                 case "mostrarTienda":
@@ -208,6 +208,27 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
         nameValuePairs.add(new BasicNameValuePair("ruta", "ruta test"));
         nameValuePairs.add(new BasicNameValuePair("puntaje", "10"));
         webConnection.executePostRequest(url, OperationType.INSERT_QUESTION.getName(), nameValuePairs);
+        //webConnection.executePostRequest("login url", OperationType.LOGIN.getName(), nameValuePairs);
+        //webConnection.executeAsyncGetRequest(url);
+    }
+
+    public void sendChallenge(int[] answers,String initDate, String finishDate ) {
+
+        Long tsLong = System.currentTimeMillis()/1000;
+        String ts = tsLong.toString();
+        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+
+        nameValuePairs.add(new BasicNameValuePair("IdPerfil", "5"));
+        nameValuePairs.add(new BasicNameValuePair("RespuestaId1", "2"));
+        nameValuePairs.add(new BasicNameValuePair("RespuestaId2", "2"));
+        nameValuePairs.add(new BasicNameValuePair("RespuestaId3", "2"));
+        nameValuePairs.add(new BasicNameValuePair("RespuestaId4", "2"));
+        nameValuePairs.add(new BasicNameValuePair("RespuestaId5", "2"));
+        nameValuePairs.add(new BasicNameValuePair("HoraIni", "2017/01/01 11:11:10"));
+        nameValuePairs.add(new BasicNameValuePair("HoraFin", "2017/01/01 11:11:10"));
+        nameValuePairs.add(new BasicNameValuePair("Publicar", "1"));
+
+        webConnection.executePostRequest(url, OperationType.SEND_CHALLENGE.getName(), nameValuePairs);
         //webConnection.executePostRequest("login url", OperationType.LOGIN.getName(), nameValuePairs);
         //webConnection.executeAsyncGetRequest(url);
     }
