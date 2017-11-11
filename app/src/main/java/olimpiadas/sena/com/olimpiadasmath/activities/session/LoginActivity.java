@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         AppControl.getInstance().currentActivity = LoginActivity.class.getSimpleName();
 
-        WifiManager wifiManager = (WifiManager) this.getSystemService(Context.WIFI_SERVICE);
+        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
         if(!wifiManager.isWifiEnabled()) {
             // Mostrar un dialog
@@ -76,7 +76,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()){
             case R.id.btn_login:
                 if(appControl.isBackgroundPlaying)
-                    appControl.soundButton.start();
+                    if(appControl.isBackgroundPlaying)
+                        appControl.soundButton.start();
                 if(tvUser.getText().length() == 0){
                     tvUser.setError(getString(R.string.fiel_required));
                     return;
@@ -97,7 +98,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
                 break;
             case R.id.btn_lose_pass:
-                appControl.soundButton.start();
+                if(appControl.isBackgroundPlaying)
+                    appControl.soundButton.start();
                 break;
         }
     }

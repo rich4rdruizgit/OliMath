@@ -5,14 +5,13 @@
     android:id="@+id/activity_profile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#434b5b"
+    android:background="@drawable/backgroundmain"
     android:orientation="vertical"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.profile.ProfileActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_ranking"
         android:orientation="horizontal">
 
 
