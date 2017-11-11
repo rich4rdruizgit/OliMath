@@ -15,11 +15,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import io.realm.Realm;
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.model.Configuration;
+import olimpiadas.sena.com.olimpiadasmath.model.User;
 import olimpiadas.sena.com.olimpiadasmath.util.DialogHelper;
 import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnection;
 import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnectionManager;
@@ -29,8 +34,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private static final String TAG = LoginActivity.class.toString();
 
-    Button btnLogin,btnLosePass;
-    EditText tvUser,tvPwd;
+    Button btnLogin, btnLosePass;
+    EditText tvUser, tvPwd;
     WebConnectionManager webConnectionManager;
     boolean stateNet = false;
     AppControl appControl;
@@ -44,7 +49,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
-        if(!wifiManager.isWifiEnabled()) {
+        if (!wifiManager.isWifiEnabled()) {
             // Mostrar un dialog
             DialogHelper.showWifiState(LoginActivity.this);
         }
@@ -67,8 +72,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        appControl.soundButton = MediaPlayer.create(getApplicationContext(),appControl.soundButtonEfect);
-        switch (v.getId()){
+        appControl.soundButton = MediaPlayer.create(getApplicationContext(), appControl.soundButtonEfect);
+        switch (v.getId()) {
             case R.id.btn_login:
                 if(appControl.isBackgroundPlaying)
                     if(appControl.isBackgroundPlaying)
@@ -108,22 +113,59 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void webRequestComplete(WebConnectionManager.Response response) {
 
         Log.d("RESPONSE OBJECT", response.toString());
-        if( (response.getStatus().equals(WebConnectionManager.Response.SUCCESS))&&
-                (response.getResult().equals(WebConnectionManager.Response.LOGGED))){
+        if ((response.getStatus().equals(WebConnectionManager.Response.SUCCESS)) &&
+                (response.getResult().equals(WebConnectionManager.Response.LOGGED))) {
 
             Realm realm = Realm.getDefaultInstance();
-            realm.executeTransaction(new Realm.Transaction() {
-                @Override
-                public void execute(Realm realm) {
-                    Configuration config = realm.where(Configuration.class).equalTo("key","isLogged").findFirst();
-                    config.setValue(true);
-                }
-            });
 
-            Intent intentMenu = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intentMenu);
-            finish();
-        }else{
+            final User currentuser = new User();
+
+            try {
+                JSONArray user = new JSONArray(response.getData());
+                Log.d(TAG, " hola " + user.length());
+
+                if (user.length() != 0) {
+                    currentuser.setExperience((double) user.getJSONObject(0).getInt("experiencia"));
+                    currentuser.setCoins(user.getJSONObject(0).getInt("coins"));
+                    currentuser.setLevel(user.getJSONObject(0).getInt("nivel"));
+                    currentuser.setNickname(user.getJSONObject(0).getString("nickname"));
+                    currentuser.setAvatar("jhonny");
+                    realm.executeTransactionAsync(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+                            realm.where(User.class).findAll().deleteAllFromRealm();
+                            realm.insert(currentuser);
+
+                            Configuration config = realm.where(Configuration.class).equalTo("key", "isLogged").findFirst();
+                            config.setValue(true);
+
+                        }
+                    }, new Realm.Transaction.OnSuccess() {
+                        @Override
+                        public void onSuccess() {
+                            appControl.currentUser = currentuser;
+                            Intent intentMenu = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intentMenu);
+                            finish();
+                        }
+                    }, new Realm.Transaction.OnError() {
+                        @Override
+                        public void onError(Throwable error) {
+                            Toast.makeText(LoginActivity.this, "Se presento un error, por favor intenta nuevamente", Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+
+                }
+            } catch (JSONException e) {
+
+
+                e.printStackTrace();
+            }
+
+
+
+        } else {
             Toast.makeText(this, "Paila", Toast.LENGTH_SHORT).show();
         }
     }
