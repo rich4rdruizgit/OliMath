@@ -24,12 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
@@ -141,74 +136,22 @@ public class SplashActivity extends AppCompatActivity implements AppControl.Init
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void webRequestComplete(WebConnectionManager.Response response) throws JSONException {
-        JSONArray jsonArray = new JSONArray(response.getData());
-        List<String> qs = new ArrayList<>();
-        /**
-         * Aqui vamos a recorrer la lista de preguntas y respuestar para formatearlas y almacenarlas en la
-         * base de datos.
-         */
-        for (int i = 0; i < jsonArray.length(); i++) {
-            JSONObject jsonObjectQuestion = (JSONObject) jsonArray.get(i);
-            /**
-             * Verifico si es una pregunta, si lo es busco sus respuestas y elimino los objetos del
-             * JSONArray para luego no hacer tantas verificaciones
-             */
-            if (jsonObjectQuestion.getString("tipo").equals("P")) {
-                int num_question = Integer.parseInt(jsonObjectQuestion.getString("ide"));
-                int id_question = Integer.parseInt(jsonObjectQuestion.getString("regId"));
-                String text_question = jsonObjectQuestion.getString("Descripcion");
-                String url_img_question = jsonObjectQuestion.getString("rutaImg");
-                //Elimino del array la pregunta porque ya tengo
-                jsonArray.remove(i);
-                i--;
-                List<String> listAnswers = new ArrayList<>();
-                for (int j = 0; j < jsonArray.length(); j++) {
-                    JSONObject jsonObjectAnswer = (JSONObject) jsonArray.get(j);
-                    if (num_question == Integer.parseInt(jsonObjectAnswer.getString("ide")) && jsonObjectAnswer.getString("tipo").equals("R")) {
-                        int id_answer = Integer.parseInt(jsonObjectAnswer.getString("regId"));
-                        String text_answer = jsonObjectAnswer.getString("Descripcion");
-                        String url_img_answer = jsonObjectAnswer.getString("rutaImg");
-                        String argument = jsonObjectAnswer.getString("argumento");
-                        int is_correct = Integer.parseInt(jsonObjectAnswer.getString("Correcta"));
-                        String answer = "{'idAnswer':'" + id_answer + "' ," +
-                                "'text':'" + text_answer + "' ," +
-                                "'isCorrect':'" + is_correct + "' ," +
-                                "'urlImage':'" + url_img_answer + "' ," +
-                                "'argument':'" + argument + "'}";
-                        listAnswers.add(answer);
-                        jsonArray.remove(j);
-                        j--;
-                    }
-                }
-                String answers = "[";
-                for (int k = 0; k < listAnswers.size(); k++) {
-                    answers += listAnswers.get(k);
-                    if (k < (listAnswers.size() - 1)) {
-                        answers += ",\n";
-                    }
-                }
-                answers += "]\n";
-                /**
-                 * Cadena question con el formato deseado
-                 */
-                String question = ("{'idQuestion':'" + id_question + "', " +
-                                    "'text':'" + text_question + "', " +
-                                    "'urlImage':'" + url_img_question + "'," +
-                                    "'answers':" + answers + "}");
-                /**
-                 * Aqui ya debe almacenarce en la DB
-                 */
-                qs.add(question);
-            }
-        }
+        if (response.getOperationType() == WebConnectionManager.OperationType.GET_QUESTIONS) {
+            if (response.getStatus() == WebConnectionManager.Response.SUCCESS) {
+                JSONArray jsonArray = new JSONArray(response.getData());
+//        JSONArray jsonArray = new JSONArray(data());
+                List<Question> qs = Question.JsonArrayToList(jsonArray);
 
-        for (String q: qs) {
-            Log.e("Question", q);
+                for (Question q : qs) {
+                    Log.e("Question", q.getJsonObject());
+                }
+                LoadQuestionsFromWebService(qs);
+            }
         }
     }
 
 
-    public void LoadQuestionsFromWebService() {
+    public void LoadQuestionsFromWebService(final List<Question> questionList) {
 
         realm.executeTransactionAsync(new Realm.Transaction() {
             @Override
@@ -227,10 +170,30 @@ public class SplashActivity extends AppCompatActivity implements AppControl.Init
 
             }
         });
+
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                realm.copyToRealmOrUpdate(questionList);
+            }
+        }, new Realm.Transaction.OnSuccess() {
+            @Override
+            public void onSuccess() {
+
+                for (int i = 1; i < questionList.size(); i++) {
+                    Log.d("JSON", questionList.get(i).toString());
+                }
+                Log.d("COPIA A REALM", "COPIADOS");
+            }
+        }, new Realm.Transaction.OnError() {
+            @Override
+            public void onError(Throwable error) {
+                Log.d("COPIA A REALM", " NO COPIADOS");
+            }
+        });
     }
 
-    @Override
-    public void webRequestComplete(WebConnectionManager.Response response) throws JSONException {
+    public String data() {
         String q = "[{\"ide\":1,\"tipo\":\"P\",\"regId\":63,\"Descripcion\":\"as\",\"rutaImg\":\"C:/Users/Personal/Documents/My Web Sites/MathWeb/Vista/archivos/preguntas/puertos.jpg\",\"Correcta\":0,\"argumento\":\"as\"},\n" +
                 "{\"ide\":1,\"tipo\":\"R\",\"regId\":134,\"Descripcion\":\"as\",\"rutaImg\":\"NA\",\"Correcta\":0,\"argumento\":\"NA\"},\n" +
                 "{\"ide\":1,\"tipo\":\"R\",\"regId\":133,\"Descripcion\":\"as\",\"rutaImg\":\"C:/Users/Personal/Documents/My Web Sites/MathWeb/Vista/archivos/respuestas/FUP.jpg\",\"Correcta\":0,\"argumento\":\"NA\"},\n" +
@@ -272,42 +235,31 @@ public class SplashActivity extends AppCompatActivity implements AppControl.Init
                 "{\"ide\":10,\"tipo\":\"P\",\"regId\":7,\"Descripcion\":\"En la figura mostrada ABCD y DBEF son rectángulos. ¿Cuál es el área de DBEF?\",\"rutaImg\":\"ruta\",\"Correcta\":0,\"argumento\":\"él áreá dél rectánguló se calcula a partir de los dos lados diferentes (á ý b). Es el producto de los dos lados contiguos dél rectángulo.\"},{\"ide\":10,\"tipo\":\"R\",\"regId\":34,\"Descripcion\":\" 12 cm2\",\"rutaImg\":\"rut\",\"Correcta\":1,\"argumento\":\"NA\"},\n" +
                 "{\"ide\":10,\"tipo\":\"R\",\"regId\":32,\"Descripcion\":\"10 cm2 \",\"rutaImg\":\"rut\",\"Correcta\":0,\"argumento\":\"NA\"},\n" +
                 "{\"ide\":10,\"tipo\":\"R\",\"regId\":33,\"Descripcion\":\" 13 cm2\",\"rutaImg\":\"rut\",\"Correcta\":0,\"argumento\":\"NA\"}]";
-        //JSONArray jsonArray = new JSONArray(response.getData());
-        JSONArray jsonArray = new JSONArray(q);
-        final List<Question> questionList = new ArrayList<>();
-        for(int  i = 1 ; i < jsonArray.length(); i++){
-            JSONObject jsonObject = jsonArray.getJSONObject(i);
-            Question question =  new Question();
-            while(i == Integer.parseInt(jsonObject.getString("ide"))){
-                question.setJsonObject(jsonObject.toString());
-                questionList.add(question);
-            }
 
-        }
-
-        realm.executeTransactionAsync(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                realm.copyToRealmOrUpdate(questionList);
-            }
-        }, new Realm.Transaction.OnSuccess() {
-            @Override
-            public void onSuccess() {
-
-                for(int i = 1 ; i < questionList.size();i++){
-                    Log.d("JSON",questionList.get(i).toString());
-                }
-                Log.d("COPIA A REALM","COPIADOS");
-            }
-        }, new Realm.Transaction.OnError() {
-            @Override
-            public void onError(Throwable error) {
-                Log.d("COPIA A REALM"," NO COPIADOS");
-            }
-        });
-
-        for(int  i = 0 ; i < jsonArray.length(); i++){
-            Log.d("Questions LOad", questionList.get(i).toString());
-        }
+//        realm.executeTransactionAsync(new Realm.Transaction() {
+//            @Override
+//            public void execute(Realm realm) {
+//                realm.copyToRealmOrUpdate(questionList);
+//            }
+//        }, new Realm.Transaction.OnSuccess() {
+//            @Override
+//            public void onSuccess() {
+//
+//                for(int i = 1 ; i < questionList.size();i++){
+//                    Log.d("JSON",questionList.get(i).toString());
+//                }
+//                Log.d("COPIA A REALM","COPIADOS");
+//            }
+//        }, new Realm.Transaction.OnError() {
+//            @Override
+//            public void onError(Throwable error) {
+//                Log.d("COPIA A REALM"," NO COPIADOS");
+//            }
+//        });
+//
+//        for(int  i = 0 ; i < jsonArray.length(); i++){
+//            Log.d("Questions LOad", questionList.get(i).toString());
+//        }
+        return q;
     }
 }

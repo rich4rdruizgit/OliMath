@@ -1,10 +1,15 @@
 package olimpiadas.sena.com.olimpiadasmath.model;
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import io.realm.RealmObject;
@@ -110,5 +115,69 @@ public class Question  extends RealmObject{
         }
         return "";
 
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public static List<Question> JsonArrayToList(JSONArray jsonArray) throws JSONException {
+        List<Question> qs = new ArrayList<>();
+        /**
+         * Aqui vamos a recorrer la lista de preguntas y respuestar para formatearlas y almacenarlas en la
+         * base de datos.
+         */
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject jsonObjectQuestion = (JSONObject) jsonArray.get(i);
+            /**
+             * Verifico si es una pregunta, si lo es busco sus respuestas y elimino los objetos del
+             * JSONArray para luego no hacer tantas verificaciones
+             */
+            if (jsonObjectQuestion.getString("tipo").equals("P")) {
+                int num_question = Integer.parseInt(jsonObjectQuestion.getString("ide"));
+                int id_question = Integer.parseInt(jsonObjectQuestion.getString("regId"));
+                String text_question = jsonObjectQuestion.getString("Descripcion");
+                String url_img_question = jsonObjectQuestion.getString("rutaImg");
+                //Elimino del array la pregunta porque ya tengo
+                jsonArray.remove(i);
+                i--;
+                List<String> listAnswers = new ArrayList<>();
+                for (int j = 0; j < jsonArray.length(); j++) {
+                    JSONObject jsonObjectAnswer = (JSONObject) jsonArray.get(j);
+                    if (num_question == Integer.parseInt(jsonObjectAnswer.getString("ide")) && jsonObjectAnswer.getString("tipo").equals("R")) {
+                        int id_answer = Integer.parseInt(jsonObjectAnswer.getString("regId"));
+                        String text_answer = jsonObjectAnswer.getString("Descripcion");
+                        String url_img_answer = jsonObjectAnswer.getString("rutaImg");
+                        String argument = jsonObjectAnswer.getString("argumento");
+                        int is_correct = Integer.parseInt(jsonObjectAnswer.getString("Correcta"));
+                        String answer = "{'idAnswer':'" + id_answer + "' ," +
+                                "'text':'" + text_answer + "' ," +
+                                "'isCorrect':'" + is_correct + "' ," +
+                                "'urlImage':'" + url_img_answer + "' ," +
+                                "'argument':'" + argument + "'}";
+                        listAnswers.add(answer);
+                        jsonArray.remove(j);
+                        j--;
+                    }
+                }
+                String answers = "[";
+                for (int k = 0; k < listAnswers.size(); k++) {
+                    answers += listAnswers.get(k);
+                    if (k < (listAnswers.size() - 1)) {
+                        answers += ",\n";
+                    }
+                }
+                answers += "]\n";
+                /**
+                 * Cadena question con el formato deseado
+                 */
+                String question = ("{'idQuestion':'" + id_question + "', " +
+                        "'text':'" + text_question + "', " +
+                        "'urlImage':'" + url_img_question + "'," +
+                        "'answers':" + answers + "}");
+                /**
+                 * Aqui ya debe almacenarce en la DB
+                 */
+                qs.add(new Question(question));
+            }
+        }
+        return qs;
     }
 }
