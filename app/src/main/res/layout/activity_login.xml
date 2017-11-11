@@ -6,20 +6,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/backgroundlog"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.session.LoginActivity"
     android:weightSum="1">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:background="@drawable/background_base">
-        <ImageView
+        android:layout_weight="0.5">
+        <!--<ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/splash"
             android:layout_margin="20dp"
             android:background="@drawable/logoappnombre"
+            />-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:text="@string/app_name"
+            android:textColor="@color/primary_text"
+            android:gravity="bottom"
+            android:textAlignment="center"
+            android:textSize="@dimen/text_size_tittle"
+            android:layout_marginBottom="10dp"
             />
 
     </LinearLayout>
@@ -27,9 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.5"
-        android:orientation="vertical"
-        android:background="#4a5365"
-        >
+        android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"

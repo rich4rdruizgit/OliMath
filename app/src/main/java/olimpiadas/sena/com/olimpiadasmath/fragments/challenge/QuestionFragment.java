@@ -101,14 +101,14 @@ public class QuestionFragment extends Fragment {
         for(int i = 0; i < appControl.currentQuestion; i++){
             ImageView temp = new ImageView(getActivity());
             temp.setPadding(10,10,10,10);
-            temp.setLayoutParams(new ViewGroup.LayoutParams(50,50));
+            temp.setLayoutParams(new ViewGroup.LayoutParams(100,100));
 
             if(appControl.answers[i] == 1){
-                temp.setImageResource(R.drawable.ok);
+                temp.setImageResource(R.drawable.checkright);
             }else if(appControl.answers[i] == 0){
-                temp.setImageResource(R.drawable.wrong);
+                temp.setImageResource(R.drawable.checkwrong);
             }else{
-                temp.setImageResource(R.drawable.question);
+                temp.setImageResource(R.drawable.checkempty);
             }
             questionsStatus.add(temp);
             llQuestionStatus.addView(temp);
@@ -116,9 +116,9 @@ public class QuestionFragment extends Fragment {
         for(int i = appControl.currentQuestion; i < appControl.numberOfQuestions; i++){
             ImageView temp = new ImageView(getActivity());
             temp.setPadding(10,10,10,10);
-            temp.setLayoutParams(new ViewGroup.LayoutParams(50,50));
+            temp.setLayoutParams(new ViewGroup.LayoutParams(100,100));
 
-            temp.setImageResource(R.drawable.question);
+            temp.setImageResource(R.drawable.checkempty);
 
 
             questionsStatus.add(temp);

@@ -8,33 +8,47 @@
     android:layout_gravity="center"
     android:id="@+id/lin_lay"
     android:gravity="center"
+    android:background="@drawable/splash"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.splash.SplashActivity">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:orientation="vertical"
+        android:layout_weight="0.6"
+        android:orientation="horizontal"
         >
         <ImageView
             android:layout_marginTop="30dp"
             android:scaleX="0.8"
-            android:layout_width="wrap_content"
-            android:layout_height="250sp"
+            android:layout_width="189dp"
+            android:layout_height="165dp"
             android:layout_margin="10dp"
             android:id="@+id/splash"
+            android:scaleY="1"
+
+
             android:background="@drawable/logoappnombre" />
 
+
+            <ImageView
+                android:layout_marginTop="30dp"
+                android:scaleX="0.8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/teacher" />
+
         >
-
-
-    </LinearLayout>
+            </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.25"
+        android:layout_weight="0.2"
         android:gravity="center"
         >
+
         <com.github.ybq.android.spinkit.SpinKitView
             android:layout_marginTop="20dp"
             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -45,12 +59,14 @@
             android:layout_gravity="center"
             app:SpinKit_Color="@color/colorAccent" />
 
+
+
     </LinearLayout>
     <!-- Aqui poner el logo del sena-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.25"
+        android:layout_weight="0.2"
         >
         <ImageView
             android:scaleX="0.5"
@@ -59,6 +75,7 @@
             android:background="@drawable/logosena" />
 
     </LinearLayout>
+
 
 </LinearLayout>
 
