@@ -30,7 +30,7 @@
             android:layout_width="0dp"
             android:layout_weight=".25"
             android:layout_height="match_parent"
-            android:src="@mipmap/ic_launcher_round"/>
+            android:src="@drawable/halftutourprac"/>
 
         <LinearLayout
             android:padding="2dp"
