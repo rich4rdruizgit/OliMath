@@ -29,12 +29,12 @@ import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnection;
 import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnectionManager;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener, WebConnectionManager.WebConnectionManagerListener{
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener, WebConnectionManager.WebConnectionManagerListener {
 
     private static final String TAG = LoginActivity.class.toString();
 
-    Button btnLogin,btnLosePass;
-    EditText tvUser,tvPwd;
+    Button btnLogin, btnLosePass;
+    EditText tvUser, tvPwd;
     WebConnectionManager webConnectionManager;
     boolean stateNet = false;
     AppControl appControl;
@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
-        if(!wifiManager.isWifiEnabled()) {
+        if (!wifiManager.isWifiEnabled()) {
             // Mostrar un dialog
             DialogHelper.showWifiState(LoginActivity.this);
         }
@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnLogin.setOnClickListener(this);
         btnLosePass.setOnClickListener(this);
 
-        if(AppControl.getInstance().isLogged == true){
+        if (AppControl.getInstance().isLogged == true) {
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
             finish();
         }
@@ -71,33 +71,33 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        appControl.soundButton = MediaPlayer.create(getApplicationContext(),appControl.soundButtonEfect);
-        switch (v.getId()){
+        appControl.soundButton = MediaPlayer.create(getApplicationContext(), appControl.soundButtonEfect);
+        switch (v.getId()) {
             case R.id.btn_login:
-                if(appControl.isBackgroundPlaying)
-                    if(appControl.isBackgroundPlaying)
+                if (appControl.isBackgroundPlaying)
+                    if (appControl.isBackgroundPlaying)
                         appControl.soundButton.start();
-                if(tvUser.getText().length() == 0){
+                if (tvUser.getText().length() == 0) {
                     tvUser.setError(getString(R.string.fiel_required));
                     return;
                 }
 
-                if(tvPwd.getText().length() == 0){
+                if (tvPwd.getText().length() == 0) {
                     tvPwd.setError(getString(R.string.fiel_required));
                     return;
                 }
                 webConnectionManager = WebConnectionManager.getWebConnectionManager();
                 webConnectionManager.setWebConnectionManagerListener(this);
                 stateNet = verificarConexion(this);
-                Log.d("ESTADO NET", stateNet+"");
-                if(stateNet){
+                Log.d("ESTADO NET", stateNet + "");
+                if (stateNet) {
                     webConnectionManager.login(tvUser.getText().toString(), tvPwd.getText().toString());
-                }else {
+                } else {
                     Toast.makeText(this, "Debes estar conectado a Intenet para iniciar sesión", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.btn_lose_pass:
-                if(appControl.isBackgroundPlaying)
+                if (appControl.isBackgroundPlaying)
                     appControl.soundButton.start();
                 break;
         }
@@ -112,22 +112,50 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void webRequestComplete(WebConnectionManager.Response response) {
 
         Log.d("RESPONSE OBJECT", response.toString());
-        if( (response.getStatus().equals(WebConnectionManager.Response.SUCCESS))&&
-                (response.getResult().equals(WebConnectionManager.Response.LOGGED))){
+        if ((response.getStatus().equals(WebConnectionManager.Response.SUCCESS)) &&
+                (response.getResult().equals(WebConnectionManager.Response.LOGGED))) {
 
             Realm realm = Realm.getDefaultInstance();
-            realm.executeTransaction(new Realm.Transaction() {
-                @Override
-                public void execute(Realm realm) {
-                    Configuration config = realm.where(Configuration.class).equalTo("key","isLogged").findFirst();
-                    config.setValue(true);
-                }
-            });
 
-            User currentuser = new User();
+            final User currentuser = new User();
 
             try {
                 JSONArray user = new JSONArray(response.getData());
+                Log.d(TAG, " hola " + user.length());
+
+                if (user.length() != 0) {
+                    currentuser.setExperience((double) user.getJSONObject(0).getInt("experiencia"));
+                    currentuser.setCoins(user.getJSONObject(0).getInt("coins"));
+                    currentuser.setLevel(user.getJSONObject(0).getInt("nivel"));
+                    currentuser.setNickname(user.getJSONObject(0).getString("nickname"));
+                    currentuser.setAvatar("jhonny");
+                    realm.executeTransactionAsync(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+                            realm.where(User.class).findAll().deleteAllFromRealm();
+                            realm.insert(currentuser);
+
+                            Configuration config = realm.where(Configuration.class).equalTo("key", "isLogged").findFirst();
+                            config.setValue(true);
+
+                        }
+                    }, new Realm.Transaction.OnSuccess() {
+                        @Override
+                        public void onSuccess() {
+                            appControl.currentUser = currentuser;
+                            Intent intentMenu = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intentMenu);
+                            finish();
+                        }
+                    }, new Realm.Transaction.OnError() {
+                        @Override
+                        public void onError(Throwable error) {
+                            Toast.makeText(LoginActivity.this, "Se presento un error, por favor intenta nuevamente", Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+
+                }
             } catch (JSONException e) {
 
 
@@ -135,10 +163,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
 
 
-            Intent intentMenu = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intentMenu);
-            finish();
-        }else{
+
+        } else {
             Toast.makeText(this, "Paila", Toast.LENGTH_SHORT).show();
         }
     }
