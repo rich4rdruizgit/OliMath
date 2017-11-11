@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import io.realm.Realm;
 import olimpiadas.sena.com.olimpiadasmath.R;
@@ -29,7 +30,7 @@ import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnection;
 import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnectionManager;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener, WebConnectionManager.WebConnectionManagerListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener, WebConnectionManager.WebConnectionManagerListener{
 
     private static final String TAG = LoginActivity.class.toString();
 
@@ -63,7 +64,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnLogin.setOnClickListener(this);
         btnLosePass.setOnClickListener(this);
 
-        if (AppControl.getInstance().isLogged == true) {
+        if(AppControl.getInstance().isLogged == true){
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
             finish();
         }
@@ -74,30 +75,30 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         appControl.soundButton = MediaPlayer.create(getApplicationContext(), appControl.soundButtonEfect);
         switch (v.getId()) {
             case R.id.btn_login:
-                if (appControl.isBackgroundPlaying)
-                    if (appControl.isBackgroundPlaying)
+                if(appControl.isBackgroundPlaying)
+                    if(appControl.isBackgroundPlaying)
                         appControl.soundButton.start();
-                if (tvUser.getText().length() == 0) {
+                if(tvUser.getText().length() == 0){
                     tvUser.setError(getString(R.string.fiel_required));
                     return;
                 }
 
-                if (tvPwd.getText().length() == 0) {
+                if(tvPwd.getText().length() == 0){
                     tvPwd.setError(getString(R.string.fiel_required));
                     return;
                 }
                 webConnectionManager = WebConnectionManager.getWebConnectionManager();
                 webConnectionManager.setWebConnectionManagerListener(this);
                 stateNet = verificarConexion(this);
-                Log.d("ESTADO NET", stateNet + "");
-                if (stateNet) {
+                Log.d("ESTADO NET", stateNet+"");
+                if(stateNet){
                     webConnectionManager.login(tvUser.getText().toString(), tvPwd.getText().toString());
-                } else {
+                }else {
                     Toast.makeText(this, "Debes estar conectado a Intenet para iniciar sesión", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.btn_lose_pass:
-                if (appControl.isBackgroundPlaying)
+                if(appControl.isBackgroundPlaying)
                     appControl.soundButton.start();
                 break;
         }

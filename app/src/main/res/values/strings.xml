@@ -56,7 +56,7 @@
     <string name="title_dialog_practice">Hola, que bueno verte por aquí!</string>
     <string name="whitout_coins">Te quedaste sin monedas!</string>
     <string name="begin_again">Vuelve a comenzar!!!</string>
-    <string name="text_dialog_exit_challenge" >¿Seguro que quieres terminar el reto? \nPerderas los créditos que pagaste para ingresar y se contará como perdido</string>
+    <string name="text_dialog_exit_challenge" >¿Seguro quieres terminar el reto? \nPerderas las monedas que pagaste para ingresar y se contará como perdido</string>
 
     <string-array name="lenguages">
         <item>Español</item>
@@ -67,7 +67,7 @@
         <item>Si gastas 2 Monedas en el preview, veras la pregunta por 15s!</item>
         <item>¡Apostar, un arma de doble filo! Necesitas conocimiento para usarla de la mejor manera.</item>
         <item>¡Si tienes buenos resultados, puedes estar en el Ranking!</item>
-        <item>¡Tienes 3min para responder cada pregunta!</item>
+        <item>¡Tienes 3 minutos para responder cada pregunta!</item>
         <item>¡El preview resta 15s de los 3min que dura la pregunta!</item>
         <item>¡Si obtienes un buen resultado, tienes la posibildad de estar en el Ranking!</item>
     </string-array>
