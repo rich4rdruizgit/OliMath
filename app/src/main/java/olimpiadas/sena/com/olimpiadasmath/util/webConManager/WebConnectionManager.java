@@ -24,7 +24,7 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 //    private final String url = "http://10.73.70.29:8097/";
     //private final String url = "http://10.73.70.29:8097/";
     //private final String url = "http://10.73.70.39:8097/";
-    private final String url = "http://192.168.43.14:8097/";
+    private final String url = "http://10.73.120.153:8097/";
     //private final String url = "http://192.168.137.1:8097/";
 
     public interface WebConnectionManagerListener {
@@ -178,6 +178,10 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
     }
 
 
+
+    public void mostrarPreguntasAleatorias() {
+        webConnection.executeAsyncGetRequest(url + OperationType.GET_QUESTIONS.getName(), OperationType.GET_QUESTIONS.getName());
+    }
     public void mostrarRankings() {
         webConnection.executeAsyncGetRequest(url + OperationType.RANKING.getName(), OperationType.RANKING.getName());
     }
