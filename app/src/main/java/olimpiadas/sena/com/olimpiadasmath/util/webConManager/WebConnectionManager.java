@@ -20,7 +20,7 @@ import cz.msebera.android.httpclient.message.BasicNameValuePair;
 public class WebConnectionManager implements WebConnection.WebConnectionListener{
 
     private String TAG = "WebConnectionManager";
-    private final String url = "http://192.168.0.15:8097/";
+    //private final String url = "http://192.168.0.15:8097/";
 //    private final String url = "http://10.73.70.29:8097/";
 
 
@@ -88,7 +88,7 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                 case "mostrarTienda":
                     return SHOW_SHOP;
 
-                case "mostrarPreguntasAleatoriasNuevo":
+                case "WSOlimath.asmx/mostrarPreguntasAleatoriasNuevo":
                     return GET_QUESTIONS;
                 default:
                     return null;
@@ -191,12 +191,15 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
         webConnection.executeAsyncGetRequest(url);
     }
 
-    public void getQuestions(String url) {
+    public void getQuestions() {
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-        nameValuePairs.add(new BasicNameValuePair("idPregunta", "4"));
         webConnection.executePostRequest(url, OperationType.GET_QUESTIONS.getName(), nameValuePairs);
         //webConnection.executePostRequest("login url", OperationType.LOGIN.getName(), nameValuePairs);
         //webConnection.executeAsyncGetRequest(url);
+    }
+
+    public void getRandomQuestions(){
+        webConnection.executeAsyncGetRequest(url + OperationType.GET_QUESTIONS.getName(), OperationType.GET_QUESTIONS.getName());
     }
 
     public void insertQuestion(String url) {

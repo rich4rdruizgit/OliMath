@@ -15,11 +15,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import io.realm.Realm;
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.model.Configuration;
+import olimpiadas.sena.com.olimpiadasmath.model.User;
 import olimpiadas.sena.com.olimpiadasmath.util.DialogHelper;
 import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnection;
 import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnectionManager;
@@ -105,9 +110,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void webRequestComplete(WebConnectionManager.Response response) {
 
-        Log.d("RESPONSE OBJECT", response.toString());
-        if( (response.getStatus().equals(WebConnectionManager.Response.SUCCESS))&&
-                (response.getResult().equals(WebConnectionManager.Response.LOGGED))){
+        String userJson = "[{\"nickname\":\"LUCHO\",\"password\":\"12345\"}]";
+        try {
+            JSONArray jsonArray = new JSONArray(userJson);
+            User user = new User();
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                user.setNickname(jsonObject.getString("nickname"));
+                user.setPassword(jsonObject.getString("password"));
+            }
+            if ((response.getStatus().equals(WebConnectionManager.Response.SUCCESS)) &&
+                    (response.getResult().equals(WebConnectionManager.Response.LOGGED))) {
 
             Realm realm = Realm.getDefaultInstance();
             realm.executeTransaction(new Realm.Transaction() {
@@ -123,6 +136,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             finish();
         }else{
             Toast.makeText(this, "Paila", Toast.LENGTH_SHORT).show();
+        }
+    } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
 
