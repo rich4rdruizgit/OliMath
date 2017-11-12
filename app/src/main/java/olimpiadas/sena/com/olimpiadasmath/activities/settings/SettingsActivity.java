@@ -74,6 +74,25 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 appControl.isLogged = false;
                 appControl = null;
+
+                realm = Realm.getDefaultInstance();
+                realm.executeTransactionAsync(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        Configuration configuration = realm.where(Configuration.class).equalTo("key","isLogged").findFirst();
+                        configuration.setValue(false);
+                        realm.insertOrUpdate(configuration);
+
+                    }
+                },new Realm.Transaction.OnError() {
+                    @Override
+                    public void onError(Throwable error) {
+                        error.printStackTrace();
+                        Log.d(TAG,"error al guardar");
+                        Log.d(TAG,"error al guardar");
+                    }
+                });
+
                 Intent logout = new Intent(SettingsActivity.this, LoginActivity.class);
                 startActivity(logout);
                 finish();

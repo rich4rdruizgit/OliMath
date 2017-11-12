@@ -27,8 +27,8 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
     //private final String url = "http://10.73.70.29:8097/";
     //private final String url = "http://10.73.70.39:8097/";
-    private final String url = "http://10.73.120.153:8097/";
-    private final String url = "http://10.73.120.153:8097/";
+    //private final String url = "http://10.73.120.153:8097/";
+    private final String url = "http://192.168.0.13:8097/";
     //private final String url = "http://192.168.43.14:8097/";
     //private final String url = "http://192.168.137.1:8097/";
 
@@ -404,7 +404,7 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
                     resparray = new JSONArray(resp);
 
-                    if(resparray !=null){
+                    if(resparray ==null){
                         Log.d(TAG,"Esto es nulo");
                         status = ERROR;
                         return;
