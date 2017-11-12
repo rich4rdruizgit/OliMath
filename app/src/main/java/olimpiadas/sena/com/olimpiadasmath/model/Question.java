@@ -119,14 +119,20 @@ public class Question  extends RealmObject{
 
 
     public String getFeedback(){
-
         try {
-            JSONObject question = new JSONObject(jsonObject);
-            return "La respuesta correcta es esta por: "; // question.getString("feedback");
+            JSONObject iscorrect = new JSONObject(jsonObject);
+            String text = "";
+            for(int i = 0; i < iscorrect.getJSONArray("answers").length(); i ++){
+                if(iscorrect.getJSONArray("answers").getJSONObject(i).getString("isCorrect").equals("1")){
+                    text = iscorrect.getJSONArray("answers").getJSONObject(i).getString("argument");
+                }
+            }
+            return text;
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return "";
+        return "No encontrado";
 
     }
 

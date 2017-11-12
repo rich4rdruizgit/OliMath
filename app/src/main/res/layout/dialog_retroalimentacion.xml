@@ -51,6 +51,7 @@
                     android:layout_marginBottom="@dimen/inter_space"
                     android:background="#C8C9CB" />
                 <TextView
+                    android:textStyle="bold"
                     android:text="Tu respuesta:"
                     android:layout_gravity="center"
                     android:gravity="center"
@@ -72,6 +73,7 @@
                     android:layout_marginBottom="@dimen/inter_space"
                     android:background="#C8C9CB" />
                 <TextView
+                    android:textStyle="bold"
                     android:text="La respuesta correcta:"
                     android:layout_width="match_parent"
                     android:gravity="center"
