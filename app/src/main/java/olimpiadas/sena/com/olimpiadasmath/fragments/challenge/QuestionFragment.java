@@ -209,6 +209,7 @@ public class QuestionFragment extends Fragment {
                     int idx = radioGroup.indexOfChild(view.findViewById(radioGroup.getCheckedRadioButtonId()));
                     Log.d(TAG, "EL indice es " + idx);
                     Log.d(TAG, "Correct answer " + currentQuestion.getAnswerCorrect(idx));
+                    currentQuestion.getIdQuestion();
                     if(currentQuestion.getAnswerCorrect(idx).equals("1")){
                         appControl.answers[appControl.currentQuestion] = 1;
                         appControl.currentCoinsPool += appControl.currentBet;

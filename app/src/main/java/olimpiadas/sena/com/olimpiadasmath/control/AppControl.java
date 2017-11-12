@@ -31,6 +31,7 @@ public class AppControl {
     public int language;
     public int numberOfQuestions = 5;
     public int[] answers;
+    public int[] answersId;
     public boolean musik;
     public boolean efects;
 
