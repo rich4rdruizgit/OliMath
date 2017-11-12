@@ -117,8 +117,14 @@ public class ResultActivity extends AppCompatActivity {
 
         tvCorAns.setText(String.valueOf(correctAnswers));
         //long aux = 180 - appControl.currentTime;
+
         long aux = appControl.currentTime;
-        tvTime.setText(String.valueOf(aux));
+        String v = String.format("%02d", aux/60);
+        int va = (int)( (aux%60));
+        tvTime.setText(v+":"+String.format("%02d",va));
+
+
+
         Log.d(TAG,"Correct answers " + aux);
         Log.d(TAG,"Correct answers " + correctAnswers);
         Log.d(TAG,"total Questions " + appControl.answers.length);

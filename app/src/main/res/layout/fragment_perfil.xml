@@ -47,52 +47,56 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/background_transparent_with_stroke">
+        android:background="@drawable/background_transparent_with_stroke"
+        android:orientation="horizontal">
+
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="0dp"
-            android:layout_weight="0.4"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="right" >
+            android:layout_gravity="right"
+            android:layout_weight="0.4"
+            android:orientation="vertical">
+
             <TextView
                 android:id="@+id/tv_exp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_views"
                 android:text="@string/experience"
-                android:textSize="@dimen/tamanoletrasubtitulos"
-                android:textColor="@color/primary_text"/>
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/tamanoletrasubtitulos" />
 
             <TextView
-                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:padding="@dimen/padding_views"
                 android:text="@string/coins"
-                android:textSize="@dimen/tamanoletrasubtitulos"
-                android:textColor="@color/primary_text"/>
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/tamanoletrasubtitulos" />
+
         </LinearLayout><!-- Lin 1-->
         <LinearLayout
             android:id="@+id/ticket"
             android:layout_width="0dp"
-            android:layout_weight="0.3"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_weight="0.3"
+            android:orientation="vertical">
+
             <FrameLayout
-                android:layout_gravity="center"
-                android:padding="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp">
 
                 <ImageView
                     android:id="@+id/img_profile_progress_bar1"
                     android:layout_width="85dp"
                     android:layout_height="11dp"
-                    android:src="@drawable/backg"
-                    android:layout_gravity="center" />
+                    android:layout_gravity="center"
+                    android:src="@drawable/backg" />
 
                 <ImageView
                     android:id="@+id/img_profile_progress_bar2"
@@ -104,41 +108,44 @@
             </FrameLayout>
 
             <ImageView
-                android:layout_gravity="center"
                 android:id="@+id/img_coins"
                 android:layout_width="80dp"
                 android:layout_height="50dp"
                 android:layout_below="@+id/identicon"
-                android:src="@drawable/coin"
-                android:padding="@dimen/padding_views"/>
+                android:layout_gravity="center"
+                android:padding="@dimen/padding_views"
+                android:src="@drawable/coin" />
+
         </LinearLayout><!-- Lin 2-->
 
 
         <LinearLayout
-            android:gravity="center"
             android:id="@+id/coinsLayout"
             android:layout_width="0dp"
-            android:layout_weight="0.3"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_weight="0.3"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
-                android:layout_gravity="center"
                 android:id="@+id/tv_profile_percent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/imageView"
+                android:layout_gravity="center"
                 android:padding="@dimen/padding_views"
-                android:textSize="@dimen/text_size"
-                android:text="30%" />
+                android:text="30%"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/text_size" />
 
             <TextView
                 android:id="@+id/tv_profile_coins"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="x4"
                 android:padding="@dimen/padding_views"
+                android:text="x4"
+                android:textColor="@color/primary_text"
                 android:textSize="@dimen/text_size" />
         </LinearLayout><!-- Lin 3-->
 
@@ -158,6 +165,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/padding_views"
+            android:textColor="@color/primary_text"
             android:textSize="40sp"
             android:text="x4" />
 
