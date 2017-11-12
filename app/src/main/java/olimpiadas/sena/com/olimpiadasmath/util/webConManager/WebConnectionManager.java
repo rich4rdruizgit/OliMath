@@ -27,8 +27,7 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
     //private final String url = "http://10.73.70.29:8097/";
     //private final String url = "http://10.73.70.39:8097/";
-    private final String url = "http://10.73.120.153:8097/";
-    private final String url = "http://10.73.120.153:8097/";
+    private final String url = "http://192.168.0.13:8097/";
     //private final String url = "http://192.168.43.14:8097/";
     //private final String url = "http://192.168.137.1:8097/";
 
@@ -57,7 +56,7 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                 case START_SESSION:
                     return "start-session/";
                 case GET_QUESTIONS:
-                    return "WSOlimath.asmx/mostrarPreguntasAleatoriasNuevo";
+                    return "mostrarPreguntasAleatoriasNuevo";
                 case INSERT_QUESTION:
                     return "insertarPreguntas";
                 case LOGIN:
@@ -229,8 +228,8 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
         nameValuePairs.add(new BasicNameValuePair("RespuestaId3", "2"));
         nameValuePairs.add(new BasicNameValuePair("RespuestaId4", "2"));
         nameValuePairs.add(new BasicNameValuePair("RespuestaId5", "2"));
-        nameValuePairs.add(new BasicNameValuePair("HoraIni", "01/02/17 11:11:10"));
-        nameValuePairs.add(new BasicNameValuePair("HoraFin", "12/01/07 11:11:10"));
+        nameValuePairs.add(new BasicNameValuePair("HoraIni", "2017/01/01 11:11:10"));
+        nameValuePairs.add(new BasicNameValuePair("HoraFin", "2017/01/01 11:11:10"));
         nameValuePairs.add(new BasicNameValuePair("Publicar", "1"));
 
         webConnection.executePostRequest(url, OperationType.SEND_CHALLENGE.getName(), nameValuePairs);
@@ -347,9 +346,9 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                         data = resp;
                         return;
                     } else {
-                        status = ERROR;
-                        result = ERROR;
-                        data = null;
+                        status = SUCCESS;
+                        result = OK;
+                        data = resp;
                         return;
                     }
 
@@ -407,7 +406,6 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                     if(resparray !=null){
                         Log.d(TAG,"Esto es nulo");
                         status = ERROR;
-                        return;
                     }
 
                     if(resparray.length() == 0){
