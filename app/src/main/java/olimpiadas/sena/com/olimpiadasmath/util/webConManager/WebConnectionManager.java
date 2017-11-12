@@ -22,9 +22,14 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
     private String TAG = "WebConnectionManager";
     //private final String url = "http://192.168.0.15:8097/";
 //    private final String url = "http://10.73.70.29:8097/";
+
+
+
     //private final String url = "http://10.73.70.29:8097/";
     //private final String url = "http://10.73.70.39:8097/";
     private final String url = "http://10.73.120.153:8097/";
+    private final String url = "http://10.73.120.153:8097/";
+    //private final String url = "http://192.168.43.14:8097/";
     //private final String url = "http://192.168.137.1:8097/";
 
     public interface WebConnectionManagerListener {
@@ -178,10 +183,6 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
     }
 
 
-
-    public void mostrarPreguntasAleatorias() {
-        webConnection.executeAsyncGetRequest(url + OperationType.GET_QUESTIONS.getName(), OperationType.GET_QUESTIONS.getName());
-    }
     public void mostrarRankings() {
         webConnection.executeAsyncGetRequest(url + OperationType.RANKING.getName(), OperationType.RANKING.getName());
     }
@@ -228,8 +229,8 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
         nameValuePairs.add(new BasicNameValuePair("RespuestaId3", "2"));
         nameValuePairs.add(new BasicNameValuePair("RespuestaId4", "2"));
         nameValuePairs.add(new BasicNameValuePair("RespuestaId5", "2"));
-        nameValuePairs.add(new BasicNameValuePair("HoraIni", "2017/01/01 11:11:10"));
-        nameValuePairs.add(new BasicNameValuePair("HoraFin", "2017/01/01 11:11:10"));
+        nameValuePairs.add(new BasicNameValuePair("HoraIni", "01/02/17 11:11:10"));
+        nameValuePairs.add(new BasicNameValuePair("HoraFin", "12/01/07 11:11:10"));
         nameValuePairs.add(new BasicNameValuePair("Publicar", "1"));
 
         webConnection.executePostRequest(url, OperationType.SEND_CHALLENGE.getName(), nameValuePairs);
