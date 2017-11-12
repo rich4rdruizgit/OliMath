@@ -67,8 +67,9 @@ public class ResultActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         appControl = AppControl.getInstance();
-
-
+        appControl.soundResultFinished = MediaPlayer.create(getApplicationContext(),R.raw.resultfinished);
+        if(appControl.isBackgroundPlaying)
+            appControl.soundResultFinished.start();
         appControl = AppControl.getInstance();
         appControl.currentActivity = ResultActivity.class.getSimpleName();
 
