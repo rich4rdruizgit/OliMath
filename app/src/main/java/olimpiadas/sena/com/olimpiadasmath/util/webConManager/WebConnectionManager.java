@@ -26,6 +26,8 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
 
     //private final String url = "http://10.73.70.29:8097/";
+    //private final String url = "http://10.73.70.39:8097/";
+    private final String url = "http://10.73.120.153:8097/";
     private final String url = "http://10.73.120.153:8097/";
     //private final String url = "http://192.168.43.14:8097/";
     //private final String url = "http://192.168.137.1:8097/";
@@ -55,7 +57,7 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                 case START_SESSION:
                     return "start-session/";
                 case GET_QUESTIONS:
-                    return "mostrarPreguntasAleatoriasNuevo";
+                    return "WSOlimath.asmx/mostrarPreguntasAleatoriasNuevo";
                 case INSERT_QUESTION:
                     return "insertarPreguntas";
                 case LOGIN:
@@ -345,9 +347,9 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                         data = resp;
                         return;
                     } else {
-                        status = SUCCESS;
-                        result = OK;
-                        data = resp;
+                        status = ERROR;
+                        result = ERROR;
+                        data = null;
                         return;
                     }
 
@@ -405,6 +407,7 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                     if(resparray !=null){
                         Log.d(TAG,"Esto es nulo");
                         status = ERROR;
+                        return;
                     }
 
                     if(resparray.length() == 0){

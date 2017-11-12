@@ -4,7 +4,7 @@
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:layout_margin="20dp"
-android:background="@drawable/background_dialog"
+android:background="@drawable/backgroundmain"
 android:orientation="vertical"
 android:padding="@dimen/padding_views">
 
@@ -28,7 +28,7 @@ android:padding="@dimen/padding_views">
                 android:layout_width="0dp"
                 android:layout_height="150dp"
                 android:layout_weight=".5"
-                android:src="@drawable/tutorblanco" />
+                android:src="@drawable/halftutourprac" />
         </LinearLayout>
 
 
