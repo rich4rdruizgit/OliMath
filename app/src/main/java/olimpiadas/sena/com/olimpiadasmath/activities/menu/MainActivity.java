@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnShop, btnRanking, btnSettings, btnPractice, btnChallenge, btnLibrary;
     GifImageView gifMenu;
     AppControl appControl;
+
     Context context;
     pl.droidsonroids.gif.GifImageView getGifMenu;
     int cont = 0;
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         /**/
 
         int[] hola = new int[10];
-         webConnectionManager.sendChallenge(new int[10],"1234","1234");
+         //webConnectionManager.sendChallenge(new int[10],"1234","1234");
 
         // webConnectionManager.insertQuestion("http://10.73.120.221:8097/WSPreguntas.asmx/");
         btnShop = (Button) findViewById(R.id.btn_menu_shop);

@@ -2,22 +2,20 @@ package olimpiadas.sena.com.olimpiadasmath.activities.session;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
-import android.media.MediaPlayer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import io.realm.Realm;
 import olimpiadas.sena.com.olimpiadasmath.R;
@@ -26,7 +24,6 @@ import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.model.Configuration;
 import olimpiadas.sena.com.olimpiadasmath.model.User;
 import olimpiadas.sena.com.olimpiadasmath.util.DialogHelper;
-import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnection;
 import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnectionManager;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -38,6 +35,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     EditText tvUser, tvPwd;
     WebConnectionManager webConnectionManager;
     boolean stateNet = false;
+
+    boolean connected = false;
     AppControl appControl;
 
     @Override
@@ -94,7 +93,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if(stateNet){
                     webConnectionManager.login(tvUser.getText().toString(), tvPwd.getText().toString());
                 }else {
-                    Toast.makeText(this, "Debes estar conectado a Intenet para iniciar sesión", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Debes estar conectado a Intenet para iniciar sesión", Toast.LENGTH_LONG).show();
                 }
                 break;
             case R.id.btn_lose_pass:
@@ -129,7 +128,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     currentuser.setCoins(user.getJSONObject(0).getInt("coins"));
                     currentuser.setLevel(user.getJSONObject(0).getInt("nivel"));
                     currentuser.setNickname(user.getJSONObject(0).getString("nickname"));
-                    currentuser.setAvatar("jhonny");
+                    currentuser.setAvatar(user.getJSONObject(0).getString("avatar").toLowerCase());
                     realm.executeTransactionAsync(new Realm.Transaction() {
                         @Override
                         public void execute(Realm realm) {
@@ -151,7 +150,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }, new Realm.Transaction.OnError() {
                         @Override
                         public void onError(Throwable error) {
-                            Toast.makeText(LoginActivity.this, "Se presento un error, por favor intenta nuevamente", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Se presento un error, por favor intenta nuevamente", Toast.LENGTH_LONG).show();
 
                         }
                     });
