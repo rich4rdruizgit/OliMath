@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="300dp"
     android:layout_height="300dp"
     android:layout_gravity="center"
-    android:background="@drawable/rounded_corner_dialog"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/progressBar2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13dp"
+        android:textColor="@android:color/darker_gray"
+        android:text="Estamos trabajando en su petición"/>
 
     <ProgressBar
         android:id="@+id/progressBar2"
@@ -15,8 +24,18 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:indeterminate="true"
-        android:indeterminateTint="@color/colorPrimary"
+        android:indeterminateTint="@color/orangeSena"
         android:indeterminateTintMode="src_atop" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/progressBar2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13dp"
+        android:textColor="@android:color/darker_gray"
+        android:text="Un momento..."/>
 
     <TextView
         android:id="@+id/tv_dialogProcessInfo"
@@ -25,5 +44,6 @@
         android:layout_below="@+id/progressBar2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="13dp"
-        android:textColor="@android:color/darker_gray" />
-</RelativeLayout>
+        android:textColor="@android:color/darker_gray"
+        />
+</LinearLayout>
