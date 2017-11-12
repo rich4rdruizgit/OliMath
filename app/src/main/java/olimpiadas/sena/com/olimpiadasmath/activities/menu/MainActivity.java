@@ -2,6 +2,7 @@ package olimpiadas.sena.com.olimpiadasmath.activities.menu;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -29,11 +30,12 @@ import olimpiadas.sena.com.olimpiadasmath.activities.test.TestActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.librerias.CircleMenu;
 import olimpiadas.sena.com.olimpiadasmath.util.DialogHelper;
+import olimpiadas.sena.com.olimpiadasmath.util.webConManager.NetworkStateReceiver;
 import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnectionManager;
 import pl.droidsonroids.gif.GifImageView;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, NetworkStateReceiver.NetworkStateReceiverListener {
 
     private static final String TAG = "MainActivity";
     String arrayName[] = {"Practice", "Study", "Challenge"};
@@ -46,12 +48,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     pl.droidsonroids.gif.GifImageView getGifMenu;
     int cont = 0;
     public static MediaPlayer sound;
+    private NetworkStateReceiver networkStateReceiver;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
 
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Verificar si hay internet
+
+        networkStateReceiver = new NetworkStateReceiver();
+        networkStateReceiver.addListener(this);
+        this.registerReceiver(networkStateReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
+        //------------------------------------------------------------------------------------------
 
         gifMenu = (GifImageView) findViewById(R.id.img_gif_menu); // Gif del menu principal
         gifMenu.setOnClickListener(this);
@@ -224,5 +235,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onResume();
         if(appControl.soundBackground.isPlaying())
             appControl.soundBackground.stop();
+    }
+
+    @Override
+    public void networkAvailable() {
+        btnPractice.setBackground(this.getResources().getDrawable(R.drawable.practact));
+        btnShop.setBackground(this.getResources().getDrawable(R.drawable.shopact));
+        btnRanking.setBackground(this.getResources().getDrawable(R.drawable.rankact));
+        btnChallenge.setBackground(this.getResources().getDrawable(R.drawable.changact));;
+    }
+
+    @Override
+    public void networkUnavailable() {
+        btnPractice.setBackground(this.getResources().getDrawable(R.drawable.practact));
+        btnShop.setBackground(this.getResources().getDrawable(R.drawable.shopdes));
+        btnRanking.setBackground(this.getResources().getDrawable(R.drawable.rankdes));
+        btnChallenge.setBackground(this.getResources().getDrawable(R.drawable.chandes));
+        btnShop.setEnabled(false);
+        btnRanking.setEnabled(false);
+        btnChallenge.setEnabled(false);
     }
 }
