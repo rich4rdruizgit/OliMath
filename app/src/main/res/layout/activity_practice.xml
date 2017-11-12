@@ -43,7 +43,7 @@
                     android:layout_weight="0.3"
                     android:layout_height="35dp"
                     android:layout_margin="5dp"
-                    android:src="@drawable/pracdes"/>
+                    android:src="@drawable/practact"/>
 
                 <TextView
                     android:id="@+id/tv_test_tip_numberofquestion"

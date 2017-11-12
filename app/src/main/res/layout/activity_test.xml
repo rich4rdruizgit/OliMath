@@ -36,7 +36,7 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_margin="5dp"
-                    android:src="@drawable/pracdes" />
+                    android:src="@drawable/practact" />
 
                 <TextView
                     android:id="@+id/tv_test_numquest"
@@ -79,7 +79,7 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_margin="5dp"
-                    android:src="@drawable/pracdes" />
+                    android:src="@drawable/practact" />
 
                 <TextView
                     android:id="@+id/tv_test_tip_numberofquestion"
@@ -100,7 +100,7 @@
                     android:id="@+id/img_test_tip_einstein"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:background="@drawable/albertee" />
+                    android:background="@drawable/halftutourprac" />
 
             </LinearLayout>
         </LinearLayout>

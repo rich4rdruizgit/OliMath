@@ -8,7 +8,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_tittle"
                 android:textAlignment="center"
-                android:text="Equipo de desarrollo"/>
+                android:text="Equipo de desarrollo (Movil)"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -30,19 +31,33 @@
                 android:text="Harold Andrés Muñoz\nCarlos Andrés Chapid\nRichard Ruiz\nDidier Enrique Ramirez\nJefferson Andrés Muñoz\nJhon Yanguas\nMilena Cabrera"
                 />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_tittle"
+                android:textAlignment="center"
+                android:text="Equipo de desarrollo (Bases de datos)"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Luis Fernando Muñoz\nJonathan Betancourt Silva\nLuis Vejarano Sanchez\nCarlos Mario Burbano Luna\nDaniela Iboth Gutierrez\nJeferson Dario Diaz"
+                />
+
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_tittle"
                 android:textAlignment="center"
-                android:text="Tutor"/>
+                android:text="Tutores"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:text="Zulema Leon"/>
+                android:text="Zulema Leon\nYuly Garces"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

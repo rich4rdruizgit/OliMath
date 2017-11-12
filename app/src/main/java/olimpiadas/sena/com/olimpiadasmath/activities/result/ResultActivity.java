@@ -7,6 +7,7 @@ import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +21,7 @@ import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.model.BonusTable;
 import olimpiadas.sena.com.olimpiadasmath.model.Result;
 import olimpiadas.sena.com.olimpiadasmath.model.User;
+import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnectionManager;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
@@ -67,8 +69,9 @@ public class ResultActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         appControl = AppControl.getInstance();
-
-
+        appControl.soundResultFinished = MediaPlayer.create(getApplicationContext(),R.raw.resultfinished);
+        if(appControl.isBackgroundPlaying)
+            appControl.soundResultFinished.start();
         appControl = AppControl.getInstance();
         appControl.currentActivity = ResultActivity.class.getSimpleName();
 
@@ -160,24 +163,31 @@ public class ResultActivity extends AppCompatActivity {
 
         User.updateUser(appControl.currentUser);
 
-      realm.executeTransaction(new Realm.Transaction() {
-          @Override
-          public void execute(Realm realm) {
-              int incorrectAnswers = appControl.numberOfQuestions - correctAnswers;
-              int numQuestions = appControl.numberOfQuestions;
+        realm.executeTransaction(new Realm.Transaction() {
+              @Override
+              public void execute(Realm realm) {
+                  int incorrectAnswers = appControl.numberOfQuestions - correctAnswers;
+                  int numQuestions = appControl.numberOfQuestions;
 
-              Result result = new Result();
-              result.setAnswerCorrectResult(correctAnswers);
-              result.setAnswerIncorrectResult(incorrectAnswers);
-              result.setNumQuestionResult(numQuestions);
-              result.setAnswerNoneResult(noAnswered);
-              result.setTimeTestResult(appControl.currentTime);
-              result.setCoinsWinResult(appControl.currentCoinsPool);
+                  Result result = new Result();
+                  result.setAnswerCorrectResult(correctAnswers);
+                  result.setAnswerIncorrectResult(incorrectAnswers);
+                  result.setNumQuestionResult(numQuestions);
+                  result.setAnswerNoneResult(noAnswered);
+                  result.setTimeTestResult(appControl.currentTime);
+                  result.setCoinsWinResult(appControl.currentCoinsPool);
 
-              realm.insert(result);
+                  realm.insert(result);
 
-          }
-      });
+              }
+        });
+
+        String finishQuestionaryDatetime = DateFormat.format("MM/dd/yy HH:mm:ss", new java.util.Date()).toString();
+        WebConnectionManager webConnectionManager = WebConnectionManager.getWebConnectionManager();
+
+        webConnectionManager.sendChallenge(appControl.currentUser.getId(),appControl.answersId,appControl.initQuestionaryDatetime,finishQuestionaryDatetime);
+
+
 
 
     }

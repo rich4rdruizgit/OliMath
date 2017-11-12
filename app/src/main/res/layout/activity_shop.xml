@@ -36,7 +36,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_weight=".15"
-            android:src="@drawable/shopdes"
+            android:src="@drawable/shopact"
             />
         <TextView
             android:id="@+id/txt_title_ranking"
