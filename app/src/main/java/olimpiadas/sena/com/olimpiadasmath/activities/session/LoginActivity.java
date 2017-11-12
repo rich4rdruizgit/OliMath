@@ -30,12 +30,12 @@ import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnection;
 import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnectionManager;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener, WebConnectionManager.WebConnectionManagerListener{
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener, WebConnectionManager.WebConnectionManagerListener {
 
     private static final String TAG = LoginActivity.class.toString();
 
-    Button btnLogin,btnLosePass;
-    EditText tvUser,tvPwd;
+    Button btnLogin, btnLosePass;
+    EditText tvUser, tvPwd;
     WebConnectionManager webConnectionManager;
     boolean stateNet = false;
     AppControl appControl;
@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
-        if(!wifiManager.isWifiEnabled()) {
+        if (!wifiManager.isWifiEnabled()) {
             // Mostrar un dialog
             DialogHelper.showWifiState(LoginActivity.this);
         }
@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnLogin.setOnClickListener(this);
         btnLosePass.setOnClickListener(this);
 
-        if(AppControl.getInstance().isLogged == true){
+        if (AppControl.getInstance().isLogged == true) {
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
             finish();
         }
@@ -72,33 +72,33 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        appControl.soundButton = MediaPlayer.create(getApplicationContext(),appControl.soundButtonEfect);
-        switch (v.getId()){
+        appControl.soundButton = MediaPlayer.create(getApplicationContext(), appControl.soundButtonEfect);
+        switch (v.getId()) {
             case R.id.btn_login:
-                if(appControl.isBackgroundPlaying)
-                    if(appControl.isBackgroundPlaying)
+                if (appControl.isBackgroundPlaying)
+                    if (appControl.isBackgroundPlaying)
                         appControl.soundButton.start();
-                if(tvUser.getText().length() == 0){
+                if (tvUser.getText().length() == 0) {
                     tvUser.setError(getString(R.string.fiel_required));
                     return;
                 }
 
-                if(tvPwd.getText().length() == 0){
+                if (tvPwd.getText().length() == 0) {
                     tvPwd.setError(getString(R.string.fiel_required));
                     return;
                 }
                 webConnectionManager = WebConnectionManager.getWebConnectionManager();
                 webConnectionManager.setWebConnectionManagerListener(this);
                 stateNet = verificarConexion(this);
-                Log.d("ESTADO NET", stateNet+"");
-                if(stateNet){
+                Log.d("ESTADO NET", stateNet + "");
+                if (stateNet) {
                     webConnectionManager.login(tvUser.getText().toString(), tvPwd.getText().toString());
-                }else {
+                } else {
                     Toast.makeText(this, "Debes estar conectado a Intenet para iniciar sesión", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.btn_lose_pass:
-                if(appControl.isBackgroundPlaying)
+                if (appControl.isBackgroundPlaying)
                     appControl.soundButton.start();
                 break;
         }
@@ -114,7 +114,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         String userJson = "[{\"nickname\":\"LUCHO\",\"password\":\"12345\"}]";
         try {
-            JSONArray jsonArray = new JSONArray(userJson);
+            JSONArray jsonArray = new JSONArray(response.getData());
             User user = new User();
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -124,22 +124,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             if ((response.getStatus().equals(WebConnectionManager.Response.SUCCESS)) &&
                     (response.getResult().equals(WebConnectionManager.Response.LOGGED))) {
 
-            Realm realm = Realm.getDefaultInstance();
-            realm.executeTransaction(new Realm.Transaction() {
-                @Override
-                public void execute(Realm realm) {
-                    Configuration config = realm.where(Configuration.class).equalTo("key","isLogged").findFirst();
-                    config.setValue(true);
-                }
-            });
+                Realm realm = Realm.getDefaultInstance();
+                realm.executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        Configuration config = realm.where(Configuration.class).equalTo("key", "isLogged").findFirst();
+                        config.setValue(true);
+                    }
+                });
 
-            Intent intentMenu = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intentMenu);
-            finish();
-        }else{
-            Toast.makeText(this, "Paila", Toast.LENGTH_SHORT).show();
-        }
-    } catch (JSONException e) {
+                Intent intentMenu = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intentMenu);
+                finish();
+            } else {
+                Toast.makeText(this, "Paila", Toast.LENGTH_SHORT).show();
+            }
+        } catch (JSONException e) {
             e.printStackTrace();
         }
     }
