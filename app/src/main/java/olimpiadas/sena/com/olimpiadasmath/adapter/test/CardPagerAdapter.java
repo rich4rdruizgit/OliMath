@@ -1,7 +1,6 @@
 package olimpiadas.sena.com.olimpiadasmath.adapter.test;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Vibrator;
 import android.support.v4.view.PagerAdapter;
@@ -19,7 +18,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.realm.RealmResults;
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.test.CardItem;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
@@ -101,6 +99,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
                 .inflate(R.layout.adapter, container, false);
         container.addView(view);
 
+
         if (AppControl.getInstance().onChallenge) {
             btnBack = (Button) view.findViewById(R.id.btn_test_back);
             btnBack.setVisibility(View.GONE);
@@ -109,6 +108,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
         if (AppControl.getInstance().onPractice) {
             btnNext = (Button) view.findViewById(R.id.btn_test_next);
             btnBack = (Button) view.findViewById(R.id.btn_test_back);
+            btnNext.setEnabled(false);
             btnBack.setVisibility(View.GONE);
         }
         ImageView imgScale = (ImageView) view.findViewById(R.id.img_test_scale);
