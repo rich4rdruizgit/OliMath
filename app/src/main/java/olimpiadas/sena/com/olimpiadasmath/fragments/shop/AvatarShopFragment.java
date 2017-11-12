@@ -28,12 +28,13 @@ import olimpiadas.sena.com.olimpiadasmath.model.Product;
 import olimpiadas.sena.com.olimpiadasmath.model.User;
 import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnectionManager;
 
-public class AvatarShopFragment extends Fragment implements WebConnectionManager.WebConnectionManagerListener{
+public class AvatarShopFragment extends Fragment implements WebConnectionManager.WebConnectionManagerListener {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private String mParam1;
     private String mParam2;
+    private String TAG = "AvatarShopFragment";
 
     RecyclerView recyclerView;
     ProductAdapter productAdapter;
@@ -69,10 +70,10 @@ public class AvatarShopFragment extends Fragment implements WebConnectionManager
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view  = inflater.inflate(R.layout.fragment_avatar_shop, container, false);
+        View view = inflater.inflate(R.layout.fragment_avatar_shop, container, false);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_avatar_shop);
-        GridLayoutManager llm = new GridLayoutManager(getActivity(),2);
+        GridLayoutManager llm = new GridLayoutManager(getActivity(), 2);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
 
@@ -86,7 +87,7 @@ public class AvatarShopFragment extends Fragment implements WebConnectionManager
 
     private void inicializarAdaptador() {
         int type = Product.AVATAR;
-        productAdapter = new ProductAdapter(lstProduct,getActivity(),type);
+        productAdapter = new ProductAdapter(lstProduct, getActivity(), type);
         recyclerView.setAdapter(productAdapter);
     }
 
@@ -115,37 +116,42 @@ public class AvatarShopFragment extends Fragment implements WebConnectionManager
 
     @Override
     public void webRequestComplete(WebConnectionManager.Response response) throws JSONException {
-        try{
-            JSONArray jsonArray = new JSONArray(response.getData());
-            List<Product> productList = new ArrayList<>();
-            for(int  i = 0 ; i < jsonArray.length(); i++){
-                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                Product product= new Product();
-                //int urlImg, String name, int price, String constraint, int state, String sourceName, int type
-                product.setUrlImg(R.drawable.marco18);
-                product.setName(jsonObject.getString("codigo"));
-                product.setPrice(Integer.parseInt(jsonObject.getString("nombre")));
-                product.setConstraint("10");
-                product.setState(Integer.parseInt(jsonObject.getString("precio")));
-                product.setSourceName(jsonObject.getString("tipo"));
-                if(jsonObject.getString("tipo").equals("Diseño")){
-                    product.setType(1);
-                }else{
-                    product.setType(2);
+        try {
+            if (response.getStatus() == WebConnectionManager.Response.ERROR) {
+                Log.d(TAG, "No se pudo cargar el Tienda");
+            } else {
+                if (response.getOperationType() == WebConnectionManager.OperationType.SHOW_SHOP) {
+                    JSONArray jsonArray = new JSONArray(response.getData());
+                    List<Product> productList = new ArrayList<>();
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        Product product = new Product();
+                        //int urlImg, String name, int price, String constraint, int state, String sourceName, int type
+                        product.setUrlImg(R.drawable.marco18);
+                        product.setName(jsonObject.getString("codigo"));
+                        product.setPrice(Integer.parseInt(jsonObject.getString("nombre")));
+                        product.setConstraint("10");
+                        product.setState(Integer.parseInt(jsonObject.getString("precio")));
+                        product.setSourceName(jsonObject.getString("tipo"));
+                        if (jsonObject.getString("tipo").equals("Diseño")) {
+                            product.setType(1);
+                        } else {
+                            product.setType(2);
+                        }
+
+                        productList.add(product);
+                    }
+
+                    for (Product p : productList) {
+                        Log.d("PRODUCTO JSON    ", p.getName());
+                    }
+                    products = productList;
+                    productAdapter = new ProductAdapter(productList, getActivity(), Product.AVATAR);
+                    recyclerView.setAdapter(productAdapter);
+
                 }
-
-                productList.add(product);
             }
-
-            for (Product p: productList){
-                Log.d("PRODUCTO JSON    ", p.getName());
-            }
-            products = productList;
-            productAdapter = new ProductAdapter(productList,getActivity(), Product.AVATAR);
-            recyclerView.setAdapter(productAdapter);
-
-
-        }catch (JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
 

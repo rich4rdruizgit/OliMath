@@ -81,7 +81,7 @@ public class TimeRankingFragment extends Fragment implements WebConnectionManage
         // Inflate the layout for this fragment
         User user = AppControl.getInstance().currentUser;
         View view = inflater.inflate(R.layout.fragment_time_ranking, container, false);
-        Log.d(TAG,"OnCreateView created");
+        Log.d(TAG, "OnCreateView created");
 
         linearMyPos = (LinearLayout) view.findViewById(R.id.linear_myposition);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_ranking_time);
@@ -129,11 +129,11 @@ public class TimeRankingFragment extends Fragment implements WebConnectionManage
     private void llenarUsers() {
         users = new ArrayList<>();
 
-        users.add(new User("Didier","1234",3000,1,47,12,10,2,"marco18"));
-        users.add(new User("Carlos","1234",2000,2,57,12,10,2,"marco8"));
-        users.add(new User("Harold","1234",1500,3,49,12,10,2,"marco11"));
-        users.add(new User("Rich4rd","1234",1322,4,47,12,10,2,"jhonny"));
-        users.add(new User("Jefferson","1234",1300,5,47,12,10,2,"marco"));
+        users.add(new User("Didier", "1234", 3000, 1, 47, 12, 10, 2, "marco18"));
+        users.add(new User("Carlos", "1234", 2000, 2, 57, 12, 10, 2, "marco8"));
+        users.add(new User("Harold", "1234", 1500, 3, 49, 12, 10, 2, "marco11"));
+        users.add(new User("Rich4rd", "1234", 1322, 4, 47, 12, 10, 2, "jhonny"));
+        users.add(new User("Jefferson", "1234", 1300, 5, 47, 12, 10, 2, "marco"));
 
     }
 
@@ -142,34 +142,34 @@ public class TimeRankingFragment extends Fragment implements WebConnectionManage
 
         //Log.d("ANTES TIO",response.toString());
         //String orale ="[{\"posicion\":1,\"ide\":1,\"nickname\":\"LUCHO\",\"avatarActivo\":\"1\",\"marcoActivo\":\"1\",\"fondoActivo\":\"1\",\"puntaje\":82,\"numResCorrecta\":8,\"tiempo\":\" 00:42:00\"},{\"posicion\":2,\"ide\":3,\"nickname\":\"CARLOSM\",\"avatarActivo\":\"1\",\"marcoActivo\":\"1\",\"fondoActivo\":\"1\",\"puntaje\":80,\"numResCorrecta\":8,\"tiempo\":\" 01:01:00\"},{\"posicion\":3,\"ide\":5,\"nickname\":\"DANIELA\",\"avatarActivo\":\"1\",\"marcoActivo\":\"1\",\"fondoActivo\":\"1\",\"puntaje\":60,\"numResCorrecta\":6,\"tiempo\":\" 02:00:00\"},{\"posicion\":4,\"ide\":6,\"nickname\":\"JEFERSON\",\"avatarActivo\":\"1\",\"marcoActivo\":\"1\",\"fondoActivo\":\"1\",\"puntaje\":60,\"numResCorrecta\":6,\"tiempo\":\" 02:00:17\"},{\"posicion\":5,\"ide\":2,\"nickname\":\"LUIZ\",\"avatarActivo\":\"1\",\"marcoActivo\":\"1\",\"fondoActivo\":\"1\",\"puntaje\":45,\"numResCorrecta\":5,\"tiempo\":\" 02:04:00\"},{\"posicion\":6,\"ide\":4,\"nickname\":\"CORAL\",\"avatarActivo\":\"1\",\"marcoActivo\":\"1\",\"fondoActivo\":\"1\",\"puntaje\":35,\"numResCorrecta\":3,\"tiempo\":\" 01:02:00\"}]";
-        Log.d("ANTES TIO",response.getStatus());
-        try{
-            if (response.getStatus() == WebConnectionManager.Response.ERROR)
-            {
-                Toast.makeText(getActivity(), "No se pudo cargar el ranking", Toast.LENGTH_SHORT).show();
-            }
-            JSONArray jsonArray = new JSONArray(response.getData());
-
+        Log.d("ANTES TIO", response.getStatus());
+        try {
             List<User> userList = new ArrayList<>();
-            for(int  i = 0 ; i < jsonArray.length(); i++){
-                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                User user =  new User();
-                user.setNickname(jsonObject.getString("nickname"));
-                user.setScore(Integer.parseInt(jsonObject.getString("puntaje")));
-                user.setPosition(Integer.parseInt(jsonObject.getString("posicion")));
-                user.setAvatar("marco18");
-                user.setAnswers(jsonObject.getString(("numResCorrecta")));
-                userList.add(user);
+            if (response.getStatus() == WebConnectionManager.Response.ERROR) {
+                Log.d(TAG, "No se pudo cargar el ranking");
+            } else {
+                if (response.getOperationType() == WebConnectionManager.OperationType.RANKING) {
+                    JSONArray jsonArray = new JSONArray(response.getData());
+
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        User user = new User();
+                        user.setNickname(jsonObject.getString("nickname"));
+                        user.setScore(Integer.parseInt(jsonObject.getString("puntaje")));
+                        user.setPosition(Integer.parseInt(jsonObject.getString("posicion")));
+                        user.setAvatar("marco18");
+                        user.setAnswers(jsonObject.getString(("numResCorrecta")));
+                        userList.add(user);
+                    }
+                }
             }
             users = userList;
-            adapter = new TimeRankingAdapter(userList,getActivity());
+            adapter = new TimeRankingAdapter(userList, getActivity());
             recyclerView.setAdapter(adapter);
 
 
-        }catch (JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
     }
 }
