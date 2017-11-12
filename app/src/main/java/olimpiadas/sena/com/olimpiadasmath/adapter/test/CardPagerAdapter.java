@@ -108,9 +108,9 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
         if (AppControl.getInstance().onPractice) {
             btnNext = (Button) view.findViewById(R.id.btn_test_next);
             btnBack = (Button) view.findViewById(R.id.btn_test_back);
-            btnNext.setEnabled(false);
             btnBack.setVisibility(View.GONE);
         }
+
         ImageView imgScale = (ImageView) view.findViewById(R.id.img_test_scale);
         ImageView imgScaleView = (ImageView) view.findViewById(R.id.img_test_image);
         final ImageView imgViewTest = (ImageView) view.findViewById(R.id.contentViewImage);
@@ -139,9 +139,21 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
         }
         final RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.rg_group_answer);
 
+        /*radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                Toast.makeText(context, "si hace clic", Toast.LENGTH_SHORT).show();
+                btnNext.setEnabled(true);
+                btnNext.setText("Putos");
+                btnNext.setBackgroundColor(view.getResources().getColor(R.color.primary_light));
+
+            }
+        });*/
+
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 appControl.soundButton = MediaPlayer.create(v.getContext(), appControl.soundButtonEfect);
                 if (appControl.isBackgroundPlaying)
                     appControl.soundButton.start();
@@ -149,6 +161,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
 
                 if (selectedId == -1) {
                     appControl.answers[position] = -1;
+
                 } else {
 
                     Log.d(TAG, "Respuesta es " + radioGroup.getCheckedRadioButtonId());
@@ -186,6 +199,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
             mBaseElevation = cardView.getCardElevation();
         }
 
+
         cardView.setMaxCardElevation(mBaseElevation * MAX_ELEVATION_FACTOR);
         mViews.set(position, cardView);
         return view;
@@ -213,6 +227,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
                 contentTextView.setText(item.getAnswerText(x));
             }
             RadioButton radioButton = new RadioButton(view.getContext());
+
             radioButton.setText(item.getAnswerText(x));
             radioGroup.addView(radioButton);
         }
