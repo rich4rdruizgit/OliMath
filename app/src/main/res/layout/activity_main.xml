@@ -35,7 +35,7 @@
             android:layout_weight="0.10"
             android:layout_gravity="center"
             android:layout_marginRight="15dp"
-            android:src="@drawable/alberteuno" />
+            android:src="@drawable/teacher" />
     </LinearLayout>
 
     <!--<LinearLayout

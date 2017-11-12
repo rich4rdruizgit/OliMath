@@ -10,7 +10,7 @@
         android:layout_height="90dp"
         android:orientation="horizontal"
         android:layout_margin="10dp"
-        android:background="@drawable/shape_ranking"
+        android:background="@drawable/backgroundothers"
         >
         <TextView
             android:id="@+id/txt_my_position"
