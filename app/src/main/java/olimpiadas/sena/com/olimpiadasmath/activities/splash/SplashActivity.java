@@ -183,6 +183,7 @@ public class SplashActivity extends AppCompatActivity implements AppControl.Init
                 for (int i = 1; i < questionList.size(); i++) {
                     Log.d("JSON", questionList.get(i).toString());
                 }
+                loading = true;
                 Log.d("COPIA A REALM", "COPIADOS");
             }
         }, new Realm.Transaction.OnError() {
