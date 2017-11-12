@@ -5,7 +5,6 @@ import android.content.Context;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-
 import android.os.CountDownTimer;
 import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
@@ -140,6 +139,7 @@ public class QuestionFragment extends Fragment {
                 Log.d(TAG,"Entro 2");
                 radioButton.setVisibility(View.GONE);
             }
+            radioButton.setTextColor(getResources().getColor(R.color.primary_text));
             radioGroup.addView(radioButton);
         }
 
@@ -167,6 +167,8 @@ public class QuestionFragment extends Fragment {
                 String v = String.format("%02d", millisUntilFinished/60000);
                 int va = (int)( (millisUntilFinished%60000)/1000);
                 tvCountDown.setText(v+":"+String.format("%02d",va));
+
+
 
                 if(va <= 5 && v.equalsIgnoreCase("00")){
 
