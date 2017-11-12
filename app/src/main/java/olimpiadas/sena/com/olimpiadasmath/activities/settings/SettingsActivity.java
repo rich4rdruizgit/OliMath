@@ -121,6 +121,7 @@ public class SettingsActivity extends AppCompatActivity {
                         appControl.soundBackground.stop();
                         appControl.soundBackground = MediaPlayer.create(getApplicationContext(),R.raw.theartloop);
                         appControl.soundBackground.start();
+                        Log.e("REPRODUCION_SONIDO", TAG);
                         appControl.soundBackground.setLooping(true);
                         appControl.isBackgroundPlaying = true;
                         //swtMusic.setChecked(true);

@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if(!appControl.soundBackground.isPlaying()){
                 appControl.soundBackground.start();
                 appControl.soundBackground.setLooping(true);
+                Log.e("REPRODUCION_SONIDO", TAG);
             }
 
         }
