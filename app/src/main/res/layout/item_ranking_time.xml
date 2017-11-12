@@ -86,7 +86,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.25"
-                        android:src="@drawable/ic_timer" />
+                        android:src="@drawable/clock" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -108,7 +108,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.25"
                         android:padding="3dp"
-                        android:src="@drawable/ok" />
+                        android:src="@drawable/checkright" />
                 </LinearLayout>
             </LinearLayout>
 
