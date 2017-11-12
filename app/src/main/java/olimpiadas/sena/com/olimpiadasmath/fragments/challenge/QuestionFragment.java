@@ -127,7 +127,7 @@ public class QuestionFragment extends Fragment {
 
 
         radioGroup = (RadioGroup) view.findViewById(R.id.rg_group_answer);
-        for(int x = 0 ; x<4 ;x++){
+        for(int x = 0 ; x<5 ;x++){
             Log.d(TAG,"item" + x + " correct" + currentQuestion.getAnswerCorrect(x));
 
             if(currentQuestion.getAnswerCorrect(x).equals("1") ) {
@@ -136,6 +136,10 @@ public class QuestionFragment extends Fragment {
             }
             RadioButton radioButton = new RadioButton(view.getContext());
             radioButton.setText(currentQuestion.getAnswerText(x));
+            if(currentQuestion.getAnswerCorrect(x).equals("2") ) {
+                Log.d(TAG,"Entro 2");
+                radioButton.setVisibility(View.GONE);
+            }
             radioGroup.addView(radioButton);
         }
 
@@ -209,7 +213,8 @@ public class QuestionFragment extends Fragment {
                     int idx = radioGroup.indexOfChild(view.findViewById(radioGroup.getCheckedRadioButtonId()));
                     Log.d(TAG, "EL indice es " + idx);
                     Log.d(TAG, "Correct answer " + currentQuestion.getAnswerCorrect(idx));
-                    currentQuestion.getIdQuestion();
+                    Log.d(TAG, "answerID selected " + currentQuestion.getAnswerId(idx));
+                    appControl.answersId[appControl.currentQuestion] = Integer.parseInt( currentQuestion.getAnswerId(idx));
                     if(currentQuestion.getAnswerCorrect(idx).equals("1")){
                         appControl.answers[appControl.currentQuestion] = 1;
                         appControl.currentCoinsPool += appControl.currentBet;

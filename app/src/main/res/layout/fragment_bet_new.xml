@@ -126,6 +126,7 @@
                 android:layout_width="70dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
+                style="@style/ButtonStyle"
 
                 />
             <Button
@@ -135,7 +136,7 @@
                 android:layout_width="140dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-
+                style="@style/ButtonStyle"
                 />
 
 
