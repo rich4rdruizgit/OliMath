@@ -50,13 +50,13 @@
                 android:layout_height="0dp"
                 android:layout_gravity="center"
                 android:layout_weight="1.5"
-                android:src="@drawable/tutorblanco" />
+                android:src="@drawable/halftutorchall"
+                android:id="@+id/img_tutorresult"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2.5"
-                android:background="#7e7e7e"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="10dp"
@@ -135,7 +135,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight=".2"
                         android:padding="4dp"
-                        android:src="@android:drawable/checkbox_on_background" />
+                        android:src="@drawable/checkright" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -172,7 +172,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight=".2"
                         android:padding="4dp"
-                        android:src="@android:drawable/presence_away" />
+                        android:src="@drawable/clock" />
                 </LinearLayout>
 
                 <LinearLayout
