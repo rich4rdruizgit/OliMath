@@ -112,35 +112,59 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void webRequestComplete(WebConnectionManager.Response response) {
 
-        String userJson = "[{\"nickname\":\"LUCHO\",\"password\":\"12345\"}]";
-        try {
-            JSONArray jsonArray = new JSONArray(response.getData());
-            User user = new User();
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                user.setNickname(jsonObject.getString("nickname"));
-                user.setPassword(jsonObject.getString("password"));
-            }
-            if ((response.getStatus().equals(WebConnectionManager.Response.SUCCESS)) &&
-                    (response.getResult().equals(WebConnectionManager.Response.LOGGED))) {
+        Log.d("RESPONSE OBJECT", response.toString());
+        if ((response.getStatus().equals(WebConnectionManager.Response.SUCCESS)) &&
+                (response.getResult().equals(WebConnectionManager.Response.LOGGED))) {
 
-                Realm realm = Realm.getDefaultInstance();
-                realm.executeTransaction(new Realm.Transaction() {
-                    @Override
-                    public void execute(Realm realm) {
-                        Configuration config = realm.where(Configuration.class).equalTo("key", "isLogged").findFirst();
-                        config.setValue(true);
-                    }
-                });
+            Realm realm = Realm.getDefaultInstance();
 
-                Intent intentMenu = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intentMenu);
-                finish();
-            } else {
-                Toast.makeText(this, "Paila", Toast.LENGTH_SHORT).show();
+            final User currentuser = new User();
+
+            try {
+                JSONArray user = new JSONArray(response.getData());
+                Log.d(TAG, " hola " + user.length());
+
+                if (user.length() != 0) {
+                    currentuser.setExperience((double) user.getJSONObject(0).getInt("experiencia"));
+                    currentuser.setCoins(user.getJSONObject(0).getInt("coins"));
+                    currentuser.setLevel(user.getJSONObject(0).getInt("nivel"));
+                    currentuser.setNickname(user.getJSONObject(0).getString("nickname"));
+                    currentuser.setAvatar(user.getJSONObject(0).getString("avatar").toLowerCase());
+                    realm.executeTransactionAsync(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+                            realm.where(User.class).findAll().deleteAllFromRealm();
+                            realm.insert(currentuser);
+
+                            Configuration config = realm.where(Configuration.class).equalTo("key", "isLogged").findFirst();
+                            config.setValue(true);
+
+                        }
+                    }, new Realm.Transaction.OnSuccess() {
+                        @Override
+                        public void onSuccess() {
+                            appControl.currentUser = currentuser;
+                            Intent intentMenu = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intentMenu);
+                            finish();
+                        }
+                    }, new Realm.Transaction.OnError() {
+                        @Override
+                        public void onError(Throwable error) {
+                            Toast.makeText(LoginActivity.this, "Se presento un error, por favor intenta nuevamente", Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+
+                }
+            } catch (JSONException e) {
+
+
+                e.printStackTrace();
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
+
+        } else {
+            Toast.makeText(this, "Paila", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -154,5 +178,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         }
         return bConectado;
+    }
+
+    public boolean verificarInternet(){
+        boolean connected = false;
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //we are connected to a network
+            connected = true;
+        }
+        else {
+            connected = false;
+        }
+        return connected;
     }
 }

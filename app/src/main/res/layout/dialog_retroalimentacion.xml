@@ -39,7 +39,7 @@
                 <ImageView
                     android:id="@+id/imgview_retro"
                     android:layout_gravity="center"
-                    android:src="@drawable/einsteinanimado"
+                    android:src="@drawable/halftutourprac"
                     android:layout_width="150dp"
                     android:layout_height="100dp" />
                 <View

@@ -15,8 +15,13 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/icono"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        >
+        android:theme="@style/AppTheme">
+
+        <receiver android:name=".util.webConManager.NetworkStateReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
         <activity
             android:name=".activities.menu.MainActivity"
             android:screenOrientation="portrait" />
@@ -63,7 +68,8 @@
             android:name=".activities.practice.PracticeActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".activities.challenge.ChallengeActivity" />
-        <activity android:name=".activities.profile.CreateProfileActivity"></activity>
+        <activity android:name=".activities.profile.CreateProfileActivity"/>
+
     </application>
 
 </manifest>
