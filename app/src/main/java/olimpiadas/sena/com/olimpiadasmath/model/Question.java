@@ -93,7 +93,7 @@ public class Question  extends RealmObject{
             JSONObject iscorrect = new JSONObject(jsonObject);
             //Log.d(TAG,"getAnswerCorrect i = " + i);
             //Log.d(TAG,"isCorrect toString =  " + iscorrect.toString());
-            return iscorrect.getJSONArray("answers").getJSONObject(i).getString("id");
+            return iscorrect.getJSONArray("answers").getJSONObject(i).getString("idAnswer");
 
         } catch (JSONException e) {
             e.printStackTrace();

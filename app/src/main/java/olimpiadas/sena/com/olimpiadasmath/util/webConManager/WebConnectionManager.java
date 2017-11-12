@@ -216,20 +216,21 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
         //webConnection.executeAsyncGetRequest(url);
     }
 
-    public void sendChallenge(int[] answers,String initDate, String finishDate ) {
+    public void sendChallenge(String idProfile,int[] answers,String initDate, String finishDate ) {
 
         Long tsLong = System.currentTimeMillis()/1000;
         String ts = tsLong.toString();
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 
-        nameValuePairs.add(new BasicNameValuePair("IdPerfil", "5"));
-        nameValuePairs.add(new BasicNameValuePair("RespuestaId1", "2"));
-        nameValuePairs.add(new BasicNameValuePair("RespuestaId2", "2"));
-        nameValuePairs.add(new BasicNameValuePair("RespuestaId3", "2"));
-        nameValuePairs.add(new BasicNameValuePair("RespuestaId4", "2"));
-        nameValuePairs.add(new BasicNameValuePair("RespuestaId5", "2"));
-        nameValuePairs.add(new BasicNameValuePair("HoraIni", "01/02/17 11:11:10"));
-        nameValuePairs.add(new BasicNameValuePair("HoraFin", "12/01/07 11:11:10"));
+        nameValuePairs.add(new BasicNameValuePair("IdPerfil", idProfile));
+
+        for(int i = 0; i < answers.length; i++){
+            nameValuePairs.add(new BasicNameValuePair("RespuestaId" + (i + 1), String.valueOf( answers[i])));
+        }
+
+
+        nameValuePairs.add(new BasicNameValuePair("HoraIni", initDate));
+        nameValuePairs.add(new BasicNameValuePair("HoraFin", finishDate));
         nameValuePairs.add(new BasicNameValuePair("Publicar", "1"));
 
         webConnection.executePostRequest(url, OperationType.SEND_CHALLENGE.getName(), nameValuePairs);

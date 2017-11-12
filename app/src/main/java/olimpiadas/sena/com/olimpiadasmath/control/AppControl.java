@@ -46,10 +46,12 @@ public class AppControl {
     public int baseWinCoins = 10;
 
     //sonidos efectos app
-    public MediaPlayer soundBackground,soundPositive,soundNegative,soundButton;
+    public MediaPlayer soundBackground,soundPositive,soundNegative,soundButton,soundResultFinished;
     public int soundButtonEfect = R.raw.puzzlefastwet;
     public int soundButtonPositive = R.raw.efectposit;
     public int soundButtonNegative = R.raw.efectneg;
+    public int soundResult = R.raw.resultfinished;
+
 
 
     //ranking
@@ -62,6 +64,7 @@ public class AppControl {
     public boolean isPreview = false;
     public boolean previewUsed = false;
     public String currentActivity = "currentActivity";
+    public String initQuestionaryDatetime = "";
 
     public static AppControl getInstance() {
         return ourInstance;
@@ -75,6 +78,7 @@ public class AppControl {
 
         init = true;
         answers = new  int[numberOfQuestions];
+        answersId = new  int[numberOfQuestions];
         Realm realm = Realm.getDefaultInstance();
 
         realm.executeTransactionAsync(new Realm.Transaction() {
@@ -99,16 +103,16 @@ public class AppControl {
                     //Practice
                     BonusTable bonus1 = new BonusTable(1.1f, 0.9f, 2, 3, 3, 1.5f, 1);
                     BonusTable bonus2 = new BonusTable(0.89f, 0.8f,2 , 3, 3, 1.5f, 1);
-                    BonusTable bonus3 = new BonusTable(0.79f, 0.6f, 1, 1, 1, 1f, 1);
-                    BonusTable bonus4 = new BonusTable(0.59f, 0.4f, 0, 0, 0, 0f, 1);
-                    BonusTable bonus5 = new BonusTable(0.38f, 0, -1, -1, 0, -1, 1);
+                    BonusTable bonus3 = new BonusTable(0.79f, 0.6f, 1, 1, 3, 1f, 1);
+                    BonusTable bonus4 = new BonusTable(0.59f, 0.4f, 0, 0, 2, 0f, 1);
+                    BonusTable bonus5 = new BonusTable(0.38f, 0, -1, -1, 1, -1, 1);
 
                     //challenge
-                    BonusTable bonus6 = new BonusTable(1.1f, 0.9f, 2, 3, 3, 1.5f, 2);
-                    BonusTable bonus7 = new BonusTable(0.89f, 0.8f,2 , 3, 3, 1.5f, 2);
-                    BonusTable bonus8 = new BonusTable(0.79f, 0.6f, 1, 1, 1, 1f, 2);
-                    BonusTable bonus9 = new BonusTable(0.59f, 0.40f, 0, 0, 0, 0f, 2);
-                    BonusTable bonus10 = new BonusTable(0.39f, 0, -1, -1, 0, -1, 2);
+                    BonusTable bonus6 = new BonusTable(1.1f, 0.9f, 1.2f, 3, 4.5f, 1.5f, 2);
+                    BonusTable bonus7 = new BonusTable(0.89f, 0.8f,1.1f , 3, 4f , 1.5f, 2);
+                    BonusTable bonus8 = new BonusTable(0.79f, 0.6f, 1, 1, 3.4f, 1f, 2);
+                    BonusTable bonus9 = new BonusTable(0.59f, 0.40f, 0, 0, 3f, 0f, 2);
+                    BonusTable bonus10 = new BonusTable(0.39f, 0, 0, 0, 2, -1, 2);
 
 
 
@@ -314,13 +318,13 @@ public class AppControl {
             public void onSuccess() {
                 Log.d(TAG,"Transaction Success");
 
-                listener.initComplete(false);
+                listener.initComplete(true);
             }
         }, new Realm.Transaction.OnError() {
             @Override
             public void onError(Throwable error) {
                 Log.d(TAG,"Transaction Error");
-                listener.initComplete(false);
+                listener.initComplete(true);
             }
         });
 
