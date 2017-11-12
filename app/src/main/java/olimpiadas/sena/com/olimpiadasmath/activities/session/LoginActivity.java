@@ -2,12 +2,12 @@ package olimpiadas.sena.com.olimpiadasmath.activities.session;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
-import android.media.MediaPlayer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import io.realm.Realm;
 import olimpiadas.sena.com.olimpiadasmath.R;
@@ -26,11 +25,10 @@ import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.model.Configuration;
 import olimpiadas.sena.com.olimpiadasmath.model.User;
 import olimpiadas.sena.com.olimpiadasmath.util.DialogHelper;
-import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnection;
 import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnectionManager;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener, WebConnectionManager.WebConnectionManagerListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener, WebConnectionManager.WebConnectionManagerListener{
 
     private static final String TAG = LoginActivity.class.toString();
 
@@ -38,6 +36,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     EditText tvUser, tvPwd;
     WebConnectionManager webConnectionManager;
     boolean stateNet = false;
+
+    boolean connected = false;
     AppControl appControl;
 
     @Override
@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnLogin.setOnClickListener(this);
         btnLosePass.setOnClickListener(this);
 
-        if (AppControl.getInstance().isLogged == true) {
+        if(AppControl.getInstance().isLogged == true){
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
             finish();
         }
@@ -75,30 +75,30 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         appControl.soundButton = MediaPlayer.create(getApplicationContext(), appControl.soundButtonEfect);
         switch (v.getId()) {
             case R.id.btn_login:
-                if (appControl.isBackgroundPlaying)
-                    if (appControl.isBackgroundPlaying)
+                if(appControl.isBackgroundPlaying)
+                    if(appControl.isBackgroundPlaying)
                         appControl.soundButton.start();
-                if (tvUser.getText().length() == 0) {
+                if(tvUser.getText().length() == 0){
                     tvUser.setError(getString(R.string.fiel_required));
                     return;
                 }
 
-                if (tvPwd.getText().length() == 0) {
+                if(tvPwd.getText().length() == 0){
                     tvPwd.setError(getString(R.string.fiel_required));
                     return;
                 }
                 webConnectionManager = WebConnectionManager.getWebConnectionManager();
                 webConnectionManager.setWebConnectionManagerListener(this);
                 stateNet = verificarConexion(this);
-                Log.d("ESTADO NET", stateNet + "");
-                if (stateNet) {
+                Log.d("ESTADO NET", stateNet+"");
+                if(stateNet){
                     webConnectionManager.login(tvUser.getText().toString(), tvPwd.getText().toString());
-                } else {
-                    Toast.makeText(this, "Debes estar conectado a Intenet para iniciar sesión", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(this, "Debes estar conectado a Intenet para iniciar sesión", Toast.LENGTH_LONG).show();
                 }
                 break;
             case R.id.btn_lose_pass:
-                if (appControl.isBackgroundPlaying)
+                if(appControl.isBackgroundPlaying)
                     appControl.soundButton.start();
                 break;
         }
@@ -151,7 +151,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }, new Realm.Transaction.OnError() {
                         @Override
                         public void onError(Throwable error) {
-                            Toast.makeText(LoginActivity.this, "Se presento un error, por favor intenta nuevamente", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Se presento un error, por favor intenta nuevamente", Toast.LENGTH_LONG).show();
 
                         }
                     });
@@ -162,6 +162,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                 e.printStackTrace();
             }
+
+
 
         } else {
             Toast.makeText(this, "Paila", Toast.LENGTH_SHORT).show();
@@ -178,19 +180,5 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         }
         return bConectado;
-    }
-
-    public boolean verificarInternet(){
-        boolean connected = false;
-        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-            //we are connected to a network
-            connected = true;
-        }
-        else {
-            connected = false;
-        }
-        return connected;
     }
 }

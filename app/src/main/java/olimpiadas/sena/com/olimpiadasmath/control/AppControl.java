@@ -313,7 +313,7 @@ public class AppControl {
             public void onSuccess() {
                 Log.d(TAG,"Transaction Success");
 
-                listener.initComplete(true);
+                listener.initComplete(false);
             }
         }, new Realm.Transaction.OnError() {
             @Override
