@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnShop, btnRanking, btnSettings, btnPractice, btnChallenge, btnLibrary;
     GifImageView gifMenu;
     AppControl appControl;
+
     Context context;
     pl.droidsonroids.gif.GifImageView getGifMenu;
     int cont = 0;
