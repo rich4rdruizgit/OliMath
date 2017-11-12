@@ -30,15 +30,15 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
 
     private static final String TAG = CardPagerAdapter.class.toString();
     private List<CardView> mViews;
-   // private List<CardItem> question;
-    
-    private RealmResults<Question> question;
+    // private List<CardItem> question;
+
+    private List<Question> question;
     private float mBaseElevation;
-    CommunicationTest  communicationTest;
+    CommunicationTest communicationTest;
     AppControl appControl;
     Context context;
 
-    Button btnNext,btnBack;
+    Button btnNext, btnBack;
     //ImageView imgViewTest;
     public boolean imageScaled = false;
     public int currentPosition = 0;
@@ -63,8 +63,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
     }
 
 
-
-    public CardPagerAdapter(RealmResults<Question> question, Context context) {
+    public CardPagerAdapter(List<Question> question, Context context) {
         this.question = question;
         mViews = new ArrayList<>();
         appControl = AppControl.getInstance();
@@ -107,7 +106,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
             btnBack.setVisibility(View.GONE);
             btnNext = (Button) view.findViewById(R.id.btn_test_next);
         }
-        if(AppControl.getInstance().onPractice){
+        if (AppControl.getInstance().onPractice) {
             btnNext = (Button) view.findViewById(R.id.btn_test_next);
             btnBack = (Button) view.findViewById(R.id.btn_test_back);
             btnBack.setVisibility(View.GONE);
@@ -120,98 +119,68 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
         imgScaleView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appControl.soundButton = MediaPlayer.create(v.getContext(),appControl.soundButtonEfect);
+                appControl.soundButton = MediaPlayer.create(v.getContext(), appControl.soundButtonEfect);
                 appControl.soundButton.start();
                 imageScaled = !imageScaled;
-                if(imageScaled){
-                    Log.d(TAG,"img_test_image pressed");
+                if (imageScaled) {
+                    Log.d(TAG, "img_test_image pressed");
                     imgViewTest.setVisibility(View.VISIBLE);
-                }else{
-                    Log.d(TAG,"img_test_image pressed");
+                } else {
+                    Log.d(TAG, "img_test_image pressed");
                     imgViewTest.setVisibility(View.GONE);
                 }
             }
         });
 
-
-
-
-        if(position == getCount() - 1){
+        if (position == getCount() - 1) {
             btnNext.setText(R.string.finish);
-
-        }else{
+        } else {
             btnNext.setText(R.string.next);
         }
         final RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.rg_group_answer);
 
-
-        if(btnBack!=null){
-            btnBack.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    /*if (position - 1 >= 0) {
-                        moveTestListener.moveClick(position - 1);
-                    }*/
-                }
-            });
-        }
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appControl.soundButton = MediaPlayer.create(v.getContext(),appControl.soundButtonEfect);
-                if(appControl.isBackgroundPlaying)
+                appControl.soundButton = MediaPlayer.create(v.getContext(), appControl.soundButtonEfect);
+                if (appControl.isBackgroundPlaying)
                     appControl.soundButton.start();
                 int selectedId = radioGroup.getCheckedRadioButtonId();
 
-                if(selectedId == -1){
+                if (selectedId == -1) {
                     appControl.answers[position] = -1;
-                }else{
+                } else {
 
-                    Log.d(TAG,"Respuesta es " + radioGroup.getCheckedRadioButtonId());
-                    Log.d(TAG,"Respuesta es " + ((RadioButton) view.findViewById(radioGroup.getCheckedRadioButtonId())).getText());
+                    Log.d(TAG, "Respuesta es " + radioGroup.getCheckedRadioButtonId());
+                    Log.d(TAG, "Respuesta es " + ((RadioButton) view.findViewById(radioGroup.getCheckedRadioButtonId())).getText());
                     int idx = radioGroup.indexOfChild(view.findViewById(radioGroup.getCheckedRadioButtonId()));
                     Log.d(TAG, "EL indice es " + idx);
                     Log.d(TAG, "Correct answer " + question.get(position).getAnswerCorrect(idx));
-                    if(question.get(position).getAnswerCorrect(idx).equals("1")){
+                    if (question.get(position).getAnswerCorrect(idx).equals("1")) {
                         appControl.answers[position] = 1;
-                        if( position +1 < getCount()){
-                            moveTestListener.moveClick(position +1);
-                        }else{
+                        if (position + 1 < getCount()) {
+                            moveTestListener.moveClick(position + 1);
+                        } else {
                             moveTestListener.finished();
                         }
-                    }else
-                    {
+                    } else {
                         appControl.answers[position] = 0;
                         String myasnwer = question.get(position).getAnswerText(position);
                         String theanswer = question.get(position).getCorrectAnswerText();
                         String feedback = question.get(position).getFeedback();
-                        currentPosition= position;
+                        currentPosition = position;
                         Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
                         vibrator.vibrate(1000);
-                        DialogHelper.FeedbackDialog(context,myasnwer,theanswer,feedback,CardPagerAdapter.this);
+                        DialogHelper.FeedbackDialog(context, myasnwer, theanswer, feedback, CardPagerAdapter.this);
                     }
-
-                }
-
-                if( position +1 < getCount()){
-
-
-                    //moveTestListener.moveClick(position +1);
-
-                }else{
-                    //moveTestListener.finished();
                 }
             }
         });
 
-
         imgScale.setOnClickListener(this);
-        //imgScaleView.setOnClickListener(this);
 
-
-        bind(question.get(position), view,position);
+        bind(question.get(position), view, position);
         CardView cardView = (CardView) view.findViewById(R.id.cardView);
-
 
         if (mBaseElevation == 0) {
             mBaseElevation = cardView.getCardElevation();
@@ -228,20 +197,19 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
         mViews.set(position, null);
     }
 
-    private void bind(Question item, View view,int position) {
+    private void bind(Question item, View view, int position) {
         TextView titleTextView = (TextView) view.findViewById(R.id.titleTextView);
         TextView contentTextView = (TextView) view.findViewById(R.id.contentTextView);
 
 
-
-        Log.d(TAG,"Question text : " + item.getQuestionText() );
+        Log.d(TAG, "Question text : " + item.getQuestionText());
         titleTextView.setText(item.getQuestionText());
         RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.rg_group_answer);
-        for(int x = 0 ; x<4 ;x++){
-            Log.d(TAG,"item" + x + " correct" + item.getAnswerCorrect(x));
+        for (int x = 0; x < 4; x++) {
+            Log.d(TAG, "item" + x + " correct" + item.getAnswerCorrect(x));
 
-            if(item.getAnswerCorrect(x).equals("1") ) {
-                Log.d(TAG,"Entro 1");
+            if (item.getAnswerCorrect(x).equals("1")) {
+                Log.d(TAG, "Entro 1");
                 contentTextView.setText(item.getAnswerText(x));
             }
             RadioButton radioButton = new RadioButton(view.getContext());
@@ -252,16 +220,18 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.img_test_scale:
-                if(appControl.isBackgroundPlaying)
+                if (appControl.isBackgroundPlaying)
                     appControl.soundButton.start();
-                if(communicationTest!=null){communicationTest.changeScale();}
+                if (communicationTest != null) {
+                    communicationTest.changeScale();
+                }
                 break;
             case R.id.img_test_image:
-                if(appControl.isBackgroundPlaying)
+                if (appControl.isBackgroundPlaying)
                     appControl.soundButton.start();
-                Log.d(TAG,"img_test_image pressed");
+                Log.d(TAG, "img_test_image pressed");
 
                 break;
 
@@ -272,27 +242,29 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
     public void closeFeedBackDialog() {
 
         //Pasar a la siguiente interfaz
-            if( currentPosition +1 < getCount()){
+        if (currentPosition + 1 < getCount()) {
 
 
-            moveTestListener.moveClick(currentPosition +1);
+            moveTestListener.moveClick(currentPosition + 1);
 
-        }else{
+        } else {
             moveTestListener.finished();
         }
 
     }
 
-    public interface MoveTestListener{
+    public interface MoveTestListener {
         public final int NEXT = 1;
         public final int BACK = 2;
+
         public void moveClick(int pos);
+
         public void finished();
     }
-    public interface CommunicationTest{
+
+    public interface CommunicationTest {
         public void changeScale();
     }
-
 
 
 }

@@ -93,15 +93,17 @@
                         style="@style/TextAppearance.AppCompat.Title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="45dp"
-                        android:textColor="@color/colorText" />
+                        android:layout_marginTop="55dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="3dp"
+                        android:textColor="@color/primary_text" />
 
                     <TextView
                         android:id="@+id/tv_question_content"
                         style="@style/TextAppearance.AppCompat.Body1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/colorText" />
+                        android:textColor="@color/primary_text"  />
 
                     <ImageView
                         android:id="@+id/contentViewImage"
@@ -122,7 +124,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:textColor="@color/secondary_text">
+                            android:textColor="@color/primary_text" >
 
                         </RadioGroup>
                     </LinearLayout>
