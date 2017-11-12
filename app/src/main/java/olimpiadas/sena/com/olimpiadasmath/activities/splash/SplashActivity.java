@@ -38,6 +38,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class SplashActivity extends AppCompatActivity implements AppControl.InitComplete,
         WebConnectionManager.WebConnectionManagerListener {
 
+    private static final String TAG = "SplashActivity";
     private AppControl appControl;
     private boolean loading = true;
     Realm realm;
@@ -62,7 +63,7 @@ public class SplashActivity extends AppCompatActivity implements AppControl.Init
         realm = Realm.getDefaultInstance();
 
         appControl.init(SplashActivity.this);
-
+        Log.d(TAG,"Se va  webRequest perd ");
         webConnectionManager = WebConnectionManager.getWebConnectionManager();
         webConnectionManager.setWebConnectionManagerListener(this);
         webConnectionManager.getRandomQuestions();
@@ -119,7 +120,7 @@ public class SplashActivity extends AppCompatActivity implements AppControl.Init
     @Override
     public void initComplete(boolean result) {
 
-        loading = false;
+        loading = result;
 
 
         //todo manejar error de cargado
@@ -136,8 +137,10 @@ public class SplashActivity extends AppCompatActivity implements AppControl.Init
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void webRequestComplete(WebConnectionManager.Response response) throws JSONException {
+        Log.d(TAG,"Entro a webRequestComplete ");
         if (response.getOperationType() == WebConnectionManager.OperationType.GET_QUESTIONS) {
             if (response.getStatus() == WebConnectionManager.Response.SUCCESS) {
+                Log.d(TAG,response.getData());
                 JSONArray jsonArray = new JSONArray(response.getData());
 //        JSONArray jsonArray = new JSONArray(data());
                 List<Question> qs = Question.JsonArrayToList(jsonArray);
@@ -183,7 +186,7 @@ public class SplashActivity extends AppCompatActivity implements AppControl.Init
                 for (int i = 1; i < questionList.size(); i++) {
                     Log.d("JSON", questionList.get(i).toString());
                 }
-                loading = true;
+                loading = false;
                 Log.d("COPIA A REALM", "COPIADOS");
             }
         }, new Realm.Transaction.OnError() {
