@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
@@ -32,11 +33,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     private static final String TAG = ProductAdapter.class.toString();
 
-    public RealmResults<Product> lstProduct;
+    //public RealmResults<Product> lstProduct;
+    public List<Product> lstProduct;
     public RealmResults<Product> lstProductItem;
 
 
-    static Context context;
+    Context context;
     AppControl appControl;
     Realm realm;
     int idCardView;
@@ -45,18 +47,19 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     Button currentAvatarButton = null;
     Button currentBuyItem = null;
     int currentPosition = 0;
-
+    private String recurso = "drawable";
 
     public ProductAdapter(List<Product> lstProduct, Context context, int type) {
 
         realm = Realm.getDefaultInstance();
+        this.lstProduct = lstProduct;
         if(type == Product.AVATAR){
-            lstProduct = realm.where(Product.class).equalTo("type",Product.AVATAR).findAll();
+            //lstProduct = realm.where(Product.class).equalTo("type",Product.AVATAR).findAll();
         }
         if(type == Product.POTION){
             lstProduct = realm.where(Product.class).equalTo("type",Product.POTION).findAll();
         }
-        this.lstProduct = (RealmResults<Product>) lstProduct;
+        //this.lstProduct = (RealmResults<Product>) lstProduct;
         this.context = context;
         appControl = AppControl.getInstance();
     }
@@ -99,12 +102,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public void onBindViewHolder(final ProductAdapter.ProductViewHolder holder, final int position) {
         final Product product = lstProduct.get(position);
         Log.d(TAG,product.toString());
-        holder.imgViewShop.setImageResource(product.getUrlImg());
+        //int avatar = getActivity().getBaseContext().getResources().getIdentifier(appControl.currentUser.getAvatar(), recurso, context.getActivity().getBaseContext().getPackageName());
 
-        Picasso.with(holder.imgViewShop.getContext())
+        int avatar = context.getResources().getIdentifier(product.getUrlImg(),recurso,context.getPackageName());
+        holder.imgViewShop.setImageResource(avatar);
+
+        /*Picasso.with(holder.imgViewShop.getContext())
                 .load(lstProduct.get(position).getUrlImg())
                 .resize(200,200)
-                .into(holder.imgViewShop);
+                .into(holder.imgViewShop);*/
 
 
         holder.txtName.setText(product.getName());

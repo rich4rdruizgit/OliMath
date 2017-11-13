@@ -49,7 +49,8 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
         LOGIN,
         RANKING,
         SEND_CHALLENGE,
-        SHOW_SHOP;
+        SHOW_SHOP,
+        SHOW_SHOP_CUSTOM;
 
         public String getName() {
             switch (this) {
@@ -67,6 +68,8 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                     return "WSOlimath.asmx/insertarCompetencia";
                 case SHOW_SHOP:
                     return "mostrarTienda";
+                case SHOW_SHOP_CUSTOM:
+                    return "WSOlimath.asmx/mostrarStockPerfiles";
                 default:
                     return null;
             }
@@ -91,6 +94,10 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
                 case "WSOlimath.asmx/mostrarPreguntasAleatoriasNuevo":
                     return GET_QUESTIONS;
+
+                case "WSOlimath.asmx/mostrarStockPerfiles":
+                    return SHOW_SHOP_CUSTOM;
+
                 default:
                     return null;
             }
@@ -184,6 +191,15 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
     public void mostrarRankings() {
         webConnection.executeAsyncGetRequest(url + OperationType.RANKING.getName(), OperationType.RANKING.getName());
+    }
+
+    public void  mostrarTiendaCustom(String idUser) {
+
+        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        nameValuePairs.add(new BasicNameValuePair("idPerfil", idUser));
+
+        webConnection.executePostRequest(url, OperationType.SHOW_SHOP_CUSTOM.getName(), nameValuePairs);
+
     }
 
     public void mostrarTienda() {
@@ -333,6 +349,32 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                     result = "";
                     code = "JO001";
                     errMsg = "Respuesta login no esta en formato Json";
+                    return;
+                }
+            }
+
+            if (operationType == OperationType.SHOW_SHOP_CUSTOM) {
+                try {
+                    Log.d(TAG, "Operation type = SHOP CUSTOM");
+                    JSONArray shop = new JSONArray(resp);
+                    if (shop.length() > 0) {
+                        status = SUCCESS;
+                        result = OK;
+                        data = resp;
+                        return;
+                    } else {
+                        status = SUCCESS;
+                        result = OK;
+                        data = resp;
+                        return;
+                    }
+
+
+                } catch (JSONException e) {
+                    status = ERROR;
+                    result = "";
+                    code = "JO001";
+                    errMsg = "Respuesta SHOP no esta en formato Json";
                     return;
                 }
             }

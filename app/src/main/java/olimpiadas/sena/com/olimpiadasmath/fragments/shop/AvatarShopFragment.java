@@ -35,6 +35,7 @@ public class AvatarShopFragment extends Fragment implements WebConnectionManager
     private String mParam1;
     private String mParam2;
     private String TAG = "AvatarShopFragment";
+    AppControl appControl;
 
     RecyclerView recyclerView;
     ProductAdapter productAdapter;
@@ -70,6 +71,7 @@ public class AvatarShopFragment extends Fragment implements WebConnectionManager
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        appControl = AppControl.getInstance();
         View view = inflater.inflate(R.layout.fragment_avatar_shop, container, false);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_avatar_shop);
@@ -77,18 +79,12 @@ public class AvatarShopFragment extends Fragment implements WebConnectionManager
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
 
-        inicializarAdaptador();
         webConnectionManager = WebConnectionManager.getWebConnectionManager();
         webConnectionManager.setWebConnectionManagerListener(this);
-        webConnectionManager.mostrarTienda();
+        //webConnectionManager.mostrarTienda();
+        webConnectionManager.mostrarTiendaCustom(appControl.currentUser.getId());
 
         return view;
-    }
-
-    private void inicializarAdaptador() {
-        int type = Product.AVATAR;
-        productAdapter = new ProductAdapter(lstProduct, getActivity(), type);
-        recyclerView.setAdapter(productAdapter);
     }
 
     public void onButtonPressed(Uri uri) {
@@ -120,18 +116,23 @@ public class AvatarShopFragment extends Fragment implements WebConnectionManager
             if (response.getStatus() == WebConnectionManager.Response.ERROR) {
                 Log.d(TAG, "No se pudo cargar el Tienda");
             } else {
-                if (response.getOperationType() == WebConnectionManager.OperationType.SHOW_SHOP) {
+                if (response.getOperationType() == WebConnectionManager.OperationType.SHOW_SHOP_CUSTOM) {
+
+                    Log.d(TAG,"ENTRANDO A LA TIENDA");
                     JSONArray jsonArray = new JSONArray(response.getData());
                     List<Product> productList = new ArrayList<>();
+
+                    Log.d(TAG,"UNODOS"+response.getData());
+
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         Product product = new Product();
                         //int urlImg, String name, int price, String constraint, int state, String sourceName, int type
-                        product.setUrlImg(R.drawable.marco18);
-                        product.setName(jsonObject.getString("codigo"));
-                        product.setPrice(Integer.parseInt(jsonObject.getString("nombre")));
-                        product.setConstraint("10");
-                        product.setState(Integer.parseInt(jsonObject.getString("precio")));
+                        product.setUrlImg("nombre");
+                        product.setName(jsonObject.getString("nombre"));
+                        product.setPrice(Integer.parseInt(jsonObject.getString("precio")));
+                        product.setConstraint("nivelRequerido");
+                        product.setState(Integer.parseInt(jsonObject.getString("usado")));
                         product.setSourceName(jsonObject.getString("tipo"));
                         if (jsonObject.getString("tipo").equals("Diseño")) {
                             product.setType(1);
@@ -141,9 +142,8 @@ public class AvatarShopFragment extends Fragment implements WebConnectionManager
 
                         productList.add(product);
                     }
-
                     for (Product p : productList) {
-                        Log.d("PRODUCTO JSON    ", p.getName());
+                        Log.d(TAG,"TRES" + p.getName());
                     }
                     products = productList;
                     productAdapter = new ProductAdapter(productList, getActivity(), Product.AVATAR);

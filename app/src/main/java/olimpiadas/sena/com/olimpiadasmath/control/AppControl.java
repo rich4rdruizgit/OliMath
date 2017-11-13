@@ -266,6 +266,7 @@ public class AppControl {
                     ourInstance.currentUser = realm.copyFromRealm(realm.where(User.class).findFirst());
                 }
 
+                /*
                 if(realm.where(Product.class).findAll().isEmpty()){
 
                     Product pdt1 = new Product(R.drawable.marco18,"Dragon\nblanco",80,"1",Product.FOR_BUY,"marco18",1);
@@ -289,7 +290,7 @@ public class AppControl {
                     realm.copyToRealm(pdt8);
                     realm.copyToRealm(pdt9);
 
-                }
+                }*/
 
                 Configuration config = realm.where(Configuration.class).equalTo("key","isLogged").findFirst();
                 if(config != null){

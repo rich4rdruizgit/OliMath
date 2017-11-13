@@ -20,7 +20,7 @@ public class Product extends RealmObject {
     public static final int AVATAR  = 1; //usado
 
 
-    private int urlImg;
+    private String urlImg;
     protected String name;
     protected int price;
     protected String constraint; // Restriccion del nivel para acceder al item
@@ -29,7 +29,7 @@ public class Product extends RealmObject {
     protected int type;
 
 
-    public Product(int urlImg, String name, int price, String constraint, int state, String sourceName, int type) {
+    public Product(String urlImg, String name, int price, String constraint, int state, String sourceName, int type) {
         this.urlImg = urlImg;
         this.name = name;
         this.price = price;
@@ -42,11 +42,11 @@ public class Product extends RealmObject {
     public Product() {
     }
 
-    public int getUrlImg() {
+    public String getUrlImg() {
         return urlImg;
     }
 
-    public void setUrlImg(int urlImg) {
+    public void setUrlImg(String urlImg) {
         this.urlImg = urlImg;
     }
 
