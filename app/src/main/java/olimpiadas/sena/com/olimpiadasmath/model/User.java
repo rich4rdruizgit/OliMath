@@ -31,6 +31,7 @@ public class User  extends RealmObject {
     private int level;
     private String avatar;
     private String answers;
+    private String time;
 
     public User() {
     }
@@ -178,5 +179,13 @@ public class User  extends RealmObject {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

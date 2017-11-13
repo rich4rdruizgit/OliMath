@@ -3,7 +3,6 @@ package olimpiadas.sena.com.olimpiadasmath.activities.splash;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PixelFormat;
-import android.media.MediaPlayer;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
@@ -18,9 +17,7 @@ import android.widget.LinearLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
@@ -62,7 +59,7 @@ public class SplashActivity extends AppCompatActivity implements AppControl.Init
 
         realm = Realm.getDefaultInstance();
 
-        appControl.init(SplashActivity.this);
+        appControl.init(SplashActivity.this, getApplicationContext());
         Log.d(TAG,"Se va  webRequest perd ");
         webConnectionManager = WebConnectionManager.getWebConnectionManager();
         webConnectionManager.setWebConnectionManagerListener(this);
@@ -97,11 +94,13 @@ public class SplashActivity extends AppCompatActivity implements AppControl.Init
                     if (AppControl.getInstance().isLogged) {
                         Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                         startActivity(intent);
+                        appControl.playSoundBackground();
                         SplashActivity.this.finish();
                     } else {
                         Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         startActivity(intent);
+                        appControl.playSoundBackground();
                         SplashActivity.this.finish();
                     }
 

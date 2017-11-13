@@ -99,9 +99,10 @@ public class HeaderFragment extends Fragment {
         btnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appControl.soundButton = MediaPlayer.create(v.getContext(),appControl.soundButtonEfect);
-                if(appControl.isBackgroundPlaying)
-                    appControl.soundButton.start();
+//                appControl.soundButtonPlay = MediaPlayer.create(v.getContext(),appControl.soundButtonEfect);
+//                if(appControl.isBackgroundPlaying)
+//                    appControl.soundButtonPlay.start();
+                appControl.soundButtonPlay();
                 Log.d("Header", SettingsActivity.class.getSimpleName());
                 if (!appControl.currentActivity.equals(SettingsActivity.class.getSimpleName())) {
                     Intent intentSettings = new Intent(getActivity(), SettingsActivity.class);
@@ -119,9 +120,7 @@ public class HeaderFragment extends Fragment {
         imgHeaderProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appControl.soundButton = MediaPlayer.create(v.getContext(),appControl.soundButtonEfect);
-                if(appControl.isBackgroundPlaying)
-                    appControl.soundButton.start();
+                appControl.soundButtonPlay();
                 Intent intent = new Intent(getActivity(), ProfileActivity.class);
                 startActivity(intent);
             }
