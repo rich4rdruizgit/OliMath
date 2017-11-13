@@ -27,8 +27,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:orientation="vertical"
-                android:background="@drawable/background_dialog">
+                android:background="@drawable/background_dialog"
+                android:orientation="vertical">
 
 
                 <TextView
@@ -36,17 +36,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:text="Resultado"
-                    android:layout_marginTop="10dp"
                     android:textColor="@color/primary_text"
                     android:textSize="20sp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
                     android:layout_gravity="center"
+                    android:layout_margin="8dp"
                     android:orientation="horizontal"
                     android:weightSum="1">
 
@@ -74,8 +74,8 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
                     android:layout_gravity="center"
+                    android:layout_margin="8dp"
                     android:orientation="horizontal"
                     android:weightSum="1">
 
@@ -103,16 +103,16 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_margin="8dp"
                     android:orientation="horizontal"
-                    android:layout_gravity="center"
                     android:weightSum="1">
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight=".6"
                         android:layout_gravity="center"
+                        android:layout_weight=".6"
                         android:text="Tiempo:"
                         android:textColor="#fff"
                         android:textSize="@dimen/text_size" />
@@ -132,8 +132,8 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
                     android:layout_gravity="center"
+                    android:layout_margin="8dp"
                     android:orientation="horizontal"
                     android:weightSum="1">
 
