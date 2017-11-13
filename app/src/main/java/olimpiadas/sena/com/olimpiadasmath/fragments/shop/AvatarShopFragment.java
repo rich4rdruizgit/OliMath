@@ -128,7 +128,7 @@ public class AvatarShopFragment extends Fragment implements WebConnectionManager
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         Product product = new Product();
                         //int urlImg, String name, int price, String constraint, int state, String sourceName, int type
-                        product.setUrlImg(jsonObject.getString("nombre"));
+                        product.setUrlImg(jsonObject.getString("imagen"));
                         product.setName(jsonObject.getString("nombre"));
                         product.setPrice(Integer.parseInt(jsonObject.getString("precio")));
                         product.setConstraint(jsonObject.getString("nivelRequerio"));

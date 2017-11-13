@@ -154,7 +154,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                         holder.btnBuy.setText("Usado");
                         currentAvatar = position;
                         updateState();
-                        appControl.currentUser.setAvatar(product.getSourceName());
+                        appControl.currentUser.setAvatar(product.getUrlImg());
                         ProductAdapter.this.updateProductState(position,Product.USED);
                         User.updateUser(appControl.currentUser);
                         ((ShopActivity)context).headerFragment.refreshInterface();
