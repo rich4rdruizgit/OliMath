@@ -198,7 +198,7 @@ public class DialogHelper {
                     if(appControl.isBackgroundPlaying)
                         appControl.soundButton.start();
                     mProgressDialog.dismiss();
-                    appControl.initQuestionaryDatetime = DateFormat.format("MM/dd/yy HH:mm:ss", new java.util.Date()).toString();
+                    appControl.initQuestionaryDatetime = DateFormat.format("dd/MM/yy HH:mm:ss", new java.util.Date()).toString();
                     Intent intChallenge = new Intent(context.getApplicationContext(), ChallengeActivity.class);
                     intChallenge.putExtra("type", 2);
                     AppControl.getInstance().currentUser.addTickets(-2);
