@@ -104,15 +104,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         Log.d(TAG,product.toString());
         //int avatar = getActivity().getBaseContext().getResources().getIdentifier(appControl.currentUser.getAvatar(), recurso, context.getActivity().getBaseContext().getPackageName());
 
+
         int avatar = context.getResources().getIdentifier(product.getUrlImg(),recurso,context.getPackageName());
+
         holder.imgViewShop.setImageResource(avatar);
-
-        /*Picasso.with(holder.imgViewShop.getContext())
-                .load(lstProduct.get(position).getUrlImg())
-                .resize(200,200)
-                .into(holder.imgViewShop);*/
-
-
         holder.txtName.setText(product.getName());
         holder.txtPrice.setText("" + product.getPrice());
         holder.txtConstraint.setText(product.getConstraint());

@@ -9,11 +9,11 @@ import io.realm.annotations.Ignore;
 
 public class Product extends RealmObject {
     @Ignore
-    public static final int FOR_BUY  = 1; // para comprar
+    public static final int FOR_BUY  = 0; // para comprar
     @Ignore
-    public static final int BOUGTH  = 2; // comprado
+    public static final int BOUGTH  = 1; // comprado
     @Ignore
-    public static final int USED  = 3; //usado
+    public static final int USED  = 2; //usado
     @Ignore
     public static final int POTION  = 2; //usado
     @Ignore
