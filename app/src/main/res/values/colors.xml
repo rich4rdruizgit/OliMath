@@ -13,6 +13,7 @@
     <color name="secondary_text">#ffffff</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
+    <color name="disable_button">#8E8A8A</color>
     <color name="colorText">#000</color>
 
 </resources>

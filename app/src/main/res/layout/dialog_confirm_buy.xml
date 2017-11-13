@@ -13,7 +13,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="50dp"
             android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1.5"
+                android:src="@drawable/halftutorchall"
+                android:id="@+id/img_tutorresult"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -21,6 +30,7 @@
                 android:id="@+id/txt_msg_dialog"
                 android:textAlignment="center"
                 android:textSize="20dp"
+                android:textColor="@color/cardview_light_background"
                 android:text="¿Quieres salir de la aplicacion?"/>
 
             <View

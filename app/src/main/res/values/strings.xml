@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Olimpiadas Math</string>
+    <string name="app_name">Olimpiadas Matemáticas</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -11,10 +11,10 @@
     <string name="title_4">Pregunta 4</string>
     <string name="text_1">Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam eget ligula eu lectus lobortis condimentum.</string>
     <string name="next">Siguiente</string>
-    <string name="back">Atras</string>
+    <string name="back">Atrás</string>
     <string name="finish">Terminar</string>
 
-    <string name="alert_shop">¿Esta seguro de realizar esta compra?</string>
+    <string name="alert_shop">¿Está seguro de realizar esta compra?</string>
     <string name="no_enought_coins">No tienes suficientes monedas :( ve a practicar para ganar más</string>
     <string name="user">Usuario</string>
     <string name="password">Contraseña</string>
@@ -42,21 +42,22 @@
     <string name="effects">Efectos</string>
     <string name="lenguage">Idioma</string>
     <string name="aboutgame">Ayuda sobre el juego</string>
-    <string name="copyright">Creditos</string>
+    <string name="copyright">Créditos</string>
     <string name="shop">Tienda</string>
     <string name="result_title">RECOMPENSAS</string>
+
 
     <string name="corrects_answers_challenge">Correctas:</string>
     <string name="time_challenge">Tiempo:</string>
     <string name="coins_challenge">Monedas:</string>
     <string name="btn_continue">CONTINUAR</string>
-    <string name="text_dialog_info_practice">Vas a ingresar a la practica, presiona continuar para iniciar</string>
-    <string name="text_dialog_info_challenge">Si aceptas el Challenge, apostaras 20 Monedas \n¡Aunque podras ganar mucho mas de lo apostado! </string>
+    <string name="text_dialog_info_practice">Vas a ingresar a la práctica, presiona continuar para iniciar</string>
+    <string name="text_dialog_info_challenge">Si aceptas el Reto, apostarás 20 Monedas \n¡Aunque podrás ganar mucho más de lo apostado! </string>
     <string name="title_dialog_challenge">Hola, ¿Quieres probar tus habilidades?</string>
     <string name="title_dialog_practice">Hola, que bueno verte por aquí!</string>
     <string name="whitout_coins">Te quedaste sin monedas!</string>
     <string name="begin_again">Vuelve a comenzar!!!</string>
-    <string name="text_dialog_exit_challenge" >¿Seguro quieres terminar el reto? \nPerderas las monedas que pagaste para ingresar y se contará como perdido</string>
+    <string name="text_dialog_exit_challenge" >¿Seguro quieres terminar el reto? \nPerderás las monedas que pagaste para ingresar y se contará como perdido</string>
 
     <string-array name="lenguages">
         <item>Español</item>
@@ -69,15 +70,16 @@
         <item>¡Si tienes buenos resultados, puedes estar en el Ranking!</item>
         <item>¡Tienes 3 minutos para responder cada pregunta!</item>
         <item>¡El preview resta 15s de los 3min que dura la pregunta!</item>
-        <item>¡Si obtienes un buen resultado, tienes la posibildad de estar en el Ranking!</item>
+        <item>¡Si obtienes un buen resultado, tienes la posibilidad de estar en el Ranking!</item>
     </string-array>
     <string-array name="array_advices_practice">
-        <item>Recuerda: "La practica hace al maestro"</item>
-        <item>¡Ganararás Monedas por cada pregunta correcta!</item>
+        <item>Recuerda: "La práctica hace al maestro"</item>
+        <item>¡Ganarás Monedas por cada pregunta correcta!</item>
         <item>¡Las Monedas son necesarios para ingresar a Reto!</item>
-        <item>¡Guarda las Monedas, te serviran mas adelante para adquirir articulos!</item>
-        <item>¡Preparate para ser el mejor de todo los usuarios!</item>
-        <item>¡Obten muchas Monedas y descresta a tus amigos!</item>
+        <item>¡Guarda las Monedas, te servirán más adelante para adquirir articulos!</item>
+        <item>¡Prepárate para ser el mejor de todo!</item>
+        <item>¡Obtén muchas Monedas y descresta a tus amigos!</item>
     </string-array>
+
 </resources>
 

@@ -123,6 +123,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     currentuser.setLevel(user.getJSONObject(0).getInt("nivel"));
                     currentuser.setNickname(user.getJSONObject(0).getString("nickname"));
                     currentuser.setAvatar(user.getJSONObject(0).getString("avatar").toLowerCase());
+                    currentuser.setId(user.getJSONObject(0).getString("idPerfil"));
                     realm.executeTransactionAsync(new Realm.Transaction() {
                         @Override
                         public void execute(Realm realm) {

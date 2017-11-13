@@ -30,7 +30,8 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="@string/nombre_de_usuario"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/primary_text"
+            android:textStyle="bold"
             android:textSize="@dimen/text_size_tittle" />
 
     </LinearLayout>
@@ -39,21 +40,22 @@
         android:layout_marginTop="3dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:weightSum="1">
 
         <Button
             android:id="@+id/btn_back_profile"
-            android:layout_gravity="center"
-            android:layout_width="1dp"
+            android:layout_width="2dp"
             android:layout_height="18dp"
-            android:layout_weight="0.06"
             android:background="@android:drawable/arrow_down_float"
+            android:layout_weight=".1"
+            android:layout_gravity="center"
             android:rotation="90" />
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/tamanoiconmenuprincipal"
+            android:layout_height="@dimen/tamanoiconmenuprincipal"
             android:layout_weight=".15"
             android:src="@android:drawable/btn_star_big_on" />
     </LinearLayout>

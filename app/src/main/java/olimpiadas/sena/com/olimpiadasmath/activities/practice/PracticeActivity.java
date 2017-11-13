@@ -13,7 +13,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.List;
+
 import io.realm.Realm;
+import io.realm.RealmResults;
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.result.ResultActivity;
@@ -89,17 +92,15 @@ public class PracticeActivity extends AppCompatActivity implements CardPagerAdap
         mViewPager.setPagingEnabled(false);
         Realm realm = Realm.getDefaultInstance();
 
-        mCardAdapter = new CardPagerAdapter(realm.where(Question.class).findAll(),this);
+        List<Question> rs =  realm.where(Question.class).findAll().subList(0,appControl.numberOfQuestions);
+
+        mCardAdapter = new CardPagerAdapter(rs,this);
         mCardAdapter.addCardItem(new CardItem(R.string.title_1, R.string.text_1));
         mCardAdapter.addCardItem(new CardItem(R.string.title_2, R.string.text_1));
         mCardAdapter.addCardItem(new CardItem(R.string.title_3, R.string.text_1));
         mCardAdapter.addCardItem(new CardItem(R.string.title_4, R.string.text_1));
         mCardAdapter.addCardItem(new CardItem(R.string.title_4, R.string.text_1));
-        mCardAdapter.addCardItem(new CardItem(R.string.title_4, R.string.text_1));
-        mCardAdapter.addCardItem(new CardItem(R.string.title_4, R.string.text_1));
-        mCardAdapter.addCardItem(new CardItem(R.string.title_4, R.string.text_1));
-        mCardAdapter.addCardItem(new CardItem(R.string.title_4, R.string.text_1));
-        mCardAdapter.addCardItem(new CardItem(R.string.title_4, R.string.text_1));
+
 
         mFragmentCardAdapter = new CardFragmentPagerAdapter(getSupportFragmentManager(),
                 dpToPixels(2, this));

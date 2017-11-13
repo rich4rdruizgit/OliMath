@@ -7,9 +7,11 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.wifi.WifiManager;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -170,6 +172,7 @@ public class DialogHelper {
         if (type == 2) {
             String titleDialog = context.getResources().getString(R.string.title_dialog_challenge);
             ((TextView) mProgressDialog.getWindow().findViewById(R.id.txt_tittle_tip)).setText(titleDialog);
+            ((ImageView) mProgressDialog.getWindow().findViewById(R.id.img_typetutor)).setImageResource(R.drawable.halftutorchall);
             String infoDialog = context.getResources().getString(R.string.text_dialog_info_challenge);
             ((TextView) mProgressDialog.getWindow().findViewById(R.id.txt_argument_tip_one)).setText(infoDialog);
             String[] array = context.getResources().getStringArray(R.array.array_advices_challenge);
@@ -181,6 +184,7 @@ public class DialogHelper {
                 public void onClick(View v) {
                     appControl.soundButtonPlay();
                     mProgressDialog.dismiss();
+                    appControl.initQuestionaryDatetime = DateFormat.format("MM/dd/yy HH:mm:ss", new java.util.Date()).toString();
                     Intent intChallenge = new Intent(context.getApplicationContext(), ChallengeActivity.class);
                     intChallenge.putExtra("type", 2);
                     AppControl.getInstance().currentUser.addTickets(-2);
@@ -197,6 +201,7 @@ public class DialogHelper {
                 ((TextView) mProgressDialog.getWindow().findViewById(R.id.txt_tittle_tip)).setText(titleDialog);
                 String infoDialog = context.getResources().getString(R.string.text_dialog_info_practice);
                 ((TextView) mProgressDialog.getWindow().findViewById(R.id.txt_argument_tip_one)).setText(infoDialog);
+                ((ImageView) mProgressDialog.getWindow().findViewById(R.id.img_typetutor)).setImageResource(R.drawable.halftutourprac);
                 String[] array = context.getResources().getStringArray(R.array.array_advices_practice);
                 String randomStr = array[new Random().nextInt(array.length)];
                 ((TextView) mProgressDialog.getWindow().findViewById(R.id.txt_dialog_advices)).setText(randomStr);
