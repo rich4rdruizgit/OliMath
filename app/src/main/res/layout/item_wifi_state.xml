@@ -37,6 +37,7 @@ android:padding="@dimen/padding_views">
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight=".25"
+            android:textStyle="bold"
             android:text="Para mejorar la experiencia en OLIMATH por favor activa tu WI-FI"
             android:textAlignment="center"
             android:textColor="@color/primary_text"

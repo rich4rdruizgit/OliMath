@@ -137,6 +137,18 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
         } else {
             btnNext.setText(R.string.next);
         }
+        final RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.rg_group_answer);
+
+        /*radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                Toast.makeText(context, "si hace clic", Toast.LENGTH_SHORT).show();
+                btnNext.setEnabled(true);
+                btnNext.setText("Putos");
+                btnNext.setBackgroundColor(view.getResources().getColor(R.color.primary_light));
+
+            }
+        });*/
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,28 +167,28 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
 
                     } else {
 
-                        Log.d(TAG, "Respuesta es " + radioGroup.getCheckedRadioButtonId());
-                        Log.d(TAG, "Respuesta es " + ((RadioButton) view.findViewById(radioGroup.getCheckedRadioButtonId())).getText());
-                        int idx = radioGroup.indexOfChild(view.findViewById(radioGroup.getCheckedRadioButtonId()));
-                        Log.d(TAG, "EL indice es " + idx);
-                        Log.d(TAG, "Correct answer " + question.get(position).getAnswerCorrect(idx));
-                        if (question.get(position).getAnswerCorrect(idx).equals("1")) {
-                            appControl.answers[position] = 1;
-                            if (position + 1 < getCount()) {
-                                moveTestListener.moveClick(position + 1);
-                            } else {
-                                moveTestListener.finished();
-                            }
+                    Log.d(TAG, "Respuesta es " + radioGroup.getCheckedRadioButtonId());
+                    Log.d(TAG, "Respuesta es " + ((RadioButton) view.findViewById(radioGroup.getCheckedRadioButtonId())).getText());
+                    int idx = radioGroup.indexOfChild(view.findViewById(radioGroup.getCheckedRadioButtonId()));
+                    Log.d(TAG, "EL indice es " + idx);
+                    Log.d(TAG, "Correct answer " + question.get(position).getAnswerCorrect(idx));
+                    appControl.answersId[position] = Integer.parseInt(question.get(position).getAnswerId(idx));
+                    if (question.get(position).getAnswerCorrect(idx).equals("1")) {
+                        appControl.answers[position] = 1;
+                        if (position + 1 < getCount()) {
+                            moveTestListener.moveClick(position + 1);
                         } else {
-                            appControl.answers[position] = 0;
-                            String myasnwer = question.get(position).getAnswerText(position);
-                            String theanswer = question.get(position).getCorrectAnswerText();
-                            String feedback = question.get(position).getFeedback();
-                            currentPosition = position;
-                            Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-                            vibrator.vibrate(1000);
-                            DialogHelper.FeedbackDialog(context, myasnwer, theanswer, feedback, CardPagerAdapter.this);
+                            moveTestListener.finished();
                         }
+                    } else {
+                        appControl.answers[position] = 0;
+                        String myasnwer = question.get(position).getAnswerText(position);
+                        String theanswer = question.get(position).getCorrectAnswerText();
+                        String feedback = question.get(position).getFeedback();
+                        currentPosition = position;
+                        Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+                        vibrator.vibrate(1000);
+                        DialogHelper.FeedbackDialog(context, myasnwer, theanswer, feedback, CardPagerAdapter.this);
                     }
                 }else{
                     Toast.makeText(context, "Debes seleccionar una opción", Toast.LENGTH_SHORT).show();

@@ -51,6 +51,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:text="Fulano Perez"
+                    android:textStyle="bold"
                     android:textColor="@color/primary_text"/>
 
 

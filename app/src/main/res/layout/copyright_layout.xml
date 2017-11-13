@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="300sp"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroundothers">
+    android:background="@drawable/backgroundothers"
+    android:orientation="vertical"
+    android:layout_margin="20dp"
+    android:padding="@dimen/padding_views">
 
 
     <ScrollView
@@ -15,19 +17,23 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginTop="50dp">
+            android:layout_marginTop="50dp"
+            >
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_tittle"
                 android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@color/cardview_light_background"
                 android:text="Equipo de desarrollo (Movil)"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
+                android:textColor="@color/cardview_light_background"
                 android:text="Harold Andrés Muñoz\nCarlos Andrés Chapid\nRichard Ruiz\nDidier Enrique Ramirez\nJefferson Andrés Muñoz\nJhon Yanguas\nMilena Cabrera"
                 />
 
@@ -36,12 +42,15 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_tittle"
                 android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@color/cardview_light_background"
                 android:text="Equipo de desarrollo (Bases de datos)"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
+                android:textColor="@color/cardview_light_background"
                 android:text="Luis Fernando Muñoz\nJonathan Betancourt Silva\nLuis Vejarano Sanchez\nCarlos Mario Burbano Luna\nDaniela Iboth Gutierrez\nJeferson Dario Diaz"
                 />
 
@@ -51,24 +60,30 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_tittle"
                 android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@color/cardview_light_background"
                 android:text="Tutores"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
+                android:textColor="@color/cardview_light_background"
                 android:text="Zulema Leon\nYuly Garces"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_size_tittle"
                 android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@color/cardview_light_background"
                 android:text="Equipo de Diseño y Multimedia"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
+                android:textColor="@color/cardview_light_background"
                 android:text="Erick Ortiz"/>
 
             <Button
