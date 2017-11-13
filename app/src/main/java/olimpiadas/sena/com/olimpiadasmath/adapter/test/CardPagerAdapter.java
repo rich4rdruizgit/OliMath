@@ -165,6 +165,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
                     int idx = radioGroup.indexOfChild(view.findViewById(radioGroup.getCheckedRadioButtonId()));
                     Log.d(TAG, "EL indice es " + idx);
                     Log.d(TAG, "Correct answer " + question.get(position).getAnswerCorrect(idx));
+                    appControl.answersId[position] = Integer.parseInt(question.get(position).getAnswerId(idx));
                     if (question.get(position).getAnswerCorrect(idx).equals("1")) {
                         appControl.answers[position] = 1;
                         if (position + 1 < getCount()) {
