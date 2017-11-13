@@ -32,7 +32,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
 
     private List<Question> question;
     private float mBaseElevation;
-    CommunicationTest communicationTest;
+    public CommunicationTest communicationTest;
     AppControl appControl;
     Context context;
 
@@ -119,8 +119,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
         imgScaleView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appControl.soundButton = MediaPlayer.create(v.getContext(), appControl.soundButtonEfect);
-                appControl.soundButton.start();
+                appControl.soundButtonPlay();
                 imageScaled = !imageScaled;
                 if (imageScaled) {
                     Log.d(TAG, "img_test_image pressed");
@@ -153,10 +152,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                appControl.soundButton = MediaPlayer.create(v.getContext(), appControl.soundButtonEfect);
-                if (appControl.isBackgroundPlaying)
-                    appControl.soundButton.start();
+                appControl.soundButtonPlay();
                 int selectedId = radioGroup.getCheckedRadioButtonId();
 
                 if (selectedId == -1) {
@@ -235,18 +231,13 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
+        appControl.soundButtonPlay();
+        switch (v.getId()){
             case R.id.img_test_scale:
-                if (appControl.isBackgroundPlaying)
-                    appControl.soundButton.start();
-                if (communicationTest != null) {
-                    communicationTest.changeScale();
-                }
+                if(communicationTest!=null){communicationTest.changeScale();}
                 break;
             case R.id.img_test_image:
-                if (appControl.isBackgroundPlaying)
-                    appControl.soundButton.start();
-                Log.d(TAG, "img_test_image pressed");
+                Log.d(TAG,"img_test_image pressed");
 
                 break;
 

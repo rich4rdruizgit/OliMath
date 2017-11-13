@@ -98,9 +98,7 @@ public class ResultActivity extends AppCompatActivity {
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                appControl.soundButton = MediaPlayer.create(getApplicationContext(),appControl.soundButtonEfect);
-                if(appControl.isBackgroundPlaying)
-                    appControl.soundButton.start();
+                appControl.soundButtonPlay();
                 startActivity(new Intent(ResultActivity.this, MainActivity.class));
                 finish();
             }
@@ -182,7 +180,7 @@ public class ResultActivity extends AppCompatActivity {
               }
         });
 
-        String finishQuestionaryDatetime = DateFormat.format("MM/dd/yy HH:mm:ss", new java.util.Date()).toString();
+        String finishQuestionaryDatetime = DateFormat.format("dd/MM/yy HH:mm:ss", new java.util.Date()).toString();
         WebConnectionManager webConnectionManager = WebConnectionManager.getWebConnectionManager();
 
         webConnectionManager.sendChallenge(appControl.currentUser.getId(),appControl.answersId,appControl.initQuestionaryDatetime,finishQuestionaryDatetime);

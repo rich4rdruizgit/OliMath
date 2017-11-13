@@ -127,7 +127,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                appControl.soundButtonPlay();
                 if(Integer.parseInt(product.getConstraint()) <= appControl.currentUser.getLevel()){
                     if(product.getState() == Product.FOR_BUY){ // para comprar
                         currentBuyItem = holder.btnBuy;

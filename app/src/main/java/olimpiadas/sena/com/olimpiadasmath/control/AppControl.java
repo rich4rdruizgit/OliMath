@@ -1,6 +1,7 @@
 package olimpiadas.sena.com.olimpiadasmath.control;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -13,6 +14,7 @@ import olimpiadas.sena.com.olimpiadasmath.model.Configuration;
 import olimpiadas.sena.com.olimpiadasmath.model.Product;
 import olimpiadas.sena.com.olimpiadasmath.model.Question;
 import olimpiadas.sena.com.olimpiadasmath.model.User;
+import olimpiadas.sena.com.olimpiadasmath.services.SoundService;
 
 /**
  * Created by defytek on 6/21/17.
@@ -64,6 +66,7 @@ public class AppControl {
     public boolean isPreview = false;
     public boolean previewUsed = false;
     public String currentActivity = "currentActivity";
+    private Context context;
     public String initQuestionaryDatetime = "";
 
     public static AppControl getInstance() {
@@ -74,8 +77,8 @@ public class AppControl {
 
     }
 
-    public boolean init(final InitComplete listener){
-
+    public boolean init(final InitComplete listener, Context context) {
+        this.context = context;
         init = true;
         answers = new  int[numberOfQuestions];
         answersId = new  int[numberOfQuestions];
@@ -89,11 +92,16 @@ public class AppControl {
                     User user = new User("Juanito",305,30,150,8,1,30.0,"jhonny","");
                     realm.copyToRealm(user);
                     currentUser = user;
-                }else{
+                } else {
                     currentUser = new User();
                     currentUser = realm.copyFromRealm(realm.where(User.class).findAll().first());
 //                    currentUser = (User) realm.where(User.class).findAll().first();
                 }
+//                POR SI LE DAN CERRAR SESION Y NO HAY ACCESO AL SERVER EJECUTAR ESTO, lo que hace es loguear, suponiiendo que hay
+//                un usuario en la bd
+//                Configuration configuration = realm.where(Configuration.class).equalTo("key", "isLogged").findFirst();
+//                configuration.setValue(true);
+//                realm.insertOrUpdate(configuration);
                 Log.d("Usuario header", currentUser.toString());
                 if (realm.where(BonusTable.class).findAll().isEmpty()) {
 
@@ -115,9 +123,7 @@ public class AppControl {
                     BonusTable bonus10 = new BonusTable(0.39f, 0, 0, 0, 2, -1, 2);
 
 
-
-
-                    Log.d(TAG,"created BonusTables");
+                    Log.d(TAG, "created BonusTables");
                     realm.copyToRealm(bonus1);
                     realm.copyToRealm(bonus2);
                     realm.copyToRealm(bonus3);
@@ -309,6 +315,7 @@ public class AppControl {
                     Log.d(TAG,"Configuration isBackgroundPlaying not founded");
                     configSound = new Configuration("isBackgroundPlaying",true);//terminarrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
                     realm.copyToRealm(configSound);
+                    isBackgroundPlaying = true;
                 }
 
 
@@ -327,7 +334,6 @@ public class AppControl {
                 listener.initComplete(true);
             }
         });
-
         return true;
 
     }
@@ -339,11 +345,59 @@ public class AppControl {
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
             //we are connected to a network
             connected = true;
-        }
-        else {
+        } else {
             connected = false;
         }
         return connected;
+    }
+
+    public void settingSoundBackground(final boolean isStart) {
+//        soundBackground = MediaPlayer.create(context, R.raw.theartloop);
+//        soundBackground.setLooping(true);
+//        if (isStart && !soundBackground.isPlaying()) {
+//            soundBackground.start();
+//        } else if (!isStart && soundBackground.isPlaying()) {
+//            soundBackground.stop();
+//        }
+        Log.e("REPRODUCION_SONIDO", TAG);
+        //swtMusic.setChecked(true);
+        Realm realm = Realm.getDefaultInstance();
+        realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+//                Log.d(TAG, "Se va a guardar como true");
+                Configuration configuration = realm.where(Configuration.class).equalTo("key", "isBackgroundPlaying").findFirst();
+                configuration.setValue(isStart);
+                realm.insertOrUpdate(configuration);
+                isBackgroundPlaying = isStart;
+                playSoundBackground();
+            }
+        }, new Realm.Transaction.OnError() {
+            @Override
+            public void onError(Throwable error) {
+                error.printStackTrace();
+                Log.d(TAG, "error al guardar");
+            }
+        });
+    }
+
+    public void playSoundBackground() {
+        Intent intent = new Intent(this.context, SoundService.class);
+        if (isBackgroundPlaying) {
+            context.startService(intent);
+        } else {
+            context.stopService(intent);
+        }
+    }
+
+    public void soundButtonPlay() {
+        if (soundButton != null) {
+            soundButton.stop();
+            soundButton.release();
+        }
+        soundButton = MediaPlayer.create(context, soundButtonEfect);
+        if (isBackgroundPlaying)
+            soundButton.start();
     }
 
 }

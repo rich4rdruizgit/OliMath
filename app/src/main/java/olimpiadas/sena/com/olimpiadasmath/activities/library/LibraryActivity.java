@@ -2,7 +2,6 @@ package olimpiadas.sena.com.olimpiadasmath.activities.library;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -15,8 +14,9 @@ import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.adapter.library.TopicAdapter;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 /* Modificado por Mile 17/07/2017*/
-public class LibraryActivity extends AppCompatActivity implements View.OnClickListener{
+public class LibraryActivity extends AppCompatActivity implements View.OnClickListener {
 
     TopicAdapter adapter;
     RecyclerView listElements;
@@ -46,6 +46,7 @@ public class LibraryActivity extends AppCompatActivity implements View.OnClickLi
         listElements.setAdapter(adapter);*/
 
     }
+
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
@@ -53,19 +54,13 @@ public class LibraryActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        appControl.soundButton = MediaPlayer.create(getApplicationContext(),appControl.soundButtonEfect);
-        switch (v.getId()){
+        appControl.soundButtonPlay();
+        switch (v.getId()) {
             case R.id.btn_back_tutor:
-                if(appControl.isBackgroundPlaying)
-                    if(appControl.isBackgroundPlaying)
-                        appControl.soundButton.start();
                 Intent intentBack = new Intent(LibraryActivity.this, MainActivity.class);
                 startActivity(intentBack);
                 break;
             case R.id.btn_equations_library:
-                if(appControl.isBackgroundPlaying)
-                    if(appControl.isBackgroundPlaying)
-                        appControl.soundButton.start();
                 Intent intentGoEquetions = new Intent(LibraryActivity.this, EquationsActivity.class);
                 startActivity(intentGoEquetions);
 
