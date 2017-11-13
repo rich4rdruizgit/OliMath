@@ -92,7 +92,6 @@ public class AppControl {
                     User user = new User("Juanito",305,30,150,8,1,30.0,"jhonny","");
                     realm.copyToRealm(user);
                     currentUser = user;
-                    isLogged = true;
                 } else {
                     currentUser = new User();
                     currentUser = realm.copyFromRealm(realm.where(User.class).findAll().first());

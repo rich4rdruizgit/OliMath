@@ -24,8 +24,9 @@ public class SoundService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.theartloop);
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        mediaPlayer.setLooping(true);
         mediaPlayer.start();
-        return super.onStartCommand(intent, flags, startId);
+        return START_NOT_STICKY;
 
     }
 

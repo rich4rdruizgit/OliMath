@@ -32,7 +32,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
 
     private List<Question> question;
     private float mBaseElevation;
-    CommunicationTest communicationTest;
+    public CommunicationTest communicationTest;
     AppControl appControl;
     Context context;
 
