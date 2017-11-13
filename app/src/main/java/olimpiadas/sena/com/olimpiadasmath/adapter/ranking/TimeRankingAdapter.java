@@ -75,7 +75,7 @@ public class TimeRankingAdapter extends RecyclerView.Adapter<TimeRankingAdapter.
         User user = users.get(position);
         holder.txtPosition.setText(user.getPosition()+"");
         holder.txtNickName.setText(user.getNickname()+"");
-        holder.txtPoints.setText(user.getScore()+"");
+        holder.txtPoints.setText(user.getTime());
         holder.txtAnswers.setText(user.getAnswers());
 
         int avatar = context.getResources().getIdentifier(user.getAvatar(),"drawable", context.getPackageName());
@@ -108,6 +108,7 @@ public class TimeRankingAdapter extends RecyclerView.Adapter<TimeRankingAdapter.
                 user.setNickname(jsonObject.getString("nickname"));
                 user.setScore(Integer.parseInt(jsonObject.getString("puntaje")));
                 user.setPosition(Integer.parseInt(jsonObject.getString("posicion")));
+                user.setTime(jsonObject.getString("tiempo").substring(3));
                 userList.add(user);
             }
             users = userList;
