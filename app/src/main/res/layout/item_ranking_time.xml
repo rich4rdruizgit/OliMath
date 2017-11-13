@@ -37,7 +37,6 @@
         android:weightSum="3">
 
         <TextView
-            android:textStyle="bold"
             android:layout_margin="3dp"
             android:id="@+id/txt_nickname_ranking_time"
             android:layout_width="match_parent"
