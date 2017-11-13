@@ -232,7 +232,7 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
         //webConnection.executeAsyncGetRequest(url);
     }
 
-    public void sendChallenge(String idProfile,int[] answers,String initDate, String finishDate ) {
+    public void sendChallenge(String idProfile,int[] answers,String initDate, String finishDate, String isChallenge ) {
 
         Long tsLong = System.currentTimeMillis()/1000;
         String ts = tsLong.toString();
@@ -247,7 +247,7 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
         nameValuePairs.add(new BasicNameValuePair("HoraIni", initDate));
         nameValuePairs.add(new BasicNameValuePair("HoraFin", finishDate));
-        nameValuePairs.add(new BasicNameValuePair("Publicar", "1"));
+        nameValuePairs.add(new BasicNameValuePair("Publicar", isChallenge));
 
         webConnection.executePostRequest(url, OperationType.SEND_CHALLENGE.getName(), nameValuePairs);
         //webConnection.executePostRequest("login url", OperationType.LOGIN.getName(), nameValuePairs);
