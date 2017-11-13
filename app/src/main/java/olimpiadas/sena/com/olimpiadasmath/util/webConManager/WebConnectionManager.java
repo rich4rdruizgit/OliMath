@@ -11,6 +11,7 @@ import java.util.List;
 
 import cz.msebera.android.httpclient.NameValuePair;
 import cz.msebera.android.httpclient.message.BasicNameValuePair;
+import olimpiadas.sena.com.olimpiadasmath.model.User;
 
 
 /**
@@ -49,7 +50,8 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
         LOGIN,
         RANKING,
         SEND_CHALLENGE,
-        SHOW_SHOP;
+        SHOW_SHOP,
+        UPDATE_PROFILE;
 
         public String getName() {
             switch (this) {
@@ -67,6 +69,8 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                     return "WSOlimath.asmx/insertarCompetencia";
                 case SHOW_SHOP:
                     return "mostrarTienda";
+                case UPDATE_PROFILE:
+                    return "UPDATE_SUCCESS";
                 default:
                     return null;
             }
@@ -91,6 +95,8 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
                 case "WSOlimath.asmx/mostrarPreguntasAleatoriasNuevo":
                     return GET_QUESTIONS;
+                case "WSOlimath.asmx/UPDATE_SUCCESS":
+                    return UPDATE_PROFILE;
                 default:
                     return null;
             }
@@ -182,6 +188,18 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
     }
 
 
+    public void actualizarPerfil(User user) {
+
+        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        nameValuePairs.add(new BasicNameValuePair("ide", user.getId()));
+        nameValuePairs.add(new BasicNameValuePair("nivel", ""+user.getLevel()));
+        nameValuePairs.add(new BasicNameValuePair("exper", ""+user.getExperience()));
+        nameValuePairs.add(new BasicNameValuePair("coins", ""+user.getCoins()));
+        nameValuePairs.add(new BasicNameValuePair("avatar", ""+user.getAvatar()));
+
+        webConnection.executePostRequest(url, OperationType.LOGIN.getName(), nameValuePairs);
+    }
+
     public void mostrarRankings() {
         webConnection.executeAsyncGetRequest(url + OperationType.RANKING.getName(), OperationType.RANKING.getName());
     }
@@ -258,6 +276,9 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
         public static final String NOT_LOGGED = "not_logged";
         public static final String RANKING = "ranking";
         private static final String OK = "ok";
+
+        private static final String UPDATE_SUCCESS = "update_success";
+        private static final String UPDATE_FAIL = "update_fail";
 
 
         OperationType operationType;
@@ -477,6 +498,39 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                 return;
             }
 
+            if (operationType == OperationType.UPDATE_PROFILE) {
+                try {
+                    respJObject = new JSONObject(resp);
+                    if (respJObject.getString("status").equals("SUCCESS")) {
+                        status = SUCCESS;
+                        if (respJObject.getString("result").equals("true")) {
+                            result = UPDATE_SUCCESS;
+                        } else if (respJObject.getString("result").equals("false")) {
+                            result = UPDATE_FAIL;
+                            code = respJObject.getString("code");
+                            errMsg = respJObject.getString("errMsg");
+                        } else {
+                            result = UNKNOW;
+                            code = "E001";
+                            errMsg = "outcome con valor desconocido";
+                        }
+
+                    } else if (respJObject.getString("status").equals("FAIL")) {
+                        status = FAIL;
+                        code = "E002";
+                        errMsg = "Error al tratar de enrolar";
+
+                        validateError(respJObject.getString("errorMsg"));
+                    }
+
+                } catch (JSONException e) {
+                    status = ERROR;
+                    result = "";
+                    code = "JO001";
+                    errMsg = "Respuesta update_profile no esta en formato Json";
+                    return;
+                }
+            }
 
         }
 
