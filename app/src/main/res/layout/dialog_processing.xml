@@ -3,6 +3,7 @@
     android:layout_width="300dp"
     android:layout_height="300dp"
     android:layout_gravity="center"
+    android:background="@drawable/backgroundothers"
     android:orientation="vertical"
     android:gravity="center">
 
@@ -12,7 +13,7 @@
         android:layout_below="@+id/progressBar2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="13dp"
-        android:textColor="@android:color/darker_gray"
+        android:textColor="@android:color/background_light"
         android:text="Estamos trabajando en su petición"/>
 
     <ProgressBar
@@ -34,7 +35,7 @@
         android:layout_below="@+id/progressBar2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="13dp"
-        android:textColor="@android:color/darker_gray"
+        android:textColor="@android:color/background_light"
         android:text="Un momento..."/>
 
     <TextView
@@ -44,6 +45,6 @@
         android:layout_below="@+id/progressBar2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="13dp"
-        android:textColor="@android:color/darker_gray"
+        android:textColor="@android:color/background_light"
         />
 </LinearLayout>
