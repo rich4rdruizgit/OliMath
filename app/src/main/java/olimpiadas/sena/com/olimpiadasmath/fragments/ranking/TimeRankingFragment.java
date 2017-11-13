@@ -158,6 +158,7 @@ public class TimeRankingFragment extends Fragment implements WebConnectionManage
                         user.setScore(Integer.parseInt(jsonObject.getString("puntaje")));
                         user.setPosition(Integer.parseInt(jsonObject.getString("posicion")));
                         user.setAvatar("marco18");
+                        user.setTime(jsonObject.getString("tiempo").substring(4));
                         user.setAnswers(jsonObject.getString(("numResCorrecta")));
                         userList.add(user);
                     }
