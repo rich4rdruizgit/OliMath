@@ -3,7 +3,6 @@ package olimpiadas.sena.com.olimpiadasmath.activities.result;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ClipDrawable;
-import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -95,9 +94,7 @@ public class ResultActivity extends AppCompatActivity {
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                appControl.soundButton = MediaPlayer.create(getApplicationContext(),appControl.soundButtonEfect);
-                if(appControl.isBackgroundPlaying)
-                    appControl.soundButton.start();
+                appControl.soundButtonPlay();
                 startActivity(new Intent(ResultActivity.this, MainActivity.class));
                 finish();
             }

@@ -3,8 +3,6 @@ package olimpiadas.sena.com.olimpiadasmath.fragments.challenge;
 
 import android.app.Fragment;
 import android.content.Context;
-import android.media.MediaPlayer;
-import android.os.Build;
 import android.os.Bundle;
 
 
@@ -15,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
@@ -36,12 +33,12 @@ public class BetFragment extends Fragment {
     public static final int START = 2;
 
 
-    private Button previewQuestion,startQuestion;
+    private Button previewQuestion, startQuestion;
     private AppControl appControl = AppControl.getInstance();
 
     private OnBetFragmentListener mListener;
     private SeekBar seekBar;
-    private TextView tvBet,tvPoolCoins;
+    private TextView tvBet, tvPoolCoins;
 
     public BetFragment() {
         // Required empty public constructor
@@ -75,16 +72,14 @@ public class BetFragment extends Fragment {
         tvPoolCoins.setText("x " + appControl.currentCoinsPool);
 
         previewQuestion = (Button) view.findViewById(R.id.btn_bet_preview);
-        appControl.soundButton = MediaPlayer.create(view.getContext(),appControl.soundButtonEfect);
         previewQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(appControl.isBackgroundPlaying)
-                    appControl.soundButton.start();
+                appControl.soundButtonPlay();
                 onPreviewPressed();
             }
         });
-        if(appControl.previewUsed){
+        if (appControl.previewUsed) {
             previewQuestion.setVisibility(View.GONE);
 
         }
@@ -92,8 +87,7 @@ public class BetFragment extends Fragment {
         startQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(appControl.isBackgroundPlaying)
-                    appControl.soundButton.start();
+                appControl.soundButtonPlay();
                 onStartPressed();
             }
         });
@@ -104,12 +98,12 @@ public class BetFragment extends Fragment {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if(progress<2){
+                if (progress < 2) {
                     tvBet.setText("2");
                     seekBar.setProgress(2);
-                }else{
+                } else {
                     appControl.currentBet = progress;
-                    tvBet.setText(progress+"");
+                    tvBet.setText(progress + "");
                 }
 
 
@@ -127,7 +121,7 @@ public class BetFragment extends Fragment {
         });
 
 
-        Log.d(TAG,"FInish onCreateView");
+        Log.d(TAG, "FInish onCreateView");
         return view;
     }
 
@@ -138,10 +132,11 @@ public class BetFragment extends Fragment {
             mListener.onBetFragmentListener(PREVIEW);
         }
     }
+
     public void onStartPressed() {
-        Log.d(TAG,"On start pressed");
+        Log.d(TAG, "On start pressed");
         if (mListener != null) {
-            Log.d(TAG,"Listener no null");
+            Log.d(TAG, "Listener no null");
             mListener.onBetFragmentListener(START);
         }
     }
@@ -178,13 +173,13 @@ public class BetFragment extends Fragment {
         void onBetFragmentListener(int i);
     }
 
-    public void enablePreview(boolean enable){
+    public void enablePreview(boolean enable) {
         previewQuestion.setEnabled(enable);
         previewQuestion.setVisibility(View.GONE);
-        Log.d(TAG,"FInish enablePreview");
+        Log.d(TAG, "FInish enablePreview");
     }
 
-    public void setmListener(OnBetFragmentListener onBetFragmentListener){
+    public void setmListener(OnBetFragmentListener onBetFragmentListener) {
         mListener = onBetFragmentListener;
 
     }

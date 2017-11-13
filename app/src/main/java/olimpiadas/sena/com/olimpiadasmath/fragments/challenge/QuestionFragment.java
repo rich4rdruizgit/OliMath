@@ -3,12 +3,10 @@ package olimpiadas.sena.com.olimpiadasmath.fragments.challenge;
 import android.app.Fragment;
 import android.content.Context;
 import android.graphics.Color;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import android.os.CountDownTimer;
 import android.support.v7.widget.CardView;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +17,6 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import java.util.ArrayList;
@@ -150,9 +147,7 @@ public class QuestionFragment extends Fragment {
         imgScale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                appControl.soundButton = MediaPlayer.create(view.getContext(),R.raw.puzzlefastwet);
-                if(appControl.isBackgroundPlaying)
-                    appControl.soundButton.start();
+                appControl.soundButtonPlay();
                 enableScaling(isScaled);
             }
         });
@@ -193,9 +188,7 @@ public class QuestionFragment extends Fragment {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appControl.soundButton = MediaPlayer.create(view.getContext(),appControl.soundButtonEfect);
-                if(appControl.isBackgroundPlaying)
-                    appControl.soundButton.start();
+                appControl.soundButtonPlay();
                 int selectedId = radioGroup.getCheckedRadioButtonId();
                 Log.d(TAG, "EL selectedId es " + selectedId);
                 //sonido boton

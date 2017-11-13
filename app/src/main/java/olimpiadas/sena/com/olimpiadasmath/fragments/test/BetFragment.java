@@ -1,12 +1,9 @@
 package olimpiadas.sena.com.olimpiadasmath.fragments.test;
 
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,10 +41,9 @@ public class BetFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        appControl.soundButtonPlay();
         switch (v.getId()){
             case R.id.btn_bet_acept:
-                if(appControl.isBackgroundPlaying)
-                    appControl.soundButton.start();
                 bet = 1;
                 communication.sendBet(bet);
                 break;

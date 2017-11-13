@@ -70,17 +70,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         appControl = AppControl.getInstance();
         appControl.currentActivity = MainActivity.class.getSimpleName();
         Context context = this;
-        appControl.soundBackground = MediaPlayer.create(getApplicationContext(),R.raw.theartloop);
 
-        if(appControl.isBackgroundPlaying){
+//        appControl.soundBackground = MediaPlayer.create(getApplicationContext(),R.raw.theartloop);
 
-            if(!appControl.soundBackground.isPlaying()){
-                appControl.soundBackground.start();
-                appControl.soundBackground.setLooping(true);
-                Log.e("REPRODUCION_SONIDO", TAG);
-            }
-
-        }
+//        if(appControl.isBackgroundPlaying){
+//
+//            if(!appControl.soundBackground.isPlaying()){
+//                appControl.soundBackground.start();
+//                appControl.soundBackground.setLooping(true);
+//                Log.e("REPRODUCION_SONIDO", TAG);
+//            }
+//
+//        }
 
         int id = context.getResources().getIdentifier("fondo_b.png", "drawable", context.getPackageName());
         int resID = getResources().getIdentifier("fondo_b", "drawable", getPackageName());
@@ -142,7 +143,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        appControl.soundButton = MediaPlayer.create(getApplicationContext(),appControl.soundButtonEfect);
+        appControl.soundButtonPlay();
         switch (v.getId()) {
 
             case R.id.btn_menu_practice:
@@ -151,9 +152,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 MainActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
-                        if(appControl.isBackgroundPlaying)
-                            appControl.soundButton.start();
                         DialogHelper.showChallengePracticeDialog(MainActivity.this, 1);
                     }
                 });
@@ -163,22 +161,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void run() {
                         DialogHelper.showChallengePracticeDialog(MainActivity.this, 2);
-                        if(appControl.isBackgroundPlaying)
-                            appControl.soundButton.start();
                     }
                 });
                 break;
             case R.id.btn_menu_shop:
                 Intent intentShop = new Intent(MainActivity.this, ShopActivity.class);
-                if(appControl.isBackgroundPlaying)
-                    appControl.soundButton.start();
                 startActivity(intentShop);
                 break;
             case R.id.btn_menu_ranking:
                 appControl.currentTime = 0;
                 Intent intentRanking = new Intent(MainActivity.this, RankingActivity.class);
-                if(appControl.isBackgroundPlaying)
-                    appControl.soundButton.start();
                 startActivity(intentRanking);
                 break;
 //            case R.id.btn_settings:
@@ -220,22 +212,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(appControl.soundBackground.isPlaying())
-            appControl.soundBackground.stop();
+        Log.d(TAG,"OnDestroy");
+        //if(appControl.soundBackground.isPlaying())
+          //  appControl.soundBackground.pause();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        //if(appControl.soundBackground.isPlaying())
-            //appControl.soundBackground.stop();
+//        if(appControl.soundBackground.isPlaying())
+//            appControl.soundBackground.pause();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if(appControl.soundBackground.isPlaying())
-            appControl.soundBackground.stop();
+//        if(appControl.soundBackground.isPlaying())
+//            appControl.soundBackground.pause();
     }
 
     @Override

@@ -2,7 +2,6 @@ package olimpiadas.sena.com.olimpiadasmath.activities.session;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
@@ -12,7 +11,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -72,12 +70,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        appControl.soundButton = MediaPlayer.create(getApplicationContext(), appControl.soundButtonEfect);
+        appControl.soundButtonPlay();
         switch (v.getId()) {
             case R.id.btn_login:
-                if(appControl.isBackgroundPlaying)
-                    if(appControl.isBackgroundPlaying)
-                        appControl.soundButton.start();
                 if(tvUser.getText().length() == 0){
                     tvUser.setError(getString(R.string.fiel_required));
                     return;
@@ -98,8 +93,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
                 break;
             case R.id.btn_lose_pass:
-                if(appControl.isBackgroundPlaying)
-                    appControl.soundButton.start();
                 break;
         }
     }

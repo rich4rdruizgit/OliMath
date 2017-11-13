@@ -1,8 +1,6 @@
 package olimpiadas.sena.com.olimpiadasmath.adapter.test;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.media.MediaPlayer;
 import android.os.Vibrator;
 import android.support.v4.view.PagerAdapter;
 import android.support.v7.widget.CardView;
@@ -120,8 +118,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
         imgScaleView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appControl.soundButton = MediaPlayer.create(v.getContext(),appControl.soundButtonEfect);
-                appControl.soundButton.start();
+                appControl.soundButtonPlay();
                 imageScaled = !imageScaled;
                 if(imageScaled){
                     Log.d(TAG,"img_test_image pressed");
@@ -158,9 +155,7 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appControl.soundButton = MediaPlayer.create(v.getContext(),appControl.soundButtonEfect);
-                if(appControl.isBackgroundPlaying)
-                    appControl.soundButton.start();
+                appControl.soundButtonPlay();
                 int selectedId = radioGroup.getCheckedRadioButtonId();
 
                 if(selectedId == -1){
@@ -252,15 +247,12 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
 
     @Override
     public void onClick(View v) {
+        appControl.soundButtonPlay();
         switch (v.getId()){
             case R.id.img_test_scale:
-                if(appControl.isBackgroundPlaying)
-                    appControl.soundButton.start();
                 if(communicationTest!=null){communicationTest.changeScale();}
                 break;
             case R.id.img_test_image:
-                if(appControl.isBackgroundPlaying)
-                    appControl.soundButton.start();
                 Log.d(TAG,"img_test_image pressed");
 
                 break;

@@ -2,7 +2,6 @@ package olimpiadas.sena.com.olimpiadasmath.activities.settings;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -25,9 +24,9 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class SettingsActivity extends AppCompatActivity {
 
     private static final String TAG = "SettingsActivity";
-    Button btn_credits,btn_help,btnBack, btnLogout;
+    Button btn_credits, btn_help, btnBack, btnLogout;
     Spinner spn_lenguage;
-    TextView txt_lenguage,txt_music,txt_efects;
+    TextView txt_lenguage, txt_music, txt_efects;
     Switch swtMusic;
     AppControl appControl = AppControl.getInstance();
     Realm realm = Realm.getDefaultInstance();
@@ -41,7 +40,6 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
         appControl.currentActivity = SettingsActivity.class.getSimpleName();
 
-
         //btn_help = (Button) findViewById(R.id.btn_help);
         btn_credits = (Button) findViewById(R.id.btn_credits);
         btnLogout = (Button) findViewById(R.id.btn_logout);
@@ -50,20 +48,17 @@ public class SettingsActivity extends AppCompatActivity {
         //txt_efects = (TextView) findViewById(R.id.txt_efects);
         //txt_lenguage = (TextView) findViewById(R.id.txt_lenguage);
         //txt_music = (TextView) findViewById(R.id.txt_music);
-        appControl.soundButton = MediaPlayer.create(getApplicationContext(),appControl.soundButtonEfect);
         btn_credits.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(appControl.isBackgroundPlaying)
-                    appControl.soundButton.start();
+                appControl.soundButtonPlay();
                 DialogHelper.showCopyRightDialog(v.getContext());
             }
         });
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(appControl.isBackgroundPlaying)
-                    appControl.soundButton.start();
+                appControl.soundButtonPlay();
                 Intent goBack = new Intent(SettingsActivity.this, MainActivity.class);
                 startActivity(goBack);
             }
@@ -79,17 +74,17 @@ public class SettingsActivity extends AppCompatActivity {
                 realm.executeTransactionAsync(new Realm.Transaction() {
                     @Override
                     public void execute(Realm realm) {
-                        Configuration configuration = realm.where(Configuration.class).equalTo("key","isLogged").findFirst();
+                        Configuration configuration = realm.where(Configuration.class).equalTo("key", "isLogged").findFirst();
                         configuration.setValue(false);
                         realm.insertOrUpdate(configuration);
 
                     }
-                },new Realm.Transaction.OnError() {
+                }, new Realm.Transaction.OnError() {
                     @Override
                     public void onError(Throwable error) {
                         error.printStackTrace();
-                        Log.d(TAG,"error al guardar");
-                        Log.d(TAG,"error al guardar");
+                        Log.d(TAG, "error al guardar");
+                        Log.d(TAG, "error al guardar");
                     }
                 });
 
@@ -105,8 +100,7 @@ public class SettingsActivity extends AppCompatActivity {
 
             }
         });*/
-
-        if(appControl.isBackgroundPlaying){
+        if (appControl.isBackgroundPlaying) {
             swtMusic.setChecked(true);
         }
         //
@@ -115,59 +109,7 @@ public class SettingsActivity extends AppCompatActivity {
         swtMusic.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-
-                    if(!appControl.soundBackground.isPlaying()){
-                        appControl.soundBackground.stop();
-                        appControl.soundBackground = MediaPlayer.create(getApplicationContext(),R.raw.theartloop);
-                        appControl.soundBackground.start();
-                        Log.e("REPRODUCION_SONIDO", TAG);
-                        appControl.soundBackground.setLooping(true);
-                        appControl.isBackgroundPlaying = true;
-                        //swtMusic.setChecked(true);
-                        realm = Realm.getDefaultInstance();
-                        realm.executeTransactionAsync(new Realm.Transaction() {
-                            @Override
-                            public void execute(Realm realm) {
-                                Log.d(TAG, "Se va a guardar como true");
-                                Configuration configuration = realm.where(Configuration.class).equalTo("key", "isBackgroundPlaying").findFirst();
-
-                                configuration.setValue(true);
-                                realm.insertOrUpdate(configuration);
-                            }
-                        }, new Realm.Transaction.OnError() {
-                            @Override
-                            public void onError(Throwable error) {
-                                error.printStackTrace();
-                                Log.d(TAG,"error al guardar");
-                            }
-                        });
-                    }
-                    //sound.start();
-                }else if(!isChecked){
-                    if(appControl.soundBackground.isPlaying()){
-                        //MainActivity.sound.start();
-                        appControl.soundBackground.stop();
-                        appControl.isBackgroundPlaying = false;
-                        realm = Realm.getDefaultInstance();
-                        realm.executeTransactionAsync(new Realm.Transaction() {
-                            @Override
-                            public void execute(Realm realm) {
-                                Configuration configuration = realm.where(Configuration.class).equalTo("key","isBackgroundPlaying").findFirst();
-                                configuration.setValue(false);
-                                realm.insertOrUpdate(configuration);
-
-                            }
-                        },new Realm.Transaction.OnError() {
-                            @Override
-                            public void onError(Throwable error) {
-                                error.printStackTrace();
-                                Log.d(TAG,"error al guardar");
-                                Log.d(TAG,"error al guardar");
-                            }
-                        });
-                    }
-                }
+                appControl.settingSoundBackground(isChecked);
             }
         });
 
@@ -180,7 +122,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(this,MainActivity.class));
+        startActivity(new Intent(this, MainActivity.class));
         finish();
     }
 
