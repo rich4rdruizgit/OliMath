@@ -1,6 +1,7 @@
 package olimpiadas.sena.com.olimpiadasmath.fragments.shop;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -84,6 +85,7 @@ public class AvatarShopFragment extends Fragment implements WebConnectionManager
         //webConnectionManager.mostrarTienda();
         webConnectionManager.mostrarTiendaCustom(appControl.currentUser.getId());
 
+
         return view;
     }
 
@@ -134,6 +136,7 @@ public class AvatarShopFragment extends Fragment implements WebConnectionManager
                         product.setConstraint(jsonObject.getString("nivelRequerio"));
                         product.setState(Integer.parseInt(jsonObject.getString("usado")));
                         product.setSourceName(jsonObject.getString("tipo"));
+                        product.setBuy(Integer.parseInt(jsonObject.getString("comprado")));
                         if (jsonObject.getString("tipo").equals("Avatar")) {
                             product.setType(1);
                         } else {

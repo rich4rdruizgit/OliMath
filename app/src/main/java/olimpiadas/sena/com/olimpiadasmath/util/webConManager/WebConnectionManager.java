@@ -50,7 +50,8 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
         RANKING,
         SEND_CHALLENGE,
         SHOW_SHOP,
-        SHOW_SHOP_CUSTOM;
+        SHOW_SHOP_CUSTOM,
+        UPDATE_STATE_SHOP;
 
         public String getName() {
             switch (this) {
@@ -70,6 +71,8 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                     return "mostrarTienda";
                 case SHOW_SHOP_CUSTOM:
                     return "WSOlimath.asmx/mostrarStockPerfiles";
+                case UPDATE_STATE_SHOP:
+                    return "WSOlimath.asmx/actualizarAvatarMarcoFondo";
                 default:
                     return null;
             }
@@ -98,6 +101,8 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                 case "WSOlimath.asmx/mostrarStockPerfiles":
                     return SHOW_SHOP_CUSTOM;
 
+                case "WSOlimath.asmx/actualizarAvatarMarcoFondo":
+                    return UPDATE_STATE_SHOP;
                 default:
                     return null;
             }
@@ -200,6 +205,14 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
         webConnection.executePostRequest(url, OperationType.SHOW_SHOP_CUSTOM.getName(), nameValuePairs);
 
+    }
+
+    public void  actualizarTiendaUser(String idUser, String avatar) {
+
+        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        nameValuePairs.add(new BasicNameValuePair("idPerfil", idUser));
+        nameValuePairs.add(new BasicNameValuePair("nomItem", avatar));
+        webConnection.executePostRequest(url, OperationType.UPDATE_STATE_SHOP.getName(), nameValuePairs);
     }
 
     public void mostrarTienda() {
@@ -375,6 +388,32 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                     result = "";
                     code = "JO001";
                     errMsg = "Respuesta SHOP no esta en formato Json";
+                    return;
+                }
+            }
+
+            if (operationType == OperationType.UPDATE_STATE_SHOP) {
+                try {
+                    Log.d(TAG, "Operation type = UPDATE STATE SHOP");
+                    JSONArray shop = new JSONArray(resp);
+                    if (shop.length() > 0) {
+                        status = SUCCESS;
+                        result = OK;
+                        data = resp;
+                        return;
+                    } else {
+                        status = SUCCESS;
+                        result = OK;
+                        data = resp;
+                        return;
+                    }
+
+
+                } catch (JSONException e) {
+                    status = ERROR;
+                    result = "";
+                    code = "JO001";
+                    errMsg = "Respuesta UPDATE SHOP no esta en formato Json";
                     return;
                 }
             }

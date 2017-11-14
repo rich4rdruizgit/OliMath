@@ -13,6 +13,10 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,18 +28,23 @@ import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.model.Product;
 import olimpiadas.sena.com.olimpiadasmath.model.User;
 import olimpiadas.sena.com.olimpiadasmath.util.DialogHelper;
+import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnection;
+import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnectionManager;
 
 /**
  * Created by rich4 on 16/06/2017.
  */
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> implements DialogHelper.DialogHelperListener{
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> implements DialogHelper.DialogHelperListener , WebConnectionManager.WebConnectionManagerListener{
 
     private static final String TAG = ProductAdapter.class.toString();
 
     //public RealmResults<Product> lstProduct;
     public List<Product> lstProduct;
     public RealmResults<Product> lstProductItem;
+
+
+    WebConnectionManager webConnectionManager;
 
 
     Context context;
@@ -52,12 +61,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public ProductAdapter(List<Product> lstProduct, Context context, int type) {
 
         realm = Realm.getDefaultInstance();
+
         this.lstProduct = lstProduct;
-        if(type == Product.AVATAR){
+        if (type == Product.AVATAR) {
             //lstProduct = realm.where(Product.class).equalTo("type",Product.AVATAR).findAll();
         }
-        if(type == Product.POTION){
-            lstProduct = realm.where(Product.class).equalTo("type",Product.POTION).findAll();
+        if (type == Product.POTION) {
+            lstProduct = realm.where(Product.class).equalTo("type", Product.POTION).findAll();
         }
         //this.lstProduct = (RealmResults<Product>) lstProduct;
         this.context = context;
@@ -65,7 +75,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     }
 
 
-    private void updateProductState(final int pos,final int state){
+    private void updateProductState(final int pos, final int state) {
 
         realm.executeTransaction(new Realm.Transaction() {
             @Override
@@ -75,7 +85,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         });
 
     }
-    private void updateState(){
+
+    private void updateState() {
 
         realm.executeTransaction(new Realm.Transaction() {
             @Override
@@ -83,7 +94,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 RealmResults<Product> result2 = realm.where(Product.class)
                         .equalTo("state", 3)
                         .findAll();
-                for(int i  = 0 ; i < result2.size(); i++){
+                for (int i = 0; i < result2.size(); i++) {
                     result2.get(i).setState(Product.BOUGTH);
                 }
 
@@ -94,33 +105,33 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     @Override
     public ProductAdapter.ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_shop,parent ,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_shop, parent, false);
         return new ProductViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final ProductAdapter.ProductViewHolder holder, final int position) {
         final Product product = lstProduct.get(position);
-        Log.d(TAG,product.toString());
+        Log.d(TAG, product.toString());
         //int avatar = getActivity().getBaseContext().getResources().getIdentifier(appControl.currentUser.getAvatar(), recurso, context.getActivity().getBaseContext().getPackageName());
 
 
-        int avatar = context.getResources().getIdentifier(product.getUrlImg(),recurso,context.getPackageName());
+        int avatar = context.getResources().getIdentifier(product.getUrlImg(), recurso, context.getPackageName());
 
         holder.imgViewShop.setImageResource(avatar);
         holder.txtName.setText(product.getName());
         holder.txtPrice.setText("" + product.getPrice());
         holder.txtConstraint.setText(product.getConstraint());
-        if(product.getState()==Product.FOR_BUY){
-            holder.btnBuy.setText(""+product.getPrice());
+        if (product.getState() == Product.FOR_BUY) {
+            holder.btnBuy.setText("" + product.getPrice());
         }
-        if(product.getState()==Product.BOUGTH){
-            if(product.getType() == Product.POTION){
+        if (product.getBuy() == Product.BOUGTH) {
+            if (product.getType() == Product.POTION) {
                 holder.btnBuy.setText("Comprado");
-            }else
+            } else
                 holder.btnBuy.setText("Usar");
         }
-        if(product.getState()==Product.USED){
+        if (product.getState() == Product.USED) {
             holder.btnBuy.setText("Usado");
             currentAvatarButton = holder.btnBuy;
         }
@@ -129,25 +140,27 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             @Override
             public void onClick(View v) {
                 appControl.soundButtonPlay();
-                if(Integer.parseInt(product.getConstraint()) <= appControl.currentUser.getLevel()){
-                    if(product.getState() == Product.FOR_BUY){ // para comprar
+                if (Integer.parseInt(product.getConstraint()) <= appControl.currentUser.getLevel()) {
+                    if (product.getState() == Product.FOR_BUY) { // para comprar
                         currentBuyItem = holder.btnBuy;
                         currentPosition = position;
 
-                        if(appControl.currentUser.getCoins()< lstProduct.get(position).getPrice()){
-                            DialogHelper.ConfimrBuyDialog(context,context.getString(R.string.no_enought_coins),DialogHelper.NO_BUY,ProductAdapter.this);
+
+                        if (appControl.currentUser.getCoins() < lstProduct.get(position).getPrice()) {
+                            DialogHelper.ConfimrBuyDialog(context, context.getString(R.string.no_enought_coins), DialogHelper.NO_BUY, ProductAdapter.this);
                             return;
-                        }else {
-                            DialogHelper.ConfimrBuyDialog(context,context.getString(R.string.alert_shop),DialogHelper.BUY,ProductAdapter.this);
+                        } else {
+                            DialogHelper.ConfimrBuyDialog(context, context.getString(R.string.alert_shop), DialogHelper.BUY, ProductAdapter.this);
+
+
                         }
-                    }
-                    else if(product.getState() == Product.BOUGTH){
-                        if(product.getType() == Product.POTION){
+                    } else if (product.getState() == Product.BOUGTH) {
+                        if (product.getType() == Product.POTION) {
                             Toast.makeText(context, "Solo puedes comprar una pocion", Toast.LENGTH_SHORT).show();
                             return;
                         }
 
-                        if(currentAvatarButton != null ){
+                        if (currentAvatarButton != null) {
                             currentAvatarButton.setText("Usar");
                         }
                         currentAvatarButton = holder.btnBuy;
@@ -155,14 +168,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                         currentAvatar = position;
                         updateState();
                         appControl.currentUser.setAvatar(product.getUrlImg());
-                        ProductAdapter.this.updateProductState(position,Product.USED);
+                        ProductAdapter.this.updateProductState(position, Product.USED);
                         User.updateUser(appControl.currentUser);
-                        ((ShopActivity)context).headerFragment.refreshInterface();
+                        ((ShopActivity) context).headerFragment.refreshInterface();
                     }
-                    if(product.getState() == Product.USED){
+                    if (product.getState() == Product.USED) {
 
                     }
-                }else{
+                } else {
                     Toast.makeText(context, "Debes subir de nivel para comprar este avatar", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -178,24 +191,42 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @Override
     public void dialogEnd(boolean result) {
 
-        if(result){
-                if(lstProduct.get(currentPosition).getType()== Product.AVATAR){
+        if (result) {
+            if (lstProduct.get(currentPosition).getType() == Product.AVATAR) {
                 appControl.currentUser.setCoins(appControl.currentUser.getCoins() - lstProduct.get(currentPosition).getPrice());
                 currentBuyItem.setText("Usar");
-                ProductAdapter.this.updateProductState(currentPosition,Product.BOUGTH);
-                ((ShopActivity)context).headerFragment.refreshInterface();
+                ProductAdapter.this.updateProductState(currentPosition, Product.BOUGTH);
+
+                webConnectionManager = WebConnectionManager.getWebConnectionManager();
+                webConnectionManager.setWebConnectionManagerListener(this);
+                webConnectionManager.actualizarTiendaUser(appControl.currentUser.getId(), appControl.currentUser.getAvatar());
+
+                ((ShopActivity) context).headerFragment.refreshInterface();
                 User.updateUser(appControl.currentUser);
                 Toast.makeText(context, "Felicidades, has adquirido este nuevo item", Toast.LENGTH_SHORT).show();
-            }else{
-                    appControl.currentUser.setCoins(appControl.currentUser.getCoins() - lstProduct.get(currentPosition).getPrice());
-                    currentBuyItem.setText("Comprado");
-                    ProductAdapter.this.updateProductState(currentPosition,Product.BOUGTH);
-                    Toast.makeText(context,"Felicidades has adquirido una poción", Toast.LENGTH_SHORT).show();
-                }
+            } else {
+                appControl.currentUser.setCoins(appControl.currentUser.getCoins() - lstProduct.get(currentPosition).getPrice());
+                currentBuyItem.setText("Comprado");
+                ProductAdapter.this.updateProductState(currentPosition, Product.BOUGTH);
+                Toast.makeText(context, "Felicidades has adquirido una poción", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
-    public static class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    @Override
+    public void webRequestComplete(WebConnectionManager.Response response) throws JSONException {
+
+        if (response.getStatus() == WebConnectionManager.Response.ERROR) {
+            Log.d(TAG, "No se pudo cargar el Tienda");
+        } else {
+            if (response.getOperationType() == WebConnectionManager.OperationType.UPDATE_STATE_SHOP) {
+                Log.d("NO  se si ",response.getData().toString());
+            }
+        }
+
+    }
+
+    public static class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         protected ImageView imgViewShop;
         protected TextView txtName;
