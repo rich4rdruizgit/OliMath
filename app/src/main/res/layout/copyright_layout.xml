@@ -4,8 +4,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/backgroundothers"
     android:orientation="vertical"
-    android:layout_margin="20dp"
-    android:padding="@dimen/padding_views">
+    android:layout_margin="10dp"
+    >
 
 
     <ScrollView
@@ -15,9 +15,10 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="50dp"
+            android:paddingTop="40dp"
+            android:layout_marginBottom="50dp"
             >
 
             <TextView
@@ -87,9 +88,8 @@
                 android:text="Erick Ortiz"/>
 
             <Button
-
                 android:id="@+id/btn_exit_tip"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="15dp"
                 android:text="Cerrar"
                 android:layout_width="100dp"
                 android:layout_gravity="center"
