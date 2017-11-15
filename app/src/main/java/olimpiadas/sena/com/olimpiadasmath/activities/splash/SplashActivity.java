@@ -91,7 +91,7 @@ public class SplashActivity extends AppCompatActivity implements AppControl.Init
                     }
 
 
-                    if (AppControl.getInstance().isLogged) {
+                    if (AppControl.getInstance().isLogged || !AppControl.getInstance().isLogged) {
                         Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                         startActivity(intent);
                         appControl.playSoundBackground();
@@ -150,6 +150,8 @@ public class SplashActivity extends AppCompatActivity implements AppControl.Init
                 LoadQuestionsFromWebService(qs);
             }
         }
+
+        loading =false;
     }
 
 

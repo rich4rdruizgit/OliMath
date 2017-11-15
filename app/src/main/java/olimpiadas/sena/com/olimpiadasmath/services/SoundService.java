@@ -11,6 +11,7 @@ import olimpiadas.sena.com.olimpiadasmath.R;
 
 public class SoundService extends Service {
     MediaPlayer mediaPlayer;
+
     public SoundService() {
     }
 
@@ -22,18 +23,21 @@ public class SoundService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.theartloop);
-        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-        mediaPlayer.setLooping(true);
-        mediaPlayer.start();
+        if (mediaPlayer == null) {
+            mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.theartloop);
+            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+            mediaPlayer.setLooping(true);
+            mediaPlayer.start();
+        }
         return START_NOT_STICKY;
 
     }
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         mediaPlayer.stop();
         mediaPlayer.release();
+        mediaPlayer = null;
+        super.onDestroy();
     }
 }
