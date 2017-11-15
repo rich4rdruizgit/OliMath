@@ -183,7 +183,12 @@ public class ResultActivity extends AppCompatActivity {
         String finishQuestionaryDatetime = DateFormat.format("dd/MM/yy HH:mm:ss", new java.util.Date()).toString();
         WebConnectionManager webConnectionManager = WebConnectionManager.getWebConnectionManager();
 
-        webConnectionManager.sendChallenge(appControl.currentUser.getId(),appControl.answersId,appControl.initQuestionaryDatetime,finishQuestionaryDatetime);
+        if(appControl.onPractice){
+            webConnectionManager.sendChallenge(appControl.currentUser.getId(),appControl.answersId,appControl.initQuestionaryDatetime,finishQuestionaryDatetime, "0");
+        }else{
+            webConnectionManager.sendChallenge(appControl.currentUser.getId(),appControl.answersId,appControl.initQuestionaryDatetime,finishQuestionaryDatetime, "1");
+        }
+
 
 
 
