@@ -49,6 +49,7 @@
             android:paddingLeft="20dp"
             android:text="@string/ranking"
             android:textColor="#fff"
+            android:textStyle="bold"
             android:textSize="20sp" />
     </LinearLayout>
 

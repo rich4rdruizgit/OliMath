@@ -160,7 +160,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
         } else {
-            Toast.makeText(this, "Paila", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No hay internet", Toast.LENGTH_SHORT).show();
         }
     }
 

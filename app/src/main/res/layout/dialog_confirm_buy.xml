@@ -30,6 +30,7 @@
                 android:id="@+id/txt_msg_dialog"
                 android:textAlignment="center"
                 android:textSize="20dp"
+                android:textStyle="bold"
                 android:textColor="@color/cardview_light_background"
                 android:text="¿Quieres salir de la aplicacion?"/>
 
