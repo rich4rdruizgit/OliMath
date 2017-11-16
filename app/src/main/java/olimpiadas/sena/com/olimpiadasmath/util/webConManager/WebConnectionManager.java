@@ -11,23 +11,23 @@ import java.util.List;
 
 import cz.msebera.android.httpclient.NameValuePair;
 import cz.msebera.android.httpclient.message.BasicNameValuePair;
+import olimpiadas.sena.com.olimpiadasmath.model.User;
 
 
 /**
  * Created by defytek on 3/1/17.
  */
 
-public class WebConnectionManager implements WebConnection.WebConnectionListener{
+public class WebConnectionManager implements WebConnection.WebConnectionListener {
 
     private String TAG = "WebConnectionManager";
     //private final String url = "http://192.168.0.15:8097/";
 //    private final String url = "http://10.73.70.29:8097/";
 
 
-
     //private final String url = "http://10.73.70.29:8097/";
+    //private final String url = "http://10.73.70.39:8097/";
     private final String url = "http://10.73.120.124:8097/";
-    //private final String url = "http://192.168.0.13:8097/";
     //private final String url = "http://192.168.43.14:8097/";
     //private final String url = "http://192.168.137.1:8097/";
 
@@ -50,6 +50,8 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
         RANKING,
         SEND_CHALLENGE,
         SHOW_SHOP,
+        UPDATE_STATE_SHOP,
+        UPDATE_PROFILE,
         SHOW_SHOP_CUSTOM;
 
         public String getName() {
@@ -68,14 +70,18 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                     return "WSOlimath.asmx/insertarCompetencia";
                 case SHOW_SHOP:
                     return "mostrarTienda";
+                case UPDATE_PROFILE:
+                    return "UPDATE_SUCCESS";
                 case SHOW_SHOP_CUSTOM:
                     return "WSOlimath.asmx/mostrarStockPerfiles";
+                case UPDATE_STATE_SHOP:
+                    return "WSOlimath.asmx/actualizarAvatarMarcoFondo";
                 default:
                     return null;
             }
         }
 
-        public static OperationType fromString(String type){
+        public static OperationType fromString(String type) {
             switch (type) {
                 case "start-session/":
                     return START_SESSION;
@@ -94,10 +100,13 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
                 case "WSOlimath.asmx/mostrarPreguntasAleatoriasNuevo":
                     return GET_QUESTIONS;
-
+                case "WSOlimath.asmx/UPDATE_SUCCESS":
+                    return UPDATE_PROFILE;
                 case "WSOlimath.asmx/mostrarStockPerfiles":
                     return SHOW_SHOP_CUSTOM;
 
+                case "WSOlimath.asmx/actualizarAvatarMarcoFondo":
+                    return UPDATE_STATE_SHOP;
                 default:
                     return null;
             }
@@ -107,24 +116,33 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
     @Override
     public void webConnectionComplete(String type, String resp) {
-        Log.d(TAG, "webCon type " + type + "  Response = " + resp);
+        try {
+            if (resp != null) {
+                Log.d(TAG, "webCon type " + type + "  Response = " + resp);
 
-        resp = resp.replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "");
-        resp = resp.replace("<string xmlns=\"http://tempuri.org/\">", "");
-        resp = resp.replace("</string>", "");
-        resp = resp.replace("<boolean xmlns=\"http://tempuri.org/\">", "");
-        resp = resp.replace("</boolean>", "");
+                resp = resp.replace("<?xml version=\"1.0\" encoding=\"utf-8\"?>", "");
+                resp = resp.replace("<string xmlns=\"http://tempuri.org/\">", "");
+                resp = resp.replace("</string>", "");
+                resp = resp.replace("<boolean xmlns=\"http://tempuri.org/\">", "");
+                resp = resp.replace("</boolean>", "");
 
-        Log.d(TAG, "webCon Response cambiado = " + resp);
+                Log.d(TAG, "webCon Response cambiado = " + resp);
 
-        Response response = new Response(type, resp);
-        Log.d(TAG, "Response = " + response.toString());
-        if (webConnectionManagerListener != null) {
-            try {
-                webConnectionManagerListener.webRequestComplete(response);
-            } catch (JSONException e) {
-                e.printStackTrace();
+                Response response = new Response(type, resp);
+                Log.d(TAG, "Response = " + response.toString());
+                if (webConnectionManagerListener != null) {
+
+                    webConnectionManagerListener.webRequestComplete(response);
+
+                }
+            }else
+            {
+                Log.d(TAG, "Response NULL en la juega!!!");
             }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
         }
 
     }
@@ -189,17 +207,38 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
     }
 
 
-    public void mostrarRankings() {
-        webConnection.executeAsyncGetRequest(url + OperationType.RANKING.getName(), OperationType.RANKING.getName());
-    }
-
-    public void  mostrarTiendaCustom(String idUser) {
+    public void mostrarTiendaCustom(String idUser) {
 
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
         nameValuePairs.add(new BasicNameValuePair("idPerfil", idUser));
 
         webConnection.executePostRequest(url, OperationType.SHOW_SHOP_CUSTOM.getName(), nameValuePairs);
 
+    }
+
+    public void actualizarTiendaUser(String idUser, String avatar) {
+
+        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        nameValuePairs.add(new BasicNameValuePair("idPerfil", idUser));
+        nameValuePairs.add(new BasicNameValuePair("nomItem", avatar));
+        webConnection.executePostRequest(url, OperationType.UPDATE_STATE_SHOP.getName(), nameValuePairs);
+    }
+
+
+    public void actualizarPerfil(User user) {
+
+        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        nameValuePairs.add(new BasicNameValuePair("ide", user.getId()));
+        nameValuePairs.add(new BasicNameValuePair("nivel", "" + user.getLevel()));
+        nameValuePairs.add(new BasicNameValuePair("exper", "" + user.getExperience()));
+        nameValuePairs.add(new BasicNameValuePair("coins", "" + user.getCoins()));
+        nameValuePairs.add(new BasicNameValuePair("avatar", "" + user.getAvatar()));
+
+        webConnection.executePostRequest(url, OperationType.UPDATE_PROFILE.getName(), nameValuePairs);
+    }
+
+    public void mostrarRankings() {
+        webConnection.executeAsyncGetRequest(url + OperationType.RANKING.getName(), OperationType.RANKING.getName());
     }
 
     public void mostrarTienda() {
@@ -217,7 +256,7 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
         //webConnection.executeAsyncGetRequest(url);
     }
 
-    public void getRandomQuestions(){
+    public void getRandomQuestions() {
         webConnection.executeAsyncGetRequest(url + OperationType.GET_QUESTIONS.getName(), OperationType.GET_QUESTIONS.getName());
     }
 
@@ -232,16 +271,16 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
         //webConnection.executeAsyncGetRequest(url);
     }
 
-    public void sendChallenge(String idProfile,int[] answers,String initDate, String finishDate, String isChallenge ) {
+    public void sendChallenge(String idProfile, int[] answers, String initDate, String finishDate, String isChallenge) {
 
-        Long tsLong = System.currentTimeMillis()/1000;
+        Long tsLong = System.currentTimeMillis() / 1000;
         String ts = tsLong.toString();
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 
         nameValuePairs.add(new BasicNameValuePair("IdPerfil", idProfile));
 
-        for(int i = 0; i < answers.length; i++){
-            nameValuePairs.add(new BasicNameValuePair("RespuestaId" + (i + 1), String.valueOf( answers[i])));
+        for (int i = 0; i < answers.length; i++) {
+            nameValuePairs.add(new BasicNameValuePair("RespuestaId" + (i + 1), String.valueOf(answers[i])));
         }
 
 
@@ -274,6 +313,9 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
         public static final String NOT_LOGGED = "not_logged";
         public static final String RANKING = "ranking";
         private static final String OK = "ok";
+
+        private static final String UPDATE_SUCCESS = "update_success";
+        private static final String UPDATE_FAIL = "update_fail";
 
 
         OperationType operationType;
@@ -379,6 +421,32 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                 }
             }
 
+            if (operationType == OperationType.UPDATE_STATE_SHOP) {
+                try {
+                    Log.d(TAG, "Operation type = UPDATE STATE SHOP");
+                    JSONArray shop = new JSONArray(resp);
+                    if (shop.length() > 0) {
+                        status = SUCCESS;
+                        result = OK;
+                        data = resp;
+                        return;
+                    } else {
+                        status = SUCCESS;
+                        result = OK;
+                        data = resp;
+                        return;
+                    }
+
+
+                } catch (JSONException e) {
+                    status = ERROR;
+                    result = "";
+                    code = "JO001";
+                    errMsg = "Respuesta UPDATE SHOP no esta en formato Json";
+                    return;
+                }
+            }
+
             if (operationType == OperationType.GET_QUESTIONS) {
                 try {
                     Log.d(TAG, "Operation type = GET_QUESTIONS");
@@ -392,6 +460,7 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                         status = ERROR;
                         result = ERROR;
                         data = null;
+                        errMsg = "Respuesta, get_question no esta en formato Json";
                         return;
                     }
 
@@ -440,20 +509,20 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
             }
 
             if (operationType == OperationType.LOGIN) {
-                Log.d(TAG,"Respuesta de login " + resp);
+                Log.d(TAG, "Respuesta de login " + resp);
                 try {
 
 
                     resparray = new JSONArray(resp);
 
-                    if(resparray ==null){
-                        Log.d(TAG,"Esto es nulo");
+                    if (resparray == null) {
+                        Log.d(TAG, "Esto es nulo");
                         status = ERROR;
                         return;
                     }
 
-                    if(resparray.length() == 0){
-                        Log.d(TAG,"Esto es nulo");
+                    if (resparray.length() == 0) {
+                        Log.d(TAG, "Esto es nulo");
                         status = SUCCESS;
                         result = NOT_LOGGED;
                         return;
@@ -497,6 +566,31 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
             }
 
+            if (operationType == OperationType.SHOW_SHOP_CUSTOM) {
+                try {
+                    Log.d(TAG, "Operation type = SHOP CUSTOM");
+                    JSONArray shop = new JSONArray(resp);
+                    if (shop.length() > 0) {
+                        status = SUCCESS;
+                        result = OK;
+                        data = resp;
+                        return;
+                    } else {
+                        status = SUCCESS;
+                        result = OK;
+                        data = resp;
+                        return;
+                    }
+
+
+                } catch (JSONException e) {
+                    status = ERROR;
+                    result = "";
+                    code = "JO001";
+                    errMsg = "Respuesta SHOP no esta en formato Json";
+                    return;
+                }
+            }
 
             if (operationType == OperationType.START_SESSION) {
                 try {
@@ -519,6 +613,39 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                 return;
             }
 
+            if (operationType == OperationType.UPDATE_PROFILE) {
+                try {
+                    respJObject = new JSONObject(resp);
+                    if (respJObject.getString("status").equals("SUCCESS")) {
+                        status = SUCCESS;
+                        if (respJObject.getString("result").equals("true")) {
+                            result = UPDATE_SUCCESS;
+                        } else if (respJObject.getString("result").equals("false")) {
+                            result = UPDATE_FAIL;
+                            code = respJObject.getString("code");
+                            errMsg = respJObject.getString("errMsg");
+                        } else {
+                            result = UNKNOW;
+                            code = "E001";
+                            errMsg = "outcome con valor desconocido";
+                        }
+
+                    } else if (respJObject.getString("status").equals("FAIL")) {
+                        status = FAIL;
+                        code = "E002";
+                        errMsg = "Error al tratar de enrolar";
+
+                        validateError(respJObject.getString("errorMsg"));
+                    }
+
+                } catch (JSONException e) {
+                    status = ERROR;
+                    result = "";
+                    code = "JO001";
+                    errMsg = "Respuesta update_profile no esta en formato Json";
+                    return;
+                }
+            }
 
         }
 

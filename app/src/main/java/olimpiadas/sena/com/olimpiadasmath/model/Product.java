@@ -9,15 +9,15 @@ import io.realm.annotations.Ignore;
 
 public class Product extends RealmObject {
     @Ignore
-    public static final int FOR_BUY  = 0; // para comprar
+    public static final int FOR_BUY = 0; // para comprar
     @Ignore
-    public static final int BOUGTH  = 1; // comprado
+    public static final int BOUGTH = 1; // comprado
     @Ignore
-    public static final int USED  = 2; //usado
+    public static final int USED = 2; //usado
     @Ignore
-    public static final int POTION  = 2; //usado
+    public static final int POTION = 2; //usado
     @Ignore
-    public static final int AVATAR  = 1; //usado
+    public static final int AVATAR = 1; //usado
 
 
     private String urlImg;
@@ -25,11 +25,12 @@ public class Product extends RealmObject {
     protected int price;
     protected String constraint; // Restriccion del nivel para acceder al item
     protected String sourceName;
+    protected int buy;
     protected int state;
     protected int type;
 
 
-    public Product(String urlImg, String name, int price, String constraint, int state, String sourceName, int type) {
+    public Product(String urlImg, String name, int price, String constraint, int state, String sourceName, int type, int buy) {
         this.urlImg = urlImg;
         this.name = name;
         this.price = price;
@@ -37,6 +38,7 @@ public class Product extends RealmObject {
         this.state = state;
         this.sourceName = sourceName;
         this.type = type;
+        this.buy = buy;
     }
 
     public Product() {
@@ -88,6 +90,14 @@ public class Product extends RealmObject {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public int getBuy() {
+        return buy;
+    }
+
+    public void setBuy(int buy) {
+        this.buy = buy;
     }
 
     @Override

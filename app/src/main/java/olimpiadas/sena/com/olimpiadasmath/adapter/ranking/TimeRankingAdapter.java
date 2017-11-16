@@ -77,6 +77,7 @@ public class TimeRankingAdapter extends RecyclerView.Adapter<TimeRankingAdapter.
         holder.txtNickName.setText(user.getNickname()+"");
         holder.txtPoints.setText(user.getTime());
         holder.txtAnswers.setText(user.getAnswers());
+        holder.txtLevel.setText(user.getLevel()+"");
 
         int avatar = context.getResources().getIdentifier(user.getAvatar(),"drawable", context.getPackageName());
 
@@ -109,6 +110,7 @@ public class TimeRankingAdapter extends RecyclerView.Adapter<TimeRankingAdapter.
                 user.setScore(Integer.parseInt(jsonObject.getString("puntaje")));
                 user.setPosition(Integer.parseInt(jsonObject.getString("posicion")));
                 user.setTime(jsonObject.getString("tiempo").substring(3));
+                user.setLevel(Integer.parseInt(jsonObject.getString("nivel")));
                 userList.add(user);
             }
             users = userList;
@@ -131,6 +133,7 @@ public class TimeRankingAdapter extends RecyclerView.Adapter<TimeRankingAdapter.
         protected ImageView imgAvatarRanking;
         protected LinearLayout layout;
         protected TextView txtAnswers;
+        protected TextView txtLevel;
 
         public TimeRankingViewHolder(View itemView) {
             super(itemView);
@@ -138,6 +141,7 @@ public class TimeRankingAdapter extends RecyclerView.Adapter<TimeRankingAdapter.
             txtNickName = (TextView) itemView.findViewById(R.id.txt_nickname_ranking_time);
             txtPoints = (TextView) itemView.findViewById(R.id.txt_points_ranking_time);
             txtAnswers = (TextView) itemView.findViewById(R.id.txt_points_ranking_answer);
+            txtLevel = (TextView) itemView.findViewById(R.id.tv_level_player);
             imgAvatarRanking = (ImageView) itemView.findViewById(R.id.img_avatar_ranking_time);
             layout = (LinearLayout) itemView.findViewById(R.id.layout_ranking_time);
         }
