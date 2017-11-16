@@ -91,6 +91,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }else {
                     Toast.makeText(this, "Debes estar conectado a Intenet para iniciar sesión", Toast.LENGTH_LONG).show();
                 }
+
                 break;
             case R.id.btn_lose_pass:
                 break;
