@@ -86,6 +86,7 @@ public class AvatarShopFragment extends Fragment implements WebConnectionManager
         webConnectionManager.mostrarTiendaCustom(appControl.currentUser.getId());
 
 
+
         return view;
     }
 
@@ -130,13 +131,22 @@ public class AvatarShopFragment extends Fragment implements WebConnectionManager
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         Product product = new Product();
                         //int urlImg, String name, int price, String constraint, int state, String sourceName, int type
-                        product.setUrlImg(jsonObject.getString("imagen"));
-                        product.setName(jsonObject.getString("nombre"));
+                        product.setUrlImg(jsonObject.getString("nombre"));
+                        product.setName(jsonObject.getString("imagen"));
+//                        product.setName(jsonObject.getString("imagen"));
                         product.setPrice(Integer.parseInt(jsonObject.getString("precio")));
                         product.setConstraint(jsonObject.getString("nivelRequerio"));
-                        product.setState(Integer.parseInt(jsonObject.getString("usado")));
+
+                        if(Integer.parseInt(jsonObject.getString("comprado")) == 0){
+                            product.setState(Product.FOR_BUY);
+                        }else if (Integer.parseInt(jsonObject.getString("comprado")) == 1){
+                            product.setState(Product.BOUGTH);
+                        }if(Integer.parseInt(jsonObject.getString("usado")) == 1 ){
+                            product.setState(Product.USED);
+                        }
+
                         product.setSourceName(jsonObject.getString("tipo"));
-                        product.setBuy(Integer.parseInt(jsonObject.getString("comprado")));
+                        //product.setBuy(Integer.parseInt(jsonObject.getString("comprado")));
                         if (jsonObject.getString("tipo").equals("Avatar")) {
                             product.setType(1);
                         } else {

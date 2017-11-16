@@ -25,12 +25,11 @@ public class Product extends RealmObject {
     protected int price;
     protected String constraint; // Restriccion del nivel para acceder al item
     protected String sourceName;
-    protected int buy;
     protected int state;
     protected int type;
 
 
-    public Product(String urlImg, String name, int price, String constraint, int state, String sourceName, int type, int buy) {
+    public Product(String urlImg, String name, int price, String constraint, int state, String sourceName, int type) {
         this.urlImg = urlImg;
         this.name = name;
         this.price = price;
@@ -38,7 +37,7 @@ public class Product extends RealmObject {
         this.state = state;
         this.sourceName = sourceName;
         this.type = type;
-        this.buy = buy;
+
     }
 
     public Product() {
@@ -92,13 +91,6 @@ public class Product extends RealmObject {
         this.type = type;
     }
 
-    public int getBuy() {
-        return buy;
-    }
-
-    public void setBuy(int buy) {
-        this.buy = buy;
-    }
 
     @Override
     public String toString() {
