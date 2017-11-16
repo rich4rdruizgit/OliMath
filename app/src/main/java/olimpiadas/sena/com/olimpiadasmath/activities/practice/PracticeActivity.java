@@ -2,9 +2,14 @@ package olimpiadas.sena.com.olimpiadasmath.activities.practice;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -12,12 +17,18 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
 import olimpiadas.sena.com.olimpiadasmath.R;
+import olimpiadas.sena.com.olimpiadasmath.activities.challenge.ChallengeActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.menu.MainActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.result.ResultActivity;
 import olimpiadas.sena.com.olimpiadasmath.activities.test.CardItem;
@@ -28,11 +39,13 @@ import olimpiadas.sena.com.olimpiadasmath.adapter.test.CardPagerAdapter;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
 import olimpiadas.sena.com.olimpiadasmath.model.Question;
 import olimpiadas.sena.com.olimpiadasmath.util.DialogHelper;
+import olimpiadas.sena.com.olimpiadasmath.util.webConManager.WebConnectionManager;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class PracticeActivity extends AppCompatActivity implements CardPagerAdapter.CommunicationTest, CardPagerAdapter.MoveTestListener ,View.OnClickListener,
-        CompoundButton.OnCheckedChangeListener{
+        CompoundButton.OnCheckedChangeListener, WebConnectionManager.WebConnectionManagerListener {
 
+    private static final String TAG = "PracticeActivity";
     AppControl appControl;
 
     //lo del CardView
@@ -61,6 +74,8 @@ public class PracticeActivity extends AppCompatActivity implements CardPagerAdap
     TextView tvTetTipNumQuet;
     Button btnBackChallenge;
     ImageView btn_settings_header;
+    List<Question> rs;
+    Realm realm;
 
 
     @Override
@@ -90,9 +105,39 @@ public class PracticeActivity extends AppCompatActivity implements CardPagerAdap
 
         mViewPager = (ViewPagerPersonalizado) findViewById(R.id.viewPager);
         mViewPager.setPagingEnabled(false);
-        Realm realm = Realm.getDefaultInstance();
+        realm = Realm.getDefaultInstance();
 
-        List<Question> rs =  realm.where(Question.class).findAll().subList(0,appControl.numberOfQuestions);
+         rs =  realm.where(Question.class).findAll();
+
+        if(rs.size() < appControl.numberOfQuestions  ){
+            if(verificarConexion(this)){
+                Toast.makeText(this,"Estamos cargando preguntas",Toast.LENGTH_SHORT).show();
+                DialogHelper.showBusyDialog(this,"Estamos Cargando preguntas");
+                WebConnectionManager webConnectionManager = WebConnectionManager.getWebConnectionManager();
+                webConnectionManager.setWebConnectionManagerListener(this);
+                webConnectionManager.getQuestions();
+            }else{
+                Toast.makeText(this,"Te quedaste sin preguntas, porfavor conectate a internet",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this,MainActivity.class));
+                finish();
+
+            }
+
+        }else{
+            realm.executeTransaction(new Realm.Transaction() {
+                @Override
+                public void execute(Realm realm) {
+                    rs = new ArrayList<>();
+                    for(int i = 0 ; i < appControl.numberOfQuestions; i++){
+
+                        Question tempQuestion= realm.where(Question.class).findFirst();
+                        rs.add(realm.copyFromRealm(tempQuestion));
+                        tempQuestion.deleteFromRealm();
+                    }
+                }
+            });
+
+        }
 
         mCardAdapter = new CardPagerAdapter(rs,this);
         mCardAdapter.addCardItem(new CardItem(R.string.title_1, R.string.text_1));
@@ -189,5 +234,90 @@ public class PracticeActivity extends AppCompatActivity implements CardPagerAdap
     //Ajuste de la fuente de la letra
     protected void attachBaseContext (Context newBase){
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+    public boolean verificarConexion(Context context) {
+        boolean bConectado = false;
+        ConnectivityManager connec = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo[] redes = connec.getAllNetworkInfo();
+        for (int i = 0; i < 2; i++) {
+            if (redes[i].getState() == NetworkInfo.State.CONNECTED) {
+                bConectado = true;
+            }
+        }
+        return bConectado;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
+    public void webRequestComplete(WebConnectionManager.Response response) throws JSONException {
+        Log.d(TAG,"Entro a webRequestComplete ");
+        if (response.getOperationType() == WebConnectionManager.OperationType.GET_QUESTIONS) {
+            if (response.getStatus() == WebConnectionManager.Response.SUCCESS) {
+                Log.d(TAG,response.getData());
+                JSONArray jsonArray = new JSONArray(response.getData());
+//        JSONArray jsonArray = new JSONArray(data());
+                List<Question> qs = Question.JsonArrayToList(jsonArray);
+
+                for (Question q : qs) {
+                    Log.e("Question", q.getJsonObject());
+                }
+                LoadQuestionsFromWebService(qs);
+                DialogHelper.hideBusyDialog();
+
+
+            }
+        }
+    }
+
+
+    public void LoadQuestionsFromWebService(final List<Question> questionList) {
+
+        Realm realmTemp = Realm.getDefaultInstance();
+        realmTemp.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                RealmResults<Question> questionsTemp = realm.where(Question.class).findAll();
+                questionsTemp.deleteAllFromRealm();
+                realm.copyToRealmOrUpdate(questionList);
+
+            }
+        }, new Realm.Transaction.OnSuccess() {
+            @Override
+            public void onSuccess() {
+
+                for (int i = 1; i < questionList.size(); i++) {
+                    Log.d("JSON", questionList.get(i).toString());
+                }
+                //questions = questionList;
+                appControl.currentQuestion = 0;
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        
+                        mCardAdapter = new CardPagerAdapter(realm.where(Question.class).findAll().subList(0,appControl.numberOfQuestions),PracticeActivity.this);
+                        mCardAdapter.addCardItem(new CardItem(R.string.title_1, R.string.text_1));
+                        mCardAdapter.addCardItem(new CardItem(R.string.title_2, R.string.text_1));
+                        mCardAdapter.addCardItem(new CardItem(R.string.title_3, R.string.text_1));
+                        mCardAdapter.addCardItem(new CardItem(R.string.title_4, R.string.text_1));
+                        mCardAdapter.addCardItem(new CardItem(R.string.title_4, R.string.text_1));
+                        mCardAdapter.setCommunicationTest(PracticeActivity.this);
+                        mCardAdapter.setMoveTestListener(PracticeActivity.this);
+                        mViewPager.setCardAdapter(mCardAdapter);
+                        totalPage = mCardAdapter.getCount();
+
+                    }
+                });
+
+            }
+        }, new Realm.Transaction.OnError() {
+            @Override
+            public void onError(Throwable error) {
+                error.printStackTrace();
+                Log.d(TAG,"Database save questions error " + error.getMessage());
+            }
+        });
+
+
     }
 }

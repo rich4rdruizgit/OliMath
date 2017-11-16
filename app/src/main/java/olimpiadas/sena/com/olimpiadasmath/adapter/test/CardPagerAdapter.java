@@ -228,15 +228,20 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter, View.
         Log.d(TAG, "Question text : " + item.getQuestionText());
         titleTextView.setText(item.getQuestionText());
         RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.rg_group_answer);
-        for (int x = 0; x < 4; x++) {
+        for (int x = 0; x < 5; x++) {
             Log.d(TAG, "item" + x + " correct" + item.getAnswerCorrect(x));
 
             if (item.getAnswerCorrect(x).equals("1")) {
                 Log.d(TAG, "Entro 1");
                 contentTextView.setText(item.getAnswerText(x));
             }
+
             final RadioButton radioButton = new RadioButton(view.getContext());
             radioButton.setText(item.getAnswerText(x));
+            if(item.getAnswerCorrect(x).equals("2") ) {
+                Log.d(TAG,"Entro 2");
+                radioButton.setVisibility(View.GONE);
+            }
             radioGroup.addView(radioButton);
         }
     }
