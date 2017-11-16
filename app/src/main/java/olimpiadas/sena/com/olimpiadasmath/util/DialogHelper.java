@@ -189,7 +189,8 @@ public class DialogHelper {
                     appControl.initQuestionaryDatetime = DateFormat.format("dd/MM/yy HH:mm:ss", new java.util.Date()).toString();
                     Intent intChallenge = new Intent(context.getApplicationContext(), ChallengeActivity.class);
                     intChallenge.putExtra("type", 2);
-                    AppControl.getInstance().currentUser.addTickets(-2);
+                    //AppControl.getInstance().currentUser.addTickets(-2);
+                    AppControl.getInstance().currentQuestion = 0;
                     context.startActivity(intChallenge);
                     ((MainActivity) context).finish();
 
