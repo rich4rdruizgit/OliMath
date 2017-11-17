@@ -78,7 +78,7 @@ public class DialogHelper {
             }
         });
 
-        ((Button) mProgressDialog.getWindow().findViewById(R.id.btn_exit_tip)).setOnClickListener(new View.OnClickListener() {
+        ((Button) mProgressDialog.getWindow().findViewById(R.id.btn_dialog_activate)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 appControl.soundButtonPlay();

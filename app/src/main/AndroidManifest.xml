@@ -24,7 +24,10 @@
 
         <activity
             android:name=".activities.menu.MainActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" >
+
+        </activity>
+
         <activity
             android:name=".activities.test.TestActivity"
             android:screenOrientation="portrait" />
@@ -57,7 +60,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.session.LoginActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" >
+
+        </activity>
         <activity
             android:name=".activities.library.LibraryActivity"
             android:screenOrientation="portrait" />

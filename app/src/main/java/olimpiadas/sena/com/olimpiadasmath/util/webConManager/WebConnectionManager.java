@@ -52,7 +52,8 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
         SHOW_SHOP,
         UPDATE_STATE_SHOP,
         UPDATE_PROFILE,
-        SHOW_SHOP_CUSTOM;
+        SHOW_SHOP_CUSTOM,
+        BUY_SHOP;
 
         public String getName() {
             switch (this) {
@@ -76,6 +77,8 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
                     return "WSOlimath.asmx/mostrarStockPerfiles";
                 case UPDATE_STATE_SHOP:
                     return "WSOlimath.asmx/actualizarAvatarMarcoFondo";
+                case BUY_SHOP:
+                    return "WSOlimath.asmx/insertarCompraTienda";
                 default:
                     return null;
             }
@@ -107,6 +110,9 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
                 case "WSOlimath.asmx/actualizarAvatarMarcoFondo":
                     return UPDATE_STATE_SHOP;
+
+                case "WSOlimath.asmx/insertarCompraTienda":
+                    return BUY_SHOP;
                 default:
                     return null;
             }
@@ -222,6 +228,17 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
         nameValuePairs.add(new BasicNameValuePair("idPerfil", idUser));
         nameValuePairs.add(new BasicNameValuePair("nomItem", avatar));
         webConnection.executePostRequest(url, OperationType.UPDATE_STATE_SHOP.getName(), nameValuePairs);
+    }
+
+    public void comprarTiendaUser(String idUser, String avatar, String cantidad, String valor) {
+
+        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        nameValuePairs.add(new BasicNameValuePair("pfkid", idUser));
+        nameValuePairs.add(new BasicNameValuePair("nombreItem", avatar));
+        nameValuePairs.add(new BasicNameValuePair("cantidad", cantidad));
+        nameValuePairs.add(new BasicNameValuePair("valor", valor));
+
+        webConnection.executePostRequest(url, OperationType.BUY_SHOP.getName(), nameValuePairs);
     }
 
 
@@ -424,6 +441,32 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
             if (operationType == OperationType.UPDATE_STATE_SHOP) {
                 try {
                     Log.d(TAG, "Operation type = UPDATE STATE SHOP");
+                    JSONArray shop = new JSONArray(resp);
+                    if (shop.length() > 0) {
+                        status = SUCCESS;
+                        result = OK;
+                        data = resp;
+                        return;
+                    } else {
+                        status = SUCCESS;
+                        result = OK;
+                        data = resp;
+                        return;
+                    }
+
+
+                } catch (JSONException e) {
+                    status = ERROR;
+                    result = "";
+                    code = "JO001";
+                    errMsg = "Respuesta UPDATE SHOP no esta en formato Json";
+                    return;
+                }
+            }
+
+            if (operationType == OperationType.BUY_SHOP) {
+                try {
+                    Log.d(TAG, "Operation type = BUY SHOP");
                     JSONArray shop = new JSONArray(resp);
                     if (shop.length() > 0) {
                         status = SUCCESS;

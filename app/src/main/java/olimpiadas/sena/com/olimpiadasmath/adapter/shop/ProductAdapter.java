@@ -25,6 +25,7 @@ import io.realm.RealmResults;
 import olimpiadas.sena.com.olimpiadasmath.R;
 import olimpiadas.sena.com.olimpiadasmath.activities.shop.ShopActivity;
 import olimpiadas.sena.com.olimpiadasmath.control.AppControl;
+import olimpiadas.sena.com.olimpiadasmath.fragments.shop.AvatarShopFragment;
 import olimpiadas.sena.com.olimpiadasmath.model.Product;
 import olimpiadas.sena.com.olimpiadasmath.model.User;
 import olimpiadas.sena.com.olimpiadasmath.util.DialogHelper;
@@ -72,6 +73,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         //this.lstProduct = (RealmResults<Product>) lstProduct;
         this.context = context;
         appControl = AppControl.getInstance();
+        webConnectionManager = WebConnectionManager.getWebConnectionManager();
+        webConnectionManager.setWebConnectionManagerListener(this);
     }
 
 
@@ -125,11 +128,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         if (product.getState() == Product.FOR_BUY) {
             holder.btnBuy.setText("" + product.getPrice());
         }
-        if (product.getBuy() == Product.BOUGTH) {
+        if (product.getState() == Product.BOUGTH) {
             if (product.getType() == Product.POTION) {
                 holder.btnBuy.setText("Comprado");
             } else
                 holder.btnBuy.setText("Usar");
+                webConnectionManager.actualizarTiendaUser(appControl.currentUser.getId(),product.getUrlImg());
+            Log.d(TAG, product.getUrlImg());
         }
         if (product.getState() == Product.USED) {
             holder.btnBuy.setText("Usado");
@@ -144,6 +149,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                     if (product.getState() == Product.FOR_BUY) { // para comprar
                         currentBuyItem = holder.btnBuy;
                         currentPosition = position;
+
+
 
 
                         if (appControl.currentUser.getCoins() < lstProduct.get(position).getPrice()) {
@@ -197,17 +204,18 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 currentBuyItem.setText("Usar");
                 ProductAdapter.this.updateProductState(currentPosition, Product.BOUGTH);
 
-                webConnectionManager = WebConnectionManager.getWebConnectionManager();
-                webConnectionManager.setWebConnectionManagerListener(this);
-                webConnectionManager.actualizarTiendaUser(appControl.currentUser.getId(), appControl.currentUser.getAvatar());
-
                 ((ShopActivity) context).headerFragment.refreshInterface();
                 User.updateUser(appControl.currentUser);
+
+                webConnectionManager.comprarTiendaUser(appControl.currentUser.getId(),lstProduct.get(currentPosition).getUrlImg(),1+"",lstProduct.get(currentPosition).getPrice()+"");
+
+                Log.d(TAG, lstProduct.get(currentPosition).getName());
                 Toast.makeText(context, "Felicidades, has adquirido este nuevo item", Toast.LENGTH_SHORT).show();
             } else {
                 appControl.currentUser.setCoins(appControl.currentUser.getCoins() - lstProduct.get(currentPosition).getPrice());
                 currentBuyItem.setText("Comprado");
                 ProductAdapter.this.updateProductState(currentPosition, Product.BOUGTH);
+
                 Toast.makeText(context, "Felicidades has adquirido una poción", Toast.LENGTH_SHORT).show();
             }
         }
@@ -220,6 +228,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             Log.d(TAG, "No se pudo cargar el Tienda");
         } else {
             if (response.getOperationType() == WebConnectionManager.OperationType.UPDATE_STATE_SHOP) {
+                Log.d("NO  se si ",response.getData().toString());
+            }
+            if (response.getOperationType() == WebConnectionManager.OperationType.BUY_SHOP) {
                 Log.d("NO  se si ",response.getData().toString());
             }
         }
