@@ -294,17 +294,46 @@ public class PracticeActivity extends AppCompatActivity implements CardPagerAdap
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+
+                        rs = new ArrayList<>();
+                        for(int i = 0 ; i < appControl.numberOfQuestions; i++){
+
+                            final Question tempQuestion= realm.where(Question.class).findFirst();
+                            rs.add(realm.copyFromRealm(tempQuestion));
+                            realm.executeTransaction(new Realm.Transaction() {
+                                @Override
+                                public void execute(Realm realm) {
+                                    tempQuestion.deleteFromRealm();
+                                }
+                            });
+
+                        }
                         
-                        mCardAdapter = new CardPagerAdapter(realm.where(Question.class).findAll().subList(0,appControl.numberOfQuestions),PracticeActivity.this);
+                        mCardAdapter = new CardPagerAdapter(rs,PracticeActivity.this);
                         mCardAdapter.addCardItem(new CardItem(R.string.title_1, R.string.text_1));
                         mCardAdapter.addCardItem(new CardItem(R.string.title_2, R.string.text_1));
                         mCardAdapter.addCardItem(new CardItem(R.string.title_3, R.string.text_1));
                         mCardAdapter.addCardItem(new CardItem(R.string.title_4, R.string.text_1));
                         mCardAdapter.addCardItem(new CardItem(R.string.title_4, R.string.text_1));
+
+
+                        mFragmentCardAdapter = new CardFragmentPagerAdapter(getSupportFragmentManager(),
+                                dpToPixels(2, PracticeActivity.this));
+
+                        mCardShadowTransformer = new ShadowTransformer(mViewPager, mCardAdapter);
+                        mFragmentCardShadowTransformer = new ShadowTransformer(mViewPager, mFragmentCardAdapter);
+
+                        mViewPager.setCardAdapter(mCardAdapter);
                         mCardAdapter.setCommunicationTest(PracticeActivity.this);
                         mCardAdapter.setMoveTestListener(PracticeActivity.this);
-                        mViewPager.setCardAdapter(mCardAdapter);
-                        totalPage = mCardAdapter.getCount();
+
+                        mViewPager.setAdapter(mCardAdapter);
+                        mViewPager.setPageTransformer(false, mCardShadowTransformer);
+                        mViewPager.setOffscreenPageLimit(10);
+                        Log.d(TAG,"mCardAdapter.getCount() = " + mCardAdapter.getCount());
+                        totalPage=  appControl.numberOfQuestions;
+                        tvTetTipNumQuet.setText(countPage+"/"+mCardAdapter.getCount());
+
 
                     }
                 });
