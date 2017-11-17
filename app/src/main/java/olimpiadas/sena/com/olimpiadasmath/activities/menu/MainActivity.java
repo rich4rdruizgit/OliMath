@@ -65,7 +65,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //------------------------------------------------------------------------------------------
 
         gifMenu = (GifImageView) findViewById(R.id.img_gif_menu); // Gif del menu principal
-        gifMenu.setOnClickListener(this);
+        //gifMenu.setOnClickListener(this);
+        gifMenu.setBackgroundResource(R.drawable.teachertalk);
         getSupportActionBar().hide();
         appControl = AppControl.getInstance();
         appControl.currentActivity = MainActivity.class.getSimpleName();

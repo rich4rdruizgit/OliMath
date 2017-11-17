@@ -111,12 +111,21 @@
                 android:gravity="center">
                 <Button
                     android:id="@+id/btn_retro_next"
-                    android:layout_marginTop="30dp"
+                    android:layout_margin="30dp"
                     android:text="Continuar"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     style="@style/ButtonStyle"
                     />
+
+                <!--<Button
+                    android:id="@+id/btn_more_help"
+                    android:layout_margin="30dp"
+                    android:text="Más ayuda?"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    style="@style/ButtonStyle"
+                    />-->
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

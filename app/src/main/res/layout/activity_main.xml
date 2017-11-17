@@ -34,9 +34,8 @@
             android:layout_height="match_parent"
             android:layout_weight="0.10"
             android:layout_gravity="center"
-            android:padding="25dp"
             android:layout_marginRight="15dp"
-            android:src="@drawable/teacher" />
+            />
     </LinearLayout>
 
     <!--<LinearLayout
@@ -108,6 +107,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/practice"
+                android:textStyle="bold"
                 android:textColor="@color/primary_text" />
 
             <Button
@@ -133,6 +133,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/challenge"
+                android:textStyle="bold"
                 android:textColor="@color/primary_text" />
 
             <Button
@@ -159,6 +160,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/ranking"
+                android:textStyle="bold"
                 android:textColor="@color/primary_text" />
             <Button
                 android:id="@+id/btn_menu_ranking"
@@ -182,6 +184,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/store"
+                android:textStyle=""
                 android:textColor="@color/primary_text" />
 
             <Button

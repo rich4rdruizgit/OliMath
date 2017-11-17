@@ -74,6 +74,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Experiencia"
+                            android:textStyle="bold"
                             android:textColor="@color/primary_text"/>
 
                         <FrameLayout
@@ -123,6 +124,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text=" x 200000"
+                            android:textStyle="bold"
                             android:textColor="@color/primary_text"/>
                     </LinearLayout>
 
@@ -138,6 +140,7 @@
                             android:layout_height="45dp"
                             android:textColor="@color/primary_text"
                             android:text="1"
+                            android:textStyle="bold"
                             android:gravity="center"
                             android:layout_marginBottom="3dp"/>
                     </LinearLayout>

@@ -47,15 +47,21 @@
         </LinearLayout>
 
 
-            <ImageView
+            <!--<ImageView
                 android:layout_marginTop="30dp"
                 android:scaleX="0.8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_gravity="bottom"
-                android:background="@drawable/teacher" />
-
+                android:background="@drawable/teacher" />-->
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/img_gif_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_gravity="center"
+            android:src="@drawable/teacherhello" />
         >
             </LinearLayout>
     <LinearLayout
@@ -85,7 +91,8 @@
         android:layout_weight="0.15"
         >
         <ImageView
-            android:scaleX="0.5"
+            android:scaleX="0.4"
+            android:scaleY="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/logosena" />

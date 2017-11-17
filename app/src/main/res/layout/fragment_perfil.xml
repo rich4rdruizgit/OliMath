@@ -64,6 +64,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_views"
                 android:text="@string/experience"
+                android:textStyle="bold"
                 android:textColor="@color/primary_text"
                 android:textSize="@dimen/tamanoletrasubtitulos" />
 
@@ -73,6 +74,7 @@
                 android:layout_gravity="center"
                 android:padding="@dimen/padding_views"
                 android:text="@string/coins"
+                android:textStyle="bold"
                 android:textColor="@color/primary_text"
                 android:textSize="@dimen/tamanoletrasubtitulos" />
 
@@ -136,6 +138,7 @@
                 android:layout_gravity="center"
                 android:padding="@dimen/padding_views"
                 android:text="30%"
+                android:textStyle="bold"
                 android:textColor="@color/primary_text"
                 android:textSize="@dimen/text_size" />
 
@@ -145,6 +148,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_views"
                 android:text="x4"
+                android:textStyle="bold"
                 android:textColor="@color/primary_text"
                 android:textSize="@dimen/text_size" />
         </LinearLayout><!-- Lin 3-->
