@@ -27,7 +27,8 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
 
     //private final String url = "http://10.73.70.29:8097/";
     //private final String url = "http://10.73.70.39:8097/";
-    private final String url = "http://52.165.231.114/";
+    //private final String url = "http://10.73.120.124:8097/";
+    private final String url = "http://52.165.231.114:80/";
     //private final String url = "http://192.168.43.14:8097/";
     //private final String url = "http://192.168.137.1:8097/";
 
@@ -293,18 +294,21 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
         Long tsLong = System.currentTimeMillis() / 1000;
         String ts = tsLong.toString();
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-
+        String data = "Datos enviados { idPerfil: "+idProfile;
         nameValuePairs.add(new BasicNameValuePair("IdPerfil", idProfile));
 
         for (int i = 0; i < answers.length; i++) {
             nameValuePairs.add(new BasicNameValuePair("RespuestaId" + (i + 1), String.valueOf(answers[i])));
+            data+=" RespuestaId" + (i + 1)+" : " +String.valueOf(answers[i]);
         }
 
-
+        data+=" HoraIni: "+initDate;
+        data+=" HoraFin: "+finishDate;
+        data+=" Publicar: "+isChallenge+"}";
         nameValuePairs.add(new BasicNameValuePair("HoraIni", initDate));
         nameValuePairs.add(new BasicNameValuePair("HoraFin", finishDate));
         nameValuePairs.add(new BasicNameValuePair("Publicar", isChallenge));
-
+        Log.e("Data enviada",data);
         webConnection.executePostRequest(url, OperationType.SEND_CHALLENGE.getName(), nameValuePairs);
         //webConnection.executePostRequest("login url", OperationType.LOGIN.getName(), nameValuePairs);
         //webConnection.executeAsyncGetRequest(url);

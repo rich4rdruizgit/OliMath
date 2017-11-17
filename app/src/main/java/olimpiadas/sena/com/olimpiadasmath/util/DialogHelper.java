@@ -10,6 +10,7 @@ import android.media.MediaPlayer;
 import android.opengl.EGLExt;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -187,7 +188,8 @@ public class DialogHelper {
                 public void onClick(View v) {
                     appControl.soundButtonPlay();
                     mProgressDialog.dismiss();
-                    appControl.initQuestionaryDatetime = DateFormat.format("dd/MM/yy HH:mm:ss", new java.util.Date()).toString();
+                    appControl.initQuestionaryDatetime = appControl.replaceMonth(DateFormat.format("dd-@M@-yy hh.mm.ss a", new java.util.Date()).toString());
+                    Log.d("DialogHelper","La fecha es " + appControl.initQuestionaryDatetime);
                     Intent intChallenge = new Intent(context.getApplicationContext(), ChallengeActivity.class);
                     intChallenge.putExtra("type", 2);
                     //AppControl.getInstance().currentUser.addTickets(-2);
