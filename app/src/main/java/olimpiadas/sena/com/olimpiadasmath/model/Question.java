@@ -154,6 +154,7 @@ public class Question  extends RealmObject{
                 int id_question = Integer.parseInt(jsonObjectQuestion.getString("regId"));
                 String text_question = jsonObjectQuestion.getString("Descripcion");
                 String url_img_question = jsonObjectQuestion.getString("rutaImg");
+                String argument_question  = jsonObjectQuestion.getString("argumento");
                 //Elimino del array la pregunta porque ya tengo
                 jsonArray.remove(i);
                 i--;
@@ -190,6 +191,7 @@ public class Question  extends RealmObject{
                 String question = ("{'idQuestion':'" + id_question + "', " +
                         "'text':'" + text_question + "', " +
                         "'urlImage':'" + url_img_question + "'," +
+                        "'argumento':'" + argument_question + "'," +
                         "'answers':" + answers + "}");
                 /**
                  * Aqui ya debe almacenarce en la DB

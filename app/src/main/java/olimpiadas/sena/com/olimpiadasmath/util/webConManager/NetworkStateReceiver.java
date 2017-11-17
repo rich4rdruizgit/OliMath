@@ -27,12 +27,20 @@ public class NetworkStateReceiver extends BroadcastReceiver {
         if(intent == null || intent.getExtras() == null)
             return;
 
-        ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo ni = manager.getActiveNetworkInfo();
+//        ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+//        NetworkInfo ni = manager.getActiveNetworkInfo();
+//
+//        if(ni != null && ni.getState() == NetworkInfo.State.CONNECTED) {
+//            connected = true;
+//        } else if(intent.getBooleanExtra(ConnectivityManager.EXTRA_NO_CONNECTIVITY,Boolean.FALSE)) {
+//            connected = false;
+//        }
 
-        if(ni != null && ni.getState() == NetworkInfo.State.CONNECTED) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        if( networkInfo != null && networkInfo.isAvailable() && networkInfo.isConnected()){
             connected = true;
-        } else if(intent.getBooleanExtra(ConnectivityManager.EXTRA_NO_CONNECTIVITY,Boolean.FALSE)) {
+        }else{
             connected = false;
         }
 
