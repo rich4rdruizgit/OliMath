@@ -180,8 +180,10 @@ public class ResultActivity extends AppCompatActivity {
               }
         });
 
-        String finishQuestionaryDatetime = DateFormat.format("dd/MM/yy HH:mm:ss", new java.util.Date()).toString();
+        String finishQuestionaryDatetime =appControl.replaceMonth( DateFormat.format("dd-@M@-yy hh.mm.ss a", new java.util.Date()).toString());
         WebConnectionManager webConnectionManager = WebConnectionManager.getWebConnectionManager();
+
+        Log.d(TAG,"Format dates " + appControl.initQuestionaryDatetime + "  date 2  = " + finishQuestionaryDatetime);
 
         if(appControl.onPractice){
             webConnectionManager.sendChallenge(appControl.currentUser.getId(),appControl.answersId,appControl.initQuestionaryDatetime,finishQuestionaryDatetime, "0");

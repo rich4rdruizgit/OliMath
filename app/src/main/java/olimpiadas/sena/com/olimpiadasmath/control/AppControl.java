@@ -414,4 +414,13 @@ public class AppControl {
             soundButton.start();
     }
 
+    public String replaceMonth(String date){
+
+
+        date = date.replace("@@","ENE");
+        date = date.replace("@11@","NOV");
+        return date;
+
+    }
+
 }
