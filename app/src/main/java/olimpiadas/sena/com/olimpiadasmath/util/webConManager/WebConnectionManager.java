@@ -294,18 +294,21 @@ public class WebConnectionManager implements WebConnection.WebConnectionListener
         Long tsLong = System.currentTimeMillis() / 1000;
         String ts = tsLong.toString();
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-
+        String data = "Datos enviados { idPerfil: "+idProfile;
         nameValuePairs.add(new BasicNameValuePair("IdPerfil", idProfile));
 
         for (int i = 0; i < answers.length; i++) {
             nameValuePairs.add(new BasicNameValuePair("RespuestaId" + (i + 1), String.valueOf(answers[i])));
+            data+=" RespuestaId" + (i + 1)+" : " +String.valueOf(answers[i]);
         }
 
-
+        data+=" HoraIni: "+initDate;
+        data+=" HoraFin: "+finishDate;
+        data+=" Publicar: "+isChallenge+"}";
         nameValuePairs.add(new BasicNameValuePair("HoraIni", initDate));
         nameValuePairs.add(new BasicNameValuePair("HoraFin", finishDate));
         nameValuePairs.add(new BasicNameValuePair("Publicar", isChallenge));
-
+        Log.e("Data enviada",data);
         webConnection.executePostRequest(url, OperationType.SEND_CHALLENGE.getName(), nameValuePairs);
         //webConnection.executePostRequest("login url", OperationType.LOGIN.getName(), nameValuePairs);
         //webConnection.executeAsyncGetRequest(url);

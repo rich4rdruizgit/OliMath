@@ -131,6 +131,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         if (product.getState() == Product.BOUGTH) {
             if (product.getType() == Product.POTION) {
                 holder.btnBuy.setText("Comprado");
+                webConnectionManager.actualizarTiendaUser(appControl.currentUser.getId(),product.getUrlImg());
             } else
                 holder.btnBuy.setText("Usar");
                 webConnectionManager.actualizarTiendaUser(appControl.currentUser.getId(),product.getUrlImg());
