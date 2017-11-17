@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +19,7 @@ import com.hitomi.cmlibrary.OnMenuSelectedListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -67,10 +70,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         gifMenu = (GifImageView) findViewById(R.id.img_gif_menu); // Gif del menu principal
         //gifMenu.setOnClickListener(this);
         gifMenu.setBackgroundResource(R.drawable.teachertalk);
+        //chagedPJ();
+
+        /*AnimationDrawable channgePJ= new AnimationDrawable();
+        channgePJ.addFrame(getResources().getDrawable(R.drawable.teacherhello),300);
+        channgePJ.addFrame(getResources().getDrawable(R.drawable.teacheridle),300);
+        channgePJ.addFrame(getResources().getDrawable(R.drawable.teachertalk),300);
+        channgePJ.setOneShot(false);*/
+        //gifMenu.setBackgroundResource(channgePJ);
+        //gifMenu.setBackground(channgePJ);
+        //gifMenu.setImageDrawable(channgePJ);
         getSupportActionBar().hide();
         appControl = AppControl.getInstance();
         appControl.currentActivity = MainActivity.class.getSimpleName();
         Context context = this;
+
+
+    /*TimerTask tareaTiempo = new TimerTask() {
+        @Override
+        public void run() {
+            Intent intent = new Intent(SplashPaisajeActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+
+        }
+    };
+
+    Timer timer = new Timer();
+        timer.schedule(tareaTiempo,3000);*/
+        // fin logica cambio personaje app
+
 
 //        appControl.soundBackground = MediaPlayer.create(getApplicationContext(),R.raw.theartloop);
 
@@ -140,6 +169,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    //logica cambio personaje app
+    public void delay3seconds(){
+        try {
+            Thread.sleep(3000);
+        }catch (InterruptedException e){
+
+        }
+    }
+
+    public void chagedPJ(){
+        ArrayList<Integer> gifs = new ArrayList<>();
+        gifs.add(R.drawable.teacherhello);
+        gifs.add(R.drawable.teacheridle);
+        gifs.add(R.drawable.teachertalk);
+        int i=1;
+        while(i<4){
+            delay3seconds();
+            Toast.makeText(this, "hghg", Toast.LENGTH_SHORT).show();
+            if(i == 3){
+                i = 1;
+            }
+            gifMenu.setBackgroundResource(gifs.get(i));
+            i++;
+        }
+
     }
 
     @Override

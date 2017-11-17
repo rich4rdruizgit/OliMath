@@ -32,10 +32,10 @@
             android:src="@android:drawable/arrow_down_float"
             android:rotation="90" />
 
-        <ImageView
+        <pl.droidsonroids.gif.GifImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_weight=".15"
+            android:layout_gravity="center"
             android:src="@drawable/halftutorchall"/>
 
         <TextView

@@ -23,12 +23,13 @@
                 android:gravity="center"
                 android:weightSum="1">
 
-                <ImageView
+                <pl.droidsonroids.gif.GifImageView
+                    android:id="@+id/img_typetutor"
                     android:layout_width="0dp"
                     android:layout_height="150dp"
                     android:layout_weight=".5"
-                    android:id="@+id/img_typetutor"
-                    android:src="@drawable/halftutorchall" />
+                    android:layout_gravity="center"
+                    android:src="@drawable/halftutourprac"/>
             </LinearLayout>
 
 

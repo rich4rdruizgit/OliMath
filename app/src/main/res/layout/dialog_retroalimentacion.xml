@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <ImageView
+                <pl.droidsonroids.gif.GifImageView
                     android:id="@+id/imgview_retro"
                     android:layout_gravity="center"
                     android:src="@drawable/halftutourprac"

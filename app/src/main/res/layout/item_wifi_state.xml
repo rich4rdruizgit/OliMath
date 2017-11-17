@@ -24,7 +24,7 @@ android:padding="@dimen/padding_views">
             android:gravity="center"
             android:weightSum="1">
 
-            <ImageView
+            <pl.droidsonroids.gif.GifImageView
                 android:layout_width="0dp"
                 android:layout_height="150dp"
                 android:layout_weight=".5"
