@@ -76,6 +76,7 @@ public class AvatarShopFragment extends Fragment implements WebConnectionManager
         View view = inflater.inflate(R.layout.fragment_avatar_shop, container, false);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_avatar_shop);
+
         GridLayoutManager llm = new GridLayoutManager(getActivity(), 2);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);

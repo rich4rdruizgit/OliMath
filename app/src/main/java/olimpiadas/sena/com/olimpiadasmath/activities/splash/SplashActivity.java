@@ -54,12 +54,13 @@ public class SplashActivity extends AppCompatActivity implements AppControl.Init
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         getSupportActionBar().hide();
+
         appControl = AppControl.getInstance();
         appControl.currentActivity = SplashActivity.class.getSimpleName();
-
         realm = Realm.getDefaultInstance();
 
         appControl.init(SplashActivity.this, getApplicationContext());
+
         Log.d(TAG,"Se va  webRequest perd ");
         webConnectionManager = WebConnectionManager.getWebConnectionManager();
         webConnectionManager.setWebConnectionManagerListener(this);

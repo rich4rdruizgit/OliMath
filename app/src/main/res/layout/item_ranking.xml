@@ -7,18 +7,18 @@
     android:layout_marginBottom="5dp"
     android:background="@drawable/shape_ranking"
     android:orientation="horizontal"
-    android:weightSum="1"
-    >
+    android:weightSum="1">
+
     <TextView
         android:id="@+id/txt_position_ranking"
         android:layout_width="0dp"
-        android:textStyle="bold"
         android:layout_height="match_parent"
         android:layout_weight=".2"
         android:gravity="center_horizontal|center_vertical"
         android:text="1"
         android:textColor="@color/cardview_light_background"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/img_avatar_ranking"
@@ -36,14 +36,14 @@
         android:weightSum="4">
 
         <TextView
-            android:textStyle="bold"
             android:id="@+id/txt_nickname_ranking"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:text="Juanito Alimaña"
             android:textColor="#ffffff"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="match_parent"
@@ -73,18 +73,18 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="60dp"
                 android:layout_weight="0.25"
                 android:background="@drawable/golden_medal"
-                android:gravity="center"
-                android:layout_marginLeft="60dp">
+                android:gravity="center">
 
                 <TextView
                     android:layout_width="50dp"
                     android:layout_height="45dp"
-                    android:textColor="@color/primary_text"
-                    android:text="1"
+                    android:layout_marginBottom="3dp"
                     android:gravity="center"
-                    android:layout_marginBottom="3dp"/>
+                    android:text="1"
+                    android:textColor="@color/primary_text" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

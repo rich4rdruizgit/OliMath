@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/backgroundothers"
+    android:orientation="vertical"
     android:padding="@dimen/padding_views">
 
     <ScrollView
@@ -17,22 +17,22 @@
             android:orientation="vertical">
 
             <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/img_tutorresult"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
                 android:layout_weight="1.5"
-                android:src="@drawable/halftutorchall"
-                android:id="@+id/img_tutorresult"/>
+                android:src="@drawable/halftutorchall" />
 
             <TextView
+                android:id="@+id/txt_msg_dialog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/txt_msg_dialog"
+                android:text="¿Quieres salir de la aplicacion?"
                 android:textAlignment="center"
-                android:textSize="20dp"
-                android:textStyle="bold"
                 android:textColor="@color/cardview_light_background"
-                android:text="¿Quieres salir de la aplicacion?"/>
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
             <View
                 android:id="@+id/divider"
@@ -46,35 +46,30 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <Button
 
                     android:id="@+id/btn_exit_tip"
-                    android:layout_marginTop="30dp"
-                    android:text="Cancelar"
+                    style="@style/ButtonStyle"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    style="@style/ButtonStyle"
-
-                    />
+                    android:layout_marginTop="30dp"
+                    android:text="Cancelar" />
 
                 <View
                     android:id="@+id/divider_botons"
                     android:layout_width="@dimen/text_size"
-                    android:layout_height="1dp"
-
-                    />
+                    android:layout_height="1dp" />
 
                 <Button
-
                     android:id="@+id/btn_dialog_continue"
-                    android:layout_marginTop="30dp"
-                    android:text="Aceptar"
+                    style="@style/ButtonStyle"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    style="@style/ButtonStyle"
+                    android:layout_marginTop="30dp"
+                    android:text="Aceptar"
 
                     />
             </LinearLayout>

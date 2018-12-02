@@ -4,30 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/backgroundmain"
+    android:orientation="vertical"
     tools:context="olimpiadas.sena.com.olimpiadasmath.activities.shop.ShopActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp">
+
         <fragment
             android:id="@+id/fragment_shop_header"
             android:name="olimpiadas.sena.com.olimpiadasmath.fragments.header.HeaderFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
     </LinearLayout>
+
     <LinearLayout
-        android:layout_marginTop="3dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
         android:weightSum="1">
 
         <Button
             android:id="@+id/btn_back_shop"
-            android:layout_gravity="center"
             android:layout_width="2dp"
             android:layout_height="18dp"
+            android:layout_gravity="center"
             android:layout_weight=".1"
             android:background="@android:drawable/arrow_down_float"
             android:rotation="90" />
@@ -36,19 +38,18 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_weight=".15"
-            android:src="@drawable/shopact"
-            />
+            android:src="@drawable/shopact" />
+
         <TextView
             android:id="@+id/txt_title_ranking"
             android:layout_width="0dp"
-            android:layout_weight=".7"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:layout_weight=".7"
             android:paddingLeft="20dp"
             android:text="@string/shop"
-            android:textStyle="bold"
             android:textColor="@color/primary_text"
-            />
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 
@@ -56,6 +57,7 @@
         android:id="@+id/vpPagerShop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <android.support.v4.view.PagerTabStrip
             android:id="@+id/pager_header_shop"
             android:layout_width="match_parent"
@@ -63,6 +65,6 @@
             android:layout_gravity="top"
             android:paddingBottom="4dp"
             android:paddingTop="4dp"
-            android:textAppearance="@style/PagerTabStripText"/>
+            android:textAppearance="@style/PagerTabStripText" />
     </android.support.v4.view.ViewPager>
 </LinearLayout>

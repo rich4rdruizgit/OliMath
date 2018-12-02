@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/backgroundlog"
-    tools:context="olimpiadas.sena.com.olimpiadasmath.activities.session.LoginActivity"
-    android:weightSum="1">
+    android:orientation="vertical"
+    android:weightSum="1"
+    tools:context="olimpiadas.sena.com.olimpiadasmath.activities.session.LoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,93 +26,95 @@
             android:layout_width="150dp"
             android:layout_height="match_parent"
             android:layout_margin="20dp"
-            android:text="@string/app_name"
-            android:textColor="@color/primary_text"
-            android:textStyle="bold"
-            android:gravity="bottom"
-            android:textAlignment="center"
-            android:textSize="@dimen/text_size_tittle"
             android:layout_marginBottom="10dp"
-            />
+            android:gravity="bottom"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/text_size_tittle"
+            android:textStyle="bold" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.5"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.5"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
+
             <LinearLayout
-                android:layout_marginTop="@dimen/padding_views"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:orientation="vertical">
+                android:layout_marginTop="@dimen/padding_views"
+                android:orientation="vertical"
+                android:padding="10dp">
+
                 <RelativeLayout
-                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp">
+
                     <EditText
                         android:id="@+id/etv_login_user"
-                        android:gravity="center"
-                        android:hint="@string/user"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:maxLines="1"
-                        android:textSize="@dimen/text_size"
-                        android:inputType="text"
                         android:drawableLeft="@drawable/ic_person"
+                        android:gravity="center"
+                        android:hint="@string/user"
+                        android:inputType="text"
+                        android:maxLines="1"
                         android:paddingLeft="10dp"
                         android:paddingRight="40dp"
-                        />
+                        android:textSize="@dimen/text_size" />
 
                 </RelativeLayout>
 
                 <EditText
                     android:id="@+id/etv_login_pass"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:hint="@string/password"
-                    android:textSize="@dimen/text_size"
-                    android:inputType="textPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:drawableLeft="@drawable/ic_lock"
+                    android:gravity="center"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
                     android:paddingLeft="10dp"
                     android:paddingRight="40dp"
-                    />
+                    android:textSize="@dimen/text_size" />
             </LinearLayout>
 
             <LinearLayout
-                android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.5"
                 android:orientation="vertical"
+                android:padding="10dp"
                 android:weightSum="1">
+
                 <Button
                     android:id="@+id/btn_login"
-                    android:text="@string/start_sesion"
                     android:layout_width="match_parent"
-                    android:maxWidth="250dp"
                     android:layout_height="wrap_content"
+                    android:maxWidth="250dp"
+                    android:text="@string/start_sesion"
 
                     />
+
                 <Button
-                    android:layout_marginTop="10dp"
                     android:id="@+id/btn_lose_pass"
-                    android:text="@string/recover_password"
-                    android:maxWidth="250dp"
-                    android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    />
+                    android:layout_marginTop="10dp"
+                    android:maxWidth="250dp"
+                    android:text="@string/recover_password"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

@@ -3,7 +3,7 @@ apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "olimpiadas.sena.com.olimpiadasmath"
         minSdkVersion 16
@@ -18,6 +18,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    realm {
+        syncEnabled = true;
     }
 }
 
@@ -113,5 +116,7 @@ dependencies {
 dependencies {
     compile 'com.android.support.constraint:constraint-layout:+'
 }
+
+
 
 

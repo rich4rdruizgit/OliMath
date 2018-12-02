@@ -100,7 +100,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 for (int i = 0; i < result2.size(); i++) {
                     result2.get(i).setState(Product.BOUGTH);
                 }
-
             }
         });
     }
@@ -151,16 +150,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                         currentBuyItem = holder.btnBuy;
                         currentPosition = position;
 
-
-
-
                         if (appControl.currentUser.getCoins() < lstProduct.get(position).getPrice()) {
                             DialogHelper.ConfimrBuyDialog(context, context.getString(R.string.no_enought_coins), DialogHelper.NO_BUY, ProductAdapter.this);
                             return;
                         } else {
                             DialogHelper.ConfimrBuyDialog(context, context.getString(R.string.alert_shop), DialogHelper.BUY, ProductAdapter.this);
-
-
                         }
                     } else if (product.getState() == Product.BOUGTH) {
                         if (product.getType() == Product.POTION) {
